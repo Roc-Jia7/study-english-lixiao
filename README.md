@@ -1,36 +1,42 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Word Star Academy · 单词星球 🚀
 
-## Getting Started
+A gamified English vocabulary app for kids (ages 4–12). The Ebbinghaus
+forgetting curve becomes a pet-raising game: learning words feeds an egg
+that hatches into a dragon, and words due for review appear as hungry
+monsters to feed.
 
-First, run the development server:
+## Run
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run fetch-audio   # optional: download real human pronunciations (24 mp3s)
+npm run dev           # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Parent gate accepts any 8+ digit phone number (demo).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## How learning works
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Discovery Packs** — 6 new words per category, one card at a time.
+- **Verification quizzes** — every 3rd card is a hear-and-pick or
+  see-and-pick quiz; failing one genuinely drops the word's memory stage
+  (self-assessment alone is easy for kids to game).
+- **Spaced repetition** — 9 checkpoints from 5 minutes to 15 days
+  (`lib/spaced-repetition.ts`). Due words surface as monsters; the child
+  never sees timers or numbers.
+- **Streak & sticker wall** — each learning day lights a planet on the
+  14-day Star Path; consecutive days grow a flame streak.
+- **Pet evolution** — XP from every answer: 🥚 → 🐣 → 🐲 → 🐉, with
+  confetti and a synthesized cheer at the end of every batch.
 
-## Learn More
+## Audio
 
-To learn more about Next.js, take a look at the following resources:
+Word pronunciations prefer pre-downloaded human recordings in
+`public/audio/words/` (fetched from dictionaryapi.dev / Wiktionary via
+`npm run fetch-audio`) and fall back to the browser's Web Speech API.
+Sentences and cheers always use Web Speech.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Stack
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Next.js 15 (App Router) · React 19 · Tailwind CSS v4 · Framer Motion ·
+Zustand (persisted to localStorage) · canvas-confetti · Lucide icons.
