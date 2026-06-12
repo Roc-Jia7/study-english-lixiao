@@ -18,8 +18,9 @@ import LxllReviewPanel from "./LxllReviewPanel";
 
 interface DashboardProps {
   onStartSession: (mode: SessionMode, words: VocabularyWord[]) => void;
-  /** A real lxll review session (real words, results submitted, no quiz). */
-  onStartLxllReview: (words: VocabularyWord[]) => void;
+  /** A real lxll review session (real words, results submitted, no quiz).
+   *  `practice` re-runs a finished slot locally without writing the curve. */
+  onStartLxllReview: (words: VocabularyWord[], practice?: boolean) => void;
 }
 
 const CATEGORIES: WordCategory[] = ["animals", "food", "colors", "nature"];

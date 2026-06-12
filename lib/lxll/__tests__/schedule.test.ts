@@ -66,6 +66,18 @@ describe("splitSchedule", () => {
   });
 
   it("returns empty groups for an empty schedule", () => {
-    expect(splitSchedule([])).toEqual({ due: [], upcoming: [] });
+    expect(splitSchedule([])).toEqual({ due: [], upcoming: [], done: [] });
+  });
+
+  it("collects today's completed slots into `done` for re-practice", () => {
+    const schedule: LxllAntiForgetDay[] = [
+      { time: 0, records: [rec(30, at(2026, 6, 12, 8), "DONE")] }, // done today
+      { time: 0, records: [rec(31, at(2026, 6, 10), "DONE")] }, // done, overdue day
+      { time: 0, records: [rec(32, at(2026, 6, 12, 14))] }, // still pending today
+      { time: 0, records: [rec(33, at(2026, 6, 13), "DONE")] }, // future, ignore
+    ];
+    const { due, done } = splitSchedule(schedule);
+    expect(due.map((r) => r.antiForgetId)).toEqual([32]);
+    expect(done.map((r) => r.antiForgetId)).toEqual([31, 30]); // oldest first
   });
 });

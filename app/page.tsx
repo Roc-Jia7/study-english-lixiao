@@ -15,6 +15,8 @@ interface ActiveSession {
   words: VocabularyWord[];
   /** A real lxll review: report each result and submit on completion. */
   lxll?: boolean;
+  /** Re-practice of a finished slot — runs locally, no backend submit. */
+  practice?: boolean;
 }
 
 /**
@@ -86,14 +88,18 @@ export default function Home() {
               onExit={() => setSession(null)}
               withQuiz={!session.lxll}
               onResult={
-                session.lxll
+                session.lxll && !session.practice
                   ? (word, known) => {
                       const id = backendWordId(word);
                       if (id !== null) recordWordResult(id, known);
                     }
                   : undefined
               }
-              onComplete={session.lxll ? () => void submitResults() : undefined}
+              onComplete={
+                session.lxll && !session.practice
+                  ? () => void submitResults()
+                  : undefined
+              }
             />
           </motion.div>
         ) : (
@@ -105,8 +111,8 @@ export default function Home() {
           >
             <Dashboard
               onStartSession={(mode, words) => setSession({ mode, words })}
-              onStartLxllReview={(words) =>
-                setSession({ mode: "review", words, lxll: true })
+              onStartLxllReview={(words, practice) =>
+                setSession({ mode: "review", words, lxll: true, practice })
               }
             />
           </motion.div>

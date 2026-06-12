@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { ChevronRight, Loader2, Clock, Lock } from "lucide-react";
+import { ChevronRight, Loader2, Clock, Lock, RotateCw, Check } from "lucide-react";
 import type { VocabularyWord } from "@/lib/types";
 import type { LxllAntiForgetRecord } from "@/lib/lxll/types";
 import { useLxllStore } from "@/store/useLxllStore";
@@ -11,8 +11,9 @@ import { localDateStr } from "@/lib/streak";
 import { popSound } from "@/lib/sfx";
 
 interface LxllReviewPanelProps {
-  /** Start a review session with one slot's real words. */
-  onStartReview: (words: VocabularyWord[]) => void;
+  /** Start a review session with one slot's real words. `practice` runs it
+   *  as local-only repetition that is NOT written back to the curve. */
+  onStartReview: (words: VocabularyWord[], practice?: boolean) => void;
 }
 
 const MONSTERS = ["👾", "🐲", "👹", "🦖", "🐙", "👻"];
@@ -36,9 +37,9 @@ function dayLabel(date: string, now = new Date()): string {
 
 /**
  * The child's anti-forget mission board: today's due review slots as tappable
- * hungry-monster cards (tap one to start just that batch), plus a gentle
- * preview of the next few days — so they choose a slot instead of being
- * dropped into a huge pile of words.
+ * hungry-monster cards (tap one to start just that batch), a re-practice row
+ * for slots already finished today, plus a gentle preview of the next few
+ * days — so they choose a slot instead of being dropped into a huge pile.
  */
 export default function LxllReviewPanel({ onStartReview }: LxllReviewPanelProps) {
   const schedule = useLxllStore((s) => s.schedule);
@@ -47,19 +48,24 @@ export default function LxllReviewPanel({ onStartReview }: LxllReviewPanelProps)
   const loadSlotWords = useLxllStore((s) => s.loadSlotWords);
   const [startingId, setStartingId] = useState<number | null>(null);
 
-  const { due, upcoming } = useMemo(() => splitSchedule(schedule), [schedule]);
+  const { due, upcoming, done } = useMemo(
+    () => splitSchedule(schedule),
+    [schedule],
+  );
 
-  const startSlot = async (record: LxllAntiForgetRecord) => {
+  const startSlot = async (record: LxllAntiForgetRecord, practice = false) => {
     if (startingId !== null) return;
     popSound();
     setStartingId(record.antiForgetId);
     try {
       const words = await loadSlotWords(record.antiForgetId);
-      if (words.length > 0) onStartReview(words);
+      if (words.length > 0) onStartReview(words, practice);
     } finally {
       setStartingId(null);
     }
   };
+
+  const busy = startingId !== null;
 
   return (
     <div className="mt-8 w-full">
@@ -96,7 +102,6 @@ export default function LxllReviewPanel({ onStartReview }: LxllReviewPanelProps)
               <div className="space-y-3">
                 {due.map((record, i) => {
                   const starting = startingId === record.antiForgetId;
-                  const busy = startingId !== null;
                   return (
                     <motion.button
                       key={record.antiForgetId}
@@ -111,9 +116,7 @@ export default function LxllReviewPanel({ onStartReview }: LxllReviewPanelProps)
                     >
                       <motion.span
                         className="text-5xl"
-                        animate={
-                          starting ? {} : { rotate: [0, -8, 8, 0] }
-                        }
+                        animate={starting ? {} : { rotate: [0, -8, 8, 0] }}
                         transition={{ duration: 1.6, repeat: Infinity }}
                       >
                         {starting ? "🍳" : MONSTERS[i % MONSTERS.length]}
@@ -149,8 +152,58 @@ export default function LxllReviewPanel({ onStartReview }: LxllReviewPanelProps)
               <p className="text-2xl font-extrabold text-white">
                 今天的单词都复习完啦！
               </p>
-              <p className="text-white/70">小怪兽们都吃饱饱，看看接下来几天吧～</p>
+              <p className="text-white/70">
+                {done.length > 0
+                  ? "想再练一练，点下面「再复习一次」👇"
+                  : "小怪兽们都吃饱饱，看看接下来几天吧～"}
+              </p>
             </motion.div>
+          )}
+
+          {/* Already finished today — a re-practice channel (no backend write) */}
+          {done.length > 0 && (
+            <>
+              <h3 className="mt-8 mb-3 text-center text-base font-bold text-white/70">
+                ✅ 今天已复习（可再练）
+              </h3>
+              <div className="space-y-2">
+                {done.map((record, i) => {
+                  const starting = startingId === record.antiForgetId;
+                  return (
+                    <motion.button
+                      key={record.antiForgetId}
+                      initial={{ opacity: 0, scale: 0.97 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      whileHover={busy ? undefined : { scale: 1.01 }}
+                      whileTap={busy ? undefined : { scale: 0.98 }}
+                      onClick={() => startSlot(record, true)}
+                      disabled={busy}
+                      className="flex w-full items-center gap-3 rounded-2xl bg-white/5 px-4 py-3 text-left ring-1 ring-white/10 disabled:opacity-60"
+                    >
+                      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-emerald-400/20 text-emerald-300">
+                        <Check className="h-5 w-5" />
+                      </span>
+                      <div className="flex-1">
+                        <p className="font-bold text-white/80">
+                          第 {i + 1} 组 · 复习过的单词
+                        </p>
+                        <p className="flex items-center gap-1 text-sm text-white/50">
+                          <Clock className="h-3.5 w-3.5" />
+                          {timeLabel(record.antiForgetDate)}
+                        </p>
+                      </div>
+                      {starting ? (
+                        <Loader2 className="h-6 w-6 shrink-0 animate-spin text-white/70" />
+                      ) : (
+                        <span className="flex shrink-0 items-center gap-1 rounded-full bg-white/10 px-3 py-1.5 text-sm font-bold text-white/80">
+                          <RotateCw className="h-4 w-4" /> 再复习一次
+                        </span>
+                      )}
+                    </motion.button>
+                  );
+                })}
+              </div>
+            </>
           )}
 
           {/* Upcoming days — gentle preview, not yet tappable */}
