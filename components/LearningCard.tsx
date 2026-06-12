@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Volume2, Languages } from "lucide-react";
-import type { VocabularyWord } from "@/lib/types";
+import { Volume2, Languages, Eye } from "lucide-react";
+import type { DisplayMode, VocabularyWord } from "@/lib/types";
 import { playWordAudio, playBilingual } from "@/lib/audio";
 import { speakSentence } from "@/lib/speech";
 import { popSound, happySound, softSound } from "@/lib/sfx";
@@ -11,6 +11,17 @@ import { popSound, happySound, softSound } from "@/lib/sfx";
 interface LearningCardProps {
   word: VocabularyWord;
   onAnswer: (known: boolean) => void;
+  /** Which side(s) of the card to reveal up front. */
+  displayMode?: DisplayMode;
+}
+
+/** Long words can blow past the card width at a fixed 60px — shrink to fit. */
+function wordSizeClass(len: number): string {
+  if (len <= 6) return "text-6xl tracking-wide";
+  if (len <= 9) return "text-5xl";
+  if (len <= 12) return "text-4xl";
+  if (len <= 16) return "text-3xl";
+  return "text-2xl";
 }
 
 /** Wraps every occurrence of the focus word in a warm highlight color. */
@@ -62,21 +73,52 @@ function Bubbles() {
   );
 }
 
+/** A gentle dashed "tap to reveal" button used to uncover the hidden side. */
+function RevealButton({ label, onClick }: { label: string; onClick: () => void }) {
+  return (
+    <motion.button
+      onClick={onClick}
+      whileTap={{ scale: 0.94 }}
+      className="mx-auto mt-2 flex items-center gap-2 rounded-full border-2 border-dashed border-violet-300 bg-violet-50 px-5 py-2 font-bold text-violet-500"
+    >
+      <Eye className="h-5 w-5" />
+      {label}
+    </motion.button>
+  );
+}
+
 /**
  * One word, one card, zero clutter — but extra bouncy and cuddly. Big
  * tappable picture, big word, listen + bilingual buttons, and two giant
- * jelly self-assessment buttons.
+ * jelly self-assessment buttons. The display mode lets a reviewer hide one
+ * language so the card doubles as a self-quiz (tap to reveal the answer).
  */
-export default function LearningCard({ word, onAnswer }: LearningCardProps) {
-  // Say the word out loud as soon as the card appears (the session was
-  // started by a tap, so the audio gesture requirement is satisfied).
+export default function LearningCard({
+  word,
+  onAnswer,
+  displayMode = "both",
+}: LearningCardProps) {
+  const [revealed, setRevealed] = useState(false);
+
+  // Which side is hidden until revealed (the other side is the prompt).
+  const hideSide = displayMode === "en" ? "zh" : displayMode === "zh" ? "en" : null;
+  const showEnglish = hideSide !== "en" || revealed;
+  const showChinese = hideSide !== "zh" || revealed;
+
+  // Switching mode mid-deck gives a fresh recall challenge.
+  useEffect(() => setRevealed(false), [displayMode]);
+
+  // Say the word out loud once it's visible (the session was started by a
+  // tap, so the audio gesture requirement is satisfied). Stay silent while
+  // the English answer is hidden so it isn't given away.
   useEffect(() => {
+    if (!showEnglish) return;
     const timer = setTimeout(
       () => playWordAudio(word.id, word.word, word.audioUrl),
       350,
     );
     return () => clearTimeout(timer);
-  }, [word.id, word.word, word.audioUrl]);
+  }, [word.id, word.word, word.audioUrl, showEnglish]);
 
   const sayWord = () => {
     popSound();
@@ -104,67 +146,88 @@ export default function LearningCard({ word, onAnswer }: LearningCardProps) {
     >
       <Bubbles />
 
-      <div className="relative rounded-[2.5rem] bg-cream p-6 shadow-2xl ring-8 ring-white/30">
+      <div className="relative overflow-hidden rounded-[2.5rem] bg-cream p-6 shadow-2xl ring-8 ring-white/30">
         {/* Tappable visual anchor — a squishy sticker. Backend words have no
-            emoji, so we show a friendly letter tile with a tiny face. */}
+            emoji, so we show a friendly letter tile with a tiny face. When the
+            English answer is hidden, a mystery tile keeps the spelling secret. */}
         <motion.button
-          onClick={sayWord}
-          aria-label={`Listen to ${word.word}`}
+          onClick={showEnglish ? sayWord : () => setRevealed(true)}
+          aria-label={showEnglish ? `Listen to ${word.word}` : "揭晓单词"}
           className="relative mx-auto flex h-40 w-40 items-center justify-center rounded-[2rem] bg-gradient-to-b from-sky-100 to-violet-100 shadow-inner"
           animate={{ y: [0, -7, 0], rotate: [-2, 2, -2] }}
           transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
           whileTap={{ scale: 0.88, rotate: -4 }}
         >
           {word.emoji ? (
+            // The emoji shows meaning, not spelling — safe to keep in zh mode.
             <span className="text-8xl drop-shadow" role="img" aria-label={word.word}>
               {word.emoji}
             </span>
-          ) : (
+          ) : showEnglish ? (
             <span className="flex flex-col items-center leading-none">
               <span className="text-7xl font-extrabold text-violet-400 drop-shadow">
                 {word.word.charAt(0).toUpperCase()}
               </span>
               <span className="-mt-2 text-2xl">◡̈</span>
             </span>
+          ) : (
+            <span className="text-7xl font-extrabold text-violet-300 drop-shadow">
+              ❓
+            </span>
           )}
           <span className="absolute -right-1 -top-1 text-2xl animate-twinkle">✨</span>
         </motion.button>
 
-        {/* Word + two listen buttons (English / bilingual) */}
-        <div className="mt-4 flex items-center justify-center gap-2">
-          <h2 className="text-6xl font-extrabold tracking-wide text-space-900">
-            {word.word}
-          </h2>
+        {/* English word + listen button — or a reveal prompt when hidden */}
+        {showEnglish ? (
+          <>
+            <div className="mt-4 flex items-center justify-center gap-2">
+              <h2
+                className={`min-w-0 break-words text-center font-extrabold leading-tight text-space-900 ${wordSizeClass(
+                  word.word.length,
+                )}`}
+              >
+                {word.word}
+              </h2>
+              <motion.button
+                onClick={sayWord}
+                whileHover={{ scale: 1.12, rotate: -6 }}
+                whileTap={{ scale: 0.85 }}
+                aria-label={`Listen to ${word.word}`}
+                className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-sky-400 to-blue-500 text-white shadow-lg"
+              >
+                <Volume2 className="h-7 w-7" />
+              </motion.button>
+            </div>
+            <p className="mt-1 break-words px-2 text-center text-lg text-space-700/60">
+              {word.phonetic}
+            </p>
+          </>
+        ) : (
+          <RevealButton label="看看英文" onClick={() => setRevealed(true)} />
+        )}
+
+        {/* Chinese translation — tap for bilingual audio, or reveal when hidden */}
+        {showChinese ? (
           <motion.button
-            onClick={sayWord}
-            whileHover={{ scale: 1.12, rotate: -6 }}
-            whileTap={{ scale: 0.85 }}
-            aria-label={`Listen to ${word.word}`}
-            className="flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-sky-400 to-blue-500 text-white shadow-lg"
+            onClick={sayBilingual}
+            whileTap={{ scale: 0.95 }}
+            className="mx-auto mt-2 flex max-w-full flex-wrap items-center justify-center gap-2 rounded-3xl bg-violet-100 px-4 py-1.5 shadow-sm ring-2 ring-violet-200"
+            aria-label="双语朗读"
           >
-            <Volume2 className="h-7 w-7" />
+            <span className="break-words text-center text-2xl font-bold text-space-700">
+              {word.translation}
+            </span>
+            <Languages className="h-5 w-5 shrink-0 text-violet-500" />
+            <span className="shrink-0 text-xs font-bold text-violet-500">中英</span>
           </motion.button>
-        </div>
+        ) : (
+          <RevealButton label="看看中文" onClick={() => setRevealed(true)} />
+        )}
 
-        <p className="mt-1 text-center text-lg text-space-700/60">{word.phonetic}</p>
-
-        {/* Translation row — tap for bilingual (English + Chinese) audio */}
-        <motion.button
-          onClick={sayBilingual}
-          whileTap={{ scale: 0.95 }}
-          className="mx-auto mt-2 flex items-center gap-2 rounded-full bg-violet-100 px-4 py-1.5 shadow-sm ring-2 ring-violet-200"
-          aria-label="双语朗读"
-        >
-          <span className="text-2xl font-bold text-space-700">
-            {word.translation}
-          </span>
-          <Languages className="h-5 w-5 text-violet-500" />
-          <span className="text-xs font-bold text-violet-500">中英</span>
-        </motion.button>
-
-        {/* Simple sentence with color-coded focus word.
-            Backend words ship without a sentence — hide the block then. */}
-        {word.sentence_en && (
+        {/* Simple sentence with color-coded focus word. Backend words ship
+            without a sentence; English line hides with the English answer. */}
+        {word.sentence_en && showEnglish && (
           <div className="mt-5 rounded-2xl bg-amber-50 p-4 text-center ring-2 ring-amber-200/70">
             <div className="flex items-start justify-center gap-2">
               <HighlightedSentence sentence={word.sentence_en} focus={word.word} />
@@ -180,7 +243,9 @@ export default function LearningCard({ word, onAnswer }: LearningCardProps) {
                 <Volume2 className="h-5 w-5" />
               </motion.button>
             </div>
-            <p className="mt-1 text-base text-space-700/70">{word.sentence_zh}</p>
+            {showChinese && (
+              <p className="mt-1 text-base text-space-700/70">{word.sentence_zh}</p>
+            )}
           </div>
         )}
       </div>

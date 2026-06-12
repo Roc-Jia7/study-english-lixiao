@@ -131,7 +131,7 @@ export default function QuizCard({ card, onAnswer }: QuizCardProps) {
                     {option.emoji}
                   </span>
                 ) : (
-                  <span className="text-2xl font-extrabold text-space-900">
+                  <span className="break-words text-center text-2xl font-extrabold text-space-900">
                     {option.word}
                   </span>
                 )}

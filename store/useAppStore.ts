@@ -2,7 +2,7 @@
 
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
-import type { StudentProfile } from "@/lib/types";
+import type { DisplayMode, StudentProfile } from "@/lib/types";
 import { applyAnswer } from "@/lib/spaced-repetition";
 import { localDateStr, yesterdayStr } from "@/lib/streak";
 import { XP_BATCH_BONUS, XP_PER_KNOWN, XP_PER_TRY } from "@/lib/pet";
@@ -63,7 +63,10 @@ interface AppState {
   students: Record<string, StudentProfile>;
   activeStudentId: string | null;
   parentUnlocked: boolean;
+  /** How learning cards reveal text during a session (kept across sessions). */
+  displayMode: DisplayMode;
 
+  setDisplayMode: (mode: DisplayMode) => void;
   unlockParentGate: () => void;
   lockStation: () => void;
   selectStudent: (id: string) => void;
@@ -103,6 +106,9 @@ export const useAppStore = create<AppState>()(
       students: DEFAULT_STUDENTS,
       activeStudentId: null,
       parentUnlocked: false,
+      displayMode: "both",
+
+      setDisplayMode: (mode) => set({ displayMode: mode }),
 
       unlockParentGate: () => set({ parentUnlocked: true }),
 

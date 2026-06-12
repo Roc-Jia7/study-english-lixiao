@@ -56,3 +56,6 @@ export interface StudentProfile {
 }
 
 export type SessionMode = "discovery" | "review";
+
+/** What text a learning card reveals: English only, Chinese only, or both. */
+export type DisplayMode = "en" | "zh" | "both";

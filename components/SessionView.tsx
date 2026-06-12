@@ -3,7 +3,7 @@
 import { useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
-import type { SessionMode, VocabularyWord } from "@/lib/types";
+import type { DisplayMode, SessionMode, VocabularyWord } from "@/lib/types";
 import { buildSessionQueue, type SessionCard } from "@/lib/session";
 import { useAppStore, useActiveStudent } from "@/store/useAppStore";
 import { fireMiniSparkle } from "@/lib/confetti";
@@ -27,6 +27,40 @@ interface SessionViewProps {
 /** A word re-enters the session at most this many times after a miss. */
 const MAX_RETRIES = 2;
 
+const DISPLAY_OPTIONS: Array<{ value: DisplayMode; label: string }> = [
+  { value: "en", label: "英" },
+  { value: "zh", label: "中" },
+  { value: "both", label: "中英" },
+];
+
+/** Tiny segmented control letting the reviewer pick what the cards reveal. */
+function DisplayModeToggle({
+  value,
+  onChange,
+}: {
+  value: DisplayMode;
+  onChange: (mode: DisplayMode) => void;
+}) {
+  return (
+    <div className="mt-3 flex items-center gap-2 rounded-full bg-white/10 p-1">
+      <span className="pl-2 text-xs font-bold text-white/40">显示</span>
+      {DISPLAY_OPTIONS.map((opt) => (
+        <button
+          key={opt.value}
+          onClick={() => onChange(opt.value)}
+          className={`min-h-9 rounded-full px-3.5 text-sm font-extrabold transition ${
+            value === opt.value
+              ? "bg-white text-space-900 shadow"
+              : "text-white/60 hover:text-white/90"
+          }`}
+        >
+          {opt.label}
+        </button>
+      ))}
+    </div>
+  );
+}
+
 /**
  * Runs one learning session over a mixed deck of study cards and
  * verification quizzes. Misses (study "Oops" or a wrong quiz tap) slip the
@@ -43,6 +77,8 @@ export default function SessionView({
   const student = useActiveStudent();
   const recordAnswer = useAppStore((s) => s.recordAnswer);
   const grantBatchBonus = useAppStore((s) => s.grantBatchBonus);
+  const displayMode = useAppStore((s) => s.displayMode);
+  const setDisplayMode = useAppStore((s) => s.setDisplayMode);
 
   const [queue, setQueue] = useState<SessionCard[]>(() =>
     buildSessionQueue(words, mode, withQuiz),
@@ -156,6 +192,10 @@ export default function SessionView({
           : "Feed the hungry word monsters! 喂饱单词小怪兽"}
       </p>
 
+      {!finished && (
+        <DisplayModeToggle value={displayMode} onChange={setDisplayMode} />
+      )}
+
       {/* The card stage */}
       <div className="mt-6 flex w-full flex-1 items-start justify-center">
         <AnimatePresence mode="wait">
@@ -165,6 +205,7 @@ export default function SessionView({
                 key={current.key}
                 word={current.word}
                 onAnswer={handleStudyAnswer}
+                displayMode={displayMode}
               />
             ) : (
               <QuizCard
