@@ -1,101 +1,67 @@
 /**
- * Authentication against the lxll backend.
- *
- * The request side (endpoint, params, headers, envelope) is confirmed from
- * the official client. The *response* fields below are a best-effort
- * inference and marked PROVISIONAL — they need to be reconciled against one
- * real login response before being trusted. See lib/lxll/README.md.
+ * Authentication against the lxll backend. Login is the apiv2 REST endpoint
+ * `customer/login`; the profile comes from the old RPC
+ * `QueryUserProfileByToken`. Both confirmed against real responses.
  */
 
 import { LXLL_RPC } from "./endpoints";
-import {
-  clearSession,
-  rpc,
-  saveSession,
-  type LxllSession,
-} from "./client";
+import { rpc, v2, saveSession, clearSession, type LxllSession } from "./client";
+import type { LxllLoginData, LxllLoginType, LxllUserProfile } from "./types";
 
-/** PROVISIONAL: confirm exact field names against a real response. */
-export interface LxllUserProfile {
-  userId: string;
-  name?: string;
-  nickName?: string;
-  avatar?: string;
-  phone?: string;
-  /** Role discriminator seen in the client: "USER" (student) vs "TEACHER". */
-  userType?: "USER" | "TEACHER" | string;
-  [extra: string]: unknown;
-}
-
-/** PROVISIONAL login result shape. */
-interface LoginResponse {
-  accessToken?: string;
-  token?: string;
-  refreshToken?: string;
-  userId?: string;
-  userInfo?: LxllUserProfile;
-  [extra: string]: unknown;
-}
-
-function toSession(res: LoginResponse): LxllSession {
-  const accessToken = res.accessToken ?? res.token ?? "";
-  if (!accessToken) {
-    throw new Error("登录响应缺少 token 字段，请核对真实响应结构");
-  }
-  return {
-    accessToken,
-    refreshToken: res.refreshToken,
-    userId: res.userId ?? res.userInfo?.userId,
-  };
+/** Account numbers look like "XP06153004"; phones are 11 digits. */
+function isAccountNo(id: string): boolean {
+  return !/^\d{11}$/.test(id.trim());
 }
 
 /**
- * Password login. Verified working against the live endpoint: a bad account
- * returns HTTP 400 `USER_NOT_EXISTED`, confirming the {phone,password} body
- * is parsed correctly.
+ * Phone- or account-number login with password. The backend returns one or
+ * more accounts (a parent can hold several children); we sign in as the
+ * first by default and keep the rest available on the session.
  */
 export async function loginByPassword(
-  phone: string,
+  identifier: string,
   password: string,
-): Promise<{ session: LxllSession; raw: LoginResponse }> {
-  const raw = await rpc<LoginResponse>(
-    LXLL_RPC.loginByPhoneAndPassword,
-    { phone, password },
-    { isPublic: true },
-  );
-  const session = toSession(raw);
+): Promise<{ session: LxllSession; data: LxllLoginData }> {
+  const id = identifier.trim();
+  const byAccount = isAccountNo(id);
+  const loginType: LxllLoginType = byAccount
+    ? "ACCOUNT_PASSWORD"
+    : "PHONE_PASSWORD";
+
+  const body = byAccount
+    ? { loginType, inviteUserId: "", accountNo: id, password }
+    : { loginType, inviteUserId: "", phone: id, password };
+
+  const data = await v2<LxllLoginData>("customer/login", {
+    method: "POST",
+    body,
+    isPublic: true,
+  });
+
+  const account = data?.accounts?.[0];
+  if (!account?.accessToken) {
+    throw new Error("登录成功但未返回账号，请确认该手机号下有学员");
+  }
+
+  const session: LxllSession = {
+    accessToken: account.accessToken,
+    refreshToken: data.refreshToken,
+    userId: account.userId,
+  };
   saveSession(session);
-  return { session, raw };
+  return { session, data };
 }
 
-/** Request an SMS login code. */
-export async function requestSmsCode(phone: string): Promise<void> {
-  await rpc(LXLL_RPC.applyLoginPhoneCode, { phone }, { isPublic: true });
-}
-
-/** SMS-code login. */
-export async function loginByCode(
-  phone: string,
-  code: string,
-): Promise<{ session: LxllSession; raw: LoginResponse }> {
-  const raw = await rpc<LoginResponse>(
-    LXLL_RPC.loginByPhoneCode,
-    { phone, code },
-    { isPublic: true },
-  );
-  const session = toSession(raw);
-  saveSession(session);
-  return { session, raw };
-}
-
-/** Fetch the logged-in user's profile (also validates the stored token). */
+/** Fetch the signed-in user's profile (also validates the stored token). */
 export function fetchUserProfile(): Promise<LxllUserProfile> {
   return rpc<LxllUserProfile>(LXLL_RPC.queryUserProfileByToken);
 }
 
 export async function logout(): Promise<void> {
   try {
-    await rpc(LXLL_RPC.logout);
+    await v2("customer/logout", { method: "POST" });
+  } catch {
+    /* best-effort */
   } finally {
     clearSession();
   }

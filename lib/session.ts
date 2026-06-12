@@ -36,12 +36,16 @@ function randomQuizKind(): SessionCardKind {
 export function buildSessionQueue(
   words: VocabularyWord[],
   mode: SessionMode,
+  withQuiz = true,
 ): SessionCard[] {
   const queue: SessionCard[] = [];
   let quizzes = 0;
 
   words.forEach((word, i) => {
     queue.push({ key: `study-${word.id}`, kind: "study", word });
+
+    // Quizzes need a picture (emoji); backend words have none yet.
+    if (!withQuiz) return;
 
     const groupDone = (i + 1) % QUIZ_EVERY === 0;
     const isLast = i === words.length - 1;

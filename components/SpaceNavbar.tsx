@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Users, Lock } from "lucide-react";
 import { useAppStore, useActiveStudent } from "@/store/useAppStore";
+import { useLxllStore } from "@/store/useLxllStore";
 import { DAILY_ENERGY_GOAL } from "@/lib/pet";
 import EnergyBar from "./EnergyBar";
 import PetCompanion from "./PetCompanion";
@@ -15,8 +16,15 @@ export default function SpaceNavbar() {
   const student = useActiveStudent();
   const switchProfile = useAppStore((s) => s.switchProfile);
   const lockStation = useAppStore((s) => s.lockStation);
+  const lxllSignOut = useLxllStore((s) => s.signOut);
 
   if (!student) return null;
+
+  const lockAndSignOut = () => {
+    // Fully exit: clear the local station and any real lxll session.
+    if (student.id.startsWith("lxll:")) void lxllSignOut();
+    lockStation();
+  };
 
   return (
     <motion.header
@@ -63,7 +71,7 @@ export default function SpaceNavbar() {
 
         {/* Parent lock — returns to the phone gate */}
         <button
-          onClick={lockStation}
+          onClick={lockAndSignOut}
           aria-label="Lock station (parents)"
           className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10 text-white/50 transition hover:bg-white/20 active:scale-90"
         >

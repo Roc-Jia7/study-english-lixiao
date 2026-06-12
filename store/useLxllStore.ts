@@ -1,45 +1,91 @@
 "use client";
 
 import { create } from "zustand";
+import { loginByPassword, fetchUserProfile, logout as lxllLogout } from "@/lib/lxll/auth";
 import {
-  loginByPassword,
-  fetchUserProfile,
-  logout as lxllLogout,
-  type LxllUserProfile,
-} from "@/lib/lxll/auth";
-import { loadSession } from "@/lib/lxll/client";
-import { LxllApiError } from "@/lib/lxll/client";
+  listAntiForgetSchedule,
+  selectDueReviews,
+  getAntiForgetDetail,
+  retrieveStudentMetric,
+  submitAntiForgetProgress,
+  type AntiForgetSubmission,
+} from "@/lib/lxll/api";
+import { lxllWordToVocabulary } from "@/lib/lxll/adapter";
+import { loadSession, clearSession, LxllApiError } from "@/lib/lxll/client";
+import type {
+  LxllAntiForgetRecord,
+  LxllStudentMetric,
+  LxllUserProfile,
+} from "@/lib/lxll/types";
+import type { VocabularyWord } from "@/lib/types";
+import { useAppStore } from "./useAppStore";
 
 type Status = "idle" | "loading" | "authed" | "error";
+
+/** Bring the real student into the local game layer (pet/streak/confetti). */
+function adoptStudent(profile: LxllUserProfile) {
+  useAppStore.getState().ensureStudent({
+    id: `lxll:${profile.userId}`,
+    name: profile.userName,
+    title: "Word Explorer",
+    titleZh: profile.age ? `${profile.age} 岁 · 单词探险家` : "单词探险家",
+    avatar: profile.gender === "FEMALE" ? "👧" : "👦",
+    gradient:
+      profile.gender === "FEMALE"
+        ? "from-pink-300 to-rose-400"
+        : "from-sky-300 to-blue-400",
+  });
+}
 
 interface LxllState {
   status: Status;
   profile: LxllUserProfile | null;
   error: string | null;
 
-  /** Account/password login, then load the profile. */
-  signIn: (phone: string, password: string) => Promise<boolean>;
-  /** Re-hydrate from a stored token (call once on mount). */
+  /** Today's (and overdue) anti-forget reviews, de-duplicated. */
+  dueReviews: LxllAntiForgetRecord[];
+  metric: LxllStudentMetric | null;
+  loadingData: boolean;
+
+  /** Which words belong to which review, for grouping the result submit. */
+  sessionReviews: Array<{ antiForgetId: number; wordIds: number[] }>;
+  /** Per-word result collected during the current session (wordId → known). */
+  pendingResults: Record<number, boolean>;
+
+  signIn: (identifier: string, password: string) => Promise<boolean>;
   restore: () => Promise<void>;
+  loadData: () => Promise<void>;
+  /** Fetch the real words for the due reviews to start a session. */
+  loadDueWords: () => Promise<VocabularyWord[]>;
+  /** Record one word's outcome (called per card from the session). */
+  recordWordResult: (backendWordId: number, known: boolean) => void;
+  /** Write collected results back to the forgetting curve, then refresh. */
+  submitResults: () => Promise<void>;
   signOut: () => Promise<void>;
   clearError: () => void;
 }
 
-export const useLxllStore = create<LxllState>((set) => ({
+export const useLxllStore = create<LxllState>((set, get) => ({
   status: "idle",
   profile: null,
   error: null,
+  dueReviews: [],
+  metric: null,
+  loadingData: false,
+  sessionReviews: [],
+  pendingResults: {},
 
-  signIn: async (phone, password) => {
+  signIn: async (identifier, password) => {
     set({ status: "loading", error: null });
     try {
-      await loginByPassword(phone, password);
+      await loginByPassword(identifier, password);
       const profile = await fetchUserProfile();
       set({ status: "authed", profile });
+      adoptStudent(profile);
+      void get().loadData();
       return true;
     } catch (e) {
-      const msg =
-        e instanceof LxllApiError ? e.message : "登录失败，请稍后重试";
+      const msg = e instanceof LxllApiError ? e.message : "登录失败，请稍后重试";
       set({ status: "error", error: msg });
       return false;
     }
@@ -51,15 +97,92 @@ export const useLxllStore = create<LxllState>((set) => ({
     try {
       const profile = await fetchUserProfile();
       set({ status: "authed", profile });
+      adoptStudent(profile);
+      void get().loadData();
     } catch {
-      // Stale/invalid token — fall back to logged-out, no error shown.
+      clearSession();
       set({ status: "idle", profile: null });
     }
   },
 
+  loadData: async () => {
+    set({ loadingData: true });
+    try {
+      const [schedule, metric] = await Promise.all([
+        listAntiForgetSchedule(),
+        retrieveStudentMetric().catch(() => null),
+      ]);
+      set({
+        dueReviews: selectDueReviews(schedule),
+        metric,
+        loadingData: false,
+      });
+    } catch {
+      set({ loadingData: false });
+    }
+  },
+
+  loadDueWords: async () => {
+    const ids = get().dueReviews.map((r) => r.antiForgetId);
+    if (ids.length === 0) return [];
+    const details = await getAntiForgetDetail(ids);
+
+    // Remember which words each review owns (for the result submit), and
+    // flatten to a de-duplicated card deck (a word can recur across reviews).
+    const sessionReviews = details.map((d) => ({
+      antiForgetId: d.antiForgetId,
+      wordIds: (d.words ?? []).map((w) => w.wordId),
+    }));
+    const seen = new Set<string>();
+    const words: VocabularyWord[] = [];
+    for (const d of details) {
+      for (const w of d.words ?? []) {
+        const v = lxllWordToVocabulary(w);
+        if (seen.has(v.id)) continue;
+        seen.add(v.id);
+        words.push(v);
+      }
+    }
+    set({ sessionReviews, pendingResults: {} });
+    return words;
+  },
+
+  recordWordResult: (backendWordId, known) =>
+    set((state) => ({
+      pendingResults: { ...state.pendingResults, [backendWordId]: known },
+    })),
+
+  submitResults: async () => {
+    const { sessionReviews, pendingResults } = get();
+    const submissions: AntiForgetSubmission[] = sessionReviews
+      .map((rev) => ({
+        antiForgetId: rev.antiForgetId,
+        words: rev.wordIds
+          .filter((id) => id in pendingResults)
+          .map((id) => ({ wordId: id, status: pendingResults[id] })),
+      }))
+      .filter((s) => s.words.length > 0);
+
+    if (submissions.length === 0) return;
+    try {
+      await submitAntiForgetProgress(submissions);
+    } catch {
+      // Keep results so a later retry can resend; surface nothing to the kid.
+      return;
+    }
+    set({ pendingResults: {}, sessionReviews: [] });
+    void get().loadData();
+  },
+
   signOut: async () => {
     await lxllLogout();
-    set({ status: "idle", profile: null, error: null });
+    set({
+      status: "idle",
+      profile: null,
+      error: null,
+      dueReviews: [],
+      metric: null,
+    });
   },
 
   clearError: () => set({ error: null }),

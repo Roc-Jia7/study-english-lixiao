@@ -70,6 +70,10 @@ interface AppState {
   switchProfile: () => void;
   recordAnswer: (wordId: string, known: boolean) => void;
   grantBatchBonus: () => void;
+  /** Create (once) and select a profile for a real lxll student. */
+  ensureStudent: (
+    profile: Pick<StudentProfile, "id" | "name" | "title" | "titleZh" | "avatar" | "gradient">,
+  ) => void;
 }
 
 /** Reset the daily energy counter when the calendar day changes. */
@@ -114,6 +118,28 @@ export const useAppStore = create<AppState>()(
         })),
 
       switchProfile: () => set({ activeStudentId: null }),
+
+      ensureStudent: (profile) =>
+        set((state) => {
+          const existing = state.students[profile.id];
+          const student: StudentProfile = existing
+            ? withFreshEnergy(existing)
+            : {
+                ...profile,
+                xp: 0,
+                energyToday: 0,
+                energyDate: localDateStr(),
+                streakDays: 0,
+                bestStreak: 0,
+                learnedDates: [],
+                progress: {},
+              };
+          return {
+            activeStudentId: profile.id,
+            parentUnlocked: true,
+            students: { ...state.students, [profile.id]: student },
+          };
+        }),
 
       recordAnswer: (wordId, known) =>
         set((state) => {

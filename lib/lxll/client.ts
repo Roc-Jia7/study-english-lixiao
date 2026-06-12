@@ -1,31 +1,16 @@
 /**
- * Transport layer for the "李校来啦" (lxll) backend.
+ * Browser-side client for the lxll backend. All calls go through our
+ * same-origin proxy at /api/lxll (see app/api/lxll/route.ts) — apiv2 blocks
+ * cross-origin browsers, and the proxy also keeps the transport uniform.
  *
- * Reverse-engineered from the official H5 client bundle
- * (https://h5.lxll.com). Confirmed facts this module relies on:
- *
- *   - Two API generations share one auth scheme:
- *       old (RPC):  POST https://api.lxll.com/request/<Endpoint>
- *       new (REST): POST https://apiv2.lxll.com/<path>
- *   - Auth: a JWT access token. Old API sends it as `x-token-c: <jwt>`,
- *     new API as `Authorization: Bearer <jwt>`. Plus `x-user-id` and
- *     `x-ua: ct=2&v=5.0.104`. No request signing/HMAC.
- *   - Envelope: success → `{ success: true, data }`;
- *     failure → HTTP 400 `{ success:false, errorCode, errorMessage, errorLevel }`.
- *   - CORS is open to arbitrary origins (verified against our Vercel host),
- *     so the browser may call the API directly — no proxy required.
- *
- * Response *data* shapes are NOT in the client bundle (they come from the
- * server), so the typed wrappers in ./api.ts mark their payloads provisional
- * until verified against a real authenticated response.
+ * Two API generations, two response envelopes, one success contract:
+ *   old RPC  (api.lxll.com/request/*): { success: true, data } | { success:false, errorCode, errorMessage }
+ *   new REST (apiv2.lxll.com/*):       { code: "0", msg, data }  | { code: "<n>", msg }
  */
 
-export const LXLL_API_BASE = "https://api.lxll.com/request";
-export const LXLL_APIV2_BASE = "https://apiv2.lxll.com";
-const UA = "ct=2&v=5.0.104";
+const PROXY_URL = "/api/lxll";
 
-/** localStorage keys, matching the official client so a token stays portable. */
-const TOKEN_KEY = "lxll:x-course-learn";
+const TOKEN_KEY = "lxll:accessToken";
 const REFRESH_KEY = "lxll:refreshToken";
 const USER_ID_KEY = "lxll:userId";
 
@@ -38,7 +23,7 @@ export interface LxllSession {
 export class LxllApiError extends Error {
   constructor(
     message: string,
-    readonly errorCode?: string,
+    readonly code?: string,
     readonly status?: number,
   ) {
     super(message);
@@ -70,70 +55,65 @@ export function clearSession() {
   [TOKEN_KEY, REFRESH_KEY, USER_ID_KEY].forEach((k) => localStorage.removeItem(k));
 }
 
-// ── JWT helpers (token is a standard JWT; we only read `exp`) ──────────
-function decodeJwtExp(jwt: string): number | null {
-  try {
-    const payload = jwt.split(".")[1];
-    const json = JSON.parse(
-      atob(payload.replace(/-/g, "+").replace(/_/g, "/")),
-    );
-    return typeof json.exp === "number" ? json.exp : null;
-  } catch {
-    return null;
-  }
-}
-
-/** True when the token is missing or expires within `skewSeconds`. */
-export function isTokenStale(jwt: string, skewSeconds = 300): boolean {
-  const exp = decodeJwtExp(jwt);
-  if (exp === null) return false; // unknown shape — don't force a refresh loop
-  return exp - Math.floor(Date.now() / 1000) < skewSeconds;
-}
-
-// ── Core request ──────────────────────────────────────────────────────
-interface RequestOptions {
-  /** Skip attaching the auth token (for login / public endpoints). */
+// ── Core request through the proxy ────────────────────────────────────
+interface CallSpec {
+  api: "rpc" | "v2";
+  path: string;
+  method?: "GET" | "POST";
+  body?: unknown;
+  query?: Record<string, string>;
+  /** Don't attach the stored token (login / public calls). */
   isPublic?: boolean;
-  /** Use the apiv2 REST base + Bearer auth instead of the RPC base. */
-  isNewApi?: boolean;
 }
 
-async function request<T>(
-  url: string,
-  body: unknown,
-  { isPublic = false, isNewApi = false }: RequestOptions = {},
-): Promise<T> {
-  const headers: Record<string, string> = {
-    "Content-Type": "application/json",
-    "x-ua": UA,
-  };
+interface RpcEnvelope<T> {
+  success?: boolean;
+  data?: T;
+  errorCode?: string;
+  errorMessage?: string;
+}
+interface V2Envelope<T> {
+  code?: string;
+  msg?: string;
+  data?: T;
+}
 
-  if (!isPublic) {
+async function call<T>(spec: CallSpec): Promise<T> {
+  const headers: Record<string, string> = { "Content-Type": "application/json" };
+  if (!spec.isPublic) {
     const session = loadSession();
-    if (session?.accessToken) {
-      if (isNewApi) headers.Authorization = `Bearer ${session.accessToken}`;
-      else headers["x-token-c"] = session.accessToken;
-    }
-    if (session?.userId) headers["x-user-id"] = session.userId;
+    if (session?.accessToken) headers["x-lxll-token"] = session.accessToken;
+    if (session?.userId) headers["x-lxll-user"] = session.userId;
   }
 
-  const res = await fetch(url, {
+  const res = await fetch(PROXY_URL, {
     method: "POST",
     headers,
-    body: JSON.stringify(body ?? {}),
+    body: JSON.stringify({
+      api: spec.api,
+      path: spec.path,
+      method: spec.method ?? "POST",
+      body: spec.body,
+      query: spec.query,
+    }),
   });
 
   let payload: unknown = null;
   try {
     payload = await res.json();
   } catch {
-    /* non-JSON error body */
+    /* non-JSON */
   }
 
-  const env = payload as
-    | { success?: boolean; data?: T; errorCode?: string; errorMessage?: string }
-    | null;
+  if (spec.api === "v2") {
+    const env = payload as V2Envelope<T> | null;
+    if (!res.ok || (env?.code != null && env.code !== "0")) {
+      throw new LxllApiError(env?.msg || `请求失败 (HTTP ${res.status})`, env?.code, res.status);
+    }
+    return env?.data as T;
+  }
 
+  const env = payload as RpcEnvelope<T> | null;
   if (!res.ok || env?.success === false) {
     throw new LxllApiError(
       env?.errorMessage || `请求失败 (HTTP ${res.status})`,
@@ -141,28 +121,22 @@ async function request<T>(
       res.status,
     );
   }
-
-  // Unwrap the {success,data} envelope when present; some endpoints return raw.
-  return (env && "data" in env ? (env.data as T) : (payload as T)) ?? (env as T);
+  return env?.data as T;
 }
 
-/** Call an old-style RPC endpoint: POST api.lxll.com/request/<Endpoint>. */
+/** Old RPC endpoint: POST api.lxll.com/request/<Endpoint>. */
 export function rpc<T>(
   endpoint: string,
-  params?: unknown,
-  opts?: RequestOptions,
+  body?: unknown,
+  isPublic = false,
 ): Promise<T> {
-  return request<T>(`${LXLL_API_BASE}/${endpoint}`, params, opts);
+  return call<T>({ api: "rpc", path: endpoint, body, isPublic });
 }
 
-/** Call a new-style REST endpoint: POST apiv2.lxll.com/<path>. */
-export function restV2<T>(
+/** New REST endpoint on apiv2: POST/GET apiv2.lxll.com/<path>. */
+export function v2<T>(
   path: string,
-  params?: unknown,
-  opts?: RequestOptions,
+  opts: { method?: "GET" | "POST"; body?: unknown; query?: Record<string, string>; isPublic?: boolean } = {},
 ): Promise<T> {
-  return request<T>(`${LXLL_APIV2_BASE}/${path}`, params, {
-    ...opts,
-    isNewApi: true,
-  });
+  return call<T>({ api: "v2", path, ...opts });
 }

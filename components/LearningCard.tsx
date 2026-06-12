@@ -53,15 +53,22 @@ export default function LearningCard({ word, onAnswer }: LearningCardProps) {
     >
       <div className="rounded-[2rem] bg-cream p-6 shadow-2xl ring-8 ring-white/15">
         {/* Visual anchor — emoji illustration in a soft bubble.
+            Backend words have no emoji, so we show a friendly letter tile.
             word.imageUrl is reserved for real artwork later. */}
         <motion.div
           className="mx-auto flex h-36 w-36 items-center justify-center rounded-full bg-gradient-to-b from-sky-100 to-violet-100 shadow-inner"
           animate={{ y: [0, -6, 0] }}
           transition={{ duration: 2.6, repeat: Infinity, ease: "easeInOut" }}
         >
-          <span className="text-8xl drop-shadow" role="img" aria-label={word.word}>
-            {word.emoji}
-          </span>
+          {word.emoji ? (
+            <span className="text-8xl drop-shadow" role="img" aria-label={word.word}>
+              {word.emoji}
+            </span>
+          ) : (
+            <span className="text-7xl font-extrabold text-violet-400/80 drop-shadow">
+              {word.word.charAt(0).toUpperCase()}
+            </span>
+          )}
         </motion.div>
 
         {/* Word + listen button */}
@@ -85,21 +92,24 @@ export default function LearningCard({ word, onAnswer }: LearningCardProps) {
           {word.translation}
         </p>
 
-        {/* Simple sentence with color-coded focus word */}
-        <div className="mt-5 rounded-2xl bg-amber-50 p-4 text-center ring-2 ring-amber-200/70">
-          <div className="flex items-start justify-center gap-2">
-            <HighlightedSentence sentence={word.sentence_en} focus={word.word} />
-            <motion.button
-              onClick={() => speakSentence(word.sentence_en)}
-              whileTap={{ scale: 0.85 }}
-              aria-label="Listen to sentence"
-              className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-amber-300 text-amber-900 shadow"
-            >
-              <Volume2 className="h-5 w-5" />
-            </motion.button>
+        {/* Simple sentence with color-coded focus word.
+            Backend words ship without a sentence — hide the block then. */}
+        {word.sentence_en && (
+          <div className="mt-5 rounded-2xl bg-amber-50 p-4 text-center ring-2 ring-amber-200/70">
+            <div className="flex items-start justify-center gap-2">
+              <HighlightedSentence sentence={word.sentence_en} focus={word.word} />
+              <motion.button
+                onClick={() => speakSentence(word.sentence_en)}
+                whileTap={{ scale: 0.85 }}
+                aria-label="Listen to sentence"
+                className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-amber-300 text-amber-900 shadow"
+              >
+                <Volume2 className="h-5 w-5" />
+              </motion.button>
+            </div>
+            <p className="mt-1 text-base text-space-700/70">{word.sentence_zh}</p>
           </div>
-          <p className="mt-1 text-base text-space-700/70">{word.sentence_zh}</p>
-        </div>
+        )}
       </div>
 
       {/* Giant self-assessment buttons (≥72px tall) */}

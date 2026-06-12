@@ -16,6 +16,12 @@ interface SessionViewProps {
   words: VocabularyWord[];
   mode: SessionMode;
   onExit: () => void;
+  /** Insert verification quizzes (needs emoji pictures). Off for lxll words. */
+  withQuiz?: boolean;
+  /** Final outcome per word (fires once when a word leaves the deck). */
+  onResult?: (word: VocabularyWord, known: boolean) => void;
+  /** Called when the deck is cleared, before the reward screen continue. */
+  onComplete?: () => void;
 }
 
 /** A word re-enters the session at most this many times after a miss. */
@@ -26,13 +32,20 @@ const MAX_RETRIES = 2;
  * verification quizzes. Misses (study "Oops" or a wrong quiz tap) slip the
  * word back in a couple of cards later, and the deck ends in confetti.
  */
-export default function SessionView({ words, mode, onExit }: SessionViewProps) {
+export default function SessionView({
+  words,
+  mode,
+  onExit,
+  withQuiz = true,
+  onResult,
+  onComplete,
+}: SessionViewProps) {
   const student = useActiveStudent();
   const recordAnswer = useAppStore((s) => s.recordAnswer);
   const grantBatchBonus = useAppStore((s) => s.grantBatchBonus);
 
   const [queue, setQueue] = useState<SessionCard[]>(() =>
-    buildSessionQueue(words, mode),
+    buildSessionQueue(words, mode, withQuiz),
   );
   const [doneIds, setDoneIds] = useState<Set<string>>(new Set());
   const [stars, setStars] = useState(0);
@@ -57,6 +70,7 @@ export default function SessionView({ words, mode, onExit }: SessionViewProps) {
     if (next.length === 0) {
       grantBatchBonus();
       setFinished(true);
+      onComplete?.();
     }
   };
 
@@ -77,6 +91,7 @@ export default function SessionView({ words, mode, onExit }: SessionViewProps) {
       fireMiniSparkle();
       if (!(current.word.id in retries.current)) setStars((s) => s + 1);
       setDoneIds((ids) => new Set(ids).add(current.word.id));
+      onResult?.(current.word, true);
     } else {
       reinsert = makeRetryCard(current.word);
       if (reinsert) {
@@ -84,6 +99,7 @@ export default function SessionView({ words, mode, onExit }: SessionViewProps) {
       } else {
         // Retry budget spent — let the word rest, keep the mood kind.
         setDoneIds((ids) => new Set(ids).add(current.word.id));
+        onResult?.(current.word, false);
       }
     }
     advanceQueue(reinsert);

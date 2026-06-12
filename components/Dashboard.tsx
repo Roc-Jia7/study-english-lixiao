@@ -14,9 +14,12 @@ import {
 import { CATEGORY_META } from "@/lib/vocabulary";
 import PetCompanion from "./PetCompanion";
 import StickerWall from "./StickerWall";
+import LxllReviewPanel from "./LxllReviewPanel";
 
 interface DashboardProps {
   onStartSession: (mode: SessionMode, words: VocabularyWord[]) => void;
+  /** A real lxll review session (real words, results submitted, no quiz). */
+  onStartLxllReview: (words: VocabularyWord[]) => void;
 }
 
 const CATEGORIES: WordCategory[] = ["animals", "food", "colors", "nature"];
@@ -25,7 +28,10 @@ const CATEGORIES: WordCategory[] = ["animals", "food", "colors", "nature"];
  * The child's mission control: their pet front and center, hungry word
  * monsters when reviews are due, and Discovery Packs of new words.
  */
-export default function Dashboard({ onStartSession }: DashboardProps) {
+export default function Dashboard({
+  onStartSession,
+  onStartLxllReview,
+}: DashboardProps) {
   const student = useActiveStudent();
 
   // Re-check the forgetting-curve clock every 30s so monsters appear
@@ -37,6 +43,10 @@ export default function Dashboard({ onStartSession }: DashboardProps) {
   }, []);
 
   if (!student) return null;
+
+  // Real lxll students learn from backend course words; demo profiles use
+  // the local mock vocabulary. Both keep the pet / streak / confetti layer.
+  const isLxll = student.id.startsWith("lxll:");
 
   const dueWords = getDueWords(student, now);
   const newWords = getNewWords(student);
@@ -59,8 +69,11 @@ export default function Dashboard({ onStartSession }: DashboardProps) {
       {/* Star Path — streak flame + 14-day sticker wall */}
       <StickerWall student={student} />
 
-      {/* Hungry monsters — words due for review */}
-      {dueWords.length > 0 && (
+      {/* Real lxll learner: backend anti-forget reviews + lifetime stats */}
+      {isLxll && <LxllReviewPanel onStartReview={onStartLxllReview} />}
+
+      {/* Hungry monsters — words due for review (demo mock vocabulary) */}
+      {!isLxll && dueWords.length > 0 && (
         <motion.button
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -93,8 +106,8 @@ export default function Dashboard({ onStartSession }: DashboardProps) {
         </motion.button>
       )}
 
-      {/* Discovery Packs — new words grouped by category */}
-      {newWords.length > 0 && (
+      {/* Discovery Packs — new words grouped by category (demo only) */}
+      {!isLxll && newWords.length > 0 && (
         <>
           <h2 className="mt-10 mb-4 text-center text-xl font-extrabold text-white/90">
             🎁 Discovery Packs · 探索新单词
@@ -142,8 +155,8 @@ export default function Dashboard({ onStartSession }: DashboardProps) {
         </>
       )}
 
-      {/* Everything learned and nothing due — rest state */}
-      {allDone && (
+      {/* Everything learned and nothing due — rest state (demo only) */}
+      {!isLxll && allDone && (
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
