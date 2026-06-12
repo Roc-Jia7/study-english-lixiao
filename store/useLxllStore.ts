@@ -4,7 +4,6 @@ import { create } from "zustand";
 import { loginByPassword, fetchUserProfile, logout as lxllLogout } from "@/lib/lxll/auth";
 import {
   listAntiForgetSchedule,
-  selectDueReviews,
   getAntiForgetDetail,
   retrieveStudentMetric,
   submitAntiForgetProgress,
@@ -13,7 +12,7 @@ import {
 import { lxllWordToVocabulary } from "@/lib/lxll/adapter";
 import { loadSession, clearSession, LxllApiError } from "@/lib/lxll/client";
 import type {
-  LxllAntiForgetRecord,
+  LxllAntiForgetDay,
   LxllStudentMetric,
   LxllUserProfile,
 } from "@/lib/lxll/types";
@@ -42,8 +41,8 @@ interface LxllState {
   profile: LxllUserProfile | null;
   error: string | null;
 
-  /** Today's (and overdue) anti-forget reviews, de-duplicated. */
-  dueReviews: LxllAntiForgetRecord[];
+  /** Full anti-forget schedule (grouped by day) for browse-and-pick. */
+  schedule: LxllAntiForgetDay[];
   metric: LxllStudentMetric | null;
   loadingData: boolean;
 
@@ -55,8 +54,8 @@ interface LxllState {
   signIn: (identifier: string, password: string) => Promise<boolean>;
   restore: () => Promise<void>;
   loadData: () => Promise<void>;
-  /** Fetch the real words for the due reviews to start a session. */
-  loadDueWords: () => Promise<VocabularyWord[]>;
+  /** Fetch the words for ONE chosen review slot to start a session. */
+  loadSlotWords: (antiForgetId: number) => Promise<VocabularyWord[]>;
   /** Record one word's outcome (called per card from the session). */
   recordWordResult: (backendWordId: number, known: boolean) => void;
   /** Write collected results back to the forgetting curve, then refresh. */
@@ -69,7 +68,7 @@ export const useLxllStore = create<LxllState>((set, get) => ({
   status: "idle",
   profile: null,
   error: null,
-  dueReviews: [],
+  schedule: [],
   metric: null,
   loadingData: false,
   sessionReviews: [],
@@ -112,23 +111,15 @@ export const useLxllStore = create<LxllState>((set, get) => ({
         listAntiForgetSchedule(),
         retrieveStudentMetric().catch(() => null),
       ]);
-      set({
-        dueReviews: selectDueReviews(schedule),
-        metric,
-        loadingData: false,
-      });
+      set({ schedule, metric, loadingData: false });
     } catch {
       set({ loadingData: false });
     }
   },
 
-  loadDueWords: async () => {
-    const ids = get().dueReviews.map((r) => r.antiForgetId);
-    if (ids.length === 0) return [];
-    const details = await getAntiForgetDetail(ids);
-
-    // Remember which words each review owns (for the result submit), and
-    // flatten to a de-duplicated card deck (a word can recur across reviews).
+  loadSlotWords: async (antiForgetId) => {
+    const details = await getAntiForgetDetail([antiForgetId]);
+    // One slot → its words, with the review remembered for result submit.
     const sessionReviews = details.map((d) => ({
       antiForgetId: d.antiForgetId,
       wordIds: (d.words ?? []).map((w) => w.wordId),
@@ -180,7 +171,7 @@ export const useLxllStore = create<LxllState>((set, get) => ({
       status: "idle",
       profile: null,
       error: null,
-      dueReviews: [],
+      schedule: [],
       metric: null,
     });
   },

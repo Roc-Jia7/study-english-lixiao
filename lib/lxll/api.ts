@@ -62,29 +62,3 @@ export function submitAntiForgetProgress(
     body,
   });
 }
-
-/**
- * Today's due reviews: every record whose due day is today or earlier and
- * still PENDING, flattened and de-duplicated by antiForgetId.
- */
-export function selectDueReviews(
-  schedule: LxllAntiForgetDay[],
-  now: Date = new Date(),
-): LxllAntiForgetDay["records"] {
-  const endOfToday = new Date(now);
-  endOfToday.setHours(23, 59, 59, 999);
-  const cutoff = endOfToday.getTime();
-
-  const seen = new Set<number>();
-  const due: LxllAntiForgetDay["records"] = [];
-  for (const day of schedule) {
-    for (const r of day.records) {
-      if (r.status !== "PENDING") continue;
-      if (r.antiForgetDate > cutoff) continue;
-      if (seen.has(r.antiForgetId)) continue;
-      seen.add(r.antiForgetId);
-      due.push(r);
-    }
-  }
-  return due.sort((a, b) => a.antiForgetDate - b.antiForgetDate);
-}
