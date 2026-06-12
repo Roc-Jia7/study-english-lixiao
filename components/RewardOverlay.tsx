@@ -16,6 +16,8 @@ interface RewardOverlayProps {
   xpBefore: number;
   xpAfter: number;
   starsEarned: number;
+  /** The child's pet name, woven into the celebration when set. */
+  petName?: string;
   onContinue: () => void;
 }
 
@@ -29,8 +31,10 @@ export default function RewardOverlay({
   xpBefore,
   xpAfter,
   starsEarned,
+  petName,
   onContinue,
 }: RewardOverlayProps) {
+  const petLabel = petName?.trim();
   const oldIndex = getPetStageIndex(xpBefore);
   const newIndex = getPetStageIndex(xpAfter);
   const evolved = newIndex > oldIndex;
@@ -141,7 +145,9 @@ export default function RewardOverlay({
         transition={{ delay: 0.4 }}
         className="text-2xl font-extrabold text-white sm:text-4xl"
       >
-        {evolved ? `It became a ${newPet.name}!` : "Fantastic! You are a superstar!"}
+        {evolved
+          ? `${petLabel ?? "Your pet"} became a ${newPet.name}!`
+          : "Fantastic! You are a superstar!"}
       </motion.h2>
       <motion.p
         initial={{ opacity: 0 }}
@@ -150,8 +156,8 @@ export default function RewardOverlay({
         className="text-base text-white/70 sm:text-lg"
       >
         {evolved
-          ? `哇！宠物进化成${newPet.nameZh}啦！`
-          : "太棒了！你的宠物吃得饱饱的！"}
+          ? `哇！${petLabel ?? "宠物"}进化成${newPet.nameZh}啦！`
+          : `太棒了！${petLabel ?? "你的宠物"}吃得饱饱的！`}
       </motion.p>
 
       {/* Earned XP pop + progress toward the next evolution */}

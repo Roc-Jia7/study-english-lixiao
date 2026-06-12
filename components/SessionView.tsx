@@ -1,12 +1,13 @@
 "use client";
 
-import { useRef, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { motion, AnimatePresence, useAnimationControls } from "framer-motion";
 import { X } from "lucide-react";
 import type { DisplayMode, SessionMode, VocabularyWord } from "@/lib/types";
 import { buildSessionQueue, type SessionCard } from "@/lib/session";
 import { useAppStore, useActiveStudent } from "@/store/useAppStore";
 import { fireMiniSparkle } from "@/lib/confetti";
+import { getPetStage } from "@/lib/pet";
 import { speak, stopSpeaking } from "@/lib/speech";
 import LearningCard from "./LearningCard";
 import QuizCard from "./QuizCard";
@@ -32,6 +33,57 @@ const DISPLAY_OPTIONS: Array<{ value: DisplayMode; label: string }> = [
   { value: "zh", label: "中" },
   { value: "both", label: "中英" },
 ];
+
+/**
+ * The pet riding along in the session header. Each correct answer "feeds" it:
+ * it does a happy munch and a heart floats up — making the spaced-repetition
+ * "feed the word monster" metaphor literal and rewarding in the moment.
+ */
+function SessionPet({ xp, feedSignal }: { xp: number; feedSignal: number }) {
+  const stage = getPetStage(xp);
+  const controls = useAnimationControls();
+  const [hearts, setHearts] = useState<number[]>([]);
+  const seq = useRef(0);
+  const first = useRef(true);
+
+  useEffect(() => {
+    if (first.current) {
+      first.current = false;
+      return; // don't react to the initial render
+    }
+    void controls.start({
+      scale: [1, 1.4, 0.85, 1],
+      rotate: [0, -12, 12, 0],
+      transition: { duration: 0.45, ease: "easeInOut" },
+    });
+    const id = seq.current++;
+    setHearts((h) => [...h, id]);
+  }, [feedSignal, controls]);
+
+  return (
+    <div className="relative h-9 w-9 shrink-0">
+      <AnimatePresence>
+        {hearts.map((id) => (
+          <motion.span
+            key={id}
+            className="pointer-events-none absolute left-1/2 top-0 -translate-x-1/2 text-base"
+            initial={{ y: 0, opacity: 1, scale: 0.6 }}
+            animate={{ y: -26, opacity: 0, scale: 1.1 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            onAnimationComplete={() =>
+              setHearts((h) => h.filter((x) => x !== id))
+            }
+          >
+            💖
+          </motion.span>
+        ))}
+      </AnimatePresence>
+      <motion.span className="block text-3xl" animate={controls} aria-hidden>
+        {stage.emoji}
+      </motion.span>
+    </div>
+  );
+}
 
 /** Tiny segmented control letting the reviewer pick what the cards reveal. */
 function DisplayModeToggle({
@@ -85,6 +137,7 @@ export default function SessionView({
   );
   const [doneIds, setDoneIds] = useState<Set<string>>(new Set());
   const [stars, setStars] = useState(0);
+  const [feeds, setFeeds] = useState(0);
   const [finished, setFinished] = useState(false);
   const retries = useRef<Record<string, number>>({});
   const retrySeq = useRef(0);
@@ -125,6 +178,7 @@ export default function SessionView({
     let reinsert: SessionCard | undefined;
     if (known) {
       fireMiniSparkle();
+      setFeeds((f) => f + 1); // feed the session pet
       if (!(current.word.id in retries.current)) setStars((s) => s + 1);
       setDoneIds((ids) => new Set(ids).add(current.word.id));
       onResult?.(current.word, true);
@@ -149,6 +203,7 @@ export default function SessionView({
     let reinsert: SessionCard | undefined;
     if (correct) {
       fireMiniSparkle();
+      setFeeds((f) => f + 1); // feed the session pet
       setStars((s) => s + 1);
     } else {
       reinsert = makeRetryCard(current.word); // re-study, then move on
@@ -181,9 +236,7 @@ export default function SessionView({
             </motion.span>
           ))}
         </div>
-        <span className="text-3xl" aria-hidden>
-          {mode === "discovery" ? "🎁" : "👾"}
-        </span>
+        <SessionPet xp={student.xp} feedSignal={feeds} />
       </div>
 
       <p className="mt-2 text-sm text-white/50">
@@ -224,6 +277,7 @@ export default function SessionView({
             xpBefore={xpBefore.current}
             xpAfter={student.xp}
             starsEarned={stars}
+            petName={student.petName}
             onContinue={onExit}
           />
         )}

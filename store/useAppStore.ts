@@ -67,6 +67,8 @@ interface AppState {
   displayMode: DisplayMode;
 
   setDisplayMode: (mode: DisplayMode) => void;
+  /** Name (or rename) the active student's pet. */
+  setPetName: (name: string) => void;
   unlockParentGate: () => void;
   lockStation: () => void;
   selectStudent: (id: string) => void;
@@ -109,6 +111,19 @@ export const useAppStore = create<AppState>()(
       displayMode: "both",
 
       setDisplayMode: (mode) => set({ displayMode: mode }),
+
+      setPetName: (name) =>
+        set((state) => {
+          const id = state.activeStudentId;
+          if (!id) return state;
+          const trimmed = name.trim().slice(0, 12);
+          return {
+            students: {
+              ...state.students,
+              [id]: { ...state.students[id], petName: trimmed || undefined },
+            },
+          };
+        }),
 
       unlockParentGate: () => set({ parentUnlocked: true }),
 

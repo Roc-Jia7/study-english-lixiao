@@ -42,6 +42,8 @@ export interface StudentProfile {
   avatar: string;
   /** Tailwind gradient classes for this child's card. */
   gradient: string;
+  /** Child-chosen name for their pet (empty until they name it). */
+  petName?: string;
   xp: number;
   /** Answers given today, drives the daily energy bar. */
   energyToday: number;

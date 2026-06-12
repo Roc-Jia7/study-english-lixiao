@@ -15,7 +15,14 @@ import { fireMiniSparkle } from "@/lib/confetti";
 interface PetCompanionProps {
   xp: number;
   size?: "mini" | "large";
+  /** The pet's chosen name (large size only). */
+  petName?: string;
+  /** When provided, the child can name/rename the pet (large size only). */
+  onRename?: (name: string) => void;
 }
+
+/** "Almost evolving" feels imminent once the bar is this full. */
+const EVOLVE_SOON = 0.8;
 
 interface Particle {
   id: number;
@@ -32,18 +39,31 @@ const BURST_EMOJIS = ["💖", "✨", "⭐", "🌟", "💫", "🎉"];
  * the big pet makes it bounce, spill sparkles, and say something cute, so it
  * feels like a real little companion rather than a static icon.
  */
-export default function PetCompanion({ xp, size = "large" }: PetCompanionProps) {
+export default function PetCompanion({
+  xp,
+  size = "large",
+  petName,
+  onRename,
+}: PetCompanionProps) {
   const stage = getPetStage(xp);
   const stageIndex = getPetStageIndex(xp);
   const next = getNextStage(xp);
   const progress = getPetProgress(xp);
+  const evolveSoon = next !== null && progress >= EVOLVE_SOON;
 
   const controls = useAnimationControls();
   const [particles, setParticles] = useState<Particle[]>([]);
   const [bubble, setBubble] = useState<string | null>(null);
+  const [editing, setEditing] = useState(false);
+  const [draft, setDraft] = useState(petName ?? "");
   const seq = useRef(0);
   const taps = useRef(0);
   const bubbleTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const saveName = () => {
+    onRename?.(draft);
+    setEditing(false);
+  };
 
   useEffect(
     () => () => {
@@ -177,12 +197,77 @@ export default function PetCompanion({ xp, size = "large" }: PetCompanionProps) 
         <span className="absolute -bottom-1 right-0 z-20 rounded-full bg-amber-400 px-2 py-0.5 text-xs font-extrabold text-space-900 shadow ring-2 ring-white/40">
           Lv.{stageIndex + 1}
         </span>
+
+        {/* Evolution preview — builds anticipation when the bar is nearly full */}
+        <AnimatePresence>
+          {evolveSoon && (
+            <motion.span
+              initial={{ opacity: 0, y: 6, scale: 0.7 }}
+              animate={{ opacity: 1, y: 0, scale: [1, 1.08, 1] }}
+              exit={{ opacity: 0, scale: 0.7 }}
+              transition={{ scale: { duration: 1.2, repeat: Infinity } }}
+              className="absolute -top-3 left-1/2 z-20 -translate-x-1/2 whitespace-nowrap rounded-full bg-gradient-to-r from-amber-300 to-orange-400 px-3 py-0.5 text-xs font-extrabold text-space-900 shadow-lg ring-2 ring-white/40"
+            >
+              马上要进化啦！{next.emoji}
+            </motion.span>
+          )}
+        </AnimatePresence>
       </motion.div>
 
+      {/* Name tag — the child names their companion and we use it everywhere */}
       <div className="text-center">
-        <p className="text-xl font-bold text-white">{stage.name}</p>
-        <p className="text-sm text-white/70">
-          {stage.nameZh} · {stage.hint}
+        {editing ? (
+          <div className="flex items-center gap-2">
+            <input
+              autoFocus
+              value={draft}
+              onChange={(e) => setDraft(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") saveName();
+                if (e.key === "Escape") setEditing(false);
+              }}
+              maxLength={12}
+              placeholder="给宠物起名"
+              className="w-36 rounded-full bg-white px-3 py-1.5 text-center font-bold text-space-900 shadow outline-none ring-2 ring-violet-300"
+            />
+            <button
+              onClick={saveName}
+              aria-label="保存名字"
+              className="flex h-9 w-9 items-center justify-center rounded-full bg-emerald-400 text-lg shadow active:scale-90"
+            >
+              ✅
+            </button>
+            <button
+              onClick={() => setEditing(false)}
+              aria-label="取消"
+              className="flex h-9 w-9 items-center justify-center rounded-full bg-white/20 text-lg active:scale-90"
+            >
+              ✖️
+            </button>
+          </div>
+        ) : petName ? (
+          <button
+            onClick={() => onRename && (setDraft(petName), setEditing(true))}
+            className="flex items-center gap-1.5 text-xl font-extrabold text-white"
+          >
+            🏷️ {petName}
+            {onRename && <span className="text-sm opacity-60">✏️</span>}
+          </button>
+        ) : onRename ? (
+          <motion.button
+            onClick={() => (setDraft(""), setEditing(true))}
+            animate={{ scale: [1, 1.06, 1] }}
+            transition={{ duration: 1.4, repeat: Infinity }}
+            className="rounded-full bg-gradient-to-r from-violet-400 to-fuchsia-400 px-4 py-1.5 text-base font-extrabold text-white shadow-lg ring-2 ring-white/30"
+          >
+            ✏️ 给我取个名字吧！
+          </motion.button>
+        ) : (
+          <p className="text-xl font-bold text-white">{stage.name}</p>
+        )}
+        <p className="mt-0.5 text-sm text-white/70">
+          {petName ? `${stage.nameZh} · ` : ""}
+          {stage.hint}
         </p>
       </div>
 

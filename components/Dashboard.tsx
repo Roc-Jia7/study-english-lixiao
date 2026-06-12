@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { ChevronRight } from "lucide-react";
 import type { SessionMode, VocabularyWord, WordCategory } from "@/lib/types";
-import { useActiveStudent } from "@/store/useAppStore";
+import { useActiveStudent, useAppStore } from "@/store/useAppStore";
 import {
   DISCOVERY_PACK_SIZE,
   REVIEW_SESSION_CAP,
@@ -34,6 +34,7 @@ export default function Dashboard({
   onStartLxllReview,
 }: DashboardProps) {
   const student = useActiveStudent();
+  const setPetName = useAppStore((s) => s.setPetName);
 
   // Re-check the forgetting-curve clock every 30s so monsters appear
   // while the app is open (the 5-minute stage comes due fast).
@@ -64,7 +65,11 @@ export default function Dashboard({
         <h1 className="text-3xl font-extrabold text-white">
           Hi, {student.name}! 🚀
         </h1>
-        <PetCompanion xp={student.xp} />
+        <PetCompanion
+          xp={student.xp}
+          petName={student.petName}
+          onRename={setPetName}
+        />
       </motion.div>
 
       {/* Star Path — streak flame + 14-day sticker wall */}
