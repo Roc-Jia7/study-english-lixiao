@@ -12,6 +12,8 @@ export interface VocabularyWord {
   tier: WordTier;
   /** Vector placeholder illustration url (swap in real artwork later). */
   imageUrl: string;
+  /** Optional pre-recorded pronunciation URL; falls back to Web Speech. */
+  audioUrl?: string;
   /** Always-available visual anchor rendered on the card. */
   emoji: string;
   /** ISO string mapping to forgetting stages. Seed value; live value lives in WordProgress. */

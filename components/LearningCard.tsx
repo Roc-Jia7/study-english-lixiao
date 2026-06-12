@@ -38,9 +38,12 @@ export default function LearningCard({ word, onAnswer }: LearningCardProps) {
   // Say the word out loud as soon as the card appears (the session was
   // started by a tap, so the audio gesture requirement is satisfied).
   useEffect(() => {
-    const timer = setTimeout(() => playWordAudio(word.id, word.word), 350);
+    const timer = setTimeout(
+      () => playWordAudio(word.id, word.word, word.audioUrl),
+      350,
+    );
     return () => clearTimeout(timer);
-  }, [word.id, word.word]);
+  }, [word.id, word.word, word.audioUrl]);
 
   return (
     <motion.div
@@ -77,7 +80,7 @@ export default function LearningCard({ word, onAnswer }: LearningCardProps) {
             {word.word}
           </h2>
           <motion.button
-            onClick={() => playWordAudio(word.id, word.word)}
+            onClick={() => playWordAudio(word.id, word.word, word.audioUrl)}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             aria-label={`Listen to ${word.word}`}

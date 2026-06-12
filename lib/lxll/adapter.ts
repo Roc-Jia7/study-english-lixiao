@@ -2,6 +2,18 @@ import type { VocabularyWord } from "@/lib/types";
 import type { LxllWord } from "./types";
 
 /**
+ * Real human pronunciation MP3, hosted on lxll's resource CDN as
+ * `/word/<lowercase first letter>/<word>.mp3` (the word keeps its original
+ * case, e.g. `Italy.mp3`). No Referer gating; plays cross-origin directly.
+ */
+export function lxllWordAudioUrl(word: string): string | undefined {
+  const w = word.trim();
+  const first = w.charAt(0).toLowerCase();
+  if (!/[a-z]/.test(first)) return undefined;
+  return `https://resource.lxll.com/word/${first}/${encodeURIComponent(w)}.mp3`;
+}
+
+/**
  * Map a backend word onto the app's VocabularyWord so the existing game UI
  * (cards, pet, confetti, TTS) can render it.
  *
@@ -12,9 +24,10 @@ import type { LxllWord } from "./types";
  * the pre-downloaded mp3s only cover the demo words.
  */
 export function lxllWordToVocabulary(w: LxllWord): VocabularyWord {
+  const word = w.word.trim();
   return {
     id: `lxll-${w.wordId}`,
-    word: w.word.trim(),
+    word,
     phonetic: w.phonetic.replace(/[\r\n]/g, "").trim(),
     translation: w.translation.trim(),
     sentence_en: "",
@@ -22,6 +35,7 @@ export function lxllWordToVocabulary(w: LxllWord): VocabularyWord {
     category: "nature", // unused for real data; kept for type compatibility
     tier: "intermediate",
     imageUrl: "",
+    audioUrl: lxllWordAudioUrl(word), // real human pronunciation
     emoji: "", // none from backend → LearningCard shows a letter tile
     nextReviewTime: new Date(0).toISOString(),
   };
