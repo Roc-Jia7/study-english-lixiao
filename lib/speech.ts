@@ -64,6 +64,24 @@ export function speakSentence(sentence: string) {
   speak(sentence, { rate: 0.85, pitch: 1.1 });
 }
 
+/** Chinese translation via a zh-CN voice (fallback when no recording). */
+export function speakChinese(text: string, onEnd?: () => void) {
+  if (typeof window === "undefined" || !window.speechSynthesis) {
+    onEnd?.();
+    return;
+  }
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.lang = "zh-CN";
+  utterance.rate = 0.9;
+  utterance.pitch = 1.1;
+  const zh = window.speechSynthesis
+    .getVoices()
+    .find((v) => v.lang.startsWith("zh"));
+  if (zh) utterance.voice = zh;
+  if (onEnd) utterance.onend = () => onEnd();
+  window.speechSynthesis.speak(utterance);
+}
+
 const CHEERS = [
   "Fantastic! You are a superstar!",
   "Wow! Amazing job!",

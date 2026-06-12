@@ -13,6 +13,19 @@ export function lxllWordAudioUrl(word: string): string | undefined {
   return `https://resource.lxll.com/word/${first}/${encodeURIComponent(w)}.mp3`;
 }
 
+/** Real English+Chinese recording: `/word/<first>/<word><translation>.mp3`. */
+export function lxllWordBilingualUrl(
+  word: string,
+  translation: string,
+): string | undefined {
+  const w = word.trim();
+  const first = w.charAt(0).toLowerCase();
+  if (!/[a-z]/.test(first)) return undefined;
+  return `https://resource.lxll.com/word/${first}/${encodeURIComponent(
+    w + translation.trim(),
+  )}.mp3`;
+}
+
 /**
  * Map a backend word onto the app's VocabularyWord so the existing game UI
  * (cards, pet, confetti, TTS) can render it.
@@ -36,6 +49,7 @@ export function lxllWordToVocabulary(w: LxllWord): VocabularyWord {
     tier: "intermediate",
     imageUrl: "",
     audioUrl: lxllWordAudioUrl(word), // real human pronunciation
+    audioUrlBilingual: lxllWordBilingualUrl(word, w.translation),
     emoji: "", // none from backend → LearningCard shows a letter tile
     nextReviewTime: new Date(0).toISOString(),
   };

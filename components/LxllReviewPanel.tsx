@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { ChevronRight, Loader2 } from "lucide-react";
 import type { VocabularyWord } from "@/lib/types";
 import { useLxllStore } from "@/store/useLxllStore";
+import { popSound } from "@/lib/sfx";
 
 interface LxllReviewPanelProps {
   /** Start a review session with real backend words (no emoji → no quiz). */
@@ -25,6 +26,7 @@ export default function LxllReviewPanel({ onStartReview }: LxllReviewPanelProps)
 
   const start = async () => {
     if (starting) return;
+    popSound();
     setStarting(true);
     try {
       const words = await loadDueWords();

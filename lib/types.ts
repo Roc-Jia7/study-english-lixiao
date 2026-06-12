@@ -14,6 +14,8 @@ export interface VocabularyWord {
   imageUrl: string;
   /** Optional pre-recorded pronunciation URL; falls back to Web Speech. */
   audioUrl?: string;
+  /** Optional real English+Chinese recording for bilingual playback. */
+  audioUrlBilingual?: string;
   /** Always-available visual anchor rendered on the card. */
   emoji: string;
   /** ISO string mapping to forgetting stages. Seed value; live value lives in WordProgress. */

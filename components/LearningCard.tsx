@@ -2,10 +2,11 @@
 
 import { useEffect } from "react";
 import { motion } from "framer-motion";
-import { Volume2 } from "lucide-react";
+import { Volume2, Languages } from "lucide-react";
 import type { VocabularyWord } from "@/lib/types";
-import { playWordAudio } from "@/lib/audio";
+import { playWordAudio, playBilingual } from "@/lib/audio";
 import { speakSentence } from "@/lib/speech";
+import { popSound, happySound, softSound } from "@/lib/sfx";
 
 interface LearningCardProps {
   word: VocabularyWord;
@@ -30,9 +31,41 @@ function HighlightedSentence({ sentence, focus }: { sentence: string; focus: str
   );
 }
 
+/** A few floating bubbles drifting up behind the card — pure cuteness. */
+function Bubbles() {
+  const bubbles = [
+    { left: "8%", size: 18, delay: 0, dur: 5, e: "🫧" },
+    { left: "24%", size: 12, delay: 1.4, dur: 6, e: "⭐" },
+    { left: "72%", size: 16, delay: 0.6, dur: 5.5, e: "🫧" },
+    { left: "88%", size: 14, delay: 2, dur: 6.5, e: "✨" },
+    { left: "54%", size: 12, delay: 3, dur: 5, e: "💫" },
+  ];
+  return (
+    <div className="pointer-events-none absolute inset-0 overflow-hidden">
+      {bubbles.map((b, i) => (
+        <motion.span
+          key={i}
+          className="absolute bottom-0 opacity-60"
+          style={{ left: b.left, fontSize: b.size }}
+          animate={{ y: [20, -260], opacity: [0, 0.7, 0] }}
+          transition={{
+            duration: b.dur,
+            delay: b.delay,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        >
+          {b.e}
+        </motion.span>
+      ))}
+    </div>
+  );
+}
+
 /**
- * One word, one card, zero clutter. Big picture, big word, one short
- * sentence, and two giant self-assessment buttons.
+ * One word, one card, zero clutter — but extra bouncy and cuddly. Big
+ * tappable picture, big word, listen + bilingual buttons, and two giant
+ * jelly self-assessment buttons.
  */
 export default function LearningCard({ word, onAnswer }: LearningCardProps) {
   // Say the word out loud as soon as the card appears (the session was
@@ -45,44 +78,67 @@ export default function LearningCard({ word, onAnswer }: LearningCardProps) {
     return () => clearTimeout(timer);
   }, [word.id, word.word, word.audioUrl]);
 
+  const sayWord = () => {
+    popSound();
+    playWordAudio(word.id, word.word, word.audioUrl);
+  };
+  const sayBilingual = () => {
+    popSound();
+    playBilingual({
+      wordId: word.id,
+      word: word.word,
+      translation: word.translation,
+      audioUrl: word.audioUrl,
+      bilingualUrl: word.audioUrlBilingual,
+    });
+  };
+
   return (
     <motion.div
       key={word.id}
-      initial={{ x: 80, opacity: 0, rotate: 2 }}
-      animate={{ x: 0, opacity: 1, rotate: 0 }}
-      exit={{ x: -80, opacity: 0, rotate: -2 }}
-      transition={{ type: "spring", stiffness: 160, damping: 20 }}
-      className="w-full max-w-md"
+      initial={{ x: 80, opacity: 0, scale: 0.9, rotate: 3 }}
+      animate={{ x: 0, opacity: 1, scale: 1, rotate: 0 }}
+      exit={{ x: -80, opacity: 0, scale: 0.9, rotate: -3 }}
+      transition={{ type: "spring", stiffness: 220, damping: 18 }}
+      className="relative w-full max-w-md"
     >
-      <div className="rounded-[2rem] bg-cream p-6 shadow-2xl ring-8 ring-white/15">
-        {/* Visual anchor — emoji illustration in a soft bubble.
-            Backend words have no emoji, so we show a friendly letter tile.
-            word.imageUrl is reserved for real artwork later. */}
-        <motion.div
-          className="mx-auto flex h-36 w-36 items-center justify-center rounded-full bg-gradient-to-b from-sky-100 to-violet-100 shadow-inner"
-          animate={{ y: [0, -6, 0] }}
-          transition={{ duration: 2.6, repeat: Infinity, ease: "easeInOut" }}
+      <Bubbles />
+
+      <div className="relative rounded-[2.5rem] bg-cream p-6 shadow-2xl ring-8 ring-white/30">
+        {/* Tappable visual anchor — a squishy sticker. Backend words have no
+            emoji, so we show a friendly letter tile with a tiny face. */}
+        <motion.button
+          onClick={sayWord}
+          aria-label={`Listen to ${word.word}`}
+          className="relative mx-auto flex h-40 w-40 items-center justify-center rounded-[2rem] bg-gradient-to-b from-sky-100 to-violet-100 shadow-inner"
+          animate={{ y: [0, -7, 0], rotate: [-2, 2, -2] }}
+          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+          whileTap={{ scale: 0.88, rotate: -4 }}
         >
           {word.emoji ? (
             <span className="text-8xl drop-shadow" role="img" aria-label={word.word}>
               {word.emoji}
             </span>
           ) : (
-            <span className="text-7xl font-extrabold text-violet-400/80 drop-shadow">
-              {word.word.charAt(0).toUpperCase()}
+            <span className="flex flex-col items-center leading-none">
+              <span className="text-7xl font-extrabold text-violet-400 drop-shadow">
+                {word.word.charAt(0).toUpperCase()}
+              </span>
+              <span className="-mt-2 text-2xl">◡̈</span>
             </span>
           )}
-        </motion.div>
+          <span className="absolute -right-1 -top-1 text-2xl animate-twinkle">✨</span>
+        </motion.button>
 
-        {/* Word + listen button */}
-        <div className="mt-4 flex items-center justify-center gap-3">
+        {/* Word + two listen buttons (English / bilingual) */}
+        <div className="mt-4 flex items-center justify-center gap-2">
           <h2 className="text-6xl font-extrabold tracking-wide text-space-900">
             {word.word}
           </h2>
           <motion.button
-            onClick={() => playWordAudio(word.id, word.word, word.audioUrl)}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
+            onClick={sayWord}
+            whileHover={{ scale: 1.12, rotate: -6 }}
+            whileTap={{ scale: 0.85 }}
             aria-label={`Listen to ${word.word}`}
             className="flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-sky-400 to-blue-500 text-white shadow-lg"
           >
@@ -91,9 +147,20 @@ export default function LearningCard({ word, onAnswer }: LearningCardProps) {
         </div>
 
         <p className="mt-1 text-center text-lg text-space-700/60">{word.phonetic}</p>
-        <p className="mt-1 text-center text-2xl font-bold text-space-700">
-          {word.translation}
-        </p>
+
+        {/* Translation row — tap for bilingual (English + Chinese) audio */}
+        <motion.button
+          onClick={sayBilingual}
+          whileTap={{ scale: 0.95 }}
+          className="mx-auto mt-2 flex items-center gap-2 rounded-full bg-violet-100 px-4 py-1.5 shadow-sm ring-2 ring-violet-200"
+          aria-label="双语朗读"
+        >
+          <span className="text-2xl font-bold text-space-700">
+            {word.translation}
+          </span>
+          <Languages className="h-5 w-5 text-violet-500" />
+          <span className="text-xs font-bold text-violet-500">中英</span>
+        </motion.button>
 
         {/* Simple sentence with color-coded focus word.
             Backend words ship without a sentence — hide the block then. */}
@@ -102,7 +169,10 @@ export default function LearningCard({ word, onAnswer }: LearningCardProps) {
             <div className="flex items-start justify-center gap-2">
               <HighlightedSentence sentence={word.sentence_en} focus={word.word} />
               <motion.button
-                onClick={() => speakSentence(word.sentence_en)}
+                onClick={() => {
+                  popSound();
+                  speakSentence(word.sentence_en);
+                }}
                 whileTap={{ scale: 0.85 }}
                 aria-label="Listen to sentence"
                 className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-amber-300 text-amber-900 shadow"
@@ -115,27 +185,47 @@ export default function LearningCard({ word, onAnswer }: LearningCardProps) {
         )}
       </div>
 
-      {/* Giant self-assessment buttons (≥72px tall) */}
+      {/* Giant jelly self-assessment buttons (≥72px tall) */}
       <div className="mt-5 grid grid-cols-2 gap-4">
         <motion.button
-          onClick={() => onAnswer(false)}
-          whileHover={{ scale: 1.04 }}
-          whileTap={{ scale: 0.94 }}
-          className="flex min-h-20 flex-col items-center justify-center rounded-3xl bg-gradient-to-b from-yellow-300 to-amber-400 px-4 py-3 shadow-xl ring-4 ring-yellow-200/50"
+          onClick={() => {
+            softSound();
+            onAnswer(false);
+          }}
+          whileHover={{ scale: 1.05, rotate: -1 }}
+          whileTap={{ scale: 0.9, rotate: -3 }}
+          transition={{ type: "spring", stiffness: 400, damping: 12 }}
+          className="flex min-h-20 flex-col items-center justify-center rounded-[1.75rem] bg-gradient-to-b from-yellow-300 to-amber-400 px-4 py-3 shadow-xl ring-4 ring-yellow-200/60"
         >
-          <span className="text-xl font-extrabold text-amber-900">
-            😅 Oops, Help Me!
-          </span>
-          <span className="text-sm font-bold text-amber-800/70">帮帮我</span>
+          <motion.span
+            className="text-3xl"
+            animate={{ rotate: [0, -8, 8, 0] }}
+            transition={{ duration: 2.5, repeat: Infinity }}
+          >
+            🐣
+          </motion.span>
+          <span className="text-lg font-extrabold text-amber-900">帮帮我</span>
+          <span className="text-xs font-bold text-amber-800/70">Help Me!</span>
         </motion.button>
         <motion.button
-          onClick={() => onAnswer(true)}
-          whileHover={{ scale: 1.04 }}
-          whileTap={{ scale: 0.94 }}
-          className="flex min-h-20 flex-col items-center justify-center rounded-3xl bg-gradient-to-b from-emerald-400 to-green-500 px-4 py-3 shadow-xl ring-4 ring-emerald-300/50"
+          onClick={() => {
+            happySound();
+            onAnswer(true);
+          }}
+          whileHover={{ scale: 1.05, rotate: 1 }}
+          whileTap={{ scale: 0.9, rotate: 3 }}
+          transition={{ type: "spring", stiffness: 400, damping: 12 }}
+          className="flex min-h-20 flex-col items-center justify-center rounded-[1.75rem] bg-gradient-to-b from-emerald-400 to-green-500 px-4 py-3 shadow-xl ring-4 ring-emerald-300/60"
         >
-          <span className="text-xl font-extrabold text-white">✅ I Know It!</span>
-          <span className="text-sm font-bold text-emerald-100">我会啦</span>
+          <motion.span
+            className="text-3xl"
+            animate={{ y: [0, -4, 0] }}
+            transition={{ duration: 1.4, repeat: Infinity }}
+          >
+            🌟
+          </motion.span>
+          <span className="text-lg font-extrabold text-white">我会啦</span>
+          <span className="text-xs font-bold text-emerald-100">I Know It!</span>
         </motion.button>
       </div>
     </motion.div>
