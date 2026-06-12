@@ -174,16 +174,22 @@ export const useAppStore = create<AppState>()(
     {
       name: "word-star-academy",
       storage: createJSONStorage(() => localStorage),
-      version: 2,
-      // v1 profiles (pre-streak) gain the new fields with safe defaults.
+      version: 3,
       migrate: (persisted) => {
         const state = persisted as Partial<AppState> | undefined;
+        // v1 profiles (pre-streak) gain the new fields with safe defaults.
         if (state?.students) {
           for (const student of Object.values(state.students)) {
             student.streakDays ??= 0;
             student.bestStreak ??= 0;
             student.learnedDates ??= [];
           }
+        }
+        // v3: real account login became the default entry — return returning
+        // users to the landing screen once so they see it (and re-pick a child).
+        if (state) {
+          state.activeStudentId = null;
+          state.parentUnlocked = false;
         }
         return state as AppState;
       },

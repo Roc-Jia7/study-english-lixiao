@@ -11,34 +11,35 @@ const MIN_PHONE_DIGITS = 8;
 
 /**
  * The Space Station landing page.
- * Phase 1: parent signs in — demo keypad or a real lxll account/password.
- * Phase 2: a galaxy of child avatar cards — tap to board.
+ * Default: real lxll account/password sign-in. A demo keypad (any number
+ * works, no password) is tucked behind a secondary link for tyre-kicking.
+ * After sign-in: a galaxy of child avatar cards — tap to board.
  */
 export default function ProfileHub() {
   const parentUnlocked = useAppStore((s) => s.parentUnlocked);
   const unlockParentGate = useAppStore((s) => s.unlockParentGate);
-  const [showLogin, setShowLogin] = useState(false);
+  const [showDemo, setShowDemo] = useState(false);
 
   return (
     <div className="flex min-h-dvh flex-col items-center justify-center px-4 py-10">
       <AnimatePresence mode="wait">
         {parentUnlocked ? (
           <AvatarGrid key="avatars" />
-        ) : showLogin ? (
+        ) : showDemo ? (
+          <PhoneGate key="gate" onBackToLogin={() => setShowDemo(false)} />
+        ) : (
           <PasswordLogin
             key="login"
-            onBack={() => setShowLogin(false)}
+            onShowDemo={() => setShowDemo(true)}
             onSuccess={unlockParentGate}
           />
-        ) : (
-          <PhoneGate key="gate" onShowLogin={() => setShowLogin(true)} />
         )}
       </AnimatePresence>
     </div>
   );
 }
 
-function PhoneGate({ onShowLogin }: { onShowLogin: () => void }) {
+function PhoneGate({ onBackToLogin }: { onBackToLogin: () => void }) {
   const unlockParentGate = useAppStore((s) => s.unlockParentGate);
   const [digits, setDigits] = useState("");
   const ready = digits.length >= MIN_PHONE_DIGITS;
@@ -68,9 +69,9 @@ function PhoneGate({ onShowLogin }: { onShowLogin: () => void }) {
       >
         🛸
       </motion.div>
-      <h1 className="text-3xl font-extrabold text-white">Word Star Academy</h1>
+      <h1 className="text-3xl font-extrabold text-white">演示模式 · 随便逛逛</h1>
       <p className="mt-1 text-white/60">
-        家长请输入手机号登录 · Parents, enter your phone number
+        输入任意手机号即可体验（不验证密码）
       </p>
       <p className="mt-1 text-xs text-white/40">Demo — any number works, try 138 0000 0000</p>
 
@@ -111,12 +112,12 @@ function PhoneGate({ onShowLogin }: { onShowLogin: () => void }) {
         </motion.button>
       </div>
 
-      {/* Real account login (李校来啦) */}
+      {/* Back to the real account login (李校来啦) */}
       <button
-        onClick={onShowLogin}
+        onClick={onBackToLogin}
         className="mx-auto mt-6 block text-sm font-bold text-amber-300/90 underline-offset-4 transition hover:underline"
       >
-        用「李校来啦」账号密码登录 →
+        ← 返回「李校来啦」账号登录
       </button>
     </motion.div>
   );
