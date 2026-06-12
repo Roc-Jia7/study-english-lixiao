@@ -5,31 +5,40 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Delete, Rocket, Phone } from "lucide-react";
 import { useAppStore } from "@/store/useAppStore";
 import { getPetStage } from "@/lib/pet";
+import PasswordLogin from "./PasswordLogin";
 
 const MIN_PHONE_DIGITS = 8;
 
 /**
  * The Space Station landing page.
- * Phase 1: parent enters a mock phone number on a big keypad.
+ * Phase 1: parent signs in — demo keypad or a real lxll account/password.
  * Phase 2: a galaxy of child avatar cards — tap to board.
  */
 export default function ProfileHub() {
   const parentUnlocked = useAppStore((s) => s.parentUnlocked);
+  const unlockParentGate = useAppStore((s) => s.unlockParentGate);
+  const [showLogin, setShowLogin] = useState(false);
 
   return (
     <div className="flex min-h-dvh flex-col items-center justify-center px-4 py-10">
       <AnimatePresence mode="wait">
         {parentUnlocked ? (
           <AvatarGrid key="avatars" />
+        ) : showLogin ? (
+          <PasswordLogin
+            key="login"
+            onBack={() => setShowLogin(false)}
+            onSuccess={unlockParentGate}
+          />
         ) : (
-          <PhoneGate key="gate" />
+          <PhoneGate key="gate" onShowLogin={() => setShowLogin(true)} />
         )}
       </AnimatePresence>
     </div>
   );
 }
 
-function PhoneGate() {
+function PhoneGate({ onShowLogin }: { onShowLogin: () => void }) {
   const unlockParentGate = useAppStore((s) => s.unlockParentGate);
   const [digits, setDigits] = useState("");
   const ready = digits.length >= MIN_PHONE_DIGITS;
@@ -101,6 +110,14 @@ function PhoneGate() {
           <Rocket className="h-7 w-7" />
         </motion.button>
       </div>
+
+      {/* Real account login (李校来啦) */}
+      <button
+        onClick={onShowLogin}
+        className="mx-auto mt-6 block text-sm font-bold text-amber-300/90 underline-offset-4 transition hover:underline"
+      >
+        用「李校来啦」账号密码登录 →
+      </button>
     </motion.div>
   );
 }
