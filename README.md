@@ -1,5 +1,7 @@
 # Word Star Academy · 单词星球 🚀
 
+**Live demo:** https://study-english-lixiao.vercel.app
+
 A gamified English vocabulary app for kids (ages 4–12). The Ebbinghaus
 forgetting curve becomes a pet-raising game: learning words feeds an egg
 that hatches into a dragon, and words due for review appear as hungry
