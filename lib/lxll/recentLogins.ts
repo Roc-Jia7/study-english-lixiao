@@ -60,3 +60,10 @@ export function forgetRecentLogin(userId: string) {
     JSON.stringify(loadRecentLogins().filter((l) => l.userId !== userId)),
   );
 }
+
+/** Wipe all remembered identifiers/children — privacy cleanup. */
+export function clearRecentLogins() {
+  if (typeof window === "undefined") return;
+  localStorage.removeItem(LIST_KEY);
+  localStorage.removeItem(LAST_KEY);
+}

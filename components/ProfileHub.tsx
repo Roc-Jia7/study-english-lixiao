@@ -148,6 +148,12 @@ function AvatarGrid() {
   const students = useAppStore((s) => s.students);
   const selectStudent = useAppStore((s) => s.selectStudent);
 
+  // Demo mode must NEVER surface real lxll children (names/avatars are
+  // personal info). Real children are only reachable via account login.
+  const demoStudents = Object.values(students).filter(
+    (s) => !s.id.startsWith("lxll:"),
+  );
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 24 }}
@@ -166,7 +172,7 @@ function AvatarGrid() {
       <p className="mt-1 mb-8 text-white/60">今天谁来开飞船呀？点一下你的头像！</p>
 
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-3">
-        {Object.values(students).map((student, i) => {
+        {demoStudents.map((student, i) => {
           const pet = getPetStage(student.xp);
           return (
             <motion.button

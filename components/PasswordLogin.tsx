@@ -4,7 +4,10 @@ import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Eye, EyeOff, Loader2, Rocket, X } from "lucide-react";
 import { useLxllStore } from "@/store/useLxllStore";
+import { useAppStore } from "@/store/useAppStore";
+import { clearSession } from "@/lib/lxll/client";
 import {
+  clearRecentLogins,
   forgetRecentLogin,
   loadLastIdentifier,
   loadRecentLogins,
@@ -31,7 +34,9 @@ export default function PasswordLogin({ onShowDemo, onSuccess }: PasswordLoginPr
   const [password, setPassword] = useState("");
   const [showPw, setShowPw] = useState(false);
   const [recents, setRecents] = useState<RecentLogin[]>([]);
+  const [confirmClear, setConfirmClear] = useState(false);
   const passwordRef = useRef<HTMLInputElement>(null);
+  const forgetRealStudents = useAppStore((s) => s.forgetRealStudents);
 
   // Pre-fill the last identifier and list children seen on this device.
   useEffect(() => {
@@ -53,6 +58,18 @@ export default function PasswordLogin({ onShowDemo, onSuccess }: PasswordLoginPr
   const forget = (userId: string) => {
     forgetRecentLogin(userId);
     setRecents((rs) => rs.filter((r) => r.userId !== userId));
+  };
+
+  // Privacy wipe: remove every trace of real children/identifiers on device.
+  const clearDevice = () => {
+    clearRecentLogins();
+    forgetRealStudents();
+    clearSession();
+    if (error) clearError();
+    setRecents([]);
+    setAccount("");
+    setPassword("");
+    setConfirmClear(false);
   };
 
   const submit = async () => {
@@ -193,6 +210,34 @@ export default function PasswordLogin({ onShowDemo, onSuccess }: PasswordLoginPr
       >
         没有账号？试用演示模式 →
       </button>
+
+      {/* Privacy: wipe remembered phone/children from this device */}
+      <div className="mt-3 text-center">
+        {confirmClear ? (
+          <div className="inline-flex items-center gap-2 text-xs">
+            <span className="text-white/60">清除本机记住的手机号和孩子？</span>
+            <button
+              onClick={clearDevice}
+              className="rounded-full bg-rose-500/80 px-3 py-1 font-bold text-white active:scale-95"
+            >
+              清除
+            </button>
+            <button
+              onClick={() => setConfirmClear(false)}
+              className="rounded-full bg-white/10 px-3 py-1 font-bold text-white/70 active:scale-95"
+            >
+              取消
+            </button>
+          </div>
+        ) : (
+          <button
+            onClick={() => setConfirmClear(true)}
+            className="text-xs text-white/30 underline-offset-4 transition hover:text-rose-200 hover:underline"
+          >
+            清除本机记录（手机号 / 孩子）
+          </button>
+        )}
+      </div>
     </motion.div>
   );
 }

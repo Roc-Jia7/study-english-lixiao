@@ -69,6 +69,8 @@ interface AppState {
   setDisplayMode: (mode: DisplayMode) => void;
   /** Name (or rename) the active student's pet. */
   setPetName: (name: string) => void;
+  /** Wipe all real (lxll) children from this device — privacy cleanup. */
+  forgetRealStudents: () => void;
   unlockParentGate: () => void;
   lockStation: () => void;
   selectStudent: (id: string) => void;
@@ -122,6 +124,21 @@ export const useAppStore = create<AppState>()(
               ...state.students,
               [id]: { ...state.students[id], petName: trimmed || undefined },
             },
+          };
+        }),
+
+      forgetRealStudents: () =>
+        set((state) => {
+          const students = Object.fromEntries(
+            Object.entries(state.students).filter(
+              ([id]) => !id.startsWith("lxll:"),
+            ),
+          );
+          const activeIsReal = state.activeStudentId?.startsWith("lxll:");
+          return {
+            students,
+            activeStudentId: activeIsReal ? null : state.activeStudentId,
+            parentUnlocked: activeIsReal ? false : state.parentUnlocked,
           };
         }),
 
