@@ -225,11 +225,11 @@ export default function SessionView({
         >
           <X className="h-6 w-6" />
         </button>
-        <div className="flex flex-1 items-center justify-center gap-1.5">
+        <div className="flex max-h-16 flex-1 flex-wrap items-center justify-center gap-1 overflow-hidden">
           {words.map((w) => (
             <motion.span
               key={w.id}
-              className="text-xl"
+              className="text-lg leading-none"
               animate={doneIds.has(w.id) ? { scale: [1, 1.5, 1] } : {}}
             >
               {doneIds.has(w.id) ? "⭐" : "・"}
@@ -242,7 +242,9 @@ export default function SessionView({
       <p className="mt-2 text-sm text-white/50">
         {mode === "discovery"
           ? "New word friends! 认识新单词朋友"
-          : "Feed the hungry word monsters! 喂饱单词小怪兽"}
+          : student.petName
+            ? `喂饱 ${student.petName}！每答对一个就喂一口 🍖`
+            : "Feed the hungry word monsters! 喂饱单词小怪兽"}
       </p>
 
       {!finished && (

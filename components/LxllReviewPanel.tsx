@@ -2,7 +2,15 @@
 
 import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { ChevronRight, Loader2, Clock, Lock, RotateCw, Check } from "lucide-react";
+import {
+  ChevronRight,
+  Loader2,
+  Clock,
+  Lock,
+  RotateCw,
+  Check,
+  WifiOff,
+} from "lucide-react";
 import type { VocabularyWord } from "@/lib/types";
 import type { LxllAntiForgetRecord } from "@/lib/lxll/types";
 import { useLxllStore } from "@/store/useLxllStore";
@@ -45,6 +53,8 @@ export default function LxllReviewPanel({ onStartReview }: LxllReviewPanelProps)
   const schedule = useLxllStore((s) => s.schedule);
   const metric = useLxllStore((s) => s.metric);
   const loadingData = useLxllStore((s) => s.loadingData);
+  const dataError = useLxllStore((s) => s.dataError);
+  const loadData = useLxllStore((s) => s.loadData);
   const loadSlotWords = useLxllStore((s) => s.loadSlotWords);
   const [startingId, setStartingId] = useState<number | null>(null);
 
@@ -91,6 +101,21 @@ export default function LxllReviewPanel({ onStartReview }: LxllReviewPanelProps)
         <div className="flex items-center justify-center gap-2 py-8 text-white/60">
           <Loader2 className="h-6 w-6 animate-spin" /> 正在连接李校来啦…
         </div>
+      ) : dataError && schedule.length === 0 ? (
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          className="flex flex-col items-center gap-3 rounded-3xl bg-white/10 p-8 text-center ring-2 ring-white/15"
+        >
+          <WifiOff className="h-10 w-10 text-white/50" />
+          <p className="text-lg font-bold text-white">{dataError}</p>
+          <button
+            onClick={() => void loadData()}
+            className="flex items-center gap-2 rounded-full bg-gradient-to-r from-grape to-bubblegum px-6 py-2.5 font-extrabold text-white shadow-lg ring-2 ring-white/25 active:scale-95"
+          >
+            <RotateCw className="h-5 w-5" /> 重试
+          </button>
+        </motion.div>
       ) : (
         <>
           {/* Today's due slots — tappable monster cards */}

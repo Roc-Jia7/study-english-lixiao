@@ -45,6 +45,8 @@ interface LxllState {
   schedule: LxllAntiForgetDay[];
   metric: LxllStudentMetric | null;
   loadingData: boolean;
+  /** Set when the schedule fetch fails, so we don't fake an "all done" state. */
+  dataError: string | null;
 
   /** Which words belong to which review, for grouping the result submit. */
   sessionReviews: Array<{ antiForgetId: number; wordIds: number[] }>;
@@ -71,6 +73,7 @@ export const useLxllStore = create<LxllState>((set, get) => ({
   schedule: [],
   metric: null,
   loadingData: false,
+  dataError: null,
   sessionReviews: [],
   pendingResults: {},
 
@@ -105,7 +108,7 @@ export const useLxllStore = create<LxllState>((set, get) => ({
   },
 
   loadData: async () => {
-    set({ loadingData: true });
+    set({ loadingData: true, dataError: null });
     try {
       const [schedule, metric] = await Promise.all([
         listAntiForgetSchedule(),
@@ -113,7 +116,9 @@ export const useLxllStore = create<LxllState>((set, get) => ({
       ]);
       set({ schedule, metric, loadingData: false });
     } catch {
-      set({ loadingData: false });
+      // Surface the failure instead of letting an empty schedule masquerade
+      // as "all done today".
+      set({ loadingData: false, dataError: "没能连上李校来了，请检查网络后重试" });
     }
   },
 
@@ -173,6 +178,7 @@ export const useLxllStore = create<LxllState>((set, get) => ({
       error: null,
       schedule: [],
       metric: null,
+      dataError: null,
     });
   },
 
