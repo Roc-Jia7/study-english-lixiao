@@ -20,30 +20,57 @@ function getAudio(src: string): HTMLAudioElement {
   return audio;
 }
 
-/** Play one recording; on success calls onEnd, on failure calls onError. */
-function playUrl(src: string, onEnd?: () => void, onError?: () => void) {
+interface PlayHooks {
+  onEnd?: () => void;
+  onError?: () => void;
+  /** Fired when real audio actually starts playing. */
+  onPlay?: () => void;
+}
+
+/** Play one recording; reports start/end/failure via hooks. */
+function playUrl(src: string, hooks: PlayHooks = {}) {
   const audio = getAudio(src);
-  audio.onended = onEnd ? () => onEnd() : null;
+  audio.onended = hooks.onEnd ? () => hooks.onEnd!() : null;
+  audio.onplaying = hooks.onPlay ? () => hooks.onPlay!() : null;
   audio.currentTime = 0;
   audio.play().catch(() => {
     missing.add(src);
-    onError?.();
+    hooks.onError?.();
   });
+}
+
+/** Lets the UI show a spinner while loading and a hint on speech fallback. */
+export interface WordAudioHooks {
+  /** Trying a real recording (may take a moment on weak networks). */
+  onLoading?: () => void;
+  /** Real recording is now playing. */
+  onPlaying?: () => void;
+  /** Couldn't load the recording — synthesized speech is used instead. */
+  onFallback?: () => void;
 }
 
 export function playWordAudio(
   wordId: string,
   fallbackText: string,
   audioUrl?: string,
+  hooks?: WordAudioHooks,
 ) {
   if (typeof window === "undefined") return;
   stopSpeaking();
   const src = audioUrl ?? `/audio/words/${wordId}.mp3`;
   if (missing.has(src)) {
     speakWord(fallbackText);
+    hooks?.onFallback?.();
     return;
   }
-  playUrl(src, undefined, () => speakWord(fallbackText));
+  hooks?.onLoading?.();
+  playUrl(src, {
+    onPlay: hooks?.onPlaying,
+    onError: () => {
+      speakWord(fallbackText);
+      hooks?.onFallback?.();
+    },
+  });
 }
 
 export interface BilingualAudio {
@@ -71,9 +98,9 @@ export function playBilingual({
   stopSpeaking();
 
   if (bilingualUrl && !missing.has(bilingualUrl)) {
-    playUrl(bilingualUrl, undefined, () =>
-      englishThenChinese(wordId, word, translation, audioUrl),
-    );
+    playUrl(bilingualUrl, {
+      onError: () => englishThenChinese(wordId, word, translation, audioUrl),
+    });
     return;
   }
   englishThenChinese(wordId, word, translation, audioUrl);
@@ -93,8 +120,11 @@ function englishThenChinese(
     window.setTimeout(sayZh, 900);
     return;
   }
-  playUrl(src, sayZh, () => {
-    speakWord(word);
-    window.setTimeout(sayZh, 900);
+  playUrl(src, {
+    onEnd: sayZh,
+    onError: () => {
+      speakWord(word);
+      window.setTimeout(sayZh, 900);
+    },
   });
 }

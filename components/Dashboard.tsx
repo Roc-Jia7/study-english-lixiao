@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { ChevronRight } from "lucide-react";
 import type { SessionMode, VocabularyWord, WordCategory } from "@/lib/types";
 import { useActiveStudent, useAppStore } from "@/store/useAppStore";
@@ -11,10 +11,13 @@ import {
   getDueWords,
   getNewWords,
 } from "@/lib/spaced-repetition";
+import { getPetStage } from "@/lib/pet";
 import { CATEGORY_META } from "@/lib/vocabulary";
 import PetCompanion from "./PetCompanion";
 import StickerWall from "./StickerWall";
 import LxllReviewPanel from "./LxllReviewPanel";
+import ParentSummary from "./ParentSummary";
+import PetNameModal from "./PetNameModal";
 
 interface DashboardProps {
   onStartSession: (mode: SessionMode, words: VocabularyWord[]) => void;
@@ -43,6 +46,16 @@ export default function Dashboard({
     const timer = setInterval(() => setNow(new Date()), 30_000);
     return () => clearInterval(timer);
   }, []);
+
+  // First time a child meets an unnamed pet, gently invite them to name it
+  // (once per profile per visit — they can dismiss and use the CTA later).
+  const [showNameModal, setShowNameModal] = useState(false);
+  const prompted = useRef<Set<string>>(new Set());
+  useEffect(() => {
+    if (!student || student.petName || prompted.current.has(student.id)) return;
+    prompted.current.add(student.id);
+    setShowNameModal(true);
+  }, [student?.id, student?.petName]);
 
   if (!student) return null;
 
@@ -177,6 +190,22 @@ export default function Dashboard({
           </p>
         </motion.div>
       )}
+
+      {/* Quiet, chart-free snapshot for parents */}
+      <ParentSummary student={student} />
+
+      <AnimatePresence>
+        {showNameModal && (
+          <PetNameModal
+            emoji={getPetStage(student.xp).emoji}
+            onSave={(name) => {
+              setPetName(name);
+              setShowNameModal(false);
+            }}
+            onClose={() => setShowNameModal(false)}
+          />
+        )}
+      </AnimatePresence>
     </div>
   );
 }

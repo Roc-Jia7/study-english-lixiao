@@ -1,5 +1,10 @@
 import { describe, expect, it } from "vitest";
-import { buildSessionQueue, pickQuizOptions } from "../session";
+import {
+  GROUP_TARGET,
+  balancedChunk,
+  buildSessionQueue,
+  pickQuizOptions,
+} from "../session";
 import { VOCABULARY } from "../vocabulary";
 
 const words = (...ids: string[]) =>
@@ -62,6 +67,31 @@ describe("buildSessionQueue", () => {
     const queue = buildSessionQueue(SIX, "discovery");
     const keys = queue.map((c) => c.key);
     expect(new Set(keys).size).toBe(keys.length);
+  });
+});
+
+describe("balancedChunk", () => {
+  const range = (n: number) => Array.from({ length: n }, (_, i) => i);
+
+  it("keeps a small slot as a single group", () => {
+    expect(balancedChunk(range(7))).toEqual([range(7)]);
+    expect(balancedChunk(range(3))).toHaveLength(1);
+  });
+
+  it("splits a 20-item slot into balanced groups (7,7,6)", () => {
+    const groups = balancedChunk(range(20));
+    expect(groups.map((g) => g.length)).toEqual([7, 7, 6]);
+  });
+
+  it("avoids a lonely tiny last group", () => {
+    // 8 → two groups of 4, never 7 + 1.
+    expect(balancedChunk(range(8)).map((g) => g.length)).toEqual([4, 4]);
+  });
+
+  it("preserves order and loses no items", () => {
+    const groups = balancedChunk(range(15));
+    expect(groups.flat()).toEqual(range(15));
+    expect(groups.every((g) => g.length <= GROUP_TARGET)).toBe(true);
   });
 });
 

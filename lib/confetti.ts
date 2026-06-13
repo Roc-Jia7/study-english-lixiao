@@ -2,8 +2,29 @@ import confetti from "canvas-confetti";
 
 const KID_COLORS = ["#FFD166", "#FF6B9D", "#7BDFF2", "#B388FF", "#7AE582", "#FF9770"];
 
+/** Honor the OS "reduce motion" setting — flying confetti is a lot of motion. */
+function prefersReducedMotion(): boolean {
+  return (
+    typeof window !== "undefined" &&
+    typeof window.matchMedia === "function" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  );
+}
+
 /** Full-screen celebration: center burst plus two side cannons. */
 export function fireVictoryConfetti() {
+  if (prefersReducedMotion()) {
+    // A single gentle puff instead of a storm.
+    confetti({
+      particleCount: 30,
+      spread: 70,
+      startVelocity: 25,
+      origin: { x: 0.5, y: 0.6 },
+      colors: KID_COLORS,
+      ticks: 60,
+    });
+    return;
+  }
   confetti({
     particleCount: 120,
     spread: 90,
@@ -45,6 +66,7 @@ export function fireVictoryConfetti() {
 
 /** Small sparkle for a single correct answer. */
 export function fireMiniSparkle() {
+  if (prefersReducedMotion()) return;
   confetti({
     particleCount: 24,
     spread: 50,

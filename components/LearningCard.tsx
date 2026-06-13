@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Volume2, Languages, Eye } from "lucide-react";
+import { Volume2, Languages, Eye, Loader2, Wifi } from "lucide-react";
 import type { DisplayMode, VocabularyWord } from "@/lib/types";
 import { playWordAudio, playBilingual } from "@/lib/audio";
 import { speakSentence } from "@/lib/speech";
@@ -99,6 +99,22 @@ export default function LearningCard({
   displayMode = "both",
 }: LearningCardProps) {
   const [revealed, setRevealed] = useState(false);
+  const [audioState, setAudioState] = useState<
+    "idle" | "loading" | "playing" | "speech"
+  >("idle");
+
+  const audioHooks = {
+    onLoading: () => setAudioState("loading"),
+    onPlaying: () => setAudioState("playing"),
+    onFallback: () => setAudioState("speech"),
+  };
+
+  // Clear the weak-network hint a few seconds after it appears.
+  useEffect(() => {
+    if (audioState !== "speech") return;
+    const t = setTimeout(() => setAudioState("idle"), 4000);
+    return () => clearTimeout(t);
+  }, [audioState]);
 
   // Which side is hidden until revealed (the other side is the prompt).
   const hideSide = displayMode === "en" ? "zh" : displayMode === "zh" ? "en" : null;
@@ -114,15 +130,16 @@ export default function LearningCard({
   useEffect(() => {
     if (!showEnglish) return;
     const timer = setTimeout(
-      () => playWordAudio(word.id, word.word, word.audioUrl),
+      () => playWordAudio(word.id, word.word, word.audioUrl, audioHooks),
       350,
     );
     return () => clearTimeout(timer);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [word.id, word.word, word.audioUrl, showEnglish]);
 
   const sayWord = () => {
     popSound();
-    playWordAudio(word.id, word.word, word.audioUrl);
+    playWordAudio(word.id, word.word, word.audioUrl, audioHooks);
   };
   const sayBilingual = () => {
     popSound();
@@ -196,12 +213,21 @@ export default function LearningCard({
                 aria-label={`Listen to ${word.word}`}
                 className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-sky-400 to-blue-500 text-white shadow-lg"
               >
-                <Volume2 className="h-7 w-7" />
+                {audioState === "loading" ? (
+                  <Loader2 className="h-7 w-7 animate-spin" />
+                ) : (
+                  <Volume2 className="h-7 w-7" />
+                )}
               </motion.button>
             </div>
             <p className="mt-1 break-words px-2 text-center text-lg text-space-700/60">
               {word.phonetic}
             </p>
+            {audioState === "speech" && (
+              <p className="mt-1 flex items-center justify-center gap-1 text-center text-xs font-bold text-amber-600/80">
+                <Wifi className="h-3.5 w-3.5" /> 弱网 · 暂用朗读发音
+              </p>
+            )}
           </>
         ) : (
           <RevealButton label="看看英文" onClick={() => setRevealed(true)} />

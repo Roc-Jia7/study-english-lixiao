@@ -1,13 +1,14 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { motion, AnimatePresence, useAnimationControls } from "framer-motion";
 import { X } from "lucide-react";
 import type { DisplayMode, SessionMode, VocabularyWord } from "@/lib/types";
-import { buildSessionQueue, type SessionCard } from "@/lib/session";
+import { balancedChunk, buildSessionQueue, type SessionCard } from "@/lib/session";
 import { useAppStore, useActiveStudent } from "@/store/useAppStore";
 import { fireMiniSparkle } from "@/lib/confetti";
 import { getPetStage } from "@/lib/pet";
+import { happySound } from "@/lib/sfx";
 import { speak, stopSpeaking } from "@/lib/speech";
 import LearningCard from "./LearningCard";
 import QuizCard from "./QuizCard";
@@ -85,6 +86,70 @@ function SessionPet({ xp, feedSignal }: { xp: number; feedSignal: number }) {
   );
 }
 
+/**
+ * A short, joyful breather shown between groups of a long slot, so a 20-word
+ * review feels like a few quick rounds. Plays a little party and auto-advances,
+ * with a button for kids who'd rather keep going right away.
+ */
+function GroupBreak({
+  index,
+  total,
+  onNext,
+}: {
+  index: number;
+  total: number;
+  onNext: () => void;
+}) {
+  useEffect(() => {
+    fireMiniSparkle();
+    happySound();
+    const t = setTimeout(onNext, 2400);
+    return () => clearTimeout(t);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 z-40 flex flex-col items-center justify-center gap-3 bg-space-950/85 px-6 text-center backdrop-blur-sm"
+    >
+      <motion.span
+        className="text-7xl"
+        initial={{ scale: 0, rotate: -20 }}
+        animate={{ scale: 1, rotate: 0 }}
+        transition={{ type: "spring", stiffness: 240, damping: 12 }}
+      >
+        🎉
+      </motion.span>
+      <h3 className="text-2xl font-extrabold text-white">
+        第 {index + 1} / {total} 组完成！
+      </h3>
+      <p className="text-white/70">
+        休息一下，准备好就继续下一组 💪 还剩 {total - index - 1} 组
+      </p>
+      <div className="mt-1 flex gap-1.5">
+        {Array.from({ length: total }).map((_, i) => (
+          <span
+            key={i}
+            className={`h-2.5 w-2.5 rounded-full ${
+              i <= index ? "bg-amber-300" : "bg-white/20"
+            }`}
+          />
+        ))}
+      </div>
+      <motion.button
+        onClick={onNext}
+        whileTap={{ scale: 0.95 }}
+        className="mt-3 min-h-12 rounded-full bg-gradient-to-r from-grape to-bubblegum px-8 py-3 text-lg font-extrabold text-white shadow-xl ring-4 ring-white/25"
+      >
+        继续 ▶
+      </motion.button>
+    </motion.div>
+  );
+}
+
 /** Tiny segmented control letting the reviewer pick what the cards reveal. */
 function DisplayModeToggle({
   value,
@@ -132,9 +197,13 @@ export default function SessionView({
   const displayMode = useAppStore((s) => s.displayMode);
   const setDisplayMode = useAppStore((s) => s.setDisplayMode);
 
+  // A long slot is broken into bite-size groups with a celebration between.
+  const groups = useMemo(() => balancedChunk(words), [words]);
+  const [groupIndex, setGroupIndex] = useState(0);
   const [queue, setQueue] = useState<SessionCard[]>(() =>
-    buildSessionQueue(words, mode, withQuiz),
+    buildSessionQueue(groups[0], mode, withQuiz),
   );
+  const [breaking, setBreaking] = useState(false);
   const [doneIds, setDoneIds] = useState<Set<string>>(new Set());
   const [stars, setStars] = useState(0);
   const [feeds, setFeeds] = useState(0);
@@ -146,6 +215,17 @@ export default function SessionView({
   if (!student) return null;
 
   const current = queue[0];
+  const groupWords = groups[groupIndex] ?? [];
+  const lastGroup = groupIndex >= groups.length - 1;
+
+  /** Move on to the next group's deck after a celebratory breather. */
+  const startNextGroup = () => {
+    const next = groupIndex + 1;
+    retries.current = {};
+    setGroupIndex(next);
+    setQueue(buildSessionQueue(groups[next], mode, withQuiz));
+    setBreaking(false);
+  };
 
   /** Drop the head card; optionally slip a retry card in 2 positions later. */
   const advanceQueue = (reinsert?: SessionCard) => {
@@ -157,9 +237,14 @@ export default function SessionView({
     }
     setQueue(next);
     if (next.length === 0) {
-      grantBatchBonus();
-      setFinished(true);
-      onComplete?.();
+      if (!lastGroup) {
+        // More groups to go — take a celebratory breather, don't finish yet.
+        setBreaking(true);
+      } else {
+        grantBatchBonus();
+        setFinished(true);
+        onComplete?.();
+      }
     }
   };
 
@@ -226,7 +311,7 @@ export default function SessionView({
           <X className="h-6 w-6" />
         </button>
         <div className="flex max-h-16 flex-1 flex-wrap items-center justify-center gap-1 overflow-hidden">
-          {words.map((w) => (
+          {groupWords.map((w) => (
             <motion.span
               key={w.id}
               className="text-lg leading-none"
@@ -238,6 +323,12 @@ export default function SessionView({
         </div>
         <SessionPet xp={student.xp} feedSignal={feeds} />
       </div>
+
+      {groups.length > 1 && (
+        <p className="mt-2 text-xs font-bold text-amber-300/90">
+          第 {Math.min(groupIndex + 1, groups.length)} / {groups.length} 组
+        </p>
+      )}
 
       <p className="mt-2 text-sm text-white/50">
         {mode === "discovery"
@@ -254,7 +345,7 @@ export default function SessionView({
       {/* The card stage */}
       <div className="mt-6 flex w-full flex-1 items-start justify-center">
         <AnimatePresence mode="wait">
-          {current && !finished && (
+          {current && !finished && !breaking && (
             current.kind === "study" ? (
               <LearningCard
                 key={current.key}
@@ -272,6 +363,17 @@ export default function SessionView({
           )}
         </AnimatePresence>
       </div>
+
+      <AnimatePresence>
+        {breaking && (
+          <GroupBreak
+            key={`break-${groupIndex}`}
+            index={groupIndex}
+            total={groups.length}
+            onNext={startNextGroup}
+          />
+        )}
+      </AnimatePresence>
 
       <AnimatePresence>
         {finished && (

@@ -60,6 +60,20 @@ body {
   height: 100%;
 }
 
+/* Respect a child/parent who asked the OS for calmer motion: stop the
+   looping keyframes and collapse long transitions. Framer Motion is handled
+   separately via <MotionConfig reducedMotion="user">. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 body {
   font-family: var(--font-display);
   background-color: var(--color-space-900);

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, MotionConfig } from "framer-motion";
 import type { SessionMode, VocabularyWord } from "@/lib/types";
 import { useAppStore } from "@/store/useAppStore";
 import { useLxllStore } from "@/store/useLxllStore";
@@ -67,10 +67,11 @@ export default function Home() {
   };
 
   return (
-    <main className="starfield min-h-dvh">
-      {activeStudentId && !session && <SpaceNavbar />}
+    <MotionConfig reducedMotion="user">
+      <main className="starfield min-h-dvh">
+        {activeStudentId && !session && <SpaceNavbar />}
 
-      <AnimatePresence mode="wait">
+        <AnimatePresence mode="wait">
         {!activeStudentId ? (
           <motion.div key="hub" exit={{ opacity: 0 }}>
             <ProfileHub />
@@ -117,7 +118,8 @@ export default function Home() {
             />
           </motion.div>
         )}
-      </AnimatePresence>
-    </main>
+        </AnimatePresence>
+      </main>
+    </MotionConfig>
   );
 }

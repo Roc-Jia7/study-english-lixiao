@@ -20,6 +20,26 @@ export interface SessionCard {
 /** Deal a verification quiz after every N study cards. */
 const QUIZ_EVERY = 3;
 
+/** A comfortable number of words to study before a celebratory breather. */
+export const GROUP_TARGET = 7;
+
+/**
+ * Split a slot's words into evenly-sized small groups (~GROUP_TARGET each) so a
+ * 20-word review becomes a few bite-size rounds with a celebration between
+ * them — never a single intimidating pile. Sizes stay balanced (no lonely
+ * 1-word last group). Returns a single group when the slot is already small.
+ */
+export function balancedChunk<T>(items: T[], target = GROUP_TARGET): T[][] {
+  if (items.length <= target) return [items];
+  const groupCount = Math.ceil(items.length / target);
+  const size = Math.ceil(items.length / groupCount);
+  const groups: T[][] = [];
+  for (let i = 0; i < items.length; i += size) {
+    groups.push(items.slice(i, i + size));
+  }
+  return groups;
+}
+
 function shuffle<T>(items: T[]): T[] {
   const a = [...items];
   for (let i = a.length - 1; i > 0; i--) {
