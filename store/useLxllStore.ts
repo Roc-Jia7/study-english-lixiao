@@ -11,6 +11,7 @@ import {
 } from "@/lib/lxll/api";
 import { lxllWordToVocabulary } from "@/lib/lxll/adapter";
 import { loadSession, clearSession, LxllApiError } from "@/lib/lxll/client";
+import { rememberLogin } from "@/lib/lxll/recentLogins";
 import type {
   LxllAntiForgetDay,
   LxllStudentMetric,
@@ -96,6 +97,14 @@ export const useLxllStore = create<LxllState>((set, get) => ({
       const profile = await fetchUserProfile();
       set({ status: "authed", profile });
       adoptStudent(profile);
+      // Remember this child on the device (identifier + name, never password)
+      // so switching back later only needs their password.
+      rememberLogin({
+        userId: profile.userId,
+        identifier: identifier.trim(),
+        name: profile.userName,
+        avatar: profile.gender === "FEMALE" ? "👧" : "👦",
+      });
       void get().loadData();
       return true;
     } catch (e) {

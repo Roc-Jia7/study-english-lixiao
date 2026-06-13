@@ -1,9 +1,15 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { Eye, EyeOff, Loader2, Rocket } from "lucide-react";
+import { Eye, EyeOff, Loader2, Rocket, X } from "lucide-react";
 import { useLxllStore } from "@/store/useLxllStore";
+import {
+  forgetRecentLogin,
+  loadLastIdentifier,
+  loadRecentLogins,
+  type RecentLogin,
+} from "@/lib/lxll/recentLogins";
 
 interface PasswordLoginProps {
   onShowDemo: () => void;
@@ -24,9 +30,30 @@ export default function PasswordLogin({ onShowDemo, onSuccess }: PasswordLoginPr
   const [account, setAccount] = useState("");
   const [password, setPassword] = useState("");
   const [showPw, setShowPw] = useState(false);
+  const [recents, setRecents] = useState<RecentLogin[]>([]);
+  const passwordRef = useRef<HTMLInputElement>(null);
+
+  // Pre-fill the last identifier and list children seen on this device.
+  useEffect(() => {
+    setRecents(loadRecentLogins());
+    setAccount(loadLastIdentifier());
+  }, []);
 
   const loading = status === "loading";
   const ready = account.trim().length >= 6 && password.length >= 4;
+
+  // Tap a remembered child → fill their identifier, just type the password.
+  const pickRecent = (r: RecentLogin) => {
+    setAccount(r.identifier);
+    setPassword("");
+    if (error) clearError();
+    requestAnimationFrame(() => passwordRef.current?.focus());
+  };
+
+  const forget = (userId: string) => {
+    forgetRecentLogin(userId);
+    setRecents((rs) => rs.filter((r) => r.userId !== userId));
+  };
 
   const submit = async () => {
     if (!ready || loading) return;
@@ -55,6 +82,39 @@ export default function PasswordLogin({ onShowDemo, onSuccess }: PasswordLoginPr
         </p>
       </div>
 
+      {/* Children seen on this device — tap one, then just type the password */}
+      {recents.length > 0 && (
+        <div className="mt-5">
+          <p className="mb-2 text-center text-xs font-bold text-white/40">
+            这台设备的孩子 · 点一下,只需输密码
+          </p>
+          <div className="flex flex-wrap justify-center gap-2">
+            {recents.map((r) => (
+              <div key={r.userId} className="relative">
+                <button
+                  onClick={() => pickRecent(r)}
+                  className={`flex items-center gap-2 rounded-full py-1.5 pl-2 pr-3 font-bold ring-2 transition active:scale-95 ${
+                    account === r.identifier
+                      ? "bg-amber-300/20 text-amber-200 ring-amber-300/50"
+                      : "bg-white/10 text-white/80 ring-white/15 hover:bg-white/15"
+                  }`}
+                >
+                  <span className="text-xl">{r.avatar}</span>
+                  {r.name}
+                </button>
+                <button
+                  onClick={() => forget(r.userId)}
+                  aria-label={`忘记 ${r.name}`}
+                  className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-space-700 text-white/60 ring-1 ring-white/20 active:scale-90"
+                >
+                  <X className="h-3 w-3" />
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
       <div className="mt-6 space-y-3">
         <input
           type="text"
@@ -72,6 +132,7 @@ export default function PasswordLogin({ onShowDemo, onSuccess }: PasswordLoginPr
 
         <div className="relative">
           <input
+            ref={passwordRef}
             type={showPw ? "text" : "password"}
             autoComplete="current-password"
             placeholder="密码"
