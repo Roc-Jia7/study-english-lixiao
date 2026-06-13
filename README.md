@@ -1,6 +1,7 @@
 # Word Star Academy · 单词星球 🚀
 
-**Live demo:** https://study-english-lixiao.vercel.app
+**Live:** https://lxll-study.pigent.top
+(also on https://study-english-lixiao.vercel.app)
 
 A gamified English vocabulary app for kids (ages 4–12). The Ebbinghaus
 forgetting curve becomes a pet-raising game: learning words feeds an egg
@@ -28,8 +29,9 @@ Parent gate accepts any 8+ digit phone number (demo).
   never sees timers or numbers.
 - **Streak & sticker wall** — each learning day lights a planet on the
   14-day Star Path; consecutive days grow a flame streak.
-- **Pet evolution** — XP from every answer: 🥚 → 🐣 → 🐲 → 🐉, with
-  confetti and a synthesized cheer at the end of every batch.
+- **Pet evolution** — XP from every answer across 7 stages
+  (🥚 → 🐣 → 🐥 → 🐲 → 🦖 → 🐉 → 🦄). The child can name the pet and poke
+  it for sparkles; every batch ends in confetti and a synthesized cheer.
 
 ## Audio
 
@@ -42,3 +44,12 @@ Sentences and cheers always use Web Speech.
 
 Next.js 15 (App Router) · React 19 · Tailwind CSS v4 · Framer Motion ·
 Zustand (persisted to localStorage) · canvas-confetti · Lucide icons.
+
+## Deployment
+
+Hosted on Vercel (team `roc-jia7s-projects`, project `study-english-lixiao`);
+every push to `main` auto-deploys. The primary domain
+`lxll-study.pigent.top` is a Cloudflare-managed `CNAME → cname.vercel-dns.com`
+(DNS only / grey cloud) — Vercel handles TLS. For a step-by-step, reusable
+guide to wiring any Cloudflare domain to a Vercel app, see
+[`docs/cloudflare-to-vercel.md`](docs/cloudflare-to-vercel.md).
