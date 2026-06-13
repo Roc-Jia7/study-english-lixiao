@@ -1,5 +1,7 @@
 # 将 Cloudflare 托管的域名指向 Vercel 应用
 
+> 🌐 English: [cloudflare-to-vercel.en.md](cloudflare-to-vercel.en.md)
+
 一份通用、可复用的操作指引:把一个 **DNS 托管在 Cloudflare** 的域名(根域名或子域名)指向部署在 **Vercel** 上的应用,并拿到自动签发的 HTTPS 证书。
 
 > 适用前提:域名的 nameserver 已经在 Cloudflare(在 Cloudflare 后台能管理它的 DNS),应用已经部署在 Vercel(有一个 `*.vercel.app` 地址)。

@@ -52,4 +52,5 @@ every push to `main` auto-deploys. The primary domain
 `lxll-study.pigent.top` is a Cloudflare-managed `CNAME → cname.vercel-dns.com`
 (DNS only / grey cloud) — Vercel handles TLS. For a step-by-step, reusable
 guide to wiring any Cloudflare domain to a Vercel app, see
-[`docs/cloudflare-to-vercel.md`](docs/cloudflare-to-vercel.md).
+[`docs/cloudflare-to-vercel.en.md`](docs/cloudflare-to-vercel.en.md)
+([中文](docs/cloudflare-to-vercel.md)).
