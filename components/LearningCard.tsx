@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
-import { Volume2, Languages, Eye, Loader2, Wifi } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { Volume2, Languages, Eye, EyeOff, Loader2, Wifi } from "lucide-react";
 import type { DisplayMode, VocabularyWord } from "@/lib/types";
 import { playWordAudio, playBilingual } from "@/lib/audio";
 import { speakSentence } from "@/lib/speech";
@@ -13,7 +13,12 @@ interface LearningCardProps {
   onAnswer: (known: boolean) => void;
   /** Which side(s) of the card to reveal up front. */
   displayMode?: DisplayMode;
+  /** View-only (looking back at a past word): hides the answer buttons. */
+  readOnly?: boolean;
 }
+
+/** Card must be on screen this long before an answer counts (anti-spam). */
+const MIN_VIEW_MS = 600;
 
 /** Long words can blow past the card width at a fixed 60px — shrink to fit. */
 function wordSizeClass(len: number): string {
@@ -87,34 +92,44 @@ function RevealButton({ label, onClick }: { label: string; onClick: () => void }
   );
 }
 
+/** Small "collapse / hide again" toggle shown once a side is revealed. */
+function HideToggle({ label, onClick }: { label: string; onClick: () => void }) {
+  return (
+    <button
+      onClick={onClick}
+      className="mx-auto mt-1.5 flex items-center gap-1 rounded-full px-3 py-1 text-xs font-bold text-violet-400/80 active:scale-95"
+    >
+      <EyeOff className="h-3.5 w-3.5" /> {label}
+    </button>
+  );
+}
+
 /**
  * One word, one card, zero clutter — but extra bouncy and cuddly. Big
  * tappable picture, big word, listen + bilingual buttons, and two giant
- * jelly self-assessment buttons. The display mode lets a reviewer hide one
- * language so the card doubles as a self-quiz (tap to reveal the answer).
+ * jelly self-assessment buttons. Tapping the hidden language toggles it open
+ * and closed; "帮帮我" turns into a kind little teaching moment instead of a
+ * silent skip.
  */
 export default function LearningCard({
   word,
   onAnswer,
   displayMode = "both",
+  readOnly = false,
 }: LearningCardProps) {
   const [revealed, setRevealed] = useState(false);
+  const [ready, setReady] = useState(false);
+  const [helping, setHelping] = useState(false);
   const [audioState, setAudioState] = useState<
     "idle" | "loading" | "playing" | "speech"
   >("idle");
+  const skipAutoplay = useRef(false);
 
   const audioHooks = {
     onLoading: () => setAudioState("loading"),
     onPlaying: () => setAudioState("playing"),
     onFallback: () => setAudioState("speech"),
   };
-
-  // Clear the weak-network hint a few seconds after it appears.
-  useEffect(() => {
-    if (audioState !== "speech") return;
-    const t = setTimeout(() => setAudioState("idle"), 4000);
-    return () => clearTimeout(t);
-  }, [audioState]);
 
   // Which side is hidden until revealed (the other side is the prompt).
   const hideSide = displayMode === "en" ? "zh" : displayMode === "zh" ? "en" : null;
@@ -124,11 +139,31 @@ export default function LearningCard({
   // Switching mode mid-deck gives a fresh recall challenge.
   useEffect(() => setRevealed(false), [displayMode]);
 
-  // Say the word out loud once it's visible (the session was started by a
-  // tap, so the audio gesture requirement is satisfied). Stay silent while
-  // the English answer is hidden so it isn't given away.
+  // Anti-spam: a new card can't be answered for a brief beat, so a child
+  // can't blast through the whole deck by hammering the same button.
+  useEffect(() => {
+    if (readOnly) return;
+    setReady(false);
+    const t = setTimeout(() => setReady(true), MIN_VIEW_MS);
+    return () => clearTimeout(t);
+  }, [word.id, readOnly]);
+
+  // Clear the weak-network hint a few seconds after it appears.
+  useEffect(() => {
+    if (audioState !== "speech") return;
+    const t = setTimeout(() => setAudioState("idle"), 4000);
+    return () => clearTimeout(t);
+  }, [audioState]);
+
+  // Say the word once it's visible (the session began with a tap, so the
+  // audio gesture requirement is satisfied). Stay silent while the English
+  // answer is hidden, and skip when "帮帮我" is already speaking it bilingually.
   useEffect(() => {
     if (!showEnglish) return;
+    if (skipAutoplay.current) {
+      skipAutoplay.current = false;
+      return;
+    }
     const timer = setTimeout(
       () => playWordAudio(word.id, word.word, word.audioUrl, audioHooks),
       350,
@@ -152,6 +187,30 @@ export default function LearningCard({
     });
   };
 
+  const knowIt = () => {
+    if (!ready || helping) return;
+    happySound();
+    onAnswer(true);
+  };
+
+  // "帮帮我": reveal the answer, hear it, and show a warm "let's look together"
+  // beat before the word slips back into the deck — real help, not a silent skip.
+  const helpMe = () => {
+    if (!ready || helping) return;
+    softSound();
+    skipAutoplay.current = true;
+    setRevealed(true);
+    setHelping(true);
+    playBilingual({
+      wordId: word.id,
+      word: word.word,
+      translation: word.translation,
+      audioUrl: word.audioUrl,
+      bilingualUrl: word.audioUrlBilingual,
+    });
+    setTimeout(() => onAnswer(false), 2200);
+  };
+
   return (
     <motion.div
       key={word.id}
@@ -164,6 +223,20 @@ export default function LearningCard({
       <Bubbles />
 
       <div className="relative overflow-hidden rounded-[2.5rem] bg-cream p-6 shadow-2xl ring-8 ring-white/30">
+        {/* Warm "let's learn it together" banner when the child asks for help */}
+        <AnimatePresence>
+          {helping && (
+            <motion.div
+              initial={{ opacity: 0, y: -12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0 }}
+              className="absolute inset-x-3 top-3 z-20 flex items-center justify-center gap-2 rounded-2xl bg-emerald-400/95 px-3 py-2 text-center text-sm font-extrabold text-white shadow-lg"
+            >
+              🤗 没关系，我们一起看一遍！It&apos;s okay — let&apos;s learn it!
+            </motion.div>
+          )}
+        </AnimatePresence>
+
         {/* Tappable visual anchor — a squishy sticker. Backend words have no
             emoji, so we show a friendly letter tile with a tiny face. When the
             English answer is hidden, a mystery tile keeps the spelling secret. */}
@@ -176,7 +249,6 @@ export default function LearningCard({
           whileTap={{ scale: 0.88, rotate: -4 }}
         >
           {word.emoji ? (
-            // The emoji shows meaning, not spelling — safe to keep in zh mode.
             <span className="text-8xl drop-shadow" role="img" aria-label={word.word}>
               {word.emoji}
             </span>
@@ -228,6 +300,9 @@ export default function LearningCard({
                 <Wifi className="h-3.5 w-3.5" /> 弱网 · 暂用朗读发音
               </p>
             )}
+            {hideSide === "en" && (
+              <HideToggle label="收起英文" onClick={() => setRevealed(false)} />
+            )}
           </>
         ) : (
           <RevealButton label="看看英文" onClick={() => setRevealed(true)} />
@@ -235,18 +310,23 @@ export default function LearningCard({
 
         {/* Chinese translation — tap for bilingual audio, or reveal when hidden */}
         {showChinese ? (
-          <motion.button
-            onClick={sayBilingual}
-            whileTap={{ scale: 0.95 }}
-            className="mx-auto mt-2 flex max-w-full flex-wrap items-center justify-center gap-2 rounded-3xl bg-violet-100 px-4 py-1.5 shadow-sm ring-2 ring-violet-200"
-            aria-label="双语朗读"
-          >
-            <span className="break-words text-center text-2xl font-bold text-space-700">
-              {word.translation}
-            </span>
-            <Languages className="h-5 w-5 shrink-0 text-violet-500" />
-            <span className="shrink-0 text-xs font-bold text-violet-500">中英</span>
-          </motion.button>
+          <>
+            <motion.button
+              onClick={sayBilingual}
+              whileTap={{ scale: 0.95 }}
+              className="mx-auto mt-2 flex max-w-full flex-wrap items-center justify-center gap-2 rounded-3xl bg-violet-100 px-4 py-1.5 shadow-sm ring-2 ring-violet-200"
+              aria-label="双语朗读"
+            >
+              <span className="break-words text-center text-2xl font-bold text-space-700">
+                {word.translation}
+              </span>
+              <Languages className="h-5 w-5 shrink-0 text-violet-500" />
+              <span className="shrink-0 text-xs font-bold text-violet-500">中英</span>
+            </motion.button>
+            {hideSide === "zh" && (
+              <HideToggle label="收起中文" onClick={() => setRevealed(false)} />
+            )}
+          </>
         ) : (
           <RevealButton label="看看中文" onClick={() => setRevealed(true)} />
         )}
@@ -276,49 +356,52 @@ export default function LearningCard({
         )}
       </div>
 
-      {/* Giant jelly self-assessment buttons (≥72px tall) */}
-      <div className="mt-5 grid grid-cols-2 gap-4">
-        <motion.button
-          onClick={() => {
-            softSound();
-            onAnswer(false);
-          }}
-          whileHover={{ scale: 1.05, rotate: -1 }}
-          whileTap={{ scale: 0.9, rotate: -3 }}
-          transition={{ type: "spring", stiffness: 400, damping: 12 }}
-          className="flex min-h-20 flex-col items-center justify-center rounded-[1.75rem] bg-gradient-to-b from-yellow-300 to-amber-400 px-4 py-3 shadow-xl ring-4 ring-yellow-200/60"
-        >
-          <motion.span
-            className="text-3xl"
-            animate={{ rotate: [0, -8, 8, 0] }}
-            transition={{ duration: 2.5, repeat: Infinity }}
+      {/* Giant jelly self-assessment buttons (≥72px tall). Hidden in view-only
+          peek mode, and briefly locked after a new card to prevent spam-taps. */}
+      {!readOnly && (
+        <div className="mt-5 grid grid-cols-2 gap-4">
+          <motion.button
+            onClick={helpMe}
+            disabled={!ready || helping}
+            whileHover={ready && !helping ? { scale: 1.05, rotate: -1 } : undefined}
+            whileTap={ready && !helping ? { scale: 0.9, rotate: -3 } : undefined}
+            transition={{ type: "spring", stiffness: 400, damping: 12 }}
+            className="flex min-h-20 flex-col items-center justify-center rounded-[1.75rem] bg-gradient-to-b from-yellow-300 to-amber-400 px-4 py-3 shadow-xl ring-4 ring-yellow-200/60 transition-opacity disabled:opacity-50"
           >
-            🐣
-          </motion.span>
-          <span className="text-lg font-extrabold text-amber-900">帮帮我</span>
-          <span className="text-xs font-bold text-amber-800/70">Help Me!</span>
-        </motion.button>
-        <motion.button
-          onClick={() => {
-            happySound();
-            onAnswer(true);
-          }}
-          whileHover={{ scale: 1.05, rotate: 1 }}
-          whileTap={{ scale: 0.9, rotate: 3 }}
-          transition={{ type: "spring", stiffness: 400, damping: 12 }}
-          className="flex min-h-20 flex-col items-center justify-center rounded-[1.75rem] bg-gradient-to-b from-emerald-400 to-green-500 px-4 py-3 shadow-xl ring-4 ring-emerald-300/60"
-        >
-          <motion.span
-            className="text-3xl"
-            animate={{ y: [0, -4, 0] }}
-            transition={{ duration: 1.4, repeat: Infinity }}
+            <motion.span
+              className="text-3xl"
+              animate={{ rotate: [0, -8, 8, 0] }}
+              transition={{ duration: 2.5, repeat: Infinity }}
+            >
+              {helping ? "📖" : "🐣"}
+            </motion.span>
+            <span className="text-lg font-extrabold text-amber-900">
+              {helping ? "一起看～" : "帮帮我"}
+            </span>
+            <span className="text-xs font-bold text-amber-800/70">
+              {helping ? "Learning together" : "Help Me!"}
+            </span>
+          </motion.button>
+          <motion.button
+            onClick={knowIt}
+            disabled={!ready || helping}
+            whileHover={ready && !helping ? { scale: 1.05, rotate: 1 } : undefined}
+            whileTap={ready && !helping ? { scale: 0.9, rotate: 3 } : undefined}
+            transition={{ type: "spring", stiffness: 400, damping: 12 }}
+            className="flex min-h-20 flex-col items-center justify-center rounded-[1.75rem] bg-gradient-to-b from-emerald-400 to-green-500 px-4 py-3 shadow-xl ring-4 ring-emerald-300/60 transition-opacity disabled:opacity-50"
           >
-            🌟
-          </motion.span>
-          <span className="text-lg font-extrabold text-white">我会啦</span>
-          <span className="text-xs font-bold text-emerald-100">I Know It!</span>
-        </motion.button>
-      </div>
+            <motion.span
+              className="text-3xl"
+              animate={{ y: [0, -4, 0] }}
+              transition={{ duration: 1.4, repeat: Infinity }}
+            >
+              🌟
+            </motion.span>
+            <span className="text-lg font-extrabold text-white">我会啦</span>
+            <span className="text-xs font-bold text-emerald-100">I Know It!</span>
+          </motion.button>
+        </div>
+      )}
     </motion.div>
   );
 }

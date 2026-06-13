@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { motion, AnimatePresence, useAnimationControls } from "framer-motion";
-import { X } from "lucide-react";
+import { X, ChevronLeft, ChevronRight, Undo2 } from "lucide-react";
 import type { DisplayMode, SessionMode, VocabularyWord } from "@/lib/types";
 import { balancedChunk, buildSessionQueue, type SessionCard } from "@/lib/session";
 import { useAppStore, useActiveStudent } from "@/store/useAppStore";
@@ -212,11 +212,29 @@ export default function SessionView({
   const retrySeq = useRef(0);
   const xpBefore = useRef(student?.xp ?? 0);
 
-  if (!student) return null;
+  // An ordered trail of distinct words seen, so a child can flip back to look
+  // at an earlier word (view-only) without losing their place.
+  const history = useRef<VocabularyWord[]>([]);
+  const [historyLen, setHistoryLen] = useState(0);
+  const [peekIndex, setPeekIndex] = useState<number | null>(null);
 
   const current = queue[0];
+
+  // Record each freshly shown study word into the look-back trail.
+  useEffect(() => {
+    if (current?.kind !== "study") return;
+    const h = history.current;
+    if (h[h.length - 1]?.id !== current.word.id) {
+      h.push(current.word);
+      setHistoryLen(h.length);
+    }
+  }, [current?.key, current?.kind, current?.word]);
+
+  if (!student) return null;
+
   const groupWords = groups[groupIndex] ?? [];
   const lastGroup = groupIndex >= groups.length - 1;
+  const canPeek = historyLen >= 2 && !finished && !breaking;
 
   /** Move on to the next group's deck after a celebratory breather. */
   const startNextGroup = () => {
@@ -338,30 +356,79 @@ export default function SessionView({
             : "Feed the hungry word monsters! 喂饱单词小怪兽"}
       </p>
 
-      {!finished && (
-        <DisplayModeToggle value={displayMode} onChange={setDisplayMode} />
+      {!finished && peekIndex === null && (
+        <div className="mt-3 flex items-center gap-2">
+          <DisplayModeToggle value={displayMode} onChange={setDisplayMode} />
+          {canPeek && (
+            <button
+              onClick={() => setPeekIndex(historyLen - 2)}
+              className="flex min-h-9 items-center gap-1 rounded-full bg-white/10 px-3 text-sm font-bold text-white/70 active:scale-95"
+            >
+              <ChevronLeft className="h-4 w-4" /> 上一个
+            </button>
+          )}
+        </div>
       )}
 
-      {/* The card stage */}
+      {/* The card stage — live deck, or a view-only look back at past words */}
       <div className="mt-6 flex w-full flex-1 items-start justify-center">
-        <AnimatePresence mode="wait">
-          {current && !finished && !breaking && (
-            current.kind === "study" ? (
-              <LearningCard
-                key={current.key}
-                word={current.word}
-                onAnswer={handleStudyAnswer}
-                displayMode={displayMode}
-              />
-            ) : (
-              <QuizCard
-                key={current.key}
-                card={current}
-                onAnswer={handleQuizAnswer}
-              />
-            )
-          )}
-        </AnimatePresence>
+        {peekIndex !== null ? (
+          <div className="flex w-full max-w-md flex-col items-center">
+            <div className="mb-2 flex items-center gap-2 rounded-full bg-white/10 px-4 py-1 text-sm font-bold text-white/70">
+              👀 回看 · 第 {peekIndex + 1} / {historyLen} 个
+            </div>
+            <LearningCard
+              key={`peek-${peekIndex}`}
+              word={history.current[peekIndex]}
+              onAnswer={() => {}}
+              displayMode={displayMode}
+              readOnly
+            />
+            <div className="mt-4 flex w-full items-center justify-between gap-2">
+              <button
+                onClick={() => setPeekIndex((i) => Math.max(0, (i ?? 0) - 1))}
+                disabled={peekIndex <= 0}
+                className="flex min-h-12 items-center gap-1 rounded-2xl bg-white/10 px-4 font-bold text-white/80 active:scale-95 disabled:opacity-30"
+              >
+                <ChevronLeft className="h-5 w-5" /> 上一个
+              </button>
+              <button
+                onClick={() => setPeekIndex(null)}
+                className="flex min-h-12 items-center gap-1 rounded-2xl bg-gradient-to-r from-grape to-bubblegum px-5 font-extrabold text-white shadow-lg ring-2 ring-white/25 active:scale-95"
+              >
+                <Undo2 className="h-5 w-5" /> 回到学习
+              </button>
+              <button
+                onClick={() =>
+                  setPeekIndex((i) => Math.min(historyLen - 1, (i ?? 0) + 1))
+                }
+                disabled={peekIndex >= historyLen - 1}
+                className="flex min-h-12 items-center gap-1 rounded-2xl bg-white/10 px-4 font-bold text-white/80 active:scale-95 disabled:opacity-30"
+              >
+                下一个 <ChevronRight className="h-5 w-5" />
+              </button>
+            </div>
+          </div>
+        ) : (
+          <AnimatePresence mode="wait">
+            {current && !finished && !breaking && (
+              current.kind === "study" ? (
+                <LearningCard
+                  key={current.key}
+                  word={current.word}
+                  onAnswer={handleStudyAnswer}
+                  displayMode={displayMode}
+                />
+              ) : (
+                <QuizCard
+                  key={current.key}
+                  card={current}
+                  onAnswer={handleQuizAnswer}
+                />
+              )
+            )}
+          </AnimatePresence>
+        )}
       </div>
 
       <AnimatePresence>
