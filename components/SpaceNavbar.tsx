@@ -20,10 +20,24 @@ export default function SpaceNavbar() {
 
   if (!student) return null;
 
+  const isLxll = student.id.startsWith("lxll:");
+
   const lockAndSignOut = () => {
     // Fully exit: clear the local station and any real lxll session.
-    if (student.id.startsWith("lxll:")) void lxllSignOut();
+    if (isLxll) void lxllSignOut();
     lockStation();
+  };
+
+  const handleSwitch = () => {
+    // For a real lxll family, switching child means logging in again with
+    // that child's password — so sign out and return to the login screen.
+    // (Demo profiles share one device, so keep the local avatar picker.)
+    if (isLxll) {
+      void lxllSignOut();
+      lockStation();
+    } else {
+      switchProfile();
+    }
   };
 
   return (
@@ -60,10 +74,11 @@ export default function SpaceNavbar() {
 
         <PetCompanion xp={student.xp} size="mini" />
 
-        {/* Switch pilot */}
+        {/* Switch pilot — for lxll, this re-logs in as another child */}
         <button
-          onClick={switchProfile}
-          aria-label="Switch profile"
+          onClick={handleSwitch}
+          aria-label={isLxll ? "切换孩子（重新登录）" : "Switch profile"}
+          title={isLxll ? "切换孩子（需重新登录）" : "切换档案"}
           className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10 text-white/80 transition hover:bg-white/20 active:scale-90"
         >
           <Users className="h-6 w-6" />

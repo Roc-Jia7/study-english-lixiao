@@ -2,9 +2,10 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, Loader2, LogIn } from "lucide-react";
 import type { SessionMode, VocabularyWord, WordCategory } from "@/lib/types";
 import { useActiveStudent, useAppStore } from "@/store/useAppStore";
+import { useLxllStore } from "@/store/useLxllStore";
 import {
   DISCOVERY_PACK_SIZE,
   REVIEW_SESSION_CAP,
@@ -29,6 +30,40 @@ interface DashboardProps {
 const CATEGORIES: WordCategory[] = ["animals", "food", "colors", "nature"];
 
 /**
+ * Shown when the active child isn't the one currently signed in to lxll
+ * (same phone, different password = a different child). We refuse to show
+ * another child's cached data and send the parent back to log in.
+ */
+function LxllRelogin({ name }: { name: string }) {
+  const signOut = useLxllStore((s) => s.signOut);
+  const lockStation = useAppStore((s) => s.lockStation);
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.95 }}
+      animate={{ opacity: 1, scale: 1 }}
+      className="mt-8 flex flex-col items-center gap-3 rounded-3xl bg-white/10 p-8 text-center ring-2 ring-white/15"
+    >
+      <span className="text-5xl">🔐</span>
+      <p className="text-xl font-extrabold text-white">
+        要查看 {name} 的复习内容，请重新登录
+      </p>
+      <p className="text-sm text-white/60">
+        同一手机号、不同密码 = 不同的孩子，需要用 {name} 的密码登录
+      </p>
+      <button
+        onClick={() => {
+          void signOut();
+          lockStation();
+        }}
+        className="mt-1 flex items-center gap-2 rounded-full bg-gradient-to-r from-grape to-bubblegum px-6 py-2.5 font-extrabold text-white shadow-lg ring-2 ring-white/25 active:scale-95"
+      >
+        <LogIn className="h-5 w-5" /> 重新登录
+      </button>
+    </motion.div>
+  );
+}
+
+/**
  * The child's mission control: their pet front and center, hungry word
  * monsters when reviews are due, and Discovery Packs of new words.
  */
@@ -38,6 +73,8 @@ export default function Dashboard({
 }: DashboardProps) {
   const student = useActiveStudent();
   const setPetName = useAppStore((s) => s.setPetName);
+  const lxllStatus = useLxllStore((s) => s.status);
+  const lxllProfile = useLxllStore((s) => s.profile);
 
   // Re-check the forgetting-curve clock every 30s so monsters appear
   // while the app is open (the 5-minute stage comes due fast).
@@ -62,6 +99,10 @@ export default function Dashboard({
   // Real lxll students learn from backend course words; demo profiles use
   // the local mock vocabulary. Both keep the pet / streak / confetti layer.
   const isLxll = student.id.startsWith("lxll:");
+  // Only show backend data when the signed-in lxll user IS this child, so one
+  // child's schedule/metric can never bleed into another's dashboard.
+  const lxllMatches =
+    !!lxllProfile && student.id === `lxll:${lxllProfile.userId}`;
 
   const dueWords = getDueWords(student, now);
   const newWords = getNewWords(student);
@@ -88,8 +129,18 @@ export default function Dashboard({
       {/* Star Path — streak flame + 14-day sticker wall */}
       <StickerWall student={student} />
 
-      {/* Real lxll learner: backend anti-forget reviews + lifetime stats */}
-      {isLxll && <LxllReviewPanel onStartReview={onStartLxllReview} />}
+      {/* Real lxll learner: backend anti-forget reviews + lifetime stats.
+          Guarded so a different child's cached data never shows here. */}
+      {isLxll &&
+        (lxllMatches ? (
+          <LxllReviewPanel onStartReview={onStartLxllReview} />
+        ) : lxllStatus === "loading" ? (
+          <div className="mt-8 flex items-center justify-center gap-2 py-8 text-white/60">
+            <Loader2 className="h-6 w-6 animate-spin" /> 正在载入…
+          </div>
+        ) : (
+          <LxllRelogin name={student.name} />
+        ))}
 
       {/* Hungry monsters — words due for review (demo mock vocabulary) */}
       {!isLxll && dueWords.length > 0 && (

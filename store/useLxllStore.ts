@@ -78,7 +78,19 @@ export const useLxllStore = create<LxllState>((set, get) => ({
   pendingResults: {},
 
   signIn: async (identifier, password) => {
-    set({ status: "loading", error: null });
+    // Clear the previous child's data up front. The same phone with a
+    // different password is a DIFFERENT child, so nothing from the last
+    // session may leak into this one.
+    set({
+      status: "loading",
+      error: null,
+      profile: null,
+      schedule: [],
+      metric: null,
+      dataError: null,
+      sessionReviews: [],
+      pendingResults: {},
+    });
     try {
       await loginByPassword(identifier, password);
       const profile = await fetchUserProfile();

@@ -13,14 +13,18 @@ import { useLxllStore } from "@/store/useLxllStore";
  */
 export default function ParentSummary({ student }: { student: StudentProfile }) {
   const metric = useLxllStore((s) => s.metric);
+  const profile = useLxllStore((s) => s.profile);
 
   const week = new Set(lastNDays(7));
   const daysThisWeek = student.learnedDates.filter((d) => week.has(d)).length;
 
-  // Real lxll learners have an authoritative lifetime count; demo profiles
-  // approximate it from the words they've actually touched in-app.
+  // Only trust the backend lifetime count when the signed-in lxll user IS
+  // this child; otherwise (different child, or a demo profile) fall back to
+  // the words touched locally, so no one else's number leaks in.
+  const lxllMatches =
+    !!profile && student.id === `lxll:${profile.userId}`;
   const wordsKnown =
-    metric?.totalLearnedWordCount ??
+    (lxllMatches ? metric?.totalLearnedWordCount : undefined) ??
     Object.values(student.progress).filter((p) => p.stage > 0).length;
 
   const stats: Array<{ icon: string; value: string | number; label: string }> = [
