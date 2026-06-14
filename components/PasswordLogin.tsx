@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { Eye, EyeOff, Loader2, Rocket, X } from "lucide-react";
 import { useLxllStore } from "@/store/useLxllStore";
 import { useAppStore } from "@/store/useAppStore";
-import { clearSession } from "@/lib/lxll/client";
+import { clearSession, clearAllAccounts } from "@/lib/lxll/client";
 import {
   clearRecentLogins,
   forgetRecentLogin,
@@ -65,6 +65,7 @@ export default function PasswordLogin({ onShowDemo, onSuccess }: PasswordLoginPr
     clearRecentLogins();
     forgetRealStudents();
     clearSession();
+    clearAllAccounts();
     if (error) clearError();
     setRecents([]);
     setAccount("");

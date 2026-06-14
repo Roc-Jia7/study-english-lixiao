@@ -12,7 +12,12 @@ import PetCompanion from "./PetCompanion";
  * The Space Station top bar: who is flying, today's energy, and big
  * touch-friendly buttons to switch pilots or lock the station (parents).
  */
-export default function SpaceNavbar() {
+export default function SpaceNavbar({
+  onSwitchChild,
+}: {
+  /** Open the fast child switcher (lxll families). */
+  onSwitchChild?: () => void;
+}) {
   const student = useActiveStudent();
   const switchProfile = useAppStore((s) => s.switchProfile);
   const lockStation = useAppStore((s) => s.lockStation);
@@ -29,15 +34,10 @@ export default function SpaceNavbar() {
   };
 
   const handleSwitch = () => {
-    // For a real lxll family, switching child means logging in again with
-    // that child's password — so sign out and return to the login screen.
-    // (Demo profiles share one device, so keep the local avatar picker.)
-    if (isLxll) {
-      void lxllSignOut();
-      lockStation();
-    } else {
-      switchProfile();
-    }
+    // lxll families switch between children via the fast picker (stored
+    // tokens, no password). Demo profiles use the local avatar roster.
+    if (isLxll) onSwitchChild?.();
+    else switchProfile();
   };
 
   return (

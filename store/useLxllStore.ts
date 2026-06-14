@@ -10,7 +10,13 @@ import {
   type AntiForgetSubmission,
 } from "@/lib/lxll/api";
 import { lxllWordToVocabulary } from "@/lib/lxll/adapter";
-import { loadSession, clearSession, LxllApiError } from "@/lib/lxll/client";
+import {
+  loadSession,
+  clearSession,
+  setActiveAccount,
+  clearAllAccounts,
+  LxllApiError,
+} from "@/lib/lxll/client";
 import { rememberLogin } from "@/lib/lxll/recentLogins";
 import { pullAndMerge } from "@/lib/sync/cloudSync";
 import type {
@@ -56,6 +62,8 @@ interface LxllState {
   pendingResults: Record<number, boolean>;
 
   signIn: (identifier: string, password: string) => Promise<boolean>;
+  /** Instant-switch to another child already signed in on this device. */
+  switchToChild: (userId: string) => Promise<boolean>;
   restore: () => Promise<void>;
   loadData: () => Promise<void>;
   /** Fetch the words for ONE chosen review slot to start a session. */
@@ -113,6 +121,33 @@ export const useLxllStore = create<LxllState>((set, get) => ({
     } catch (e) {
       const msg = e instanceof LxllApiError ? e.message : "登录失败，请稍后重试";
       set({ status: "error", error: msg });
+      return false;
+    }
+  },
+
+  switchToChild: async (userId) => {
+    // Use the child's stored token — no password — if we still have it.
+    if (!setActiveAccount(userId)) return false;
+    set({
+      status: "loading",
+      error: null,
+      profile: null,
+      schedule: [],
+      metric: null,
+      dataError: null,
+      sessionReviews: [],
+      pendingResults: {},
+    });
+    try {
+      const profile = await fetchUserProfile(); // validates the token
+      set({ status: "authed", profile });
+      adoptStudent(profile);
+      await pullAndMerge(profile.userId);
+      void get().loadData();
+      return true;
+    } catch {
+      // Token expired/invalid → caller falls back to password login.
+      set({ status: "idle", profile: null });
       return false;
     }
   },
@@ -197,6 +232,7 @@ export const useLxllStore = create<LxllState>((set, get) => ({
 
   signOut: async () => {
     await lxllLogout();
+    clearAllAccounts(); // a full lock forgets every stored child token
     set({
       status: "idle",
       profile: null,

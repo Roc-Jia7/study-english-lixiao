@@ -13,11 +13,48 @@ const PROXY_URL = "/api/lxll";
 const TOKEN_KEY = "lxll:accessToken";
 const REFRESH_KEY = "lxll:refreshToken";
 const USER_ID_KEY = "lxll:userId";
+const ACCOUNTS_KEY = "lxll:accounts";
 
 export interface LxllSession {
   accessToken: string;
   refreshToken?: string;
   userId?: string;
+}
+
+/** Tokens for every child signed in on this device, so switching between
+ *  them is instant (no re-entering passwords) until a token expires. */
+type LxllAccounts = Record<string, { accessToken: string; refreshToken?: string }>;
+
+export function loadAccounts(): LxllAccounts {
+  if (typeof window === "undefined") return {};
+  try {
+    return (JSON.parse(localStorage.getItem(ACCOUNTS_KEY) ?? "{}") ??
+      {}) as LxllAccounts;
+  } catch {
+    return {};
+  }
+}
+
+function saveAccounts(a: LxllAccounts) {
+  localStorage.setItem(ACCOUNTS_KEY, JSON.stringify(a));
+}
+
+/** Point the active session at an already-known child's token. */
+export function setActiveAccount(userId: string): boolean {
+  if (typeof window === "undefined") return false;
+  const acc = loadAccounts()[userId];
+  if (!acc?.accessToken) return false;
+  localStorage.setItem(TOKEN_KEY, acc.accessToken);
+  if (acc.refreshToken) localStorage.setItem(REFRESH_KEY, acc.refreshToken);
+  else localStorage.removeItem(REFRESH_KEY);
+  localStorage.setItem(USER_ID_KEY, userId);
+  return true;
+}
+
+/** Forget every stored child token (full sign-out / lock). */
+export function clearAllAccounts() {
+  if (typeof window === "undefined") return;
+  localStorage.removeItem(ACCOUNTS_KEY);
 }
 
 export class LxllApiError extends Error {
@@ -48,6 +85,15 @@ export function saveSession(session: LxllSession) {
   localStorage.setItem(TOKEN_KEY, session.accessToken);
   if (session.refreshToken) localStorage.setItem(REFRESH_KEY, session.refreshToken);
   if (session.userId) localStorage.setItem(USER_ID_KEY, session.userId);
+  // Remember this child's token so we can switch back to them instantly.
+  if (session.userId) {
+    const a = loadAccounts();
+    a[session.userId] = {
+      accessToken: session.accessToken,
+      refreshToken: session.refreshToken,
+    };
+    saveAccounts(a);
+  }
 }
 
 export function clearSession() {

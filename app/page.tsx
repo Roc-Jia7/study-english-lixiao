@@ -11,6 +11,7 @@ import SpaceNavbar from "@/components/SpaceNavbar";
 import ProfileHub from "@/components/ProfileHub";
 import Dashboard from "@/components/Dashboard";
 import PackDetail from "@/components/PackDetail";
+import ChildSwitcher from "@/components/ChildSwitcher";
 import SessionView from "@/components/SessionView";
 
 interface ActiveSession {
@@ -37,6 +38,7 @@ export default function Home() {
   const submitResults = useLxllStore((s) => s.submitResults);
   const [session, setSession] = useState<ActiveSession | null>(null);
   const [packId, setPackId] = useState<string | null>(null);
+  const [switching, setSwitching] = useState(false);
 
   // Zustand rehydrates from localStorage on the client; hold rendering
   // until mounted so the server and first client paint always match.
@@ -54,6 +56,7 @@ export default function Home() {
     if (!activeStudentId) {
       setSession(null);
       setPackId(null);
+      setSwitching(false);
     }
   }, [activeStudentId]);
 
@@ -84,7 +87,15 @@ export default function Home() {
   return (
     <MotionConfig reducedMotion="user">
       <main className="starfield min-h-dvh">
-        {activeStudentId && !session && <SpaceNavbar />}
+        {activeStudentId && !session && (
+          <SpaceNavbar onSwitchChild={() => setSwitching(true)} />
+        )}
+
+        <AnimatePresence>
+          {switching && activeStudentId && !session && (
+            <ChildSwitcher onClose={() => setSwitching(false)} />
+          )}
+        </AnimatePresence>
 
         <AnimatePresence mode="wait">
         {!activeStudentId ? (

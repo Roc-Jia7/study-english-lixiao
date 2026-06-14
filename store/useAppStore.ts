@@ -76,6 +76,9 @@ interface AppState {
   forgetRealStudents: () => void;
   unlockParentGate: () => void;
   lockStation: () => void;
+  /** Show the login screen (to add/expire-relogin a child) without wiping
+   *  the device's stored child tokens. */
+  goToLogin: () => void;
   selectStudent: (id: string) => void;
   switchProfile: () => void;
   recordAnswer: (wordId: string, known: boolean) => void;
@@ -156,6 +159,8 @@ export const useAppStore = create<AppState>()(
       unlockParentGate: () => set({ parentUnlocked: true }),
 
       lockStation: () => set({ parentUnlocked: false, activeStudentId: null }),
+
+      goToLogin: () => set({ parentUnlocked: false, activeStudentId: null }),
 
       selectStudent: (id) =>
         set((state) => ({
