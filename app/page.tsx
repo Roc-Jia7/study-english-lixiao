@@ -6,6 +6,7 @@ import type { SessionMode, VocabularyWord } from "@/lib/types";
 import { useAppStore } from "@/store/useAppStore";
 import { useLxllStore } from "@/store/useLxllStore";
 import { WORD_PACKS } from "@/lib/wordpacks";
+import { startCloudSync } from "@/lib/sync/cloudSync";
 import SpaceNavbar from "@/components/SpaceNavbar";
 import ProfileHub from "@/components/ProfileHub";
 import Dashboard from "@/components/Dashboard";
@@ -42,6 +43,8 @@ export default function Home() {
   const [mounted, setMounted] = useState(false);
   useEffect(() => {
     setMounted(true);
+    // Begin debounced cross-device progress sync (no-ops if no DB configured).
+    startCloudSync();
     // Re-hydrate a stored lxll session (token in localStorage).
     void restoreLxll();
   }, [restoreLxll]);

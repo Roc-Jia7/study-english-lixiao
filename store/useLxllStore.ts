@@ -12,6 +12,7 @@ import {
 import { lxllWordToVocabulary } from "@/lib/lxll/adapter";
 import { loadSession, clearSession, LxllApiError } from "@/lib/lxll/client";
 import { rememberLogin } from "@/lib/lxll/recentLogins";
+import { pullAndMerge } from "@/lib/sync/cloudSync";
 import type {
   LxllAntiForgetDay,
   LxllStudentMetric,
@@ -105,6 +106,8 @@ export const useLxllStore = create<LxllState>((set, get) => ({
         name: profile.userName,
         avatar: profile.gender === "FEMALE" ? "👧" : "👦",
       });
+      // Pull cross-device progress and merge it into the local profile.
+      await pullAndMerge(profile.userId);
       void get().loadData();
       return true;
     } catch (e) {
@@ -121,6 +124,7 @@ export const useLxllStore = create<LxllState>((set, get) => ({
       const profile = await fetchUserProfile();
       set({ status: "authed", profile });
       adoptStudent(profile);
+      await pullAndMerge(profile.userId);
       void get().loadData();
     } catch {
       clearSession();

@@ -84,6 +84,8 @@ interface AppState {
   ensureStudent: (
     profile: Pick<StudentProfile, "id" | "name" | "title" | "titleZh" | "avatar" | "gradient">,
   ) => void;
+  /** Overwrite a student record wholesale (used by cross-device sync merge). */
+  replaceStudent: (student: StudentProfile) => void;
 }
 
 /** Reset the daily energy counter when the calendar day changes. */
@@ -187,6 +189,11 @@ export const useAppStore = create<AppState>()(
             students: { ...state.students, [profile.id]: student },
           };
         }),
+
+      replaceStudent: (student) =>
+        set((state) => ({
+          students: { ...state.students, [student.id]: student },
+        })),
 
       recordAnswer: (wordId, known) =>
         set((state) => {
