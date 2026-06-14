@@ -5,12 +5,14 @@ import {
   advanceStage,
   applyAnswer,
   countMastered,
+  getDueFromPool,
   getDueWords,
+  getNewFromPool,
   getNewWords,
   memoryStrength,
 } from "../spaced-repetition";
 import { VOCABULARY } from "../vocabulary";
-import type { StudentProfile, WordProgress } from "../types";
+import type { StudentProfile, VocabularyWord, WordProgress } from "../types";
 
 const NOW = new Date("2026-06-12T10:00:00.000Z");
 
@@ -46,6 +48,46 @@ function progressAt(
     timesWrong: 0,
   };
 }
+
+describe("getNewFromPool / getDueFromPool", () => {
+  const pool: VocabularyWord[] = ["a", "b", "c"].map((id) => ({
+    id: `pack-${id}`,
+    word: id,
+    phonetic: "",
+    translation: "",
+    sentence_en: "",
+    sentence_zh: "",
+    category: "nature",
+    tier: "beginner",
+    imageUrl: "",
+    emoji: "",
+    nextReviewTime: "",
+  }));
+
+  it("treats only un-studied pool words as new", () => {
+    const student = makeStudent({
+      "pack-a": progressAt("pack-a", 1, NOW.toISOString()),
+    });
+    expect(getNewFromPool(student, pool).map((w) => w.id)).toEqual([
+      "pack-b",
+      "pack-c",
+    ]);
+  });
+
+  it("returns only due pool words, oldest-first", () => {
+    const past = new Date(NOW.getTime() - 60_000).toISOString();
+    const future = new Date(NOW.getTime() + 60_000).toISOString();
+    const student = makeStudent({
+      "pack-a": progressAt("pack-a", 2, past),
+      "pack-b": progressAt("pack-b", 2, future), // not due yet
+      "pack-c": progressAt("pack-c", 2, NOW.toISOString()),
+    });
+    expect(getDueFromPool(student, pool, NOW).map((w) => w.id)).toEqual([
+      "pack-a",
+      "pack-c",
+    ]);
+  });
+});
 
 describe("advanceStage", () => {
   it("moves up one checkpoint when known", () => {

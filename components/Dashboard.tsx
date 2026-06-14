@@ -17,6 +17,7 @@ import { CATEGORY_META } from "@/lib/vocabulary";
 import PetCompanion from "./PetCompanion";
 import StickerWall from "./StickerWall";
 import LxllReviewPanel from "./LxllReviewPanel";
+import WordPackPanel from "./WordPackPanel";
 import ParentSummary from "./ParentSummary";
 import PetNameModal from "./PetNameModal";
 
@@ -25,6 +26,8 @@ interface DashboardProps {
   /** A real lxll review session (real words, results submitted, no quiz).
    *  `practice` re-runs a finished slot locally without writing the curve. */
   onStartLxllReview: (words: VocabularyWord[], practice?: boolean) => void;
+  /** A local bundled-word-pack session (no quiz, no backend). */
+  onStartPack: (words: VocabularyWord[]) => void;
 }
 
 const CATEGORIES: WordCategory[] = ["animals", "food", "colors", "nature"];
@@ -70,6 +73,7 @@ function LxllRelogin({ name }: { name: string }) {
 export default function Dashboard({
   onStartSession,
   onStartLxllReview,
+  onStartPack,
 }: DashboardProps) {
   const student = useActiveStudent();
   const setPetName = useAppStore((s) => s.setPetName);
@@ -241,6 +245,9 @@ export default function Dashboard({
           </p>
         </motion.div>
       )}
+
+      {/* Bundled textbook/exam word packs — a local memorization plan */}
+      <WordPackPanel onStartPack={onStartPack} />
 
       {/* Quiet, chart-free snapshot for parents */}
       <ParentSummary student={student} />

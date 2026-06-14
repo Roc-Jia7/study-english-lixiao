@@ -56,9 +56,35 @@ export function memoryStrength(progress: WordProgress | undefined): number {
   return (progress?.stage ?? 0) / MASTERED_STAGE;
 }
 
+/** New words (never studied) from an arbitrary pool — e.g. a word pack. */
+export function getNewFromPool(
+  student: StudentProfile,
+  pool: VocabularyWord[],
+): VocabularyWord[] {
+  return pool.filter((w) => !student.progress[w.id]);
+}
+
+/** Due words (forgetting timer expired) from an arbitrary pool, oldest-first. */
+export function getDueFromPool(
+  student: StudentProfile,
+  pool: VocabularyWord[],
+  now: Date = new Date(),
+): VocabularyWord[] {
+  return pool
+    .filter((w) => {
+      const p = student.progress[w.id];
+      return p && new Date(p.nextReviewTime).getTime() <= now.getTime();
+    })
+    .sort(
+      (a, b) =>
+        new Date(student.progress[a.id].nextReviewTime).getTime() -
+        new Date(student.progress[b.id].nextReviewTime).getTime(),
+    );
+}
+
 /** Words this student has never studied, grouped for Discovery Packs. */
 export function getNewWords(student: StudentProfile): VocabularyWord[] {
-  return VOCABULARY.filter((w) => !student.progress[w.id]);
+  return getNewFromPool(student, VOCABULARY);
 }
 
 /** Words whose forgetting-curve timer has expired — the hungry monsters. */
@@ -66,17 +92,7 @@ export function getDueWords(
   student: StudentProfile,
   now: Date = new Date(),
 ): VocabularyWord[] {
-  return VOCABULARY.filter((w) => {
-    const p = student.progress[w.id];
-    return p && new Date(p.nextReviewTime).getTime() <= now.getTime();
-  }).sort((a, b) => {
-    const pa = student.progress[a.id];
-    const pb = student.progress[b.id];
-    return (
-      new Date(pa.nextReviewTime).getTime() -
-      new Date(pb.nextReviewTime).getTime()
-    );
-  });
+  return getDueFromPool(student, VOCABULARY, now);
 }
 
 export function countMastered(student: StudentProfile): number {

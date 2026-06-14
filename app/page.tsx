@@ -17,6 +17,8 @@ interface ActiveSession {
   lxll?: boolean;
   /** Re-practice of a finished slot — runs locally, no backend submit. */
   practice?: boolean;
+  /** Override quiz insertion (bundled packs have no pictures → no quiz). */
+  withQuiz?: boolean;
 }
 
 /**
@@ -87,7 +89,7 @@ export default function Home() {
               words={session.words}
               mode={session.mode}
               onExit={() => setSession(null)}
-              withQuiz={!session.lxll}
+              withQuiz={session.withQuiz ?? !session.lxll}
               onResult={
                 session.lxll && !session.practice
                   ? (word, known) => {
@@ -114,6 +116,9 @@ export default function Home() {
               onStartSession={(mode, words) => setSession({ mode, words })}
               onStartLxllReview={(words, practice) =>
                 setSession({ mode: "review", words, lxll: true, practice })
+              }
+              onStartPack={(words) =>
+                setSession({ mode: "review", words, withQuiz: false })
               }
             />
           </motion.div>
