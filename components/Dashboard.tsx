@@ -26,8 +26,8 @@ interface DashboardProps {
   /** A real lxll review session (real words, results submitted, no quiz).
    *  `practice` re-runs a finished slot locally without writing the curve. */
   onStartLxllReview: (words: VocabularyWord[], practice?: boolean) => void;
-  /** A local bundled-word-pack session (no quiz, no backend). */
-  onStartPack: (words: VocabularyWord[]) => void;
+  /** Open a bundled word pack's overview + study-plan screen. */
+  onOpenPack: (packId: string) => void;
 }
 
 const CATEGORIES: WordCategory[] = ["animals", "food", "colors", "nature"];
@@ -73,7 +73,7 @@ function LxllRelogin({ name }: { name: string }) {
 export default function Dashboard({
   onStartSession,
   onStartLxllReview,
-  onStartPack,
+  onOpenPack,
 }: DashboardProps) {
   const student = useActiveStudent();
   const setPetName = useAppStore((s) => s.setPetName);
@@ -247,7 +247,7 @@ export default function Dashboard({
       )}
 
       {/* Bundled textbook/exam word packs — a local memorization plan */}
-      <WordPackPanel onStartPack={onStartPack} />
+      <WordPackPanel onOpenPack={onOpenPack} />
 
       {/* Quiet, chart-free snapshot for parents */}
       <ParentSummary student={student} />

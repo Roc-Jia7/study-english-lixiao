@@ -65,8 +65,11 @@ interface AppState {
   parentUnlocked: boolean;
   /** How learning cards reveal text during a session (kept across sessions). */
   displayMode: DisplayMode;
+  /** Per-pack "new words per day" quota for the study plan. */
+  packDailyNew: Record<string, number>;
 
   setDisplayMode: (mode: DisplayMode) => void;
+  setPackDailyNew: (packId: string, dailyNew: number) => void;
   /** Name (or rename) the active student's pet. */
   setPetName: (name: string) => void;
   /** Wipe all real (lxll) children from this device — privacy cleanup. */
@@ -111,8 +114,14 @@ export const useAppStore = create<AppState>()(
       activeStudentId: null,
       parentUnlocked: false,
       displayMode: "both",
+      packDailyNew: {},
 
       setDisplayMode: (mode) => set({ displayMode: mode }),
+
+      setPackDailyNew: (packId, dailyNew) =>
+        set((state) => ({
+          packDailyNew: { ...state.packDailyNew, [packId]: dailyNew },
+        })),
 
       setPetName: (name) =>
         set((state) => {

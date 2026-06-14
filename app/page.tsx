@@ -5,9 +5,11 @@ import { motion, AnimatePresence, MotionConfig } from "framer-motion";
 import type { SessionMode, VocabularyWord } from "@/lib/types";
 import { useAppStore } from "@/store/useAppStore";
 import { useLxllStore } from "@/store/useLxllStore";
+import { WORD_PACKS } from "@/lib/wordpacks";
 import SpaceNavbar from "@/components/SpaceNavbar";
 import ProfileHub from "@/components/ProfileHub";
 import Dashboard from "@/components/Dashboard";
+import PackDetail from "@/components/PackDetail";
 import SessionView from "@/components/SessionView";
 
 interface ActiveSession {
@@ -33,6 +35,7 @@ export default function Home() {
   const recordWordResult = useLxllStore((s) => s.recordWordResult);
   const submitResults = useLxllStore((s) => s.submitResults);
   const [session, setSession] = useState<ActiveSession | null>(null);
+  const [packId, setPackId] = useState<string | null>(null);
 
   // Zustand rehydrates from localStorage on the client; hold rendering
   // until mounted so the server and first client paint always match.
@@ -43,10 +46,17 @@ export default function Home() {
     void restoreLxll();
   }, [restoreLxll]);
 
-  // Leaving a profile always ends any running session.
+  // Leaving a profile always ends any running session or pack view.
   useEffect(() => {
-    if (!activeStudentId) setSession(null);
+    if (!activeStudentId) {
+      setSession(null);
+      setPackId(null);
+    }
   }, [activeStudentId]);
+
+  const openPack = packId
+    ? (WORD_PACKS.find((p) => p.id === packId) ?? null)
+    : null;
 
   if (!mounted) {
     return (
@@ -105,6 +115,21 @@ export default function Home() {
               }
             />
           </motion.div>
+        ) : openPack ? (
+          <motion.div
+            key="pack"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0 }}
+          >
+            <PackDetail
+              pack={openPack}
+              onBack={() => setPackId(null)}
+              onStart={(words) =>
+                setSession({ mode: "review", words, withQuiz: false })
+              }
+            />
+          </motion.div>
         ) : (
           <motion.div
             key="dashboard"
@@ -117,9 +142,7 @@ export default function Home() {
               onStartLxllReview={(words, practice) =>
                 setSession({ mode: "review", words, lxll: true, practice })
               }
-              onStartPack={(words) =>
-                setSession({ mode: "review", words, withQuiz: false })
-              }
+              onOpenPack={(id) => setPackId(id)}
             />
           </motion.div>
         )}
