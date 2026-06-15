@@ -51,6 +51,29 @@ export default function Home() {
     void restoreLxll();
   }, [restoreLxll]);
 
+  // Coming back to the foreground (tab/app re-focus) re-pulls the lxll
+  // schedule, so a review the teacher completed remotely — its backend
+  // `status` flips to DONE — shows as finished without a manual reload.
+  // Throttled so the focus + visibility events don't double-fetch.
+  useEffect(() => {
+    let last = 0;
+    const refresh = () => {
+      if (document.visibilityState !== "visible") return;
+      const lxll = useLxllStore.getState();
+      if (lxll.status !== "authed" || lxll.loadingData) return;
+      const ts = Date.now();
+      if (ts - last < 5000) return;
+      last = ts;
+      void lxll.loadData();
+    };
+    document.addEventListener("visibilitychange", refresh);
+    window.addEventListener("focus", refresh);
+    return () => {
+      document.removeEventListener("visibilitychange", refresh);
+      window.removeEventListener("focus", refresh);
+    };
+  }, []);
+
   // Leaving a profile always ends any running session or pack view.
   useEffect(() => {
     if (!activeStudentId) {
