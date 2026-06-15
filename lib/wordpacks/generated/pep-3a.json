@@ -1,0 +1,392 @@
+{
+ "id": "pep-3a",
+ "name": "人教版 三年级上 · 全册",
+ "subtitle": "PEP Grade 3A · Units 1–6",
+ "source": "DictionaryData (Apache-2.0) · 人教版三年级起点三年级上",
+ "words": [
+  {
+   "word": "ruler",
+   "phonetic": "/ˈrulɚ/",
+   "translation": "尺子",
+   "unit": "Unit 1"
+  },
+  {
+   "word": "pencil",
+   "phonetic": "/ˈpɛnsəl/",
+   "translation": "铅笔",
+   "unit": "Unit 1"
+  },
+  {
+   "word": "eraser",
+   "phonetic": "/ɪˈresɚ/",
+   "translation": "橡皮",
+   "unit": "Unit 1"
+  },
+  {
+   "word": "crayon",
+   "phonetic": "/ˈkreən/",
+   "translation": "蜡笔",
+   "unit": "Unit 1"
+  },
+  {
+   "word": "bag",
+   "phonetic": "/bæɡ/",
+   "translation": "书包",
+   "unit": "Unit 1"
+  },
+  {
+   "word": "pen",
+   "phonetic": "/pɛn/",
+   "translation": "钢笔",
+   "unit": "Unit 1"
+  },
+  {
+   "word": "pencil box",
+   "phonetic": "/ˈpɛnsəl bɑks/",
+   "translation": "铅笔盒",
+   "unit": "Unit 1"
+  },
+  {
+   "word": "book",
+   "phonetic": "/bʊk/",
+   "translation": "书",
+   "unit": "Unit 1"
+  },
+  {
+   "word": "no",
+   "phonetic": "/no/",
+   "translation": "不;没有",
+   "unit": "Unit 1"
+  },
+  {
+   "word": "your",
+   "phonetic": "/jʊr/",
+   "translation": "你的",
+   "unit": "Unit 1"
+  },
+  {
+   "word": "red",
+   "phonetic": "/rɛd/",
+   "translation": "红色",
+   "unit": "Unit 2"
+  },
+  {
+   "word": "green",
+   "phonetic": "/ɡrin/",
+   "translation": "绿色",
+   "unit": "Unit 2"
+  },
+  {
+   "word": "yellow",
+   "phonetic": "/ˈjeloʊ/",
+   "translation": "黄色",
+   "unit": "Unit 2"
+  },
+  {
+   "word": "blue",
+   "phonetic": "/blu/",
+   "translation": "蓝色",
+   "unit": "Unit 2"
+  },
+  {
+   "word": "black",
+   "phonetic": "/blæk/",
+   "translation": "黑色",
+   "unit": "Unit 2"
+  },
+  {
+   "word": "brown",
+   "phonetic": "/braʊn/",
+   "translation": "褐色",
+   "unit": "Unit 2"
+  },
+  {
+   "word": "white",
+   "phonetic": "/waɪt/",
+   "translation": "白色",
+   "unit": "Unit 2"
+  },
+  {
+   "word": "orange",
+   "phonetic": "/ˈɔrɪndʒ/",
+   "translation": "橙子",
+   "unit": "Unit 2"
+  },
+  {
+   "word": "OK",
+   "phonetic": "/oʊˈke/",
+   "translation": "好",
+   "unit": "Unit 2"
+  },
+  {
+   "word": "mum",
+   "phonetic": "/mʌm/",
+   "translation": "妈妈",
+   "unit": "Unit 2"
+  },
+  {
+   "word": "face",
+   "phonetic": "/fes/",
+   "translation": "脸",
+   "unit": "Unit 3"
+  },
+  {
+   "word": "ear",
+   "phonetic": "/ɪɚ/",
+   "translation": "耳朵",
+   "unit": "Unit 3"
+  },
+  {
+   "word": "eye",
+   "phonetic": "/ai/",
+   "translation": "眼睛",
+   "unit": "Unit 3"
+  },
+  {
+   "word": "nose",
+   "phonetic": "/noʊz/",
+   "translation": "鼻子",
+   "unit": "Unit 3"
+  },
+  {
+   "word": "mouth",
+   "phonetic": "/maʊθ/",
+   "translation": "嘴",
+   "unit": "Unit 3"
+  },
+  {
+   "word": "arm",
+   "phonetic": "/ɑrm/",
+   "translation": "胳膊",
+   "unit": "Unit 3"
+  },
+  {
+   "word": "hand",
+   "phonetic": "/hænd/",
+   "translation": "手",
+   "unit": "Unit 3"
+  },
+  {
+   "word": "head",
+   "phonetic": "/hɛd/",
+   "translation": "头",
+   "unit": "Unit 3"
+  },
+  {
+   "word": "body",
+   "phonetic": "/ˈbɑdi/",
+   "translation": "身体",
+   "unit": "Unit 3"
+  },
+  {
+   "word": "leg",
+   "phonetic": "/lɛɡ/",
+   "translation": "腿",
+   "unit": "Unit 3"
+  },
+  {
+   "word": "foot",
+   "phonetic": "/fʊt/",
+   "translation": "脚",
+   "unit": "Unit 3"
+  },
+  {
+   "word": "school",
+   "phonetic": "/skul/",
+   "translation": "学校",
+   "unit": "Unit 3"
+  },
+  {
+   "word": "duck",
+   "phonetic": "/dʌk/",
+   "translation": "鸭子",
+   "unit": "Unit 4"
+  },
+  {
+   "word": "pig",
+   "phonetic": "/pɪɡ/",
+   "translation": "猪",
+   "unit": "Unit 4"
+  },
+  {
+   "word": "cat",
+   "phonetic": "/kæt/",
+   "translation": "猫",
+   "unit": "Unit 4"
+  },
+  {
+   "word": "bear",
+   "phonetic": "/bɛɚ/",
+   "translation": "熊",
+   "unit": "Unit 4"
+  },
+  {
+   "word": "dog",
+   "phonetic": "/dɔg/",
+   "translation": "狗",
+   "unit": "Unit 4"
+  },
+  {
+   "word": "elephant",
+   "phonetic": "/ˈɛləfənt/",
+   "translation": "大象",
+   "unit": "Unit 4"
+  },
+  {
+   "word": "monkey",
+   "phonetic": "/ˈmʌŋki/",
+   "translation": "猴子",
+   "unit": "Unit 4"
+  },
+  {
+   "word": "bird",
+   "phonetic": "/bɝd/",
+   "translation": "鸟",
+   "unit": "Unit 4"
+  },
+  {
+   "word": "tiger",
+   "phonetic": "/ˈtaɪɡɚ/",
+   "translation": "老虎",
+   "unit": "Unit 4"
+  },
+  {
+   "word": "panda",
+   "phonetic": "/ˈpændə/",
+   "translation": "熊猫",
+   "unit": "Unit 4"
+  },
+  {
+   "word": "zoo",
+   "phonetic": "/zu/",
+   "translation": "动物园",
+   "unit": "Unit 4"
+  },
+  {
+   "word": "funny",
+   "phonetic": "/ˈfʌni/",
+   "translation": "有趣的",
+   "unit": "Unit 4"
+  },
+  {
+   "word": "bread",
+   "phonetic": "/brɛd/",
+   "translation": "面包",
+   "unit": "Unit 5"
+  },
+  {
+   "word": "juice",
+   "phonetic": "/dʒus/",
+   "translation": "果汁",
+   "unit": "Unit 5"
+  },
+  {
+   "word": "egg",
+   "phonetic": "/ɛɡ/",
+   "translation": "鸡蛋",
+   "unit": "Unit 5"
+  },
+  {
+   "word": "milk",
+   "phonetic": "/mɪlk/",
+   "translation": "牛奶",
+   "unit": "Unit 5"
+  },
+  {
+   "word": "water",
+   "phonetic": "/ˈwɒtɚ/",
+   "translation": "水",
+   "unit": "Unit 5"
+  },
+  {
+   "word": "cake",
+   "phonetic": "/kek/",
+   "translation": "蛋糕",
+   "unit": "Unit 5"
+  },
+  {
+   "word": "fish",
+   "phonetic": "/fɪʃ/",
+   "translation": "鱼",
+   "unit": "Unit 5"
+  },
+  {
+   "word": "rice",
+   "phonetic": "/raɪs/",
+   "translation": "米饭",
+   "unit": "Unit 5"
+  },
+  {
+   "word": "one",
+   "phonetic": "/wʌn/",
+   "translation": "一",
+   "unit": "Unit 6"
+  },
+  {
+   "word": "two",
+   "phonetic": "/tu/",
+   "translation": "二",
+   "unit": "Unit 6"
+  },
+  {
+   "word": "three",
+   "phonetic": "/θri/",
+   "translation": "三",
+   "unit": "Unit 6"
+  },
+  {
+   "word": "four",
+   "phonetic": "/fɔr/",
+   "translation": "四",
+   "unit": "Unit 6"
+  },
+  {
+   "word": "five",
+   "phonetic": "/faɪv/",
+   "translation": "五",
+   "unit": "Unit 6"
+  },
+  {
+   "word": "six",
+   "phonetic": "/sɪks/",
+   "translation": "六",
+   "unit": "Unit 6"
+  },
+  {
+   "word": "seven",
+   "phonetic": "/ˈsɛvən/",
+   "translation": "七",
+   "unit": "Unit 6"
+  },
+  {
+   "word": "eight",
+   "phonetic": "/et/",
+   "translation": "八",
+   "unit": "Unit 6"
+  },
+  {
+   "word": "nine",
+   "phonetic": "/naɪn/",
+   "translation": "九",
+   "unit": "Unit 6"
+  },
+  {
+   "word": "ten",
+   "phonetic": "/tɛn/",
+   "translation": "十",
+   "unit": "Unit 6"
+  },
+  {
+   "word": "brother",
+   "phonetic": "/ˈbrʌðɚ/",
+   "translation": "兄弟",
+   "unit": "Unit 6"
+  },
+  {
+   "word": "plate",
+   "phonetic": "/plet/",
+   "translation": "盘子",
+   "unit": "Unit 6"
+  }
+ ]
+}

@@ -1,0 +1,3008 @@
+{
+ "id": "zhongkao-core",
+ "name": "中考核心词 · 高频",
+ "subtitle": "Zhongkao core · top 600 by frequency",
+ "source": "ECDICT (MIT) · tag=zk(中考)",
+ "words": [
+  {
+   "word": "the",
+   "phonetic": "/ðә/",
+   "translation": "这个;那个"
+  },
+  {
+   "word": "be",
+   "phonetic": "/bi:/",
+   "translation": "是"
+  },
+  {
+   "word": "and",
+   "phonetic": "/ænd/",
+   "translation": "和"
+  },
+  {
+   "word": "of",
+   "phonetic": "/ɒv/",
+   "translation": "的"
+  },
+  {
+   "word": "a",
+   "phonetic": "/ei/",
+   "translation": "一个"
+  },
+  {
+   "word": "in",
+   "phonetic": "/in/",
+   "translation": "在...期间"
+  },
+  {
+   "word": "to",
+   "phonetic": "/tu:/",
+   "translation": "到"
+  },
+  {
+   "word": "have",
+   "phonetic": "/hæv/",
+   "translation": "有"
+  },
+  {
+   "word": "it",
+   "phonetic": "/it/",
+   "translation": "它"
+  },
+  {
+   "word": "I",
+   "phonetic": "/ai/",
+   "translation": "我"
+  },
+  {
+   "word": "that",
+   "phonetic": "/ðæt/",
+   "translation": "那"
+  },
+  {
+   "word": "for",
+   "phonetic": "/fɒ:/",
+   "translation": "为"
+  },
+  {
+   "word": "you",
+   "phonetic": "/ju:/",
+   "translation": "你"
+  },
+  {
+   "word": "he",
+   "phonetic": "/hi:/",
+   "translation": "他"
+  },
+  {
+   "word": "with",
+   "phonetic": "/wið/",
+   "translation": "和...在一起"
+  },
+  {
+   "word": "on",
+   "phonetic": "/ɒn/",
+   "translation": "在...之上"
+  },
+  {
+   "word": "do",
+   "phonetic": "/du:/",
+   "translation": "做"
+  },
+  {
+   "word": "say",
+   "phonetic": "/sei/",
+   "translation": "说"
+  },
+  {
+   "word": "this",
+   "phonetic": "/θis/",
+   "translation": "这"
+  },
+  {
+   "word": "they",
+   "phonetic": "/ðei/",
+   "translation": "他们"
+  },
+  {
+   "word": "at",
+   "phonetic": "/æt/",
+   "translation": "在"
+  },
+  {
+   "word": "but",
+   "phonetic": "/bʌt/",
+   "translation": "除了"
+  },
+  {
+   "word": "we",
+   "phonetic": "/wi:/",
+   "translation": "我们"
+  },
+  {
+   "word": "his",
+   "phonetic": "/hiz/",
+   "translation": "他的"
+  },
+  {
+   "word": "from",
+   "phonetic": "/frɒm/",
+   "translation": "从"
+  },
+  {
+   "word": "not",
+   "phonetic": "/nɒt/",
+   "translation": "不"
+  },
+  {
+   "word": "by",
+   "phonetic": "/bai/",
+   "translation": "被"
+  },
+  {
+   "word": "she",
+   "phonetic": "/ʃi:/",
+   "translation": "她"
+  },
+  {
+   "word": "or",
+   "phonetic": "/ɒ:/",
+   "translation": "或"
+  },
+  {
+   "word": "as",
+   "phonetic": "/æz/",
+   "translation": "同样地"
+  },
+  {
+   "word": "what",
+   "phonetic": "/hwɒt/",
+   "translation": "什么"
+  },
+  {
+   "word": "go",
+   "phonetic": "/gou/",
+   "translation": "去"
+  },
+  {
+   "word": "their",
+   "phonetic": "/ðєә/",
+   "translation": "他们的"
+  },
+  {
+   "word": "can",
+   "phonetic": "/kæn/",
+   "translation": "装罐"
+  },
+  {
+   "word": "who",
+   "phonetic": "/hu:/",
+   "translation": "谁"
+  },
+  {
+   "word": "get",
+   "phonetic": "/get/",
+   "translation": "得到"
+  },
+  {
+   "word": "if",
+   "phonetic": "/if/",
+   "translation": "如果"
+  },
+  {
+   "word": "would",
+   "phonetic": "/wud/",
+   "translation": "将"
+  },
+  {
+   "word": "her",
+   "phonetic": "/hә:/",
+   "translation": "她的"
+  },
+  {
+   "word": "all",
+   "phonetic": "/ɒ:l/",
+   "translation": "所有的"
+  },
+  {
+   "word": "my",
+   "phonetic": "/mai/",
+   "translation": "我的"
+  },
+  {
+   "word": "make",
+   "phonetic": "/meik/",
+   "translation": "制造"
+  },
+  {
+   "word": "about",
+   "phonetic": "/ә'baut/",
+   "translation": "在...周围"
+  },
+  {
+   "word": "know",
+   "phonetic": "/nәu/",
+   "translation": "知道"
+  },
+  {
+   "word": "will",
+   "phonetic": "/wil/",
+   "translation": "意志"
+  },
+  {
+   "word": "up",
+   "phonetic": "/ʌp/",
+   "translation": "向上的"
+  },
+  {
+   "word": "one",
+   "phonetic": "/wʌn/",
+   "translation": "一"
+  },
+  {
+   "word": "time",
+   "phonetic": "/taim/",
+   "translation": "时间"
+  },
+  {
+   "word": "there",
+   "phonetic": "/ðєә/",
+   "translation": "在那里"
+  },
+  {
+   "word": "year",
+   "phonetic": "/jiә/",
+   "translation": "年"
+  },
+  {
+   "word": "so",
+   "phonetic": "/sәu/",
+   "translation": "如此"
+  },
+  {
+   "word": "think",
+   "phonetic": "/θiŋk/",
+   "translation": "想"
+  },
+  {
+   "word": "when",
+   "phonetic": "/hwen/",
+   "translation": "当...的时候"
+  },
+  {
+   "word": "which",
+   "phonetic": "/hwitʃ/",
+   "translation": "哪一个"
+  },
+  {
+   "word": "them",
+   "phonetic": "/ðem/",
+   "translation": "他们"
+  },
+  {
+   "word": "some",
+   "phonetic": "/sʌm/",
+   "translation": "一些"
+  },
+  {
+   "word": "me",
+   "phonetic": "/mi:/",
+   "translation": "我"
+  },
+  {
+   "word": "people",
+   "phonetic": "/'pi:pl/",
+   "translation": "人"
+  },
+  {
+   "word": "take",
+   "phonetic": "/teik/",
+   "translation": "拿"
+  },
+  {
+   "word": "out",
+   "phonetic": "/aut/",
+   "translation": "外面的"
+  },
+  {
+   "word": "into",
+   "phonetic": "/'intu:/",
+   "translation": "进入...之内"
+  },
+  {
+   "word": "just",
+   "phonetic": "/dʒʌst/",
+   "translation": "正直的"
+  },
+  {
+   "word": "see",
+   "phonetic": "/si:/",
+   "translation": "看见"
+  },
+  {
+   "word": "him",
+   "phonetic": "/him/",
+   "translation": "他"
+  },
+  {
+   "word": "your",
+   "phonetic": "/juә/",
+   "translation": "你的"
+  },
+  {
+   "word": "come",
+   "phonetic": "/kʌm/",
+   "translation": "过来"
+  },
+  {
+   "word": "could",
+   "phonetic": "/kud/",
+   "translation": "可以"
+  },
+  {
+   "word": "now",
+   "phonetic": "/nau/",
+   "translation": "现在"
+  },
+  {
+   "word": "than",
+   "phonetic": "/ðæn/",
+   "translation": "比"
+  },
+  {
+   "word": "like",
+   "phonetic": "/laik/",
+   "translation": "相似的"
+  },
+  {
+   "word": "other",
+   "phonetic": "/'ʌðә/",
+   "translation": "其他的"
+  },
+  {
+   "word": "how",
+   "phonetic": "/hau/",
+   "translation": "如何"
+  },
+  {
+   "word": "then",
+   "phonetic": "/ðen/",
+   "translation": "然后"
+  },
+  {
+   "word": "its",
+   "phonetic": "/its/",
+   "translation": "它的"
+  },
+  {
+   "word": "our",
+   "phonetic": "/'auә/",
+   "translation": "我们的"
+  },
+  {
+   "word": "two",
+   "phonetic": "/tu:/",
+   "translation": "二"
+  },
+  {
+   "word": "more",
+   "phonetic": "/mɒ:/",
+   "translation": "更多"
+  },
+  {
+   "word": "these",
+   "phonetic": "/ði:z/",
+   "translation": "这些"
+  },
+  {
+   "word": "want",
+   "phonetic": "/wɒnt/",
+   "translation": "需要的东西"
+  },
+  {
+   "word": "way",
+   "phonetic": "/wei/",
+   "translation": "路"
+  },
+  {
+   "word": "look",
+   "phonetic": "/luk/",
+   "translation": "一看"
+  },
+  {
+   "word": "first",
+   "phonetic": "/fә:st/",
+   "translation": "首先"
+  },
+  {
+   "word": "also",
+   "phonetic": "/'ɒ:lsәu/",
+   "translation": "也"
+  },
+  {
+   "word": "new",
+   "phonetic": "/nju:/",
+   "translation": "新的"
+  },
+  {
+   "word": "because",
+   "phonetic": "/bi'kɒ:z/",
+   "translation": "因为"
+  },
+  {
+   "word": "day",
+   "phonetic": "/dei/",
+   "translation": "天"
+  },
+  {
+   "word": "use",
+   "phonetic": "/ju:s/",
+   "translation": "使用"
+  },
+  {
+   "word": "no",
+   "phonetic": "/nәu/",
+   "translation": "不;没有"
+  },
+  {
+   "word": "man",
+   "phonetic": "/mæn/",
+   "translation": "男人"
+  },
+  {
+   "word": "find",
+   "phonetic": "/faind/",
+   "translation": "发现"
+  },
+  {
+   "word": "here",
+   "phonetic": "/hiә/",
+   "translation": "在这里"
+  },
+  {
+   "word": "thing",
+   "phonetic": "/θiŋ/",
+   "translation": "事物"
+  },
+  {
+   "word": "give",
+   "phonetic": "/giv/",
+   "translation": "弹性"
+  },
+  {
+   "word": "many",
+   "phonetic": "/'meni/",
+   "translation": "多数"
+  },
+  {
+   "word": "well",
+   "phonetic": "/wel/",
+   "translation": "井"
+  },
+  {
+   "word": "only",
+   "phonetic": "/'әunli/",
+   "translation": "唯一的"
+  },
+  {
+   "word": "those",
+   "phonetic": "/ðәuz/",
+   "translation": "那些"
+  },
+  {
+   "word": "tell",
+   "phonetic": "/tel/",
+   "translation": "告诉"
+  },
+  {
+   "word": "very",
+   "phonetic": "/'veri/",
+   "translation": "真正的"
+  },
+  {
+   "word": "even",
+   "phonetic": "/'i:vәn/",
+   "translation": "平坦的"
+  },
+  {
+   "word": "back",
+   "phonetic": "/bæk/",
+   "translation": "后面的"
+  },
+  {
+   "word": "any",
+   "phonetic": "/'eni/",
+   "translation": "任何的"
+  },
+  {
+   "word": "good",
+   "phonetic": "/gud/",
+   "translation": "善行"
+  },
+  {
+   "word": "woman",
+   "phonetic": "/'wumәn/",
+   "translation": "女人"
+  },
+  {
+   "word": "through",
+   "phonetic": "/θru:/",
+   "translation": "穿越"
+  },
+  {
+   "word": "us",
+   "phonetic": "/ʌs/",
+   "translation": "我们"
+  },
+  {
+   "word": "life",
+   "phonetic": "/laif/",
+   "translation": "生活"
+  },
+  {
+   "word": "child",
+   "phonetic": "/tʃaild/",
+   "translation": "孩子"
+  },
+  {
+   "word": "work",
+   "phonetic": "/wә:k/",
+   "translation": "工作"
+  },
+  {
+   "word": "down",
+   "phonetic": "/daun/",
+   "translation": "向下的"
+  },
+  {
+   "word": "may",
+   "phonetic": "/mei/",
+   "translation": "五月"
+  },
+  {
+   "word": "after",
+   "phonetic": "/'ɑ:ftә/",
+   "translation": "在...之后"
+  },
+  {
+   "word": "should",
+   "phonetic": "/ʃud/",
+   "translation": "应该"
+  },
+  {
+   "word": "call",
+   "phonetic": "/kɒ:l/",
+   "translation": "呼叫"
+  },
+  {
+   "word": "world",
+   "phonetic": "/wә:ld/",
+   "translation": "世界"
+  },
+  {
+   "word": "over",
+   "phonetic": "/'әuvә/",
+   "translation": "结束"
+  },
+  {
+   "word": "school",
+   "phonetic": "/sku:l/",
+   "translation": "学校"
+  },
+  {
+   "word": "still",
+   "phonetic": "/stil/",
+   "translation": "蒸馏室"
+  },
+  {
+   "word": "try",
+   "phonetic": "/trai/",
+   "translation": "尝试"
+  },
+  {
+   "word": "ask",
+   "phonetic": "/ɑ:sk/",
+   "translation": "问"
+  },
+  {
+   "word": "need",
+   "phonetic": "/ni:d/",
+   "translation": "需要"
+  },
+  {
+   "word": "too",
+   "phonetic": "/tu:/",
+   "translation": "也"
+  },
+  {
+   "word": "feel",
+   "phonetic": "/fi:l/",
+   "translation": "感觉"
+  },
+  {
+   "word": "three",
+   "phonetic": "/θri:/",
+   "translation": "三"
+  },
+  {
+   "word": "state",
+   "phonetic": "/steit/",
+   "translation": "州"
+  },
+  {
+   "word": "never",
+   "phonetic": "/'nevә/",
+   "translation": "从不"
+  },
+  {
+   "word": "become",
+   "phonetic": "/bi'kʌm/",
+   "translation": "变成"
+  },
+  {
+   "word": "between",
+   "phonetic": "/bi'twi:n/",
+   "translation": "在...之间"
+  },
+  {
+   "word": "high",
+   "phonetic": "/hai/",
+   "translation": "高度"
+  },
+  {
+   "word": "something",
+   "phonetic": "/'sʌmθiŋ/",
+   "translation": "某事"
+  },
+  {
+   "word": "really",
+   "phonetic": "/'riәli/",
+   "translation": "实际上"
+  },
+  {
+   "word": "most",
+   "phonetic": "/mәust/",
+   "translation": "最多"
+  },
+  {
+   "word": "another",
+   "phonetic": "/ә'nʌðә/",
+   "translation": "另外的"
+  },
+  {
+   "word": "much",
+   "phonetic": "/mʌtʃ/",
+   "translation": "大量"
+  },
+  {
+   "word": "family",
+   "phonetic": "/'fæmәli/",
+   "translation": "家庭"
+  },
+  {
+   "word": "own",
+   "phonetic": "/әun/",
+   "translation": "自己的"
+  },
+  {
+   "word": "leave",
+   "phonetic": "/li:v/",
+   "translation": "许可"
+  },
+  {
+   "word": "put",
+   "phonetic": "/put/",
+   "translation": "放"
+  },
+  {
+   "word": "old",
+   "phonetic": "/әuld/",
+   "translation": "以前"
+  },
+  {
+   "word": "while",
+   "phonetic": "/hwail/",
+   "translation": "一会儿"
+  },
+  {
+   "word": "mean",
+   "phonetic": "/mi:n/",
+   "translation": "低劣的"
+  },
+  {
+   "word": "keep",
+   "phonetic": "/ki:p/",
+   "translation": "生计"
+  },
+  {
+   "word": "student",
+   "phonetic": "/'stju:dnt/",
+   "translation": "学生"
+  },
+  {
+   "word": "why",
+   "phonetic": "/hwai/",
+   "translation": "为什么"
+  },
+  {
+   "word": "let",
+   "phonetic": "/let/",
+   "translation": "让"
+  },
+  {
+   "word": "great",
+   "phonetic": "/greit/",
+   "translation": "大的"
+  },
+  {
+   "word": "same",
+   "phonetic": "/seim/",
+   "translation": "相同的"
+  },
+  {
+   "word": "big",
+   "phonetic": "/big/",
+   "translation": "大的"
+  },
+  {
+   "word": "group",
+   "phonetic": "/gru:p/",
+   "translation": "团体"
+  },
+  {
+   "word": "begin",
+   "phonetic": "/bi'gin/",
+   "translation": "开始"
+  },
+  {
+   "word": "seem",
+   "phonetic": "/si:m/",
+   "translation": "象是"
+  },
+  {
+   "word": "country",
+   "phonetic": "/'kʌntri/",
+   "translation": "国家"
+  },
+  {
+   "word": "help",
+   "phonetic": "/help/",
+   "translation": "帮忙"
+  },
+  {
+   "word": "talk",
+   "phonetic": "/tɒ:k/",
+   "translation": "谈话"
+  },
+  {
+   "word": "where",
+   "phonetic": "/hwєә/",
+   "translation": "在哪里"
+  },
+  {
+   "word": "turn",
+   "phonetic": "/tә:n/",
+   "translation": "转弯"
+  },
+  {
+   "word": "problem",
+   "phonetic": "/'prɒblәm/",
+   "translation": "问题"
+  },
+  {
+   "word": "every",
+   "phonetic": "/'evri/",
+   "translation": "每一"
+  },
+  {
+   "word": "start",
+   "phonetic": "/stɑ:t/",
+   "translation": "惊起"
+  },
+  {
+   "word": "hand",
+   "phonetic": "/hænd/",
+   "translation": "手"
+  },
+  {
+   "word": "might",
+   "phonetic": "/mait/",
+   "translation": "力量"
+  },
+  {
+   "word": "American",
+   "phonetic": "/ә'merikәn/",
+   "translation": "美国人"
+  },
+  {
+   "word": "show",
+   "phonetic": "/ʃәu/",
+   "translation": "显示"
+  },
+  {
+   "word": "part",
+   "phonetic": "/pɑ:t/",
+   "translation": "部分"
+  },
+  {
+   "word": "against",
+   "phonetic": "/ә'geinst/",
+   "translation": "反对"
+  },
+  {
+   "word": "place",
+   "phonetic": "/pleis/",
+   "translation": "地方"
+  },
+  {
+   "word": "such",
+   "phonetic": "/sʌtʃ/",
+   "translation": "如此的"
+  },
+  {
+   "word": "again",
+   "phonetic": "/ә'gein/",
+   "translation": "再一次"
+  },
+  {
+   "word": "few",
+   "phonetic": "/fju:/",
+   "translation": "很少的"
+  },
+  {
+   "word": "week",
+   "phonetic": "/wi:k/",
+   "translation": "星期"
+  },
+  {
+   "word": "company",
+   "phonetic": "/'kʌmpәni/",
+   "translation": "公司"
+  },
+  {
+   "word": "each",
+   "phonetic": "/i:tʃ/",
+   "translation": "每个"
+  },
+  {
+   "word": "right",
+   "phonetic": "/rait/",
+   "translation": "权利"
+  },
+  {
+   "word": "hear",
+   "phonetic": "/hiә/",
+   "translation": "听到"
+  },
+  {
+   "word": "question",
+   "phonetic": "/'kwestʃәn/",
+   "translation": "问题"
+  },
+  {
+   "word": "during",
+   "phonetic": "/'djuәriŋ/",
+   "translation": "在...的时候"
+  },
+  {
+   "word": "play",
+   "phonetic": "/plei/",
+   "translation": "游戏"
+  },
+  {
+   "word": "government",
+   "phonetic": "/'gʌvәnmәnt/",
+   "translation": "政府"
+  },
+  {
+   "word": "run",
+   "phonetic": "/rʌn/",
+   "translation": "跑"
+  },
+  {
+   "word": "small",
+   "phonetic": "/smɒ:l/",
+   "translation": "小的"
+  },
+  {
+   "word": "number",
+   "phonetic": "/'nʌmbә/",
+   "translation": "数"
+  },
+  {
+   "word": "off",
+   "phonetic": "/ɒf/",
+   "translation": "关着的"
+  },
+  {
+   "word": "always",
+   "phonetic": "/'ɒ:lweiz/",
+   "translation": "总是"
+  },
+  {
+   "word": "move",
+   "phonetic": "/mu:v/",
+   "translation": "移动"
+  },
+  {
+   "word": "night",
+   "phonetic": "/nait/",
+   "translation": "夜"
+  },
+  {
+   "word": "live",
+   "phonetic": "/liv.laiv/",
+   "translation": "活的"
+  },
+  {
+   "word": "point",
+   "phonetic": "/pɒint/",
+   "translation": "点"
+  },
+  {
+   "word": "believe",
+   "phonetic": "/bi'li:v/",
+   "translation": "相信"
+  },
+  {
+   "word": "hold",
+   "phonetic": "/hәuld/",
+   "translation": "把握"
+  },
+  {
+   "word": "today",
+   "phonetic": "/tә'dei/",
+   "translation": "今天"
+  },
+  {
+   "word": "bring",
+   "phonetic": "/briŋ/",
+   "translation": "带来"
+  },
+  {
+   "word": "happen",
+   "phonetic": "/'hæpәn/",
+   "translation": "发生"
+  },
+  {
+   "word": "next",
+   "phonetic": "/'nekst/",
+   "translation": "下一个"
+  },
+  {
+   "word": "without",
+   "phonetic": "/wi'ðaut/",
+   "translation": "没有"
+  },
+  {
+   "word": "before",
+   "phonetic": "/bi'fɒ:/",
+   "translation": "在...之前"
+  },
+  {
+   "word": "large",
+   "phonetic": "/lɑ:dʒ/",
+   "translation": "大的"
+  },
+  {
+   "word": "must",
+   "phonetic": "/mʌst/",
+   "translation": "必须"
+  },
+  {
+   "word": "home",
+   "phonetic": "/hәum/",
+   "translation": "家"
+  },
+  {
+   "word": "under",
+   "phonetic": "/'ʌndә/",
+   "translation": "在...之下"
+  },
+  {
+   "word": "water",
+   "phonetic": "/'wɒ:tә/",
+   "translation": "水"
+  },
+  {
+   "word": "room",
+   "phonetic": "/ru:m/",
+   "translation": "房间"
+  },
+  {
+   "word": "write",
+   "phonetic": "/rait/",
+   "translation": "书写"
+  },
+  {
+   "word": "mother",
+   "phonetic": "/'mʌðә/",
+   "translation": "母亲"
+  },
+  {
+   "word": "area",
+   "phonetic": "/'єәriә/",
+   "translation": "区域"
+  },
+  {
+   "word": "national",
+   "phonetic": "/'næʃәnәl/",
+   "translation": "国家的"
+  },
+  {
+   "word": "money",
+   "phonetic": "/'mʌni/",
+   "translation": "金钱"
+  },
+  {
+   "word": "story",
+   "phonetic": "/'stɒ:ri/",
+   "translation": "故事"
+  },
+  {
+   "word": "young",
+   "phonetic": "/jʌŋ/",
+   "translation": "年轻的"
+  },
+  {
+   "word": "fact",
+   "phonetic": "/fækt/",
+   "translation": "事实"
+  },
+  {
+   "word": "month",
+   "phonetic": "/mʌnθ/",
+   "translation": "月"
+  },
+  {
+   "word": "different",
+   "phonetic": "/'difәrәnt/",
+   "translation": "不同的"
+  },
+  {
+   "word": "lot",
+   "phonetic": "/lɒt/",
+   "translation": "运气"
+  },
+  {
+   "word": "study",
+   "phonetic": "/'stʌdi/",
+   "translation": "学习"
+  },
+  {
+   "word": "book",
+   "phonetic": "/buk/",
+   "translation": "书"
+  },
+  {
+   "word": "eye",
+   "phonetic": "/ai/",
+   "translation": "眼睛"
+  },
+  {
+   "word": "job",
+   "phonetic": "/dʒɒb/",
+   "translation": "工作"
+  },
+  {
+   "word": "word",
+   "phonetic": "/wә:d/",
+   "translation": "话"
+  },
+  {
+   "word": "though",
+   "phonetic": "/ðәu/",
+   "translation": "然而"
+  },
+  {
+   "word": "business",
+   "phonetic": "/'biznis/",
+   "translation": "生意"
+  },
+  {
+   "word": "four",
+   "phonetic": "/fɒ:/",
+   "translation": "四"
+  },
+  {
+   "word": "side",
+   "phonetic": "/said/",
+   "translation": "旁边"
+  },
+  {
+   "word": "kind",
+   "phonetic": "/kaind/",
+   "translation": "种类"
+  },
+  {
+   "word": "head",
+   "phonetic": "/hed/",
+   "translation": "头"
+  },
+  {
+   "word": "far",
+   "phonetic": "/fɑ:/",
+   "translation": "远的"
+  },
+  {
+   "word": "black",
+   "phonetic": "/blæk/",
+   "translation": "黑色"
+  },
+  {
+   "word": "long",
+   "phonetic": "/lɒŋ/",
+   "translation": "长的"
+  },
+  {
+   "word": "both",
+   "phonetic": "/bәuθ/",
+   "translation": "两者的"
+  },
+  {
+   "word": "little",
+   "phonetic": "/'litl/",
+   "translation": "一点点"
+  },
+  {
+   "word": "house",
+   "phonetic": "/haus/",
+   "translation": "房子"
+  },
+  {
+   "word": "yes",
+   "phonetic": "/jes/",
+   "translation": "是"
+  },
+  {
+   "word": "since",
+   "phonetic": "/sins/",
+   "translation": "自...以后"
+  },
+  {
+   "word": "provide",
+   "phonetic": "/prә'vaid/",
+   "translation": "提供"
+  },
+  {
+   "word": "service",
+   "phonetic": "/'sә:vis/",
+   "translation": "服务"
+  },
+  {
+   "word": "around",
+   "phonetic": "/ә'raund/",
+   "translation": "包围"
+  },
+  {
+   "word": "friend",
+   "phonetic": "/frend/",
+   "translation": "朋友"
+  },
+  {
+   "word": "important",
+   "phonetic": "/im'pɒ:tәnt/",
+   "translation": "重要的"
+  },
+  {
+   "word": "father",
+   "phonetic": "/'fɑ:ðә/",
+   "translation": "父亲"
+  },
+  {
+   "word": "sit",
+   "phonetic": "/sit/",
+   "translation": "坐"
+  },
+  {
+   "word": "away",
+   "phonetic": "/ә'wei/",
+   "translation": "离去"
+  },
+  {
+   "word": "until",
+   "phonetic": "/әn'til/",
+   "translation": "直到"
+  },
+  {
+   "word": "hour",
+   "phonetic": "/auә/",
+   "translation": "小时"
+  },
+  {
+   "word": "game",
+   "phonetic": "/geim/",
+   "translation": "比赛"
+  },
+  {
+   "word": "often",
+   "phonetic": "/'ɒ:fn/",
+   "translation": "时常"
+  },
+  {
+   "word": "yet",
+   "phonetic": "/jet/",
+   "translation": "还"
+  },
+  {
+   "word": "line",
+   "phonetic": "/lain/",
+   "translation": "列"
+  },
+  {
+   "word": "end",
+   "phonetic": "/end/",
+   "translation": "结束"
+  },
+  {
+   "word": "among",
+   "phonetic": "/ә'mʌŋ/",
+   "translation": "在...之中"
+  },
+  {
+   "word": "ever",
+   "phonetic": "/'evә/",
+   "translation": "曾经"
+  },
+  {
+   "word": "stand",
+   "phonetic": "/stænd/",
+   "translation": "站立"
+  },
+  {
+   "word": "bad",
+   "phonetic": "/bæd/",
+   "translation": "坏的"
+  },
+  {
+   "word": "lose",
+   "phonetic": "/lu:z/",
+   "translation": "遗失"
+  },
+  {
+   "word": "however",
+   "phonetic": "/hau'evә/",
+   "translation": "然而"
+  },
+  {
+   "word": "member",
+   "phonetic": "/'membә/",
+   "translation": "成员"
+  },
+  {
+   "word": "pay",
+   "phonetic": "/pei/",
+   "translation": "薪资"
+  },
+  {
+   "word": "law",
+   "phonetic": "/lɒ:/",
+   "translation": "法律"
+  },
+  {
+   "word": "meet",
+   "phonetic": "/mi:t/",
+   "translation": "会"
+  },
+  {
+   "word": "car",
+   "phonetic": "/kɑ:/",
+   "translation": "汽车"
+  },
+  {
+   "word": "city",
+   "phonetic": "/'siti/",
+   "translation": "城市"
+  },
+  {
+   "word": "almost",
+   "phonetic": "/'ɒ:lmәust/",
+   "translation": "几乎"
+  },
+  {
+   "word": "include",
+   "phonetic": "/in'klu:d/",
+   "translation": "包括"
+  },
+  {
+   "word": "continue",
+   "phonetic": "/kәn'tinju:/",
+   "translation": "继续"
+  },
+  {
+   "word": "set",
+   "phonetic": "/set/",
+   "translation": "日落"
+  },
+  {
+   "word": "name",
+   "phonetic": "/neim/",
+   "translation": "名字"
+  },
+  {
+   "word": "five",
+   "phonetic": "/faiv/",
+   "translation": "五"
+  },
+  {
+   "word": "once",
+   "phonetic": "/wʌns/",
+   "translation": "一次"
+  },
+  {
+   "word": "white",
+   "phonetic": "/hwait/",
+   "translation": "白色"
+  },
+  {
+   "word": "least",
+   "phonetic": "/li:st/",
+   "translation": "最少"
+  },
+  {
+   "word": "president",
+   "phonetic": "/'prezidәnt/",
+   "translation": "总统"
+  },
+  {
+   "word": "learn",
+   "phonetic": "/lә:n/",
+   "translation": "学习"
+  },
+  {
+   "word": "real",
+   "phonetic": "/'riәl/",
+   "translation": "真的"
+  },
+  {
+   "word": "change",
+   "phonetic": "/tʃeindʒ/",
+   "translation": "变化"
+  },
+  {
+   "word": "team",
+   "phonetic": "/ti:m/",
+   "translation": "队"
+  },
+  {
+   "word": "minute",
+   "phonetic": "/'minit. mai'nju:t/",
+   "translation": "分"
+  },
+  {
+   "word": "several",
+   "phonetic": "/'sevәrәl/",
+   "translation": "几个的"
+  },
+  {
+   "word": "idea",
+   "phonetic": "/ai'diә/",
+   "translation": "主意"
+  },
+  {
+   "word": "kid",
+   "phonetic": "/kid/",
+   "translation": "小山羊"
+  },
+  {
+   "word": "body",
+   "phonetic": "/'bɒdi/",
+   "translation": "身体"
+  },
+  {
+   "word": "information",
+   "phonetic": "/.infә'meiʃәn/",
+   "translation": "消息"
+  },
+  {
+   "word": "nothing",
+   "phonetic": "/'nʌθiŋ/",
+   "translation": "无"
+  },
+  {
+   "word": "ago",
+   "phonetic": "/ә'gәu/",
+   "translation": "以前"
+  },
+  {
+   "word": "lead",
+   "phonetic": "/li:d. led/",
+   "translation": "铅"
+  },
+  {
+   "word": "social",
+   "phonetic": "/'sәuʃәl/",
+   "translation": "社会的"
+  },
+  {
+   "word": "understand",
+   "phonetic": "/.ʌndә'stænd/",
+   "translation": "理解"
+  },
+  {
+   "word": "whether",
+   "phonetic": "/'hweðә/",
+   "translation": "是否"
+  },
+  {
+   "word": "watch",
+   "phonetic": "/wɒtʃ/",
+   "translation": "观察"
+  },
+  {
+   "word": "together",
+   "phonetic": "/tә'geðә/",
+   "translation": "一起"
+  },
+  {
+   "word": "follow",
+   "phonetic": "/'fɒlәu/",
+   "translation": "跟随"
+  },
+  {
+   "word": "parent",
+   "phonetic": "/'perәnt/",
+   "translation": "父母"
+  },
+  {
+   "word": "stop",
+   "phonetic": "/stɒp/",
+   "translation": "停止"
+  },
+  {
+   "word": "face",
+   "phonetic": "/feis/",
+   "translation": "脸"
+  },
+  {
+   "word": "anything",
+   "phonetic": "/'eniθiŋ/",
+   "translation": "任何事"
+  },
+  {
+   "word": "create",
+   "phonetic": "/kri:'eit/",
+   "translation": "创造"
+  },
+  {
+   "word": "public",
+   "phonetic": "/'pʌblik/",
+   "translation": "公众"
+  },
+  {
+   "word": "already",
+   "phonetic": "/ɒ:l'redi/",
+   "translation": "已经"
+  },
+  {
+   "word": "speak",
+   "phonetic": "/spi:k/",
+   "translation": "说"
+  },
+  {
+   "word": "read",
+   "phonetic": "/ri:d/",
+   "translation": "读"
+  },
+  {
+   "word": "level",
+   "phonetic": "/'levl/",
+   "translation": "水平"
+  },
+  {
+   "word": "allow",
+   "phonetic": "/ә'lau/",
+   "translation": "允许"
+  },
+  {
+   "word": "add",
+   "phonetic": "/æd/",
+   "translation": "增加"
+  },
+  {
+   "word": "office",
+   "phonetic": "/'ɒfis/",
+   "translation": "办公室"
+  },
+  {
+   "word": "spend",
+   "phonetic": "/spend/",
+   "translation": "花费"
+  },
+  {
+   "word": "door",
+   "phonetic": "/dɒ:/",
+   "translation": "门"
+  },
+  {
+   "word": "health",
+   "phonetic": "/'helθ/",
+   "translation": "健康"
+  },
+  {
+   "word": "person",
+   "phonetic": "/'pә:sn/",
+   "translation": "人"
+  },
+  {
+   "word": "art",
+   "phonetic": "/ɑ:t/",
+   "translation": "艺术"
+  },
+  {
+   "word": "sure",
+   "phonetic": "/ʃuә/",
+   "translation": "确信"
+  },
+  {
+   "word": "war",
+   "phonetic": "/wɒ:/",
+   "translation": "战争"
+  },
+  {
+   "word": "history",
+   "phonetic": "/'histәri/",
+   "translation": "历史"
+  },
+  {
+   "word": "party",
+   "phonetic": "/'pɑ:ti/",
+   "translation": "宴会"
+  },
+  {
+   "word": "grow",
+   "phonetic": "/grәu/",
+   "translation": "种植"
+  },
+  {
+   "word": "result",
+   "phonetic": "/ri'zʌlt/",
+   "translation": "结果"
+  },
+  {
+   "word": "open",
+   "phonetic": "/'әupәn/",
+   "translation": "公开"
+  },
+  {
+   "word": "morning",
+   "phonetic": "/'mɒ:niŋ/",
+   "translation": "早晨"
+  },
+  {
+   "word": "walk",
+   "phonetic": "/wɒ:k/",
+   "translation": "走"
+  },
+  {
+   "word": "reason",
+   "phonetic": "/'ri:zn/",
+   "translation": "理由"
+  },
+  {
+   "word": "low",
+   "phonetic": "/lәu/",
+   "translation": "低点"
+  },
+  {
+   "word": "win",
+   "phonetic": "/win/",
+   "translation": "赢得"
+  },
+  {
+   "word": "research",
+   "phonetic": "/ri'sә:tʃ/",
+   "translation": "研究"
+  },
+  {
+   "word": "girl",
+   "phonetic": "/gә:l/",
+   "translation": "女孩"
+  },
+  {
+   "word": "early",
+   "phonetic": "/'ә:li/",
+   "translation": "早的"
+  },
+  {
+   "word": "food",
+   "phonetic": "/fu:d/",
+   "translation": "食物"
+  },
+  {
+   "word": "himself",
+   "phonetic": "/him'self/",
+   "translation": "他自己"
+  },
+  {
+   "word": "moment",
+   "phonetic": "/'mәumәnt/",
+   "translation": "片刻"
+  },
+  {
+   "word": "air",
+   "phonetic": "/єә/",
+   "translation": "空气"
+  },
+  {
+   "word": "teacher",
+   "phonetic": "/'ti:tʃә/",
+   "translation": "教师"
+  },
+  {
+   "word": "force",
+   "phonetic": "/fɒ:s/",
+   "translation": "力量"
+  },
+  {
+   "word": "offer",
+   "phonetic": "/'ɒfә/",
+   "translation": "给予"
+  },
+  {
+   "word": "enough",
+   "phonetic": "/i'nʌf/",
+   "translation": "充足"
+  },
+  {
+   "word": "education",
+   "phonetic": "/.edju'keiʃәn/",
+   "translation": "教育"
+  },
+  {
+   "word": "across",
+   "phonetic": "/ә'krɒs/",
+   "translation": "越过"
+  },
+  {
+   "word": "although",
+   "phonetic": "/ɒ:l'ðou/",
+   "translation": "虽然"
+  },
+  {
+   "word": "remember",
+   "phonetic": "/ri'membә/",
+   "translation": "记得"
+  },
+  {
+   "word": "foot",
+   "phonetic": "/fut/",
+   "translation": "脚"
+  },
+  {
+   "word": "second",
+   "phonetic": "/'sekәnd/",
+   "translation": "秒"
+  },
+  {
+   "word": "boy",
+   "phonetic": "/bɒi/",
+   "translation": "男孩"
+  },
+  {
+   "word": "maybe",
+   "phonetic": "/'meibi:/",
+   "translation": "也许"
+  },
+  {
+   "word": "toward",
+   "phonetic": "/tә'wɒ:d/",
+   "translation": "向"
+  },
+  {
+   "word": "able",
+   "phonetic": "/'eibl/",
+   "translation": "能干的"
+  },
+  {
+   "word": "age",
+   "phonetic": "/eidʒ/",
+   "translation": "年龄"
+  },
+  {
+   "word": "policy",
+   "phonetic": "/'pɒlisi/",
+   "translation": "政策"
+  },
+  {
+   "word": "everything",
+   "phonetic": "/'evriθiŋ/",
+   "translation": "每件事物"
+  },
+  {
+   "word": "love",
+   "phonetic": "/lʌv/",
+   "translation": "爱"
+  },
+  {
+   "word": "music",
+   "phonetic": "/'mju:zik/",
+   "translation": "音乐"
+  },
+  {
+   "word": "consider",
+   "phonetic": "/kәn'sidŋ/",
+   "translation": "考虑"
+  },
+  {
+   "word": "appear",
+   "phonetic": "/ә'piә/",
+   "translation": "出现"
+  },
+  {
+   "word": "buy",
+   "phonetic": "/bai/",
+   "translation": "买"
+  },
+  {
+   "word": "probably",
+   "phonetic": "/'prɒbәbli/",
+   "translation": "大概"
+  },
+  {
+   "word": "human",
+   "phonetic": "/'hju:mәn/",
+   "translation": "人"
+  },
+  {
+   "word": "wait",
+   "phonetic": "/weit/",
+   "translation": "等待"
+  },
+  {
+   "word": "serve",
+   "phonetic": "/sә:v/",
+   "translation": "可作...用"
+  },
+  {
+   "word": "market",
+   "phonetic": "/'mɑ:kit/",
+   "translation": "市场"
+  },
+  {
+   "word": "die",
+   "phonetic": "/dai/",
+   "translation": "死亡"
+  },
+  {
+   "word": "send",
+   "phonetic": "/send/",
+   "translation": "发送"
+  },
+  {
+   "word": "expect",
+   "phonetic": "/iks'pekt/",
+   "translation": "预期"
+  },
+  {
+   "word": "sense",
+   "phonetic": "/sens/",
+   "translation": "感应"
+  },
+  {
+   "word": "build",
+   "phonetic": "/bild/",
+   "translation": "建立"
+  },
+  {
+   "word": "stay",
+   "phonetic": "/stei/",
+   "translation": "停留"
+  },
+  {
+   "word": "fall",
+   "phonetic": "/fɒ:l/",
+   "translation": "落下"
+  },
+  {
+   "word": "plan",
+   "phonetic": "/plæn/",
+   "translation": "计划"
+  },
+  {
+   "word": "cut",
+   "phonetic": "/kʌt/",
+   "translation": "切口"
+  },
+  {
+   "word": "college",
+   "phonetic": "/'kɒlidʒ/",
+   "translation": "学院"
+  },
+  {
+   "word": "interest",
+   "phonetic": "/'intrist/",
+   "translation": "兴趣"
+  },
+  {
+   "word": "death",
+   "phonetic": "/deθ/",
+   "translation": "死亡"
+  },
+  {
+   "word": "course",
+   "phonetic": "/kɒ:s/",
+   "translation": "课程"
+  },
+  {
+   "word": "someone",
+   "phonetic": "/'sʌmwʌn/",
+   "translation": "有人"
+  },
+  {
+   "word": "experience",
+   "phonetic": "/ik'spiәriәns/",
+   "translation": "经历"
+  },
+  {
+   "word": "behind",
+   "phonetic": "/bi'haind/",
+   "translation": "在后地"
+  },
+  {
+   "word": "reach",
+   "phonetic": "/ri:tʃ/",
+   "translation": "伸出"
+  },
+  {
+   "word": "six",
+   "phonetic": "/siks/",
+   "translation": "六"
+  },
+  {
+   "word": "kill",
+   "phonetic": "/kil/",
+   "translation": "杀"
+  },
+  {
+   "word": "remain",
+   "phonetic": "/ri'mein/",
+   "translation": "保持"
+  },
+  {
+   "word": "suggest",
+   "phonetic": "/sәg'dʒest/",
+   "translation": "提议"
+  },
+  {
+   "word": "class",
+   "phonetic": "/klɑ:s/",
+   "translation": "班级"
+  },
+  {
+   "word": "control",
+   "phonetic": "/kәn'trәul/",
+   "translation": "控制"
+  },
+  {
+   "word": "raise",
+   "phonetic": "/reiz/",
+   "translation": "上升"
+  },
+  {
+   "word": "care",
+   "phonetic": "/kєә/",
+   "translation": "小心"
+  },
+  {
+   "word": "perhaps",
+   "phonetic": "/pә'hæps/",
+   "translation": "也许"
+  },
+  {
+   "word": "late",
+   "phonetic": "/leit/",
+   "translation": "迟的"
+  },
+  {
+   "word": "hard",
+   "phonetic": "/hɑ:d/",
+   "translation": "坚硬的"
+  },
+  {
+   "word": "field",
+   "phonetic": "/fi:ld/",
+   "translation": "领域"
+  },
+  {
+   "word": "else",
+   "phonetic": "/els/",
+   "translation": "别的"
+  },
+  {
+   "word": "pass",
+   "phonetic": "/pæs/",
+   "translation": "经过"
+  },
+  {
+   "word": "sell",
+   "phonetic": "/sel/",
+   "translation": "卖"
+  },
+  {
+   "word": "sometimes",
+   "phonetic": "/'sʌmtaimz/",
+   "translation": "有时"
+  },
+  {
+   "word": "require",
+   "phonetic": "/ri'kwaiә/",
+   "translation": "需要"
+  },
+  {
+   "word": "along",
+   "phonetic": "/ә'lɒŋ/",
+   "translation": "平行地"
+  },
+  {
+   "word": "development",
+   "phonetic": "/di'velәpmәnt/",
+   "translation": "发展"
+  },
+  {
+   "word": "themselves",
+   "phonetic": "/ðәm'selvz/",
+   "translation": "他们自己"
+  },
+  {
+   "word": "report",
+   "phonetic": "/ri'pɒ:t/",
+   "translation": "报告"
+  },
+  {
+   "word": "role",
+   "phonetic": "/rәul/",
+   "translation": "角色"
+  },
+  {
+   "word": "effort",
+   "phonetic": "/'efәt/",
+   "translation": "努力"
+  },
+  {
+   "word": "decide",
+   "phonetic": "/di'said/",
+   "translation": "决定"
+  },
+  {
+   "word": "strong",
+   "phonetic": "/strɒŋ/",
+   "translation": "强壮的"
+  },
+  {
+   "word": "possible",
+   "phonetic": "/'pɒsәbl/",
+   "translation": "可能的"
+  },
+  {
+   "word": "heart",
+   "phonetic": "/hɑ:t/",
+   "translation": "心"
+  },
+  {
+   "word": "drug",
+   "phonetic": "/drʌg/",
+   "translation": "药"
+  },
+  {
+   "word": "leader",
+   "phonetic": "/'li:dә/",
+   "translation": "领导者"
+  },
+  {
+   "word": "light",
+   "phonetic": "/lait/",
+   "translation": "光"
+  },
+  {
+   "word": "voice",
+   "phonetic": "/vɒis/",
+   "translation": "声音"
+  },
+  {
+   "word": "wife",
+   "phonetic": "/waif/",
+   "translation": "妻子"
+  },
+  {
+   "word": "whole",
+   "phonetic": "/hәul/",
+   "translation": "全部"
+  },
+  {
+   "word": "police",
+   "phonetic": "/pә'li:s/",
+   "translation": "警察"
+  },
+  {
+   "word": "mind",
+   "phonetic": "/maind/",
+   "translation": "思想"
+  },
+  {
+   "word": "pull",
+   "phonetic": "/pul/",
+   "translation": "拉"
+  },
+  {
+   "word": "return",
+   "phonetic": "/ri'tә:n/",
+   "translation": "回来"
+  },
+  {
+   "word": "free",
+   "phonetic": "/fri:/",
+   "translation": "自由的"
+  },
+  {
+   "word": "price",
+   "phonetic": "/prais/",
+   "translation": "价格"
+  },
+  {
+   "word": "decision",
+   "phonetic": "/di'siʒәn/",
+   "translation": "决定"
+  },
+  {
+   "word": "explain",
+   "phonetic": "/ik'splein/",
+   "translation": "解释"
+  },
+  {
+   "word": "son",
+   "phonetic": "/sʌn/",
+   "translation": "儿子"
+  },
+  {
+   "word": "hope",
+   "phonetic": "/hәup/",
+   "translation": "希望"
+  },
+  {
+   "word": "develop",
+   "phonetic": "/di'velәp/",
+   "translation": "发展"
+  },
+  {
+   "word": "carry",
+   "phonetic": "/'kæri/",
+   "translation": "进位"
+  },
+  {
+   "word": "town",
+   "phonetic": "/taun/",
+   "translation": "城镇"
+  },
+  {
+   "word": "road",
+   "phonetic": "/rәud/",
+   "translation": "路"
+  },
+  {
+   "word": "drive",
+   "phonetic": "/draiv/",
+   "translation": "驾车"
+  },
+  {
+   "word": "arm",
+   "phonetic": "/ɑ:m/",
+   "translation": "胳膊"
+  },
+  {
+   "word": "true",
+   "phonetic": "/tru:/",
+   "translation": "真实的"
+  },
+  {
+   "word": "break",
+   "phonetic": "/breik/",
+   "translation": "休息"
+  },
+  {
+   "word": "difference",
+   "phonetic": "/'difәrәns/",
+   "translation": "不同"
+  },
+  {
+   "word": "receive",
+   "phonetic": "/ri'si:v/",
+   "translation": "收到"
+  },
+  {
+   "word": "thank",
+   "phonetic": "/θæŋk/",
+   "translation": "谢意"
+  },
+  {
+   "word": "value",
+   "phonetic": "/'vælju:/",
+   "translation": "价值"
+  },
+  {
+   "word": "international",
+   "phonetic": "/.intә'næʃәnәl/",
+   "translation": "国际的"
+  },
+  {
+   "word": "building",
+   "phonetic": "/'bildiŋ/",
+   "translation": "建筑物"
+  },
+  {
+   "word": "action",
+   "phonetic": "/'ækʃәn/",
+   "translation": "行动"
+  },
+  {
+   "word": "full",
+   "phonetic": "/ful/",
+   "translation": "全部"
+  },
+  {
+   "word": "model",
+   "phonetic": "/'mɒdәl/",
+   "translation": "模型"
+  },
+  {
+   "word": "join",
+   "phonetic": "/dʒɒin/",
+   "translation": "参加"
+  },
+  {
+   "word": "season",
+   "phonetic": "/'si:zn/",
+   "translation": "季节"
+  },
+  {
+   "word": "society",
+   "phonetic": "/sә'saiәti/",
+   "translation": "社会"
+  },
+  {
+   "word": "director",
+   "phonetic": "/di'rektә/",
+   "translation": "主管"
+  },
+  {
+   "word": "position",
+   "phonetic": "/pә'ziʃәn/",
+   "translation": "位置"
+  },
+  {
+   "word": "agree",
+   "phonetic": "/ә'gri:/",
+   "translation": "同意"
+  },
+  {
+   "word": "especially",
+   "phonetic": "/i'speʃәli/",
+   "translation": "尤其"
+  },
+  {
+   "word": "record",
+   "phonetic": "/ri'kɒ:d/",
+   "translation": "记录"
+  },
+  {
+   "word": "pick",
+   "phonetic": "/pik/",
+   "translation": "精选"
+  },
+  {
+   "word": "wear",
+   "phonetic": "/wєә/",
+   "translation": "穿着"
+  },
+  {
+   "word": "paper",
+   "phonetic": "/'peipә/",
+   "translation": "纸"
+  },
+  {
+   "word": "special",
+   "phonetic": "/'speʃәl/",
+   "translation": "专辑"
+  },
+  {
+   "word": "space",
+   "phonetic": "/speis/",
+   "translation": "位置"
+  },
+  {
+   "word": "ground",
+   "phonetic": "/graund/",
+   "translation": "土地"
+  },
+  {
+   "word": "form",
+   "phonetic": "/fɒ:m/",
+   "translation": "形状"
+  },
+  {
+   "word": "whose",
+   "phonetic": "/hu:z/",
+   "translation": "谁的"
+  },
+  {
+   "word": "everyone",
+   "phonetic": "/'evriwʌn/",
+   "translation": "每个人"
+  },
+  {
+   "word": "couple",
+   "phonetic": "/'kʌpl/",
+   "translation": "对"
+  },
+  {
+   "word": "hit",
+   "phonetic": "/hit/",
+   "translation": "打击"
+  },
+  {
+   "word": "activity",
+   "phonetic": "/æk'tiviti/",
+   "translation": "活动"
+  },
+  {
+   "word": "star",
+   "phonetic": "/stɑ:/",
+   "translation": "星"
+  },
+  {
+   "word": "table",
+   "phonetic": "/'teibl/",
+   "translation": "桌子"
+  },
+  {
+   "word": "produce",
+   "phonetic": "/prә'dju:s/",
+   "translation": "生产品"
+  },
+  {
+   "word": "eat",
+   "phonetic": "/i:t/",
+   "translation": "吃"
+  },
+  {
+   "word": "teach",
+   "phonetic": "/ti:tʃ/",
+   "translation": "教"
+  },
+  {
+   "word": "oil",
+   "phonetic": "/ɒil/",
+   "translation": "油"
+  },
+  {
+   "word": "half",
+   "phonetic": "/hɑ:f/",
+   "translation": "一半"
+  },
+  {
+   "word": "situation",
+   "phonetic": "/.sitju'eiʃәn/",
+   "translation": "情形"
+  },
+  {
+   "word": "easy",
+   "phonetic": "/'i:zi/",
+   "translation": "容易的"
+  },
+  {
+   "word": "cost",
+   "phonetic": "/kɒst/",
+   "translation": "代价"
+  },
+  {
+   "word": "industry",
+   "phonetic": "/'indәstri/",
+   "translation": "勤劳"
+  },
+  {
+   "word": "street",
+   "phonetic": "/stri:t/",
+   "translation": "街道"
+  },
+  {
+   "word": "itself",
+   "phonetic": "/it'self/",
+   "translation": "它本身"
+  },
+  {
+   "word": "phone",
+   "phonetic": "/fәun/",
+   "translation": "电话"
+  },
+  {
+   "word": "either",
+   "phonetic": "/'i:ðә/",
+   "translation": "任一的"
+  },
+  {
+   "word": "cover",
+   "phonetic": "/'kʌvә/",
+   "translation": "盖子"
+  },
+  {
+   "word": "quite",
+   "phonetic": "/kwait/",
+   "translation": "相当"
+  },
+  {
+   "word": "picture",
+   "phonetic": "/'piktʃә/",
+   "translation": "图画"
+  },
+  {
+   "word": "clear",
+   "phonetic": "/kliә/",
+   "translation": "清楚的"
+  },
+  {
+   "word": "practice",
+   "phonetic": "/'præktis/",
+   "translation": "实践"
+  },
+  {
+   "word": "piece",
+   "phonetic": "/pi:s/",
+   "translation": "块"
+  },
+  {
+   "word": "land",
+   "phonetic": "/lænd/",
+   "translation": "陆地"
+  },
+  {
+   "word": "recent",
+   "phonetic": "/'ri:snt/",
+   "translation": "最近的"
+  },
+  {
+   "word": "describe",
+   "phonetic": "/di'skraib/",
+   "translation": "描述"
+  },
+  {
+   "word": "doctor",
+   "phonetic": "/'dɒktә/",
+   "translation": "医生"
+  },
+  {
+   "word": "wall",
+   "phonetic": "/wɒ:l/",
+   "translation": "墙"
+  },
+  {
+   "word": "patient",
+   "phonetic": "/'peiʃәnt/",
+   "translation": "病人"
+  },
+  {
+   "word": "worker",
+   "phonetic": "/'wә:kә/",
+   "translation": "工人"
+  },
+  {
+   "word": "news",
+   "phonetic": "/nju:z/",
+   "translation": "新闻"
+  },
+  {
+   "word": "test",
+   "phonetic": "/test/",
+   "translation": "测试"
+  },
+  {
+   "word": "movie",
+   "phonetic": "/'mu:vi/",
+   "translation": "电影"
+  },
+  {
+   "word": "certain",
+   "phonetic": "/'sә:tәn/",
+   "translation": "确定的"
+  },
+  {
+   "word": "North",
+   "phonetic": "/nɒ:θ/",
+   "translation": "北方"
+  },
+  {
+   "word": "personal",
+   "phonetic": "/'pә:snl/",
+   "translation": "私人的"
+  },
+  {
+   "word": "third",
+   "phonetic": "/θә:d/",
+   "translation": "第三"
+  },
+  {
+   "word": "technology",
+   "phonetic": "/tek'nɒlәdʒi/",
+   "translation": "技术"
+  },
+  {
+   "word": "catch",
+   "phonetic": "/kætʃ/",
+   "translation": "捕捉"
+  },
+  {
+   "word": "step",
+   "phonetic": "/step/",
+   "translation": "步骤"
+  },
+  {
+   "word": "baby",
+   "phonetic": "/'beibi/",
+   "translation": "婴孩"
+  },
+  {
+   "word": "computer",
+   "phonetic": "/kәm'pju:tә/",
+   "translation": "电脑"
+  },
+  {
+   "word": "attention",
+   "phonetic": "/ә'tenʃәn/",
+   "translation": "注意"
+  },
+  {
+   "word": "draw",
+   "phonetic": "/drɒ:/",
+   "translation": "拉"
+  },
+  {
+   "word": "film",
+   "phonetic": "/film/",
+   "translation": "软片"
+  },
+  {
+   "word": "tree",
+   "phonetic": "/tri:/",
+   "translation": "树"
+  },
+  {
+   "word": "red",
+   "phonetic": "/red/",
+   "translation": "红的"
+  },
+  {
+   "word": "nearly",
+   "phonetic": "/'niәli/",
+   "translation": "几乎"
+  },
+  {
+   "word": "choose",
+   "phonetic": "/tʃu:z/",
+   "translation": "选择"
+  },
+  {
+   "word": "cause",
+   "phonetic": "/kɒ:z/",
+   "translation": "原因"
+  },
+  {
+   "word": "hair",
+   "phonetic": "/hєә/",
+   "translation": "头发"
+  },
+  {
+   "word": "century",
+   "phonetic": "/'sentʃuri/",
+   "translation": "世纪"
+  },
+  {
+   "word": "window",
+   "phonetic": "/'windәu/",
+   "translation": "窗户"
+  },
+  {
+   "word": "difficult",
+   "phonetic": "/'difikәlt/",
+   "translation": "困难的"
+  },
+  {
+   "word": "listen",
+   "phonetic": "/'lisn/",
+   "translation": "听"
+  },
+  {
+   "word": "soon",
+   "phonetic": "/su:n/",
+   "translation": "不久"
+  },
+  {
+   "word": "culture",
+   "phonetic": "/'kʌltʃә/",
+   "translation": "文化"
+  },
+  {
+   "word": "chance",
+   "phonetic": "/tʃæns. tʃɑ:ns/",
+   "translation": "机会"
+  },
+  {
+   "word": "brother",
+   "phonetic": "/'brʌðә/",
+   "translation": "兄弟"
+  },
+  {
+   "word": "energy",
+   "phonetic": "/'enәdʒi/",
+   "translation": "精力"
+  },
+  {
+   "word": "period",
+   "phonetic": "/'piәriәd/",
+   "translation": "时期"
+  },
+  {
+   "word": "summer",
+   "phonetic": "/'sʌmә/",
+   "translation": "夏季"
+  },
+  {
+   "word": "hundred",
+   "phonetic": "/'hʌndrәd/",
+   "translation": "百"
+  },
+  {
+   "word": "available",
+   "phonetic": "/ә'veilәbl/",
+   "translation": "可利用的"
+  },
+  {
+   "word": "plant",
+   "phonetic": "/plænt. plɑ:nt/",
+   "translation": "植物"
+  },
+  {
+   "word": "term",
+   "phonetic": "/tә:m/",
+   "translation": "术语"
+  },
+  {
+   "word": "short",
+   "phonetic": "/ʃɒ:t/",
+   "translation": "短的"
+  },
+  {
+   "word": "letter",
+   "phonetic": "/'letә/",
+   "translation": "信"
+  },
+  {
+   "word": "condition",
+   "phonetic": "/kәn'diʃәn/",
+   "translation": "情况"
+  },
+  {
+   "word": "choice",
+   "phonetic": "/tʃɒis/",
+   "translation": "选择"
+  },
+  {
+   "word": "single",
+   "phonetic": "/'siŋgl/",
+   "translation": "单身的"
+  },
+  {
+   "word": "rule",
+   "phonetic": "/ru:l/",
+   "translation": "规则"
+  },
+  {
+   "word": "daughter",
+   "phonetic": "/'dɒ:tә/",
+   "translation": "女儿"
+  },
+  {
+   "word": "south",
+   "phonetic": "/sauθ/",
+   "translation": "南方"
+  },
+  {
+   "word": "husband",
+   "phonetic": "/'hʌzbәnd/",
+   "translation": "丈夫"
+  },
+  {
+   "word": "floor",
+   "phonetic": "/flɒ:/",
+   "translation": "地板"
+  },
+  {
+   "word": "population",
+   "phonetic": "/.pɒpju'leiʃәn/",
+   "translation": "人口"
+  },
+  {
+   "word": "medical",
+   "phonetic": "/'medikl/",
+   "translation": "医生"
+  },
+  {
+   "word": "hospital",
+   "phonetic": "/'hɒspitәl/",
+   "translation": "医院"
+  },
+  {
+   "word": "church",
+   "phonetic": "/tʃә:tʃ/",
+   "translation": "教堂"
+  },
+  {
+   "word": "close",
+   "phonetic": "/klәuz/",
+   "translation": "结束"
+  },
+  {
+   "word": "risk",
+   "phonetic": "/risk/",
+   "translation": "冒险"
+  },
+  {
+   "word": "thousand",
+   "phonetic": "/'θauznd/",
+   "translation": "千"
+  },
+  {
+   "word": "fire",
+   "phonetic": "/'faiә/",
+   "translation": "火"
+  },
+  {
+   "word": "future",
+   "phonetic": "/'fju:tʃә/",
+   "translation": "未来"
+  },
+  {
+   "word": "wrong",
+   "phonetic": "/rɒŋ/",
+   "translation": "错误的"
+  },
+  {
+   "word": "anyone",
+   "phonetic": "/'eniwʌn/",
+   "translation": "任何人"
+  },
+  {
+   "word": "increase",
+   "phonetic": "/in'kri:s/",
+   "translation": "增加"
+  },
+  {
+   "word": "myself",
+   "phonetic": "/mai'self/",
+   "translation": "我自己"
+  },
+  {
+   "word": "bank",
+   "phonetic": "/bæŋk/",
+   "translation": "银行"
+  },
+  {
+   "word": "west",
+   "phonetic": "/west/",
+   "translation": "西方"
+  },
+  {
+   "word": "sport",
+   "phonetic": "/spɒ:t/",
+   "translation": "运动"
+  },
+  {
+   "word": "board",
+   "phonetic": "/bɒ:d/",
+   "translation": "木板"
+  },
+  {
+   "word": "officer",
+   "phonetic": "/'ɒfisә/",
+   "translation": "军官"
+  },
+  {
+   "word": "private",
+   "phonetic": "/'praivit/",
+   "translation": "私人的"
+  },
+  {
+   "word": "rest",
+   "phonetic": "/rest/",
+   "translation": "休息"
+  },
+  {
+   "word": "deal",
+   "phonetic": "/di:l/",
+   "translation": "交易"
+  },
+  {
+   "word": "fight",
+   "phonetic": "/fait/",
+   "translation": "打架"
+  },
+  {
+   "word": "throw",
+   "phonetic": "/θrәu/",
+   "translation": "投"
+  },
+  {
+   "word": "top",
+   "phonetic": "/tɒp/",
+   "translation": "顶部"
+  },
+  {
+   "word": "past",
+   "phonetic": "/pɑ:st/",
+   "translation": "过去"
+  },
+  {
+   "word": "bed",
+   "phonetic": "/bed/",
+   "translation": "床"
+  },
+  {
+   "word": "order",
+   "phonetic": "/'ɒ:dә/",
+   "translation": "次序"
+  },
+  {
+   "word": "fill",
+   "phonetic": "/fil/",
+   "translation": "装满"
+  },
+  {
+   "word": "foreign",
+   "phonetic": "/'fɒ:rin/",
+   "translation": "外国的"
+  },
+  {
+   "word": "drop",
+   "phonetic": "/drɒp/",
+   "translation": "滴"
+  },
+  {
+   "word": "blood",
+   "phonetic": "/blʌd/",
+   "translation": "血"
+  },
+  {
+   "word": "upon",
+   "phonetic": "/ә'pɒn/",
+   "translation": "在...之上"
+  },
+  {
+   "word": "push",
+   "phonetic": "/puʃ/",
+   "translation": "推"
+  },
+  {
+   "word": "nature",
+   "phonetic": "/'neitʃә/",
+   "translation": "自然"
+  },
+  {
+   "word": "store",
+   "phonetic": "/stɒ:/",
+   "translation": "商店"
+  },
+  {
+   "word": "sound",
+   "phonetic": "/saund/",
+   "translation": "声音"
+  },
+  {
+   "word": "note",
+   "phonetic": "/nәut/",
+   "translation": "笔记"
+  },
+  {
+   "word": "fine",
+   "phonetic": "/fain/",
+   "translation": "罚款"
+  },
+  {
+   "word": "near",
+   "phonetic": "/niә/",
+   "translation": "近的"
+  },
+  {
+   "word": "page",
+   "phonetic": "/peidʒ/",
+   "translation": "页"
+  },
+  {
+   "word": "enter",
+   "phonetic": "/'entә/",
+   "translation": "进入"
+  },
+  {
+   "word": "common",
+   "phonetic": "/'kɒmәn/",
+   "translation": "通常的"
+  },
+  {
+   "word": "share",
+   "phonetic": "/ʃєә/",
+   "translation": "部分"
+  },
+  {
+   "word": "poor",
+   "phonetic": "/puә. pɒ:/",
+   "translation": "贫穷的"
+  },
+  {
+   "word": "natural",
+   "phonetic": "/'nætʃәrәl/",
+   "translation": "白痴"
+  },
+  {
+   "word": "race",
+   "phonetic": "/reis/",
+   "translation": "种族"
+  },
+  {
+   "word": "similar",
+   "phonetic": "/'similә/",
+   "translation": "相似的"
+  },
+  {
+   "word": "hot",
+   "phonetic": "/hɒt/",
+   "translation": "热的"
+  },
+  {
+   "word": "language",
+   "phonetic": "/'læŋgwidʒ/",
+   "translation": "语言"
+  },
+  {
+   "word": "dead",
+   "phonetic": "/ded/",
+   "translation": "死的"
+  },
+  {
+   "word": "rise",
+   "phonetic": "/raiz/",
+   "translation": "上升"
+  },
+  {
+   "word": "animal",
+   "phonetic": "/'ænimәl/",
+   "translation": "动物"
+  },
+  {
+   "word": "TV",
+   "phonetic": "/'ti:'vi:/",
+   "translation": "电视"
+  },
+  {
+   "word": "article",
+   "phonetic": "/'ɑ:tikl/",
+   "translation": "文章"
+  },
+  {
+   "word": "east",
+   "phonetic": "/i:st/",
+   "translation": "东方"
+  },
+  {
+   "word": "seven",
+   "phonetic": "/'sevn/",
+   "translation": "七"
+  },
+  {
+   "word": "save",
+   "phonetic": "/seiv/",
+   "translation": "救球"
+  },
+  {
+   "word": "eight",
+   "phonetic": "/eit/",
+   "translation": "八"
+  },
+  {
+   "word": "treatment",
+   "phonetic": "/'tri:tmәnt/",
+   "translation": "治疗"
+  },
+  {
+   "word": "beyond",
+   "phonetic": "/bi'jɒnd/",
+   "translation": "超过"
+  },
+  {
+   "word": "happy",
+   "phonetic": "/'hæpi/",
+   "translation": "快乐的"
+  },
+  {
+   "word": "protect",
+   "phonetic": "/prә'tekt/",
+   "translation": "防卫"
+  },
+  {
+   "word": "lie",
+   "phonetic": "/lai/",
+   "translation": "谎言"
+  },
+  {
+   "word": "size",
+   "phonetic": "/saiz/",
+   "translation": "大小"
+  },
+  {
+   "word": "dog",
+   "phonetic": "/dɒg/",
+   "translation": "狗"
+  },
+  {
+   "word": "serious",
+   "phonetic": "/'siәriәs/",
+   "translation": "严肃的"
+  },
+  {
+   "word": "ready",
+   "phonetic": "/'redi/",
+   "translation": "预备好的状态"
+  },
+  {
+   "word": "thought",
+   "phonetic": "/θɒ:t/",
+   "translation": "想法"
+  },
+  {
+   "word": "list",
+   "phonetic": "/list/",
+   "translation": "目录"
+  },
+  {
+   "word": "simple",
+   "phonetic": "/'simpl/",
+   "translation": "简单的"
+  },
+  {
+   "word": "accept",
+   "phonetic": "/әk'sept/",
+   "translation": "接受"
+  },
+  {
+   "word": "answer",
+   "phonetic": "/'ɑ:nsә/",
+   "translation": "答案"
+  },
+  {
+   "word": "left",
+   "phonetic": "/left/",
+   "translation": "左边的"
+  },
+  {
+   "word": "meeting",
+   "phonetic": "/'mi:tiŋ/",
+   "translation": "会议"
+  },
+  {
+   "word": "prepare",
+   "phonetic": "/pri'pєә/",
+   "translation": "准备"
+  },
+  {
+   "word": "disease",
+   "phonetic": "/di'zi:z/",
+   "translation": "疾病"
+  },
+  {
+   "word": "whatever",
+   "phonetic": "/hwɒt'evә/",
+   "translation": "无论什么"
+  },
+  {
+   "word": "success",
+   "phonetic": "/sәk'ses/",
+   "translation": "成功"
+  }
+ ]
+}

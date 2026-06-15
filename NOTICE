@@ -1,0 +1,20 @@
+Word Star Academy — third-party data attribution
+=================================================
+
+The bundled word packs in lib/wordpacks/generated/ are derived (trimmed +
+re-enriched offline) from the following open datasets. Full source datasets are
+NOT redistributed in this repo; only small extracted subsets are committed.
+
+ECDICT — https://github.com/skywind3000/ECDICT
+  License: MIT
+  Used for: graded/exam word selection (tags zk/gk/cet4/cet6/ky/toefl/ielts/gre)
+  and phonetic/translation enrichment.
+
+DictionaryData — https://github.com/LinXueyuanStdio/DictionaryData
+  License: Apache-2.0
+  Used for: textbook-by-unit word lists (人教/外研/译林 … by book + Unit).
+
+Official syllabus (课程标准 附录词汇表), Ministry of Education, China
+  Public domain. Used (optionally) as a coverage/alignment whitelist.
+
+See docs/word-resources.md and docs/word-integration-plan.md for details.
