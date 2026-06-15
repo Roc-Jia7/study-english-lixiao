@@ -1,0 +1,638 @@
+{
+ "id": "pep-5a",
+ "name": "人教版 五年级上",
+ "subtitle": "PEP Grade 5A · 人教三起",
+ "source": "DictionaryData (Apache-2.0) · 人教版三年级起点五年级上册",
+ "words": [
+  {
+   "word": "old",
+   "phonetic": "/oʊld/",
+   "translation": "年老的",
+   "unit": "Words in each unit Unit 1"
+  },
+  {
+   "word": "young",
+   "phonetic": "/jʌŋ/",
+   "translation": "年轻的",
+   "unit": "Words in each unit Unit 1"
+  },
+  {
+   "word": "funny",
+   "phonetic": "/ˈfʌni/",
+   "translation": "有趣的",
+   "unit": "Words in each unit Unit 1"
+  },
+  {
+   "word": "kind",
+   "phonetic": "/kaɪnd/",
+   "translation": "种类",
+   "unit": "Words in each unit Unit 1"
+  },
+  {
+   "word": "strict",
+   "phonetic": "/strɪkt/",
+   "translation": "严格的",
+   "unit": "Words in each unit Unit 1"
+  },
+  {
+   "word": "polite",
+   "phonetic": "/pəˈlaɪt/",
+   "translation": "有礼貌的",
+   "unit": "Words in each unit Unit 1"
+  },
+  {
+   "word": "helpful",
+   "phonetic": "/ˈhɛlpfəl/",
+   "translation": "有帮助的",
+   "unit": "Words in each unit Unit 1"
+  },
+  {
+   "word": "clever",
+   "phonetic": "/ˈklɛvɚ/",
+   "translation": "机灵的",
+   "unit": "Words in each unit Unit 1"
+  },
+  {
+   "word": "shy",
+   "phonetic": "/ʃai/",
+   "translation": "怕羞的",
+   "unit": "Words in each unit Unit 1"
+  },
+  {
+   "word": "know",
+   "phonetic": "/noʊ/",
+   "translation": "知道",
+   "unit": "Words in each unit Unit 1"
+  },
+  {
+   "word": "our",
+   "phonetic": "/aʊr/",
+   "translation": "我们的",
+   "unit": "Words in each unit Unit 1"
+  },
+  {
+   "word": "Ms",
+   "phonetic": "/mɪz/",
+   "translation": "女士",
+   "unit": "Words in each unit Unit 1"
+  },
+  {
+   "word": "will",
+   "phonetic": "/wɪl/",
+   "translation": "意志",
+   "unit": "Words in each unit Unit 1"
+  },
+  {
+   "word": "sometimes",
+   "phonetic": "/ˈsʌmˌtaɪmz/",
+   "translation": "不时",
+   "unit": "Words in each unit Unit 1"
+  },
+  {
+   "word": "robot",
+   "phonetic": "/ˈroʊbɑt/",
+   "translation": "机器人",
+   "unit": "Words in each unit Unit 1"
+  },
+  {
+   "word": "him",
+   "phonetic": "/hɪm/",
+   "translation": "他",
+   "unit": "Words in each unit Unit 1"
+  },
+  {
+   "word": "speak",
+   "phonetic": "/spik/",
+   "translation": "说话",
+   "unit": "Words in each unit Unit 1"
+  },
+  {
+   "word": "finish",
+   "phonetic": "/ˈfɪnɪʃ/",
+   "translation": "完成",
+   "unit": "Words in each unit Unit 1"
+  },
+  {
+   "word": "Monday",
+   "phonetic": "/ˈmʌnde/",
+   "translation": "星期一",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
+   "word": "Tuesday",
+   "phonetic": "/ˈtuzde/",
+   "translation": "星期二",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
+   "word": "Wednesday",
+   "phonetic": "/ˈwɛnzde/",
+   "translation": "星期三",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
+   "word": "Thursday",
+   "phonetic": "/ˈθɚzde/",
+   "translation": "星期四",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
+   "word": "Friday",
+   "phonetic": "/ˈfraɪˌde/",
+   "translation": "星期五",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
+   "word": "Saturday",
+   "phonetic": "/ˈsætɚde/",
+   "translation": "星期六",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
+   "word": "Sunday",
+   "phonetic": "/ˈsʌnˌde/",
+   "translation": "星期日",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
+   "word": "weekend",
+   "phonetic": "/ˈwikend/",
+   "translation": "周末",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
+   "word": "wash",
+   "phonetic": "/wɑʃ/",
+   "translation": "洗",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
+   "word": "watch",
+   "phonetic": "/wɑtʃ/",
+   "translation": "注视",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
+   "word": "do",
+   "phonetic": "/du/",
+   "translation": "做",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
+   "word": "read",
+   "phonetic": "/rid/",
+   "translation": "读",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
+   "word": "play",
+   "phonetic": "/ple/",
+   "translation": "游戏",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
+   "word": "cooking",
+   "phonetic": "/ˈkʊkɪŋ/",
+   "translation": "烹饪",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
+   "word": "often",
+   "phonetic": "/ˈɔfn/",
+   "translation": "常常",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
+   "word": "park",
+   "phonetic": "/pɑrk/",
+   "translation": "公园",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
+   "word": "tired",
+   "phonetic": "/ˈtaɪɚd/",
+   "translation": "疲劳的",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
+   "word": "sport",
+   "phonetic": "/spɔrt/",
+   "translation": "运动",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
+   "word": "should",
+   "phonetic": "/ʃʊd/",
+   "translation": "应该",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
+   "word": "every",
+   "phonetic": "/ˈɛvri/",
+   "translation": "每一的",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
+   "word": "day",
+   "phonetic": "/de/",
+   "translation": "天",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
+   "word": "schedule",
+   "phonetic": "/ˈskɛdʒʊl/",
+   "translation": "时间表",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
+   "word": "sandwich",
+   "phonetic": "/ˈsændwɪtʃ/",
+   "translation": "夹心面包",
+   "unit": "Words in each unit Unit 3"
+  },
+  {
+   "word": "salad",
+   "phonetic": "/ˈsæləd/",
+   "translation": "色拉",
+   "unit": "Words in each unit Unit 3"
+  },
+  {
+   "word": "hamburger",
+   "phonetic": "/ˈhæmbɚgɚ/",
+   "translation": "汉堡包",
+   "unit": "Words in each unit Unit 3"
+  },
+  {
+   "word": "tea",
+   "phonetic": "/ti/",
+   "translation": "茶",
+   "unit": "Words in each unit Unit 3"
+  },
+  {
+   "word": "fresh",
+   "phonetic": "/frɛʃ/",
+   "translation": "新鲜的",
+   "unit": "Words in each unit Unit 3"
+  },
+  {
+   "word": "healthy",
+   "phonetic": "/ˈhɛlθi/",
+   "translation": "健康的",
+   "unit": "Words in each unit Unit 3"
+  },
+  {
+   "word": "delicious",
+   "phonetic": "/dɪˈlɪʃəs/",
+   "translation": "美味的",
+   "unit": "Words in each unit Unit 3"
+  },
+  {
+   "word": "hot",
+   "phonetic": "/hɑt/",
+   "translation": "热的",
+   "unit": "Words in each unit Unit 3"
+  },
+  {
+   "word": "sweet",
+   "phonetic": "/swit/",
+   "translation": "甜的",
+   "unit": "Words in each unit Unit 3"
+  },
+  {
+   "word": "drink",
+   "phonetic": "/drɪŋk/",
+   "translation": "饮料",
+   "unit": "Words in each unit Unit 3"
+  },
+  {
+   "word": "thirsty",
+   "phonetic": "/ˈθɝsti/",
+   "translation": "口渴的",
+   "unit": "Words in each unit Unit 3"
+  },
+  {
+   "word": "favourite",
+   "phonetic": "/ˈfevərɪt/",
+   "translation": "特别喜爱的",
+   "unit": "Words in each unit Unit 3"
+  },
+  {
+   "word": "food",
+   "phonetic": "/fud/",
+   "translation": "食物",
+   "unit": "Words in each unit Unit 3"
+  },
+  {
+   "word": "Dear",
+   "phonetic": "/dɪɚ/",
+   "translation": "昂贵的",
+   "unit": "Words in each unit Unit 3"
+  },
+  {
+   "word": "onion",
+   "phonetic": "/ˈʌnjən/",
+   "translation": "洋葱",
+   "unit": "Words in each unit Unit 3"
+  },
+  {
+   "word": "sing",
+   "phonetic": "/sɪŋ/",
+   "translation": "唱",
+   "unit": "Words in each unit Unit 4"
+  },
+  {
+   "word": "song",
+   "phonetic": "/sɔŋ/",
+   "translation": "歌",
+   "unit": "Words in each unit Unit 4"
+  },
+  {
+   "word": "dance",
+   "phonetic": "/dæns/",
+   "translation": "跳舞",
+   "unit": "Words in each unit Unit 4"
+  },
+  {
+   "word": "draw",
+   "phonetic": "/drɔ/",
+   "translation": "画",
+   "unit": "Words in each unit Unit 4"
+  },
+  {
+   "word": "cartoon",
+   "phonetic": "/kɑrˈtun/",
+   "translation": "政治性漫画",
+   "unit": "Words in each unit Unit 4"
+  },
+  {
+   "word": "cook",
+   "phonetic": "/kʊk/",
+   "translation": "厨师",
+   "unit": "Words in each unit Unit 4"
+  },
+  {
+   "word": "swim",
+   "phonetic": "/swɪm/",
+   "translation": "游泳",
+   "unit": "Words in each unit Unit 4"
+  },
+  {
+   "word": "party",
+   "phonetic": "/ˈpɑrti/",
+   "translation": "聚会",
+   "unit": "Words in each unit Unit 4"
+  },
+  {
+   "word": "next",
+   "phonetic": "/nɛkst/",
+   "translation": "下次的",
+   "unit": "Words in each unit Unit 4"
+  },
+  {
+   "word": "wonderful",
+   "phonetic": "/ˈwʌndɚfl/",
+   "translation": "令人惊奇的",
+   "unit": "Words in each unit Unit 4"
+  },
+  {
+   "word": "learn",
+   "phonetic": "/lɚn/",
+   "translation": "学习",
+   "unit": "Words in each unit Unit 4"
+  },
+  {
+   "word": "any",
+   "phonetic": "/ˈɛni/",
+   "translation": "任何的",
+   "unit": "Words in each unit Unit 4"
+  },
+  {
+   "word": "problem",
+   "phonetic": "/ˈprɑbləm/",
+   "translation": "问题",
+   "unit": "Words in each unit Unit 4"
+  },
+  {
+   "word": "want",
+   "phonetic": "/wɑnt/",
+   "translation": "想要",
+   "unit": "Words in each unit Unit 4"
+  },
+  {
+   "word": "send",
+   "phonetic": "/sɛnd/",
+   "translation": "送",
+   "unit": "Words in each unit Unit 4"
+  },
+  {
+   "word": "email",
+   "phonetic": "/ˈimel/",
+   "translation": "电子信函",
+   "unit": "Words in each unit Unit 4"
+  },
+  {
+   "word": "at",
+   "phonetic": "/æt/",
+   "translation": "在",
+   "unit": "Words in each unit Unit 4"
+  },
+  {
+   "word": "clock",
+   "phonetic": "/klɑk/",
+   "translation": "时钟",
+   "unit": "Words in each unit Unit 5"
+  },
+  {
+   "word": "plant",
+   "phonetic": "/plænt/",
+   "translation": "植物",
+   "unit": "Words in each unit Unit 5"
+  },
+  {
+   "word": "bottle",
+   "phonetic": "/ˈbɑtl/",
+   "translation": "瓶子",
+   "unit": "Words in each unit Unit 5"
+  },
+  {
+   "word": "bike",
+   "phonetic": "/baɪk/",
+   "translation": "脚踏车",
+   "unit": "Words in each unit Unit 5"
+  },
+  {
+   "word": "photo",
+   "phonetic": "/ˈfoʊtoʊ/",
+   "translation": "照片",
+   "unit": "Words in each unit Unit 5"
+  },
+  {
+   "word": "front",
+   "phonetic": "/frʌnt/",
+   "translation": "前面",
+   "unit": "Words in each unit Unit 5"
+  },
+  {
+   "word": "between",
+   "phonetic": "/bɪˈtwin/",
+   "translation": "在...之间",
+   "unit": "Words in each unit Unit 5"
+  },
+  {
+   "word": "above",
+   "phonetic": "/əˈbʌv/",
+   "translation": "上面的",
+   "unit": "Words in each unit Unit 5"
+  },
+  {
+   "word": "beside",
+   "phonetic": "/bɪˈsaɪd/",
+   "translation": "在旁边",
+   "unit": "Words in each unit Unit 5"
+  },
+  {
+   "word": "behind",
+   "phonetic": "/bɪˈhaɪnd/",
+   "translation": "在后地",
+   "unit": "Words in each unit Unit 5"
+  },
+  {
+   "word": "there",
+   "phonetic": "/ðɛɚ/",
+   "translation": "在那里",
+   "unit": "Words in each unit Unit 5"
+  },
+  {
+   "word": "grandparent",
+   "phonetic": "/ˈgrænperənt/",
+   "translation": "祖父或祖母",
+   "unit": "Words in each unit Unit 5"
+  },
+  {
+   "word": "their",
+   "phonetic": "/ðɛɚ/",
+   "translation": "他们的",
+   "unit": "Words in each unit Unit 5"
+  },
+  {
+   "word": "house",
+   "phonetic": "/haʊs/",
+   "translation": "房子",
+   "unit": "Words in each unit Unit 5"
+  },
+  {
+   "word": "lot",
+   "phonetic": "/lɑt/",
+   "translation": "许多",
+   "unit": "Words in each unit Unit 5"
+  },
+  {
+   "word": "flower",
+   "phonetic": "/ˈflaʊɚ/",
+   "translation": "花",
+   "unit": "Words in each unit Unit 5"
+  },
+  {
+   "word": "move",
+   "phonetic": "/muv/",
+   "translation": "移动",
+   "unit": "Words in each unit Unit 5"
+  },
+  {
+   "word": "dirty",
+   "phonetic": "/ˈdɚti/",
+   "translation": "肮脏的",
+   "unit": "Words in each unit Unit 5"
+  },
+  {
+   "word": "everywhere",
+   "phonetic": "/ˈevriwer/",
+   "translation": "各处",
+   "unit": "Words in each unit Unit 5"
+  },
+  {
+   "word": "mouse",
+   "phonetic": "/maʊs/",
+   "translation": "鼠",
+   "unit": "Words in each unit Unit 5"
+  },
+  {
+   "word": "live",
+   "phonetic": "/lɪv/",
+   "translation": "活的",
+   "unit": "Words in each unit Unit 5"
+  },
+  {
+   "word": "nature",
+   "phonetic": "/ˈnetʃɚ/",
+   "translation": "自然",
+   "unit": "Words in each unit Unit 5"
+  },
+  {
+   "word": "forest",
+   "phonetic": "/ˈfɔrɪst/",
+   "translation": "森林",
+   "unit": "Words in each unit Unit 6"
+  },
+  {
+   "word": "river",
+   "phonetic": "/ˈrɪvɚ/",
+   "translation": "河",
+   "unit": "Words in each unit Unit 6"
+  },
+  {
+   "word": "mountain",
+   "phonetic": "/ˈmaʊntn/",
+   "translation": "山",
+   "unit": "Words in each unit Unit 6"
+  },
+  {
+   "word": "hill",
+   "phonetic": "/hɪl/",
+   "translation": "小山",
+   "unit": "Words in each unit Unit 6"
+  },
+  {
+   "word": "tree",
+   "phonetic": "/tri/",
+   "translation": "树",
+   "unit": "Words in each unit Unit 6"
+  },
+  {
+   "word": "bridge",
+   "phonetic": "/brɪdʒ/",
+   "translation": "桥",
+   "unit": "Words in each unit Unit 6"
+  },
+  {
+   "word": "building",
+   "phonetic": "/ˈbɪldɪŋ/",
+   "translation": "建筑物",
+   "unit": "Words in each unit Unit 6"
+  },
+  {
+   "word": "village",
+   "phonetic": "/ˈvɪlɪdʒ/",
+   "translation": "乡村",
+   "unit": "Words in each unit Unit 6"
+  },
+  {
+   "word": "boating",
+   "phonetic": "/ˈboʊtɪŋ/",
+   "translation": "划船",
+   "unit": "Words in each unit Unit 6"
+  },
+  {
+   "word": "rabbit",
+   "phonetic": "/ˈræbɪt/",
+   "translation": "兔",
+   "unit": "Words in each unit Unit 6"
+  },
+  {
+   "word": "high",
+   "phonetic": "/hai/",
+   "translation": "高度",
+   "unit": "Words in each unit Unit 6"
+  }
+ ]
+}

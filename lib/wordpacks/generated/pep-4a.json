@@ -1,0 +1,434 @@
+{
+ "id": "pep-4a",
+ "name": "人教版 四年级上",
+ "subtitle": "PEP Grade 4A · 人教三起",
+ "source": "DictionaryData (Apache-2.0) · 人教版三年级起点四年级上册",
+ "words": [
+  {
+   "word": "classroom",
+   "phonetic": "/ˈklɑsrum/",
+   "translation": "教室",
+   "unit": "Unit 1"
+  },
+  {
+   "word": "window",
+   "phonetic": "/ˈwɪndoʊ/",
+   "translation": "窗",
+   "unit": "Unit 1"
+  },
+  {
+   "word": "blackboard",
+   "phonetic": "/ˈblækbɔrd/",
+   "translation": "黑板",
+   "unit": "Unit 1"
+  },
+  {
+   "word": "light",
+   "phonetic": "/laɪt/",
+   "translation": "光",
+   "unit": "Unit 1"
+  },
+  {
+   "word": "picture",
+   "phonetic": "/ˈpɪktʃɚ/",
+   "translation": "画",
+   "unit": "Unit 1"
+  },
+  {
+   "word": "door",
+   "phonetic": "/dɔr/",
+   "translation": "门",
+   "unit": "Unit 1"
+  },
+  {
+   "word": "computer",
+   "phonetic": "/kəmˈpjutɚ/",
+   "translation": "计算机",
+   "unit": "Unit 1"
+  },
+  {
+   "word": "fan",
+   "phonetic": "/fæn/",
+   "translation": "扇子",
+   "unit": "Unit 1"
+  },
+  {
+   "word": "wall",
+   "phonetic": "/wɔl/",
+   "translation": "墙壁",
+   "unit": "Unit 1"
+  },
+  {
+   "word": "floor",
+   "phonetic": "/flɔr/",
+   "translation": "(房间",
+   "unit": "Unit 1"
+  },
+  {
+   "word": "really",
+   "phonetic": "/ˈriəˌli/",
+   "translation": "真正地",
+   "unit": "Unit 1"
+  },
+  {
+   "word": "near",
+   "phonetic": "/nɪɚ/",
+   "translation": "亲近的",
+   "unit": "Unit 1"
+  },
+  {
+   "word": "TV",
+   "phonetic": "/ˌtiˈvi/",
+   "translation": "电视",
+   "unit": "Unit 1"
+  },
+  {
+   "word": "clean",
+   "phonetic": "/klin/",
+   "translation": "清洁的",
+   "unit": "Unit 1"
+  },
+  {
+   "word": "help",
+   "phonetic": "/hɛlp/",
+   "translation": "帮忙",
+   "unit": "Unit 1"
+  },
+  {
+   "word": "schoolbag",
+   "phonetic": "/ˈskulˌbæɡ/",
+   "translation": "书包",
+   "unit": "Unit 2"
+  },
+  {
+   "word": "storybook",
+   "phonetic": "/ˈstɔriˌbʊk/",
+   "translation": "故事书",
+   "unit": "Unit 2"
+  },
+  {
+   "word": "candy",
+   "phonetic": "/ˈkændi/",
+   "translation": "糖果",
+   "unit": "Unit 2"
+  },
+  {
+   "word": "notebook",
+   "phonetic": "/ˈnoʊtbʊk/",
+   "translation": "笔记簿",
+   "unit": "Unit 2"
+  },
+  {
+   "word": "key",
+   "phonetic": "/ki/",
+   "translation": "钥匙",
+   "unit": "Unit 2"
+  },
+  {
+   "word": "wow",
+   "phonetic": "/waʊ/",
+   "translation": "叫声",
+   "unit": "Unit 2"
+  },
+  {
+   "word": "lost",
+   "phonetic": "/lɔst/",
+   "translation": "失去的",
+   "unit": "Unit 2"
+  },
+  {
+   "word": "cute",
+   "phonetic": "/kjut/",
+   "translation": "可爱的",
+   "unit": "Unit 2"
+  },
+  {
+   "word": "strong",
+   "phonetic": "/strɔŋ/",
+   "translation": "强",
+   "unit": "Unit 3"
+  },
+  {
+   "word": "friendly",
+   "phonetic": "/ˈfrɛndli/",
+   "translation": "友好的",
+   "unit": "Unit 3"
+  },
+  {
+   "word": "quiet",
+   "phonetic": "/ˈkwaɪɪt/",
+   "translation": "静止的",
+   "unit": "Unit 3"
+  },
+  {
+   "word": "hair",
+   "phonetic": "/hɛɚ/",
+   "translation": "头发",
+   "unit": "Unit 3"
+  },
+  {
+   "word": "shoe",
+   "phonetic": "/ʃu/",
+   "translation": "鞋",
+   "unit": "Unit 3"
+  },
+  {
+   "word": "glasses",
+   "phonetic": "/ˈglɑsɪz/",
+   "translation": "眼镜",
+   "unit": "Unit 3"
+  },
+  {
+   "word": "his",
+   "phonetic": "/hɪz/",
+   "translation": "他的",
+   "unit": "Unit 3"
+  },
+  {
+   "word": "or",
+   "phonetic": "/ɔr/",
+   "translation": "或",
+   "unit": "Unit 3"
+  },
+  {
+   "word": "right",
+   "phonetic": "/raɪt/",
+   "translation": "正义",
+   "unit": "Unit 3"
+  },
+  {
+   "word": "hat",
+   "phonetic": "/hæt/",
+   "translation": "帽子",
+   "unit": "Unit 3"
+  },
+  {
+   "word": "her",
+   "phonetic": "/hɚ/",
+   "translation": "她的",
+   "unit": "Unit 3"
+  },
+  {
+   "word": "bedroom",
+   "phonetic": "/ˈbɛdrum/",
+   "translation": "卧室",
+   "unit": "Unit 4"
+  },
+  {
+   "word": "study",
+   "phonetic": "/ˈstʌdi/",
+   "translation": "学习",
+   "unit": "Unit 4"
+  },
+  {
+   "word": "kitchen",
+   "phonetic": "/ˈkɪtʃən/",
+   "translation": "厨房",
+   "unit": "Unit 4"
+  },
+  {
+   "word": "bathroom",
+   "phonetic": "/ˈbæθrum/",
+   "translation": "浴室",
+   "unit": "Unit 4"
+  },
+  {
+   "word": "bed",
+   "phonetic": "/bɛd/",
+   "translation": "床",
+   "unit": "Unit 4"
+  },
+  {
+   "word": "phone",
+   "phonetic": "/foʊn/",
+   "translation": "电话",
+   "unit": "Unit 4"
+  },
+  {
+   "word": "table",
+   "phonetic": "/ˈtebəl/",
+   "translation": "桌子",
+   "unit": "Unit 4"
+  },
+  {
+   "word": "sofa",
+   "phonetic": "/ˈsoʊfə/",
+   "translation": "沙发",
+   "unit": "Unit 4"
+  },
+  {
+   "word": "fridge",
+   "phonetic": "/frɪdʒ/",
+   "translation": "电冰箱",
+   "unit": "Unit 4"
+  },
+  {
+   "word": "find",
+   "phonetic": "/faɪnd/",
+   "translation": "找到",
+   "unit": "Unit 4"
+  },
+  {
+   "word": "them",
+   "phonetic": "/ðəm/",
+   "translation": "他们",
+   "unit": "Unit 4"
+  },
+  {
+   "word": "beef",
+   "phonetic": "/bif/",
+   "translation": "牛肉",
+   "unit": "Unit 5"
+  },
+  {
+   "word": "chicken",
+   "phonetic": "/ˈtʃɪkən/",
+   "translation": "小鸡",
+   "unit": "Unit 5"
+  },
+  {
+   "word": "vegetable",
+   "phonetic": "/ˈvɛdʒtəbəl/",
+   "translation": "蔬菜",
+   "unit": "Unit 5"
+  },
+  {
+   "word": "chopsticks",
+   "phonetic": "/ˈtʃɑpstɪks/",
+   "translation": "筷子",
+   "unit": "Unit 5"
+  },
+  {
+   "word": "bowl",
+   "phonetic": "/boʊl/",
+   "translation": "碗",
+   "unit": "Unit 5"
+  },
+  {
+   "word": "fork",
+   "phonetic": "/fɔrk/",
+   "translation": "叉",
+   "unit": "Unit 5"
+  },
+  {
+   "word": "knife",
+   "phonetic": "/naɪf/",
+   "translation": "刀",
+   "unit": "Unit 5"
+  },
+  {
+   "word": "spoon",
+   "phonetic": "/spun/",
+   "translation": "匙",
+   "unit": "Unit 5"
+  },
+  {
+   "word": "dinner",
+   "phonetic": "/ˈdɪnɚ/",
+   "translation": "正餐",
+   "unit": "Unit 5"
+  },
+  {
+   "word": "ready",
+   "phonetic": "/ˈrɛdi/",
+   "translation": "有准备的",
+   "unit": "Unit 5"
+  },
+  {
+   "word": "pass",
+   "phonetic": "/pæs/",
+   "translation": "经过",
+   "unit": "Unit 5"
+  },
+  {
+   "word": "try",
+   "phonetic": "/trai/",
+   "translation": "尝试",
+   "unit": "Unit 5"
+  },
+  {
+   "word": "cousin",
+   "phonetic": "/ˈkʌzn/",
+   "translation": "堂兄弟姊妹",
+   "unit": "Unit 6"
+  },
+  {
+   "word": "uncle",
+   "phonetic": "/ˈʌŋkəl/",
+   "translation": "伯父",
+   "unit": "Unit 6"
+  },
+  {
+   "word": "aunt",
+   "phonetic": "/ænt/",
+   "translation": "姑妈",
+   "unit": "Unit 6"
+  },
+  {
+   "word": "doctor",
+   "phonetic": "/ˈdɑktɚ/",
+   "translation": "医生",
+   "unit": "Unit 6"
+  },
+  {
+   "word": "cook",
+   "phonetic": "/kʊk/",
+   "translation": "厨师",
+   "unit": "Unit 6"
+  },
+  {
+   "word": "driver",
+   "phonetic": "/ˈdraɪvɚ/",
+   "translation": "驾驶员",
+   "unit": "Unit 6"
+  },
+  {
+   "word": "farmer",
+   "phonetic": "/ˈfɑrmɚ/",
+   "translation": "农夫",
+   "unit": "Unit 6"
+  },
+  {
+   "word": "nurse",
+   "phonetic": "/nɚs/",
+   "translation": "护士",
+   "unit": "Unit 6"
+  },
+  {
+   "word": "people",
+   "phonetic": "/ˈpipl/",
+   "translation": "人",
+   "unit": "Unit 6"
+  },
+  {
+   "word": "but",
+   "phonetic": "/bʌt/",
+   "translation": "除...以外",
+   "unit": "Unit 6"
+  },
+  {
+   "word": "little",
+   "phonetic": "/ˈlɪtl/",
+   "translation": "少许",
+   "unit": "Unit 6"
+  },
+  {
+   "word": "puppy",
+   "phonetic": "/ˈpʌpi/",
+   "translation": "小狗",
+   "unit": "Unit 6"
+  },
+  {
+   "word": "job",
+   "phonetic": "/dʒɑb/",
+   "translation": "工作",
+   "unit": "Unit 6"
+  },
+  {
+   "word": "basketball",
+   "phonetic": "/ˈbæskɪtbɔl/",
+   "translation": "篮球",
+   "unit": "Unit 6"
+  }
+ ]
+}

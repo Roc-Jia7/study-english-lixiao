@@ -1,11 +1,67 @@
 [
  {
   "id": "pep-3a",
-  "name": "人教版 三年级上 · 全册",
-  "subtitle": "PEP Grade 3A · Units 1–6",
-  "source": "DictionaryData (Apache-2.0) · 人教版三年级起点三年级上",
-  "category": "textbook",
+  "name": "人教版 三年级上",
+  "subtitle": "PEP Grade 3A · 人教三起",
+  "source": "DictionaryData (Apache-2.0) · 人教版三年级起点三年级上册",
+  "category": "primary",
   "count": 64
+ },
+ {
+  "id": "pep-3b",
+  "name": "人教版 三年级下",
+  "subtitle": "PEP Grade 3B · 人教三起",
+  "source": "DictionaryData (Apache-2.0) · 人教版三年级起点三年级下册",
+  "category": "primary",
+  "count": 70
+ },
+ {
+  "id": "pep-4a",
+  "name": "人教版 四年级上",
+  "subtitle": "PEP Grade 4A · 人教三起",
+  "source": "DictionaryData (Apache-2.0) · 人教版三年级起点四年级上册",
+  "category": "primary",
+  "count": 71
+ },
+ {
+  "id": "pep-4b",
+  "name": "人教版 四年级下",
+  "subtitle": "PEP Grade 4B · 人教三起",
+  "source": "DictionaryData (Apache-2.0) · 人教版三年级起点四年级下册",
+  "category": "primary",
+  "count": 78
+ },
+ {
+  "id": "pep-5a",
+  "name": "人教版 五年级上",
+  "subtitle": "PEP Grade 5A · 人教三起",
+  "source": "DictionaryData (Apache-2.0) · 人教版三年级起点五年级上册",
+  "category": "primary",
+  "count": 105
+ },
+ {
+  "id": "pep-5b",
+  "name": "人教版 五年级下",
+  "subtitle": "PEP Grade 5B · 人教三起",
+  "source": "DictionaryData (Apache-2.0) · 人教版三年级起点五年级下册",
+  "category": "primary",
+  "count": 119
+ },
+ {
+  "id": "pep-6a",
+  "name": "人教版 六年级上",
+  "subtitle": "PEP Grade 6A · 人教三起",
+  "source": "DictionaryData (Apache-2.0) · 人教版三年级起点六年级上册",
+  "category": "primary",
+  "count": 122
+ },
+ {
+  "id": "pep-6b",
+  "name": "人教版 六年级下",
+  "subtitle": "PEP Grade 6B · 人教三起",
+  "source": "DictionaryData (Apache-2.0) · 人教版三年级起点六年级下册",
+  "category": "primary",
+  "count": 74
  },
  {
   "id": "zhongkao-core",

@@ -18,10 +18,22 @@ const GROUPS: Array<{
   gradient: string;
 }> = [
   {
-    category: "textbook",
-    label: "教材同步",
+    category: "primary",
+    label: "小学 · 人教教材",
     icon: BookOpen,
     gradient: "from-sky-400 to-violet-500",
+  },
+  {
+    category: "middle",
+    label: "初中教材",
+    icon: BookOpen,
+    gradient: "from-teal-400 to-emerald-500",
+  },
+  {
+    category: "high",
+    label: "高中教材",
+    icon: BookOpen,
+    gradient: "from-fuchsia-400 to-pink-500",
   },
   {
     category: "exam",

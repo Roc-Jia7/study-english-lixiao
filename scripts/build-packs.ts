@@ -63,15 +63,18 @@ function* csvRecords(text: string): Generator<string[]> {
 // e.g. "yellowADJ.yellow" or "a. that". \b sits between a Chinese (\W) and latin
 // (\w) char, so inline markers split too. They become "/" - a split delimiter.
 const POS_MARK =
-  /\b(n|v|vt|vi|a|ad|adj|adv|pron|art|num|prep|conj|aux|int|interj|abbr|u|c)\.\s*/gi;
+  /\b(vbl|adj|adv|pron|art|num|prep|conj|aux|interj|int|abbr|vt|vi|pl|ad|n|v|a|u|c)\.\s*/gi;
 
 /** Reduce a messy dictionary gloss to one short, kid-friendly Chinese sense. */
 function cleanTranslation(raw: string): string {
   if (!raw) return "";
   let s = raw.split("\\n")[0]; // first sense line (literal backslash-n in data)
-  s = s.replace(/\[[^\]]*\]/g, ""); // drop bracket tags
+  s = s.replace(/\[[^\]]*\]/g, ""); // drop [网络] [军] tags
+  s = s.replace(/<[^>]*>/g, ""); // drop <美> <用作宾语> tags
   s = s.replace(POS_MARK, "/"); // POS markers become a split delimiter
-  const parts = s.split(/[;,/；，]/).map((x) => x.trim()).filter(Boolean);
+  // Split on punctuation OR a run of 2+ spaces (which separates alt senses,
+  // often a trailing English proper noun like "电视  Tuvalu").
+  const parts = s.split(/[;,/；，]|\s{2,}/).map((x) => x.trim()).filter(Boolean);
   const first = parts[0] ?? "";
   return first.replace(/（[^）]*）|\([^)]*\)/g, "").trim().slice(0, 16);
 }

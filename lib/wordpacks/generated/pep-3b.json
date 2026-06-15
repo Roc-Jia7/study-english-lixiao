@@ -1,0 +1,428 @@
+{
+ "id": "pep-3b",
+ "name": "人教版 三年级下",
+ "subtitle": "PEP Grade 3B · 人教三起",
+ "source": "DictionaryData (Apache-2.0) · 人教版三年级起点三年级下册",
+ "words": [
+  {
+   "word": "UK",
+   "phonetic": "/ju ˈke/",
+   "translation": "英国",
+   "unit": "Unit 1"
+  },
+  {
+   "word": "Canada",
+   "phonetic": "/ˈkænədə/",
+   "translation": "加拿大",
+   "unit": "Unit 1"
+  },
+  {
+   "word": "USA",
+   "phonetic": "/ˌju ɛsˈ e/",
+   "translation": "美国",
+   "unit": "Unit 1"
+  },
+  {
+   "word": "China",
+   "phonetic": "/ˈtʃaɪnə/",
+   "translation": "中国",
+   "unit": "Unit 1"
+  },
+  {
+   "word": "she",
+   "phonetic": "/ʃi/",
+   "translation": "她",
+   "unit": "Unit 1"
+  },
+  {
+   "word": "student",
+   "phonetic": "/ˈstjudnt/",
+   "translation": "学生",
+   "unit": "Unit 1"
+  },
+  {
+   "word": "pupil",
+   "phonetic": "/ˈpjupəl/",
+   "translation": "学生",
+   "unit": "Unit 1"
+  },
+  {
+   "word": "he",
+   "phonetic": "/hi/",
+   "translation": "他",
+   "unit": "Unit 1"
+  },
+  {
+   "word": "teacher",
+   "phonetic": "/ˈtitʃɚ/",
+   "translation": "教师",
+   "unit": "Unit 1"
+  },
+  {
+   "word": "boy",
+   "phonetic": "/bɔi/",
+   "translation": "男孩",
+   "unit": "Unit 1"
+  },
+  {
+   "word": "and",
+   "phonetic": "/ænd/",
+   "translation": "和",
+   "unit": "Unit 1"
+  },
+  {
+   "word": "girl",
+   "phonetic": "/gɚl/",
+   "translation": "女孩",
+   "unit": "Unit 1"
+  },
+  {
+   "word": "new",
+   "phonetic": "/nu/",
+   "translation": "新的",
+   "unit": "Unit 1"
+  },
+  {
+   "word": "friend",
+   "phonetic": "/frɛnd/",
+   "translation": "朋友",
+   "unit": "Unit 1"
+  },
+  {
+   "word": "today",
+   "phonetic": "/təˈde/",
+   "translation": "今天",
+   "unit": "Unit 1"
+  },
+  {
+   "word": "father",
+   "phonetic": "/ˈfɑðɚ/",
+   "translation": "父亲",
+   "unit": "Unit 2"
+  },
+  {
+   "word": "dad",
+   "phonetic": "/dæd/",
+   "translation": "爸爸",
+   "unit": "Unit 2"
+  },
+  {
+   "word": "man",
+   "phonetic": "/mæn/",
+   "translation": "男人",
+   "unit": "Unit 2"
+  },
+  {
+   "word": "woman",
+   "phonetic": "/ˈwʊmən/",
+   "translation": "女人",
+   "unit": "Unit 2"
+  },
+  {
+   "word": "mother",
+   "phonetic": "/ˈmʌðɚ/",
+   "translation": "母亲",
+   "unit": "Unit 2"
+  },
+  {
+   "word": "sister",
+   "phonetic": "/ˈsɪstɚ/",
+   "translation": "姐妹",
+   "unit": "Unit 2"
+  },
+  {
+   "word": "brother",
+   "phonetic": "/ˈbrʌðɚ/",
+   "translation": "兄弟",
+   "unit": "Unit 2"
+  },
+  {
+   "word": "grandmother",
+   "phonetic": "/ˈɡrændˌmʌðɚ/",
+   "translation": "祖母",
+   "unit": "Unit 2"
+  },
+  {
+   "word": "grandma",
+   "phonetic": "/ˈɡrænmɑ/",
+   "translation": "奶奶",
+   "unit": "Unit 2"
+  },
+  {
+   "word": "grandfather",
+   "phonetic": "/ˈɡrændˌfɑðɚ/",
+   "translation": "祖父",
+   "unit": "Unit 2"
+  },
+  {
+   "word": "grandpa",
+   "phonetic": "/ˈɡrændˌpɑ/",
+   "translation": "爷爷",
+   "unit": "Unit 2"
+  },
+  {
+   "word": "family",
+   "phonetic": "/ˈfæməli/",
+   "translation": "家庭",
+   "unit": "Unit 2"
+  },
+  {
+   "word": "thin",
+   "phonetic": "/θɪn/",
+   "translation": "薄的",
+   "unit": "Unit 3"
+  },
+  {
+   "word": "fat",
+   "phonetic": "/fæt/",
+   "translation": "脂肪",
+   "unit": "Unit 3"
+  },
+  {
+   "word": "tall",
+   "phonetic": "/tɔl/",
+   "translation": "高的",
+   "unit": "Unit 3"
+  },
+  {
+   "word": "short",
+   "phonetic": "/ʃɔrt/",
+   "translation": "简略",
+   "unit": "Unit 3"
+  },
+  {
+   "word": "long",
+   "phonetic": "/lɔŋ/",
+   "translation": "长的",
+   "unit": "Unit 3"
+  },
+  {
+   "word": "small",
+   "phonetic": "/smɔl/",
+   "translation": "小的",
+   "unit": "Unit 3"
+  },
+  {
+   "word": "big",
+   "phonetic": "/bɪɡ/",
+   "translation": "大的",
+   "unit": "Unit 3"
+  },
+  {
+   "word": "giraffe",
+   "phonetic": "/dʒəˈrɑf/",
+   "translation": "长颈鹿",
+   "unit": "Unit 3"
+  },
+  {
+   "word": "so",
+   "phonetic": "/soʊ/",
+   "translation": "因而",
+   "unit": "Unit 3"
+  },
+  {
+   "word": "children",
+   "phonetic": "/ˈtʃɪldrən/",
+   "translation": "(",
+   "unit": "Unit 3"
+  },
+  {
+   "word": "tail",
+   "phonetic": "/tel/",
+   "translation": "尾部",
+   "unit": "Unit 3"
+  },
+  {
+   "word": "on",
+   "phonetic": "/ɑn/",
+   "translation": "在...之上",
+   "unit": "Unit 4"
+  },
+  {
+   "word": "in",
+   "phonetic": "/ɪn/",
+   "translation": "在...之内",
+   "unit": "Unit 4"
+  },
+  {
+   "word": "under",
+   "phonetic": "/ˈʌndɚ/",
+   "translation": "在...之下",
+   "unit": "Unit 4"
+  },
+  {
+   "word": "chair",
+   "phonetic": "/tʃɛr/",
+   "translation": "椅子",
+   "unit": "Unit 4"
+  },
+  {
+   "word": "desk",
+   "phonetic": "/dɛsk/",
+   "translation": "书桌",
+   "unit": "Unit 4"
+  },
+  {
+   "word": "cap",
+   "phonetic": "/kæp/",
+   "translation": "帽子",
+   "unit": "Unit 4"
+  },
+  {
+   "word": "ball",
+   "phonetic": "/bɔl/",
+   "translation": "球",
+   "unit": "Unit 4"
+  },
+  {
+   "word": "car",
+   "phonetic": "/kɑr/",
+   "translation": "汽车",
+   "unit": "Unit 4"
+  },
+  {
+   "word": "boat",
+   "phonetic": "/boʊt/",
+   "translation": "小船",
+   "unit": "Unit 4"
+  },
+  {
+   "word": "map",
+   "phonetic": "/mæp/",
+   "translation": "地图",
+   "unit": "Unit 4"
+  },
+  {
+   "word": "box",
+   "phonetic": "/bɑks/",
+   "translation": "盒子",
+   "unit": "Unit 4"
+  },
+  {
+   "word": "pear",
+   "phonetic": "/pɛɚ/",
+   "translation": "梨子",
+   "unit": "Unit 5"
+  },
+  {
+   "word": "apple",
+   "phonetic": "/ˈæpəl/",
+   "translation": "苹果",
+   "unit": "Unit 5"
+  },
+  {
+   "word": "orange",
+   "phonetic": "/ˈɔrɪndʒ/",
+   "translation": "橙子",
+   "unit": "Unit 5"
+  },
+  {
+   "word": "banana",
+   "phonetic": "/bəˈnænə/",
+   "translation": "香蕉",
+   "unit": "Unit 5"
+  },
+  {
+   "word": "watermelon",
+   "phonetic": "/ˈwɑtɚmɛlən/",
+   "translation": "西瓜",
+   "unit": "Unit 5"
+  },
+  {
+   "word": "strawberry",
+   "phonetic": "/ˈstrɔbəri/",
+   "translation": "草莓",
+   "unit": "Unit 5"
+  },
+  {
+   "word": "grape",
+   "phonetic": "/ɡrep/",
+   "translation": "葡萄",
+   "unit": "Unit 5"
+  },
+  {
+   "word": "buy",
+   "phonetic": "/bai/",
+   "translation": "买",
+   "unit": "Unit 5"
+  },
+  {
+   "word": "fruit",
+   "phonetic": "/frut/",
+   "translation": "水果",
+   "unit": "Unit 5"
+  },
+  {
+   "word": "eleven",
+   "phonetic": "/ɪˈlɛvən/",
+   "translation": "十一",
+   "unit": "Unit 6"
+  },
+  {
+   "word": "twelve",
+   "phonetic": "/twɛlv/",
+   "translation": "十二",
+   "unit": "Unit 6"
+  },
+  {
+   "word": "thirteen",
+   "phonetic": "/θɝˈtin/",
+   "translation": "十三",
+   "unit": "Unit 6"
+  },
+  {
+   "word": "fourteen",
+   "phonetic": "/ˌfɔrˈtin/",
+   "translation": "十四",
+   "unit": "Unit 6"
+  },
+  {
+   "word": "fifteen",
+   "phonetic": "/fɪfˈtin/",
+   "translation": "十五",
+   "unit": "Unit 6"
+  },
+  {
+   "word": "sixteen",
+   "phonetic": "/sɪkˈstin/",
+   "translation": "十六",
+   "unit": "Unit 6"
+  },
+  {
+   "word": "seventeen",
+   "phonetic": "/sev(ə)nˈtin/",
+   "translation": "十七",
+   "unit": "Unit 6"
+  },
+  {
+   "word": "eighteen",
+   "phonetic": "/eˈtin/",
+   "translation": "十八的",
+   "unit": "Unit 6"
+  },
+  {
+   "word": "nineteen",
+   "phonetic": "/naɪnˈtin/",
+   "translation": "十九",
+   "unit": "Unit 6"
+  },
+  {
+   "word": "twenty",
+   "phonetic": "/ˈtwɛnti/",
+   "translation": "二十",
+   "unit": "Unit 6"
+  },
+  {
+   "word": "kite",
+   "phonetic": "/kaɪt/",
+   "translation": "风筝",
+   "unit": "Unit 6"
+  },
+  {
+   "word": "beautiful",
+   "phonetic": "/ˈbjutəfəl/",
+   "translation": "美丽的",
+   "unit": "Unit 6"
+  }
+ ]
+}

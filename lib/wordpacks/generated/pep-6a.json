@@ -1,0 +1,740 @@
+{
+ "id": "pep-6a",
+ "name": "人教版 六年级上",
+ "subtitle": "PEP Grade 6A · 人教三起",
+ "source": "DictionaryData (Apache-2.0) · 人教版三年级起点六年级上册",
+ "words": [
+  {
+   "word": "science",
+   "phonetic": "/ˈsaɪəns/",
+   "translation": "科学",
+   "unit": "Words in each unit Unit 1"
+  },
+  {
+   "word": "museum",
+   "phonetic": "/mjuˈziəm/",
+   "translation": "博物馆",
+   "unit": "Words in each unit Unit 1"
+  },
+  {
+   "word": "bookstore",
+   "phonetic": "/ˈbʊkˌstɔr/",
+   "translation": "书店",
+   "unit": "Words in each unit Unit 1"
+  },
+  {
+   "word": "cinema",
+   "phonetic": "/ˈsɪnəmə/",
+   "translation": "电影院",
+   "unit": "Words in each unit Unit 1"
+  },
+  {
+   "word": "hospital",
+   "phonetic": "/ˈhɑspɪtl/",
+   "translation": "医院",
+   "unit": "Words in each unit Unit 1"
+  },
+  {
+   "word": "crossing",
+   "phonetic": "/ˈkrɔsɪŋ/",
+   "translation": "横越",
+   "unit": "Words in each unit Unit 1"
+  },
+  {
+   "word": "turn",
+   "phonetic": "/tɚn/",
+   "translation": "转动",
+   "unit": "Words in each unit Unit 1"
+  },
+  {
+   "word": "left",
+   "phonetic": "/lɛft/",
+   "translation": "左边的",
+   "unit": "Words in each unit Unit 1"
+  },
+  {
+   "word": "straight",
+   "phonetic": "/stret/",
+   "translation": "直的",
+   "unit": "Words in each unit Unit 1"
+  },
+  {
+   "word": "right",
+   "phonetic": "/raɪt/",
+   "translation": "正义",
+   "unit": "Words in each unit Unit 1"
+  },
+  {
+   "word": "ask",
+   "phonetic": "/æsk/",
+   "translation": "询问",
+   "unit": "Words in each unit Unit 1"
+  },
+  {
+   "word": "sir",
+   "phonetic": "/sɚ/",
+   "translation": "先生",
+   "unit": "Words in each unit Unit 1"
+  },
+  {
+   "word": "interesting",
+   "phonetic": "/ˈɪntrɪstɪŋ/",
+   "translation": "有趣味的",
+   "unit": "Words in each unit Unit 1"
+  },
+  {
+   "word": "Italian",
+   "phonetic": "/ɪˈtæljən/",
+   "translation": "意大利人",
+   "unit": "Words in each unit Unit 1"
+  },
+  {
+   "word": "restaurant",
+   "phonetic": "/ˈrɛstrɑnt/",
+   "translation": "餐馆",
+   "unit": "Words in each unit Unit 1"
+  },
+  {
+   "word": "pizza",
+   "phonetic": "/ˈpitsə/",
+   "translation": "比萨饼",
+   "unit": "Words in each unit Unit 1"
+  },
+  {
+   "word": "street",
+   "phonetic": "/strit/",
+   "translation": "街",
+   "unit": "Words in each unit Unit 1"
+  },
+  {
+   "word": "get",
+   "phonetic": "/ɡɛt/",
+   "translation": "获得",
+   "unit": "Words in each unit Unit 1"
+  },
+  {
+   "word": "gave",
+   "phonetic": "/ɡev/",
+   "translation": "give的过去式",
+   "unit": "Words in each unit Unit 1"
+  },
+  {
+   "word": "feature",
+   "phonetic": "/ˈfitʃɚ/",
+   "translation": "面貌的一部分(眼",
+   "unit": "Words in each unit Unit 1"
+  },
+  {
+   "word": "follow",
+   "phonetic": "/ˈfɑlo/",
+   "translation": "跟随",
+   "unit": "Words in each unit Unit 1"
+  },
+  {
+   "word": "far",
+   "phonetic": "/fɑr/",
+   "translation": "远的",
+   "unit": "Words in each unit Unit 1"
+  },
+  {
+   "word": "tell",
+   "phonetic": "/tɛl/",
+   "translation": "告诉",
+   "unit": "Words in each unit Unit 1"
+  },
+  {
+   "word": "by",
+   "phonetic": "/bai/",
+   "translation": "在附近",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
+   "word": "bus",
+   "phonetic": "/bʌs/",
+   "translation": "公共汽车",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
+   "word": "plane",
+   "phonetic": "/plen/",
+   "translation": "平面",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
+   "word": "taxi",
+   "phonetic": "/ˈtæksi/",
+   "translation": "出租汽车",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
+   "word": "ship",
+   "phonetic": "/ʃɪp/",
+   "translation": "船",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
+   "word": "subway",
+   "phonetic": "/ˈsʌbˌwe/",
+   "translation": "地道",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
+   "word": "train",
+   "phonetic": "/tren/",
+   "translation": "火车",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
+   "word": "slow",
+   "phonetic": "/sloʊ/",
+   "translation": "慢的",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
+   "word": "down",
+   "phonetic": "/daʊn/",
+   "translation": "向下的",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
+   "word": "stop",
+   "phonetic": "/stɑp/",
+   "translation": "停止",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
+   "word": "Mrs",
+   "phonetic": "/ˈmɪsɪz/",
+   "translation": "夫人",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
+   "word": "early",
+   "phonetic": "/ˈɚli/",
+   "translation": "早的",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
+   "word": "helmet",
+   "phonetic": "/ˈhɛlmɪt/",
+   "translation": "头盔",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
+   "word": "must",
+   "phonetic": "/mʌst/",
+   "translation": "必须",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
+   "word": "wear",
+   "phonetic": "/wɛɚ/",
+   "translation": "穿",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
+   "word": "attention",
+   "phonetic": "/əˈtɛnʃən/",
+   "translation": "注意",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
+   "word": "traffic",
+   "phonetic": "/ˈtræfɪk/",
+   "translation": "交通",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
+   "word": "Munich",
+   "phonetic": "/ˈmjunɪk/",
+   "translation": "慕尼黑(德国城市",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
+   "word": "Germany",
+   "phonetic": "/ˈdʒəməni/",
+   "translation": "德国",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
+   "word": "Alaska",
+   "phonetic": "/əˈlæskə/",
+   "translation": "阿拉斯加州",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
+   "word": "sled",
+   "phonetic": "/slɛd/",
+   "translation": "雪橇",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
+   "word": "fast",
+   "phonetic": "/fæst/",
+   "translation": "紧的",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
+   "word": "ferry",
+   "phonetic": "/ˈfɛri/",
+   "translation": "摆渡",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
+   "word": "Scotland",
+   "phonetic": "/ˈskɑtlənd/",
+   "translation": "苏格兰(英国的一部分",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
+   "word": "visit",
+   "phonetic": "/ˈvɪzɪt/",
+   "translation": "拜访",
+   "unit": "Words in each unit Unit 3"
+  },
+  {
+   "word": "film",
+   "phonetic": "/fɪlm/",
+   "translation": "薄膜",
+   "unit": "Words in each unit Unit 3"
+  },
+  {
+   "word": "trip",
+   "phonetic": "/trɪp/",
+   "translation": "旅行",
+   "unit": "Words in each unit Unit 3"
+  },
+  {
+   "word": "supermarket",
+   "phonetic": "/ˈsupɚmɑrkət/",
+   "translation": "超级市场",
+   "unit": "Words in each unit Unit 3"
+  },
+  {
+   "word": "evening",
+   "phonetic": "/ˈivnɪŋ/",
+   "translation": "傍晚",
+   "unit": "Words in each unit Unit 3"
+  },
+  {
+   "word": "tonight",
+   "phonetic": "/təˈnaɪt/",
+   "translation": "今晚",
+   "unit": "Words in each unit Unit 3"
+  },
+  {
+   "word": "tomorrow",
+   "phonetic": "/təˈmɑroʊ/",
+   "translation": "明天见",
+   "unit": "Words in each unit Unit 3"
+  },
+  {
+   "word": "dictionary",
+   "phonetic": "/ˈdɪkʃənɛri/",
+   "translation": "字典",
+   "unit": "Words in each unit Unit 3"
+  },
+  {
+   "word": "comic",
+   "phonetic": "/ˈkɑmɪk/",
+   "translation": "滑稽演员",
+   "unit": "Words in each unit Unit 3"
+  },
+  {
+   "word": "word",
+   "phonetic": "/wɚd/",
+   "translation": "字",
+   "unit": "Words in each unit Unit 3"
+  },
+  {
+   "word": "postcard",
+   "phonetic": "/ˈpoʊstkɑrd/",
+   "translation": "明信片",
+   "unit": "Words in each unit Unit 3"
+  },
+  {
+   "word": "lesson",
+   "phonetic": "/ˈlɛsən/",
+   "translation": "功课",
+   "unit": "Words in each unit Unit 3"
+  },
+  {
+   "word": "space",
+   "phonetic": "/spes/",
+   "translation": "空间",
+   "unit": "Words in each unit Unit 3"
+  },
+  {
+   "word": "travel",
+   "phonetic": "/ˈtrævəl/",
+   "translation": "旅行",
+   "unit": "Words in each unit Unit 3"
+  },
+  {
+   "word": "half",
+   "phonetic": "/hæf/",
+   "translation": "一半",
+   "unit": "Words in each unit Unit 3"
+  },
+  {
+   "word": "price",
+   "phonetic": "/praɪs/",
+   "translation": "价格",
+   "unit": "Words in each unit Unit 3"
+  },
+  {
+   "word": "together",
+   "phonetic": "/təˈɡɛðɚ/",
+   "translation": "共同",
+   "unit": "Words in each unit Unit 3"
+  },
+  {
+   "word": "poem",
+   "phonetic": "/ˈpoʊəm/",
+   "translation": "诗",
+   "unit": "Words in each unit Unit 3"
+  },
+  {
+   "word": "moon",
+   "phonetic": "/mun/",
+   "translation": "月球",
+   "unit": "Words in each unit Unit 3"
+  },
+  {
+   "word": "puzzle",
+   "phonetic": "/ˈpʌzəl/",
+   "translation": "难题",
+   "unit": "Words in each unit Unit 4"
+  },
+  {
+   "word": "hiking",
+   "phonetic": "/ˈhaɪkɪŋ/",
+   "translation": "徒步旅行",
+   "unit": "Words in each unit Unit 4"
+  },
+  {
+   "word": "hobby",
+   "phonetic": "/ˈhɑbi/",
+   "translation": "业余爱好",
+   "unit": "Words in each unit Unit 4"
+  },
+  {
+   "word": "jasmine",
+   "phonetic": "/ˈdʒæzmɪn/",
+   "translation": "茉莉",
+   "unit": "Words in each unit Unit 4"
+  },
+  {
+   "word": "idea",
+   "phonetic": "/aɪˈdiə/",
+   "translation": "想法",
+   "unit": "Words in each unit Unit 4"
+  },
+  {
+   "word": "Canberra",
+   "phonetic": "/ˈkænberə/",
+   "translation": "堪培拉",
+   "unit": "Words in each unit Unit 4"
+  },
+  {
+   "word": "amazing",
+   "phonetic": "/əˈmezɪŋ/",
+   "translation": "令人惊异的",
+   "unit": "Words in each unit Unit 4"
+  },
+  {
+   "word": "shall",
+   "phonetic": "/ʃæl/",
+   "translation": "将",
+   "unit": "Words in each unit Unit 4"
+  },
+  {
+   "word": "goal",
+   "phonetic": "/goʊl/",
+   "translation": "目的",
+   "unit": "Words in each unit Unit 4"
+  },
+  {
+   "word": "join",
+   "phonetic": "/dʒɔɪn/",
+   "translation": "参加",
+   "unit": "Words in each unit Unit 4"
+  },
+  {
+   "word": "club",
+   "phonetic": "/klʌb/",
+   "translation": "俱乐部",
+   "unit": "Words in each unit Unit 4"
+  },
+  {
+   "word": "share",
+   "phonetic": "/ʃɛr/",
+   "translation": "共享",
+   "unit": "Words in each unit Unit 4"
+  },
+  {
+   "word": "factory",
+   "phonetic": "/ˈfæktəri/",
+   "translation": "工厂",
+   "unit": "Words in each unit Unit 5"
+  },
+  {
+   "word": "worker",
+   "phonetic": "/ˈwɚkɚ/",
+   "translation": "工人",
+   "unit": "Words in each unit Unit 5"
+  },
+  {
+   "word": "postman",
+   "phonetic": "/ˈpoʊstmən/",
+   "translation": "邮差",
+   "unit": "Words in each unit Unit 5"
+  },
+  {
+   "word": "businessman",
+   "phonetic": "/ˈbɪznɪsmæn/",
+   "translation": "商人",
+   "unit": "Words in each unit Unit 5"
+  },
+  {
+   "word": "fisherman",
+   "phonetic": "/ˈfɪʃɚmən/",
+   "translation": "渔民",
+   "unit": "Words in each unit Unit 5"
+  },
+  {
+   "word": "scientist",
+   "phonetic": "/ˈsaɪəntɪst/",
+   "translation": "科学家",
+   "unit": "Words in each unit Unit 5"
+  },
+  {
+   "word": "pilot",
+   "phonetic": "/ˈpaɪlət/",
+   "translation": "飞行员",
+   "unit": "Words in each unit Unit 5"
+  },
+  {
+   "word": "coach",
+   "phonetic": "/koʊtʃ/",
+   "translation": "四轮大马车",
+   "unit": "Words in each unit Unit 5"
+  },
+  {
+   "word": "country",
+   "phonetic": "/ˈkʌntri/",
+   "translation": "国家",
+   "unit": "Words in each unit Unit 5"
+  },
+  {
+   "word": "sea",
+   "phonetic": "/si/",
+   "translation": "海洋",
+   "unit": "Words in each unit Unit 5"
+  },
+  {
+   "word": "stay",
+   "phonetic": "/ste/",
+   "translation": "逗留",
+   "unit": "Words in each unit Unit 5"
+  },
+  {
+   "word": "university",
+   "phonetic": "/ˌjunɪˈvɚsəti/",
+   "translation": "大学",
+   "unit": "Words in each unit Unit 5"
+  },
+  {
+   "word": "gym",
+   "phonetic": "/dʒɪm/",
+   "translation": "体育馆",
+   "unit": "Words in each unit Unit 5"
+  },
+  {
+   "word": "if",
+   "phonetic": "/ɪf/",
+   "translation": "如果",
+   "unit": "Words in each unit Unit 5"
+  },
+  {
+   "word": "reporter",
+   "phonetic": "/rɪˈpɔrtɚ/",
+   "translation": "记者",
+   "unit": "Words in each unit Unit 5"
+  },
+  {
+   "word": "use",
+   "phonetic": "/jus/",
+   "translation": "使用",
+   "unit": "Words in each unit Unit 5"
+  },
+  {
+   "word": "type",
+   "phonetic": "/taɪp/",
+   "translation": "类型",
+   "unit": "Words in each unit Unit 5"
+  },
+  {
+   "word": "quickly",
+   "phonetic": "/ˈkwɪkli/",
+   "translation": "很快地",
+   "unit": "Words in each unit Unit 5"
+  },
+  {
+   "word": "secretary",
+   "phonetic": "/ˈsɛkrətɛri/",
+   "translation": "秘书",
+   "unit": "Words in each unit Unit 5"
+  },
+  {
+   "word": "angry",
+   "phonetic": "/ˈæŋɡri/",
+   "translation": "生气的",
+   "unit": "Words in each unit Unit 6"
+  },
+  {
+   "word": "afraid",
+   "phonetic": "/əˈfred/",
+   "translation": "害怕",
+   "unit": "Words in each unit Unit 6"
+  },
+  {
+   "word": "sad",
+   "phonetic": "/sæd/",
+   "translation": "忧愁的",
+   "unit": "Words in each unit Unit 6"
+  },
+  {
+   "word": "worried",
+   "phonetic": "/ˈwɜrid/",
+   "translation": "闷闷不乐的",
+   "unit": "Words in each unit Unit 6"
+  },
+  {
+   "word": "happy",
+   "phonetic": "/ˈhæpi/",
+   "translation": "快乐的",
+   "unit": "Words in each unit Unit 6"
+  },
+  {
+   "word": "more",
+   "phonetic": "/mɔr/",
+   "translation": "更多的",
+   "unit": "Words in each unit Unit 6"
+  },
+  {
+   "word": "deep",
+   "phonetic": "/dip/",
+   "translation": "深的",
+   "unit": "Words in each unit Unit 6"
+  },
+  {
+   "word": "breath",
+   "phonetic": "/brɛθ/",
+   "translation": "呼吸",
+   "unit": "Words in each unit Unit 6"
+  },
+  {
+   "word": "count",
+   "phonetic": "/kaʊnt/",
+   "translation": "数",
+   "unit": "Words in each unit Unit 6"
+  },
+  {
+   "word": "chase",
+   "phonetic": "/tʃes/",
+   "translation": "追赶",
+   "unit": "Words in each unit Unit 6"
+  },
+  {
+   "word": "mice",
+   "phonetic": "/maɪs/",
+   "translation": "老鼠",
+   "unit": "Words in each unit Unit 6"
+  },
+  {
+   "word": "bad",
+   "phonetic": "/bæd/",
+   "translation": "劣质的",
+   "unit": "Words in each unit Unit 6"
+  },
+  {
+   "word": "hurt",
+   "phonetic": "/hɚt/",
+   "translation": "刺痛",
+   "unit": "Words in each unit Unit 6"
+  },
+  {
+   "word": "ill",
+   "phonetic": "/ɪl/",
+   "translation": "有病的",
+   "unit": "Words in each unit Unit 6"
+  },
+  {
+   "word": "wrong",
+   "phonetic": "/rɔŋ/",
+   "translation": "错误的",
+   "unit": "Words in each unit Unit 6"
+  },
+  {
+   "word": "should",
+   "phonetic": "/ʃʊd/",
+   "translation": "应该",
+   "unit": "Words in each unit Unit 6"
+  },
+  {
+   "word": "feel",
+   "phonetic": "/fil/",
+   "translation": "感觉",
+   "unit": "Words in each unit Unit 6"
+  },
+  {
+   "word": "well",
+   "phonetic": "/wɛl/",
+   "translation": "好;嗯",
+   "unit": "Words in each unit Unit 6"
+  },
+  {
+   "word": "sit",
+   "phonetic": "/sɪt/",
+   "translation": "就座",
+   "unit": "Words in each unit Unit 6"
+  },
+  {
+   "word": "grass",
+   "phonetic": "/græs/",
+   "translation": "草",
+   "unit": "Words in each unit Unit 6"
+  },
+  {
+   "word": "hear",
+   "phonetic": "/hɪɚ/",
+   "translation": "听到",
+   "unit": "Words in each unit Unit 6"
+  },
+  {
+   "word": "worry",
+   "phonetic": "/ˈwɜri/",
+   "translation": "烦恼",
+   "unit": "Words in each unit Unit 6"
+  },
+  {
+   "word": "stuck",
+   "phonetic": "/stʌk/",
+   "translation": "stick的过去式和过去分词",
+   "unit": "Words in each unit Unit 6"
+  },
+  {
+   "word": "pull",
+   "phonetic": "/pʊl/",
+   "translation": "拉",
+   "unit": "Words in each unit Unit 6"
+  },
+  {
+   "word": "everyone",
+   "phonetic": "/ˈɛvriˌwʌn/",
+   "translation": "每个人",
+   "unit": "Words in each unit Unit 6"
+  }
+ ]
+}

@@ -40,4 +40,21 @@ export const OVERRIDES: Record<string, Override> = {
   the: { translation: "这个;那个" },
   a: { translation: "一个" },
   an: { translation: "一个" },
+
+  // 人教小学全套:缩写 / 专有名词漏译 / 词义错位
+  uk: { translation: "英国" },
+  tv: { translation: "电视" },
+  ms: { translation: "女士" },
+  mrs: { translation: "夫人" },
+  mr: { translation: "先生" },
+  rsvp: { translation: "请回复" },
+  gym: { translation: "体育馆" },
+  hamburger: { translation: "汉堡包" },
+  draw: { translation: "画" },
+  party: { translation: "聚会" },
+  feel: { translation: "感觉" },
+  lot: { translation: "许多" },
+  mine: { translation: "我的" },
+  saw: { translation: "看见(see过去式)" },
+  well: { translation: "好;嗯" },
 };

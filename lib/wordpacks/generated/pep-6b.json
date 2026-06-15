@@ -1,0 +1,452 @@
+{
+ "id": "pep-6b",
+ "name": "人教版 六年级下",
+ "subtitle": "PEP Grade 6B · 人教三起",
+ "source": "DictionaryData (Apache-2.0) · 人教版三年级起点六年级下册",
+ "words": [
+  {
+   "word": "younger",
+   "phonetic": "/ˈjʌŋɡɚ/",
+   "translation": "年纪较小者",
+   "unit": "Words in each unit Unit 1"
+  },
+  {
+   "word": "older",
+   "phonetic": "/ˈoʊldɚ/",
+   "translation": "年长的",
+   "unit": "Words in each unit Unit 1"
+  },
+  {
+   "word": "longer",
+   "phonetic": "/ˈlɔŋɚ/",
+   "translation": "比较久的",
+   "unit": "Words in each unit Unit 1"
+  },
+  {
+   "word": "thinner",
+   "phonetic": "/ˈθɪnɚ/",
+   "translation": "稀释剂",
+   "unit": "Words in each unit Unit 1"
+  },
+  {
+   "word": "heavier",
+   "phonetic": "/ˈhevɪɚ/",
+   "translation": "沉重的",
+   "unit": "Words in each unit Unit 1"
+  },
+  {
+   "word": "bigger",
+   "phonetic": "/bɪgə/",
+   "translation": "大的",
+   "unit": "Words in each unit Unit 1"
+  },
+  {
+   "word": "stronger",
+   "phonetic": "/strɔŋɡɚ/",
+   "translation": "更强壮的",
+   "unit": "Words in each unit Unit 1"
+  },
+  {
+   "word": "dinosaur",
+   "phonetic": "/ˈdaɪnəsɔr/",
+   "translation": "恐龙",
+   "unit": "Words in each unit Unit 1"
+  },
+  {
+   "word": "hall",
+   "phonetic": "/hɔl/",
+   "translation": "会堂",
+   "unit": "Words in each unit Unit 1"
+  },
+  {
+   "word": "metre",
+   "phonetic": "/ˈmitɚ/",
+   "translation": "米",
+   "unit": "Words in each unit Unit 1"
+  },
+  {
+   "word": "meter",
+   "phonetic": "/ˈmitɚ/",
+   "translation": "米",
+   "unit": "Words in each unit Unit 1"
+  },
+  {
+   "word": "than",
+   "phonetic": "/ðæn/",
+   "translation": "比",
+   "unit": "Words in each unit Unit 1"
+  },
+  {
+   "word": "both",
+   "phonetic": "/boʊθ/",
+   "translation": "两者",
+   "unit": "Words in each unit Unit 1"
+  },
+  {
+   "word": "kilogram",
+   "phonetic": "/ˈkɪləɡræm/",
+   "translation": "千克",
+   "unit": "Words in each unit Unit 1"
+  },
+  {
+   "word": "countryside",
+   "phonetic": "/ˈkʌntriˌsaɪd/",
+   "translation": "乡下地方",
+   "unit": "Words in each unit Unit 1"
+  },
+  {
+   "word": "lower",
+   "phonetic": "/ˈloʊɚ/",
+   "translation": "较低的",
+   "unit": "Words in each unit Unit 1"
+  },
+  {
+   "word": "shadow",
+   "phonetic": "/ˈʃædoʊ/",
+   "translation": "阴影",
+   "unit": "Words in each unit Unit 1"
+  },
+  {
+   "word": "become",
+   "phonetic": "/bɪˈkʌm/",
+   "translation": "变成",
+   "unit": "Words in each unit Unit 1"
+  },
+  {
+   "word": "washed",
+   "phonetic": "/wɒʃt/",
+   "translation": "洗过的",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
+   "word": "had",
+   "phonetic": "/hæd/",
+   "translation": "have 的过去式和过去分词",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
+   "word": "slept",
+   "phonetic": "/slept/",
+   "translation": "sleep的过去式和过去分词",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
+   "word": "read",
+   "phonetic": "/rid/",
+   "translation": "读",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
+   "word": "saw",
+   "phonetic": "/sɔ/",
+   "translation": "看见(see过去式)",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
+   "word": "last",
+   "phonetic": "/læst/",
+   "translation": "最后的",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
+   "word": "yesterday",
+   "phonetic": "/ˈjestɚde/",
+   "translation": "昨天",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
+   "word": "before",
+   "phonetic": "/bɪˈfɔr/",
+   "translation": "在前",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
+   "word": "drank",
+   "phonetic": "/dræŋk/",
+   "translation": "drink的过去式",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
+   "word": "show",
+   "phonetic": "/ʃoʊ/",
+   "translation": "表示",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
+   "word": "magazine",
+   "phonetic": "/ˈmægəzin/",
+   "translation": "杂志",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
+   "word": "better",
+   "phonetic": "/ˈbɛtɚ/",
+   "translation": "较好的",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
+   "word": "faster",
+   "phonetic": "/ˈfæstɚ/",
+   "translation": "更快的",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
+   "word": "hotel",
+   "phonetic": "/hoʊˈtel/",
+   "translation": "旅馆",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
+   "word": "fixed",
+   "phonetic": "/fɪkst/",
+   "translation": "固定的",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
+   "word": "broken",
+   "phonetic": "/ˈbroʊkən/",
+   "translation": "坏掉的",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
+   "word": "lamp",
+   "phonetic": "/læmp/",
+   "translation": "灯",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
+   "word": "loud",
+   "phonetic": "/laʊd/",
+   "translation": "高声的",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
+   "word": "enjoy",
+   "phonetic": "/ɛnˈdʒɔi/",
+   "translation": "享受...的乐趣",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
+   "word": "stay",
+   "phonetic": "/ste/",
+   "translation": "逗留",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
+   "word": "went",
+   "phonetic": "/wɛnt/",
+   "translation": "go的过去式",
+   "unit": "Words in each unit Unit 3"
+  },
+  {
+   "word": "camp",
+   "phonetic": "/kæmp/",
+   "translation": "露营地",
+   "unit": "Words in each unit Unit 3"
+  },
+  {
+   "word": "fish",
+   "phonetic": "/fɪʃ/",
+   "translation": "鱼",
+   "unit": "Words in each unit Unit 3"
+  },
+  {
+   "word": "rode",
+   "phonetic": "/roʊd/",
+   "translation": "ride的过去式",
+   "unit": "Words in each unit Unit 3"
+  },
+  {
+   "word": "hurt",
+   "phonetic": "/hɚt/",
+   "translation": "刺痛",
+   "unit": "Words in each unit Unit 3"
+  },
+  {
+   "word": "ate",
+   "phonetic": "/et/",
+   "translation": "吃",
+   "unit": "Words in each unit Unit 3"
+  },
+  {
+   "word": "took",
+   "phonetic": "/tʊk/",
+   "translation": "take的过去式",
+   "unit": "Words in each unit Unit 3"
+  },
+  {
+   "word": "bought",
+   "phonetic": "/bɔt/",
+   "translation": "buy的过去式和过去分词",
+   "unit": "Words in each unit Unit 3"
+  },
+  {
+   "word": "gift",
+   "phonetic": "/ɡɪft/",
+   "translation": "赠品",
+   "unit": "Words in each unit Unit 3"
+  },
+  {
+   "word": "fell",
+   "phonetic": "/fɛl/",
+   "translation": "fall 的过去式",
+   "unit": "Words in each unit Unit 3"
+  },
+  {
+   "word": "off",
+   "phonetic": "/ɔf/",
+   "translation": "远的",
+   "unit": "Words in each unit Unit 3"
+  },
+  {
+   "word": "mule",
+   "phonetic": "/mjul/",
+   "translation": "骡",
+   "unit": "Words in each unit Unit 3"
+  },
+  {
+   "word": "Turpan",
+   "phonetic": "/ˈtʊrˈpæn/",
+   "translation": "吐鲁番",
+   "unit": "Words in each unit Unit 3"
+  },
+  {
+   "word": "could",
+   "phonetic": "/kʊd/",
+   "translation": "can 的过去式",
+   "unit": "Words in each unit Unit 3"
+  },
+  {
+   "word": "till",
+   "phonetic": "/tɪl/",
+   "translation": "直到",
+   "unit": "Words in each unit Unit 3"
+  },
+  {
+   "word": "beach",
+   "phonetic": "/bitʃ/",
+   "translation": "海滩",
+   "unit": "Words in each unit Unit 3"
+  },
+  {
+   "word": "basket",
+   "phonetic": "/ˈbæskɪt/",
+   "translation": "篮",
+   "unit": "Words in each unit Unit 3"
+  },
+  {
+   "word": "part",
+   "phonetic": "/pɑrt/",
+   "translation": "部分",
+   "unit": "Words in each unit Unit 3"
+  },
+  {
+   "word": "grass",
+   "phonetic": "/græs/",
+   "translation": "草",
+   "unit": "Words in each unit Unit 4"
+  },
+  {
+   "word": "gym",
+   "phonetic": "/dʒɪm/",
+   "translation": "体育馆",
+   "unit": "Words in each unit Unit 4"
+  },
+  {
+   "word": "ago",
+   "phonetic": "/əˈgoʊ/",
+   "translation": "以前的",
+   "unit": "Words in each unit Unit 4"
+  },
+  {
+   "word": "cycling",
+   "phonetic": "/ˈsaɪklɪŋ/",
+   "translation": "骑脚踏车兜风",
+   "unit": "Words in each unit Unit 4"
+  },
+  {
+   "word": "badminton",
+   "phonetic": "/ˈbædˌmɪntən/",
+   "translation": "羽毛球",
+   "unit": "Words in each unit Unit 4"
+  },
+  {
+   "word": "star",
+   "phonetic": "/stɑr/",
+   "translation": "星",
+   "unit": "Words in each unit Unit 4"
+  },
+  {
+   "word": "easy",
+   "phonetic": "/ˈizi/",
+   "translation": "容易的",
+   "unit": "Words in each unit Unit 4"
+  },
+  {
+   "word": "Internet",
+   "phonetic": "/ˈɪntɚnet/",
+   "translation": "因特网",
+   "unit": "Words in each unit Unit 4"
+  },
+  {
+   "word": "different",
+   "phonetic": "/ˈdɪfrənt/",
+   "translation": "不同的",
+   "unit": "Words in each unit Unit 4"
+  },
+  {
+   "word": "active",
+   "phonetic": "/ˈæktɪv/",
+   "translation": "积极的",
+   "unit": "Words in each unit Unit 4"
+  },
+  {
+   "word": "race",
+   "phonetic": "/res/",
+   "translation": "种族",
+   "unit": "Words in each unit Unit 4"
+  },
+  {
+   "word": "nothing",
+   "phonetic": "/ˈnʌθɪŋ/",
+   "translation": "无",
+   "unit": "Words in each unit Unit 4"
+  },
+  {
+   "word": "thought",
+   "phonetic": "/θɔt/",
+   "translation": "思考",
+   "unit": "Words in each unit Unit 4"
+  },
+  {
+   "word": "felt",
+   "phonetic": "/fɛlt/",
+   "translation": "毡",
+   "unit": "Words in each unit Unit 4"
+  },
+  {
+   "word": "cheetah",
+   "phonetic": "/ˈtʃitə/",
+   "translation": "印度豹(一种似豹的动物",
+   "unit": "Words in each unit Unit 4"
+  },
+  {
+   "word": "trip",
+   "phonetic": "/trɪp/",
+   "translation": "旅行",
+   "unit": "Words in each unit Unit 4"
+  },
+  {
+   "word": "woke",
+   "phonetic": "/wok/",
+   "translation": "wake的过去式和过去分词",
+   "unit": "Words in each unit Unit 4"
+  },
+  {
+   "word": "dream",
+   "phonetic": "/drim/",
+   "translation": "做梦",
+   "unit": "Words in each unit Unit 4"
+  }
+ ]
+}

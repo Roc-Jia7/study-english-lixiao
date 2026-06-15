@@ -12,6 +12,9 @@ export type Selector =
   /** Words carrying an ECDICT grade tag (zk/gk/cet4/cet6/ky/toefl/ielts/gre). */
   | { kind: "ecdict-tag"; tag: string; cap?: number };
 
+/** Picker grouping — by 学段, plus a graded-exam bucket. */
+export type PackCategory = "primary" | "middle" | "high" | "exam";
+
 export interface PackSpec {
   id: string;
   /** Chinese display name. */
@@ -23,22 +26,39 @@ export interface PackSpec {
   select: Selector;
   /** unit = keep textbook order; frequency = most-common words first. */
   order: "unit" | "frequency";
-  /** Grouping in the pack-picker UI. */
-  category: "textbook" | "exam";
+  category: PackCategory;
+}
+
+/** Helper for the 人教版三年级起点 primary series (DictionaryData, Apache-2.0). */
+function pep(
+  id: string,
+  grade: string,
+  en: string,
+  bookId: string,
+): PackSpec {
+  return {
+    id,
+    name: `人教版 ${grade}`,
+    subtitle: `PEP ${en} · 人教三起`,
+    source: `DictionaryData (Apache-2.0) · 人教版三年级起点${grade}册`,
+    select: { kind: "dictdata-book", bookId },
+    order: "unit",
+    category: "primary",
+  };
 }
 
 export const PACKS: PackSpec[] = [
-  // Textbook track — DictionaryData, 人教版三年级起点三年级上 (64 words, Units 1–6).
-  {
-    id: "pep-3a",
-    name: "人教版 三年级上 · 全册",
-    subtitle: "PEP Grade 3A · Units 1–6",
-    source: "DictionaryData (Apache-2.0) · 人教版三年级起点三年级上",
-    select: { kind: "dictdata-book", bookId: "34173cb38f07f89ddbebc2ac" },
-    order: "unit",
-    category: "textbook",
-  },
-  // Graded track — ECDICT tag=zk (中考), top by corpus frequency.
+  // 小学 — 人教版三年级起点 full primary series (三上 → 六下).
+  pep("pep-3a", "三年级上", "Grade 3A", "34173cb38f07f89ddbebc2ac"),
+  pep("pep-3b", "三年级下", "Grade 3B", "c16a5320fa475530d9583c34"),
+  pep("pep-4a", "四年级上", "Grade 4A", "6364d3f0f495b6ab9dcf8d3b"),
+  pep("pep-4b", "四年级下", "Grade 4B", "149e9677a5989fd342ae4421"),
+  pep("pep-5a", "五年级上", "Grade 5A", "a4a042cf4fd6bfb47701cbc8"),
+  pep("pep-5b", "五年级下", "Grade 5B", "f7e6c85504ce6e82442c770f"),
+  pep("pep-6a", "六年级上", "Grade 6A", "bf8229696f7a3bb4700cfdde"),
+  pep("pep-6b", "六年级下", "Grade 6B", "82161242827b703e6acf9c72"),
+
+  // 考试分级 — ECDICT tag=zk (中考), top by corpus frequency.
   {
     id: "zhongkao-core",
     name: "中考核心词 · 高频",

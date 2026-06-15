@@ -118,7 +118,8 @@ export const PACKS: PackSpec[] = [
 - **Phase 2(进行中)**:
   - [x] **懒加载**:`lib/wordpacks/manifest.json` 常驻(仅元信息),每个词包 `import('./generated/<id>.json')` 各成独立 chunk,打开词包才加载(中考 600 词 ≈ 37KB 独立 chunk)。
   - [x] **词包选择器 UI**:`WordPackPanel` 按 `category` 分「教材同步 / 考试分级」两组;进度用 `packStatsFromProgress`(按 `pack-<id>-` 前缀算,**无需加载词表**)。
-  - [ ] 扩到 K12 分级集(小学/中考/高考)+ 多套教材。
+  - [x] 小学全套:人教三起 三上→六下(8 包 ~703 词);考试:中考核心 600 词。
+  - [ ] 扩高中/高考 + 多套教材(外研/译林…)。
   - [ ] 接课标白名单做交集过滤。
 - **Phase 3(可选)**:CSV/TXT 用户自定义导入(复用补全层 + 内置 ECDICT-mini 客户端补全)。
 - **Phase 4(可选)**:课标覆盖率报告进家长看板("覆盖课标 92%")。

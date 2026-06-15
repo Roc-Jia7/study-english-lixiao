@@ -9,8 +9,8 @@ import manifest from "./manifest.json";
  * data/packs.config.ts or data/overrides.ts and run `npm run build:packs`.
  */
 
-/** Pack category — drives grouping in the picker UI. */
-export type PackCategory = "textbook" | "exam";
+/** Pack category — drives grouping in the picker UI (by 学段 + an exam bucket). */
+export type PackCategory = "primary" | "middle" | "high" | "exam";
 
 /** Lightweight, always-bundled pack descriptor (no words). */
 export interface WordPackMeta {
