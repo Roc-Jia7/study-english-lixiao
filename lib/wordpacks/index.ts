@@ -1,24 +1,34 @@
 import type { VocabularyWord } from "../types";
-import pep3a from "./generated/pep-3a.json";
-import zhongkao from "./generated/zhongkao-core.json";
+import manifest from "./manifest.json";
 
 /**
- * Bundled word packs. The word data is GENERATED offline by
- * scripts/build-packs.ts from ECDICT (MIT) / DictionaryData (Apache-2.0) into
- * ./generated/*.json — never hand-edited here. See docs/word-integration-plan.md.
- * To change membership/data, edit data/packs.config.ts or data/overrides.ts and
- * re-run `npm run build:packs`.
+ * Bundled word packs, GENERATED offline by scripts/build-packs.ts from ECDICT
+ * (MIT) / DictionaryData (Apache-2.0). Only the lightweight manifest (no words)
+ * is bundled eagerly; each pack's words are lazy-loaded on demand so the initial
+ * bundle stays small. See docs/word-integration-plan.md. To change a pack, edit
+ * data/packs.config.ts or data/overrides.ts and run `npm run build:packs`.
  */
-export interface WordPack {
+
+/** Pack category — drives grouping in the picker UI. */
+export type PackCategory = "textbook" | "exam";
+
+/** Lightweight, always-bundled pack descriptor (no words). */
+export interface WordPackMeta {
   id: string;
-  /** Chinese display name. */
   name: string;
-  /** English / source line shown under the name. */
   subtitle: string;
-  /** Attribution note (license + origin), surfaced on the credits page. */
   source: string;
+  category: PackCategory;
+  /** Total word count (for progress totals without loading the words). */
+  count: number;
+}
+
+/** A fully-loaded pack: metadata + expanded words. */
+export interface WordPack extends WordPackMeta {
   words: VocabularyWord[];
 }
+
+export const WORD_PACK_META = manifest as WordPackMeta[];
 
 /** Compact word shape as stored in generated/*.json. */
 interface RawWord {
@@ -28,10 +38,6 @@ interface RawWord {
   unit?: string;
 }
 interface RawPack {
-  id: string;
-  name: string;
-  subtitle: string;
-  source: string;
   words: RawWord[];
 }
 
@@ -57,17 +63,16 @@ function toVocab(packId: string, r: RawWord): VocabularyWord {
   };
 }
 
-function load(raw: RawPack): WordPack {
-  return {
-    id: raw.id,
-    name: raw.name,
-    subtitle: raw.subtitle,
-    source: raw.source,
-    words: raw.words.map((w) => toVocab(raw.id, w)),
-  };
+/** Lazy-load one pack's words (its own chunk — not in the initial bundle). */
+export async function loadPackWords(id: string): Promise<VocabularyWord[]> {
+  const mod = await import(`./generated/${id}.json`);
+  const raw = (mod.default ?? mod) as RawPack;
+  return raw.words.map((w) => toVocab(id, w));
 }
 
-export const WORD_PACKS: WordPack[] = [
-  load(pep3a as unknown as RawPack),
-  load(zhongkao as unknown as RawPack),
-];
+/** Lazy-load a full pack (metadata + words); null if the id is unknown. */
+export async function loadPack(id: string): Promise<WordPack | null> {
+  const meta = WORD_PACK_META.find((m) => m.id === id);
+  if (!meta) return null;
+  return { ...meta, words: await loadPackWords(id) };
+}

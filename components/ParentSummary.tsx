@@ -5,8 +5,8 @@ import type { StudentProfile } from "@/lib/types";
 import { lastNDays } from "@/lib/streak";
 import { useLxllStore } from "@/store/useLxllStore";
 import { splitSchedule } from "@/lib/lxll/schedule";
-import { packStats } from "@/lib/study-plan";
-import { WORD_PACKS } from "@/lib/wordpacks";
+import { packStatsFromProgress } from "@/lib/study-plan";
+import { WORD_PACK_META } from "@/lib/wordpacks";
 
 /** One calm number tile — icon, value, label. */
 function Tile({
@@ -50,9 +50,9 @@ export default function ParentSummary({ student }: { student: StudentProfile }) 
 
   // 课本词单 — aggregate progress across every bundled pack (pack-scoped ids,
   // so lxll review words never count toward this track).
-  const pack = WORD_PACKS.reduce(
-    (acc, p) => {
-      const s = packStats(student, p);
+  const pack = WORD_PACK_META.reduce(
+    (acc, meta) => {
+      const s = packStatsFromProgress(student, meta);
       acc.total += s.total;
       acc.mastered += s.mastered;
       acc.due += s.dueCount;

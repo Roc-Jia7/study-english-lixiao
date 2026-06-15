@@ -260,6 +260,15 @@ const report: string[] = [
   "> 由 `npm run build:packs` 自动生成。原始数据集见 `scripts/fetch-word-data.sh`。",
   "",
 ];
+/** Lightweight, always-bundled index (no words) → drives the picker + lazy load. */
+const manifest: Array<{
+  id: string;
+  name: string;
+  subtitle: string;
+  source: string;
+  category: string;
+  count: number;
+}> = [];
 
 for (const spec of PACKS) {
   console.log(`Building ${spec.id} (${spec.name})...`);
@@ -272,9 +281,23 @@ for (const spec of PACKS) {
     words,
   };
   writeFileSync(path.join(OUT, `${spec.id}.json`), JSON.stringify(pack, null, 1));
+  manifest.push({
+    id: spec.id,
+    name: spec.name,
+    subtitle: spec.subtitle,
+    source: spec.source,
+    category: spec.category,
+    count: words.length,
+  });
   console.log(`  -> ${words.length} words -> lib/wordpacks/generated/${spec.id}.json`);
   report.push(`- **${spec.name}** \`${spec.id}\` - ${words.length} 词 · ${spec.source}`);
 }
 
+// Manifest sits OUTSIDE generated/ so the lazy `import('./generated/<id>.json')`
+// context covers word packs only.
+writeFileSync(
+  path.join(ROOT, "lib/wordpacks/manifest.json"),
+  JSON.stringify(manifest, null, 1) + "\n",
+);
 writeFileSync(path.join(ROOT, "data/build-report.md"), report.join("\n") + "\n");
-console.log("Done. (update lib/wordpacks/index.ts if you added a NEW pack id)");
+console.log("Done. Wrote lib/wordpacks/manifest.json + generated/*.json");

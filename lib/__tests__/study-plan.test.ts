@@ -2,7 +2,6 @@ import { describe, expect, it } from "vitest";
 import { MASTERED_STAGE } from "../spaced-repetition";
 import { packStats, planToday, reviewSchedule } from "../study-plan";
 import type { StudentProfile, VocabularyWord, WordProgress } from "../types";
-import type { WordPack } from "../wordpacks";
 
 const NOW = new Date("2026-06-14T10:00:00.000Z");
 
@@ -22,8 +21,8 @@ function word(id: string): VocabularyWord {
   };
 }
 
-function pack(...ids: string[]): WordPack {
-  return { id: "p", name: "p", subtitle: "", source: "", words: ids.map(word) };
+function pack(...ids: string[]): { words: VocabularyWord[] } {
+  return { words: ids.map(word) };
 }
 
 function prog(stage: number, nextReviewTime: string): WordProgress {

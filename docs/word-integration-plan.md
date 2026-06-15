@@ -115,7 +115,11 @@ export const PACKS: PackSpec[] = [
   - `scripts/build-packs.ts` + 声明式 `data/packs.config.ts` + 覆盖层 `data/overrides.ts` + `scripts/fetch-word-data.sh`。
   - 产出 `lib/wordpacks/generated/`:**人教三上全册 64 词**(DictionaryData)、**中考核心 600 词**(ECDICT tag=zk 按词频)。
   - 验证收获:词典首义≠课本义(ruler→统治者、mum→菊花)+ 行内词性污染(黄色adj.黄色的),已在清洗 + 覆盖层修复;原始数据集 gitignore,仅提交精简 JSON(6.7KB / 50KB)。
-- **Phase 2**:扩到 K12 分级集(小学/中考/高考)+ 1~2 套教材;加懒加载 + 词包选择器(教材/考试分组);接课标白名单做交集过滤。
+- **Phase 2(进行中)**:
+  - [x] **懒加载**:`lib/wordpacks/manifest.json` 常驻(仅元信息),每个词包 `import('./generated/<id>.json')` 各成独立 chunk,打开词包才加载(中考 600 词 ≈ 37KB 独立 chunk)。
+  - [x] **词包选择器 UI**:`WordPackPanel` 按 `category` 分「教材同步 / 考试分级」两组;进度用 `packStatsFromProgress`(按 `pack-<id>-` 前缀算,**无需加载词表**)。
+  - [ ] 扩到 K12 分级集(小学/中考/高考)+ 多套教材。
+  - [ ] 接课标白名单做交集过滤。
 - **Phase 3(可选)**:CSV/TXT 用户自定义导入(复用补全层 + 内置 ECDICT-mini 客户端补全)。
 - **Phase 4(可选)**:课标覆盖率报告进家长看板("覆盖课标 92%")。
 

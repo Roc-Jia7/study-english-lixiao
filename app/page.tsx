@@ -5,7 +5,7 @@ import { motion, AnimatePresence, MotionConfig } from "framer-motion";
 import type { SessionMode, VocabularyWord } from "@/lib/types";
 import { useAppStore } from "@/store/useAppStore";
 import { useLxllStore } from "@/store/useLxllStore";
-import { WORD_PACKS } from "@/lib/wordpacks";
+import { loadPack, type WordPack } from "@/lib/wordpacks";
 import { startCloudSync } from "@/lib/sync/cloudSync";
 import SpaceNavbar from "@/components/SpaceNavbar";
 import ProfileHub from "@/components/ProfileHub";
@@ -37,7 +37,8 @@ export default function Home() {
   const recordWordResult = useLxllStore((s) => s.recordWordResult);
   const submitResults = useLxllStore((s) => s.submitResults);
   const [session, setSession] = useState<ActiveSession | null>(null);
-  const [packId, setPackId] = useState<string | null>(null);
+  const [pack, setPack] = useState<WordPack | null>(null);
+  const [packLoading, setPackLoading] = useState(false);
   const [switching, setSwitching] = useState(false);
 
   // Zustand rehydrates from localStorage on the client; hold rendering
@@ -78,14 +79,18 @@ export default function Home() {
   useEffect(() => {
     if (!activeStudentId) {
       setSession(null);
-      setPackId(null);
+      setPack(null);
+      setPackLoading(false);
       setSwitching(false);
     }
   }, [activeStudentId]);
 
-  const openPack = packId
-    ? (WORD_PACKS.find((p) => p.id === packId) ?? null)
-    : null;
+  // Open a bundled pack — its words are lazy-loaded (own chunk) on demand.
+  const openPack = async (id: string) => {
+    setPackLoading(true);
+    setPack(await loadPack(id));
+    setPackLoading(false);
+  };
 
   if (!mounted) {
     return (
@@ -152,20 +157,32 @@ export default function Home() {
               }
             />
           </motion.div>
-        ) : openPack ? (
+        ) : packLoading || pack ? (
           <motion.div
             key="pack"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0 }}
           >
-            <PackDetail
-              pack={openPack}
-              onBack={() => setPackId(null)}
-              onStart={(words) =>
-                setSession({ mode: "review", words, withQuiz: false })
-              }
-            />
+            {pack ? (
+              <PackDetail
+                pack={pack}
+                onBack={() => setPack(null)}
+                onStart={(words) =>
+                  setSession({ mode: "review", words, withQuiz: false })
+                }
+              />
+            ) : (
+              <div className="flex min-h-[60vh] items-center justify-center">
+                <motion.span
+                  className="text-5xl"
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 1.2, repeat: Infinity, ease: "linear" }}
+                >
+                  📦
+                </motion.span>
+              </div>
+            )}
           </motion.div>
         ) : (
           <motion.div
@@ -179,7 +196,7 @@ export default function Home() {
               onStartLxllReview={(words, practice) =>
                 setSession({ mode: "review", words, lxll: true, practice })
               }
-              onOpenPack={(id) => setPackId(id)}
+              onOpenPack={openPack}
             />
           </motion.div>
         )}

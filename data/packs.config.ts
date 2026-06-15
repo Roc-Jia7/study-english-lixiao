@@ -23,6 +23,8 @@ export interface PackSpec {
   select: Selector;
   /** unit = keep textbook order; frequency = most-common words first. */
   order: "unit" | "frequency";
+  /** Grouping in the pack-picker UI. */
+  category: "textbook" | "exam";
 }
 
 export const PACKS: PackSpec[] = [
@@ -34,6 +36,7 @@ export const PACKS: PackSpec[] = [
     source: "DictionaryData (Apache-2.0) · 人教版三年级起点三年级上",
     select: { kind: "dictdata-book", bookId: "34173cb38f07f89ddbebc2ac" },
     order: "unit",
+    category: "textbook",
   },
   // Graded track — ECDICT tag=zk (中考), top by corpus frequency.
   {
@@ -43,5 +46,6 @@ export const PACKS: PackSpec[] = [
     source: "ECDICT (MIT) · tag=zk(中考)",
     select: { kind: "ecdict-tag", tag: "zk", cap: 600 },
     order: "frequency",
+    category: "exam",
   },
 ];

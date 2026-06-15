@@ -1,0 +1,18 @@
+[
+ {
+  "id": "pep-3a",
+  "name": "人教版 三年级上 · 全册",
+  "subtitle": "PEP Grade 3A · Units 1–6",
+  "source": "DictionaryData (Apache-2.0) · 人教版三年级起点三年级上",
+  "category": "textbook",
+  "count": 64
+ },
+ {
+  "id": "zhongkao-core",
+  "name": "中考核心词 · 高频",
+  "subtitle": "Zhongkao core · top 600 by frequency",
+  "source": "ECDICT (MIT) · tag=zk(中考)",
+  "category": "exam",
+  "count": 600
+ }
+]

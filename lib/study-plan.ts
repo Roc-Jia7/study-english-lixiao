@@ -5,7 +5,9 @@ import {
   getNewFromPool,
 } from "./spaced-repetition";
 import { localDateStr } from "./streak";
-import type { WordPack } from "./wordpacks";
+
+/** Minimal pack shape the planner needs: just its words. */
+type PackLike = { words: VocabularyWord[] };
 
 /**
  * Quota-driven study planning over the forgetting curve. The single knob is
@@ -34,7 +36,7 @@ export interface PackStats {
 
 export function packStats(
   student: StudentProfile,
-  pack: WordPack,
+  pack: PackLike,
   now: Date = new Date(),
 ): PackStats {
   const total = pack.words.length;
@@ -58,6 +60,40 @@ export function packStats(
   };
 }
 
+/**
+ * Pack progress derived purely from `student.progress` (by `pack-<id>-` key
+ * prefix) plus the manifest word count — so the picker and parent view can show
+ * mastery/due without loading any pack's words (lazy-load friendly).
+ */
+export function packStatsFromProgress(
+  student: StudentProfile,
+  meta: { id: string; count: number },
+  now: Date = new Date(),
+): PackStats {
+  const prefix = `pack-${meta.id}-`;
+  const t = now.getTime();
+  let mastered = 0;
+  let learning = 0;
+  let studied = 0;
+  let dueCount = 0;
+  for (const [id, p] of Object.entries(student.progress)) {
+    if (!id.startsWith(prefix)) continue;
+    studied++;
+    if (p.stage >= MASTERED_STAGE) mastered++;
+    else learning++;
+    if (new Date(p.nextReviewTime).getTime() <= t) dueCount++;
+  }
+  const total = meta.count;
+  return {
+    total,
+    mastered,
+    learning,
+    fresh: Math.max(0, total - studied),
+    dueCount,
+    masteredPct: total ? Math.round((mastered / total) * 100) : 0,
+  };
+}
+
 export interface TodayPlan {
   /** Due reviews to clear today (capped). */
   due: VocabularyWord[];
@@ -71,7 +107,7 @@ export interface TodayPlan {
 
 export function planToday(
   student: StudentProfile,
-  pack: WordPack,
+  pack: PackLike,
   dailyNew: number,
   now: Date = new Date(),
 ): TodayPlan {
@@ -98,7 +134,7 @@ export interface DueBucket {
  */
 export function reviewSchedule(
   student: StudentProfile,
-  pack: WordPack,
+  pack: PackLike,
   now: Date = new Date(),
 ): DueBucket[] {
   const buckets: Record<DueBucket["key"], number> = {
