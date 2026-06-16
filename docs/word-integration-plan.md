@@ -118,8 +118,9 @@ export const PACKS: PackSpec[] = [
 - **Phase 2(进行中)**:
   - [x] **懒加载**:`lib/wordpacks/manifest.json` 常驻(仅元信息),每个词包 `import('./generated/<id>.json')` 各成独立 chunk,打开词包才加载(中考 600 词 ≈ 37KB 独立 chunk)。
   - [x] **词包选择器 UI**:`WordPackPanel` 按 `category` 分「教材同步 / 考试分级」两组;进度用 `packStatsFromProgress`(按 `pack-<id>-` 前缀算,**无需加载词表**)。
-  - [x] 小学全套:人教三起 三上→六下(8 包 ~703 词);考试:中考核心 600 词。
-  - [ ] 扩高中/高考 + 多套教材(外研/译林…)。
+  - [x] 小学:人教三起 三上→六下(8 包);初中:沪教牛津 七上→九下(6 包);考试:中考核心 600 词。
+  - [x] **补全链补齐 ECDICT 兜底**(override → DictionaryData → ECDICT):自动找回 ~364 个 DictionaryData 缺译的常见词;被丢词全部写入 `data/build-report.md`(剩余多为词组)。
+  - [ ] 扩高中/高考 + 更多教材(外研/译林…)。
   - [ ] 接课标白名单做交集过滤。
 - **Phase 3(可选)**:CSV/TXT 用户自定义导入(复用补全层 + 内置 ECDICT-mini 客户端补全)。
 - **Phase 4(可选)**:课标覆盖率报告进家长看板("覆盖课标 92%")。
