@@ -58,7 +58,7 @@ function LxllRelogin({ name }: { name: string }) {
           void signOut();
           lockStation();
         }}
-        className="mt-1 flex items-center gap-2 rounded-full bg-gradient-to-r from-grape to-bubblegum px-6 py-2.5 font-extrabold text-white shadow-lg ring-2 ring-white/25 active:scale-95"
+        className="mt-1 flex items-center gap-2 rounded-full bg-gradient-to-r from-grape to-bubblegum px-6 py-2.5 font-extrabold text-white shadow-pop ring-2 ring-white/25 active:scale-95"
       >
         <LogIn className="h-5 w-5" /> 重新登录
       </button>
@@ -156,7 +156,7 @@ export default function Dashboard({
           onClick={() =>
             onStartSession("review", dueWords.slice(0, REVIEW_SESSION_CAP))
           }
-          className="mt-8 flex w-full items-center gap-4 rounded-3xl bg-gradient-to-r from-grape to-bubblegum p-5 text-left shadow-card ring-4 ring-white/25"
+          className="mt-8 flex w-full items-center gap-4 rounded-3xl bg-gradient-to-r from-grape to-bubblegum p-5 text-left shadow-pop ring-4 ring-white/25"
         >
           <motion.span
             className="text-6xl"
@@ -202,7 +202,7 @@ export default function Dashboard({
                   whileHover={{ scale: 1.03, rotate: -0.5 }}
                   whileTap={{ scale: 0.96 }}
                   onClick={() => onStartSession("discovery", packWords)}
-                  className={`flex items-center gap-4 rounded-3xl bg-gradient-to-br ${meta.gradient} p-5 text-left shadow-xl ring-4 ring-white/30`}
+                  className={`flex items-center gap-4 rounded-3xl bg-gradient-to-br ${meta.gradient} p-5 text-left shadow-pop ring-4 ring-white/30`}
                 >
                   <span className="text-5xl drop-shadow">{meta.emoji}</span>
                   <div className="flex-1">

@@ -284,7 +284,7 @@ export default function LearningCard({
                 whileHover={{ scale: 1.12, rotate: -6 }}
                 whileTap={{ scale: 0.85 }}
                 aria-label={`Listen to ${word.word}`}
-                className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-sky-400 to-blue-500 text-white shadow-lg"
+                className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-sky-400 to-blue-500 text-white shadow-pop"
               >
                 {audioState === "loading" ? (
                   <Loader2 className="h-7 w-7 animate-spin" />
@@ -375,7 +375,7 @@ export default function LearningCard({
             whileHover={ready && !helping ? { scale: 1.05, rotate: -1 } : undefined}
             whileTap={ready && !helping ? { scale: 0.9, rotate: -3 } : undefined}
             transition={{ type: "spring", stiffness: 400, damping: 12 }}
-            className="flex min-h-20 flex-col items-center justify-center rounded-[1.75rem] bg-gradient-to-b from-yellow-300 to-amber-400 px-4 py-3 shadow-xl ring-4 ring-yellow-200/60 transition-opacity disabled:opacity-50"
+            className="flex min-h-20 flex-col items-center justify-center rounded-[1.75rem] bg-gradient-to-b from-yellow-300 to-amber-400 px-4 py-3 shadow-pop ring-4 ring-yellow-200/60 transition-opacity disabled:opacity-50"
           >
             <motion.span
               className="text-3xl"
@@ -397,7 +397,7 @@ export default function LearningCard({
             whileHover={ready && !helping ? { scale: 1.05, rotate: 1 } : undefined}
             whileTap={ready && !helping ? { scale: 0.9, rotate: 3 } : undefined}
             transition={{ type: "spring", stiffness: 400, damping: 12 }}
-            className="flex min-h-20 flex-col items-center justify-center rounded-[1.75rem] bg-gradient-to-b from-emerald-400 to-green-500 px-4 py-3 shadow-xl ring-4 ring-emerald-300/60 transition-opacity disabled:opacity-50"
+            className="flex min-h-20 flex-col items-center justify-center rounded-[1.75rem] bg-gradient-to-b from-emerald-400 to-green-500 px-4 py-3 shadow-pop ring-4 ring-emerald-300/60 transition-opacity disabled:opacity-50"
           >
             <motion.span
               className="text-3xl"

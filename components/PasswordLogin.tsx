@@ -168,7 +168,7 @@ export default function PasswordLogin({ onShowDemo, onSuccess }: PasswordLoginPr
             type="button"
             onClick={() => setShowPw((v) => !v)}
             aria-label={showPw ? "隐藏密码" : "显示密码"}
-            className="absolute right-3 top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-xl text-white/50 hover:text-white"
+            className="absolute right-3 top-1/2 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-xl text-white/50 hover:text-white"
           >
             {showPw ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
           </button>
@@ -188,7 +188,7 @@ export default function PasswordLogin({ onShowDemo, onSuccess }: PasswordLoginPr
           onClick={submit}
           disabled={!ready || loading}
           whileTap={ready && !loading ? { scale: 0.96 } : undefined}
-          className={`flex h-14 w-full items-center justify-center gap-2 rounded-2xl text-lg font-extrabold shadow-lg transition ${
+          className={`flex h-14 w-full items-center justify-center gap-2 rounded-2xl text-lg font-extrabold shadow-pop transition ${
             ready && !loading
               ? "bg-gradient-to-br from-emerald-400 to-green-500 text-white"
               : "bg-white/10 text-white/30"

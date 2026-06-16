@@ -147,7 +147,7 @@ export default function LxllReviewPanel({ onStartReview }: LxllReviewPanelProps)
           <p className="text-lg font-bold text-white">{dataError}</p>
           <button
             onClick={() => void loadData()}
-            className="flex items-center gap-2 rounded-full bg-gradient-to-r from-grape to-bubblegum px-6 py-2.5 font-extrabold text-white shadow-lg ring-2 ring-white/25 active:scale-95"
+            className="flex items-center gap-2 rounded-full bg-gradient-to-r from-grape to-bubblegum px-6 py-2.5 font-extrabold text-white shadow-pop ring-2 ring-white/25 active:scale-95"
           >
             <RotateCw className="h-5 w-5" /> 重试
           </button>
@@ -173,7 +173,7 @@ export default function LxllReviewPanel({ onStartReview }: LxllReviewPanelProps)
                       whileTap={busy ? undefined : { scale: 0.97 }}
                       onClick={() => startSlot(record)}
                       disabled={busy}
-                      className="flex w-full items-center gap-4 rounded-3xl bg-gradient-to-r from-grape to-bubblegum p-5 text-left shadow-card ring-4 ring-white/25 disabled:opacity-80"
+                      className="flex w-full items-center gap-4 rounded-3xl bg-gradient-to-r from-grape to-bubblegum p-5 text-left shadow-pop ring-4 ring-white/25 disabled:opacity-80"
                     >
                       <motion.span
                         className="text-5xl"

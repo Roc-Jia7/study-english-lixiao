@@ -102,7 +102,7 @@ function PhoneGate({ onBackToLogin }: { onBackToLogin: () => void }) {
           disabled={!ready}
           whileTap={ready ? { scale: 0.9 } : undefined}
           aria-label="Enter"
-          className={`flex h-16 items-center justify-center rounded-2xl text-white shadow-lg transition ${
+          className={`flex h-16 items-center justify-center rounded-2xl text-white shadow-pop transition ${
             ready
               ? "bg-gradient-to-br from-emerald-400 to-green-500"
               : "bg-white/10 text-white/30"
@@ -183,7 +183,7 @@ function AvatarGrid() {
               transition={{ delay: 0.15 * i, type: "spring", stiffness: 120 }}
               whileHover={{ scale: 1.05, rotate: -1 }}
               whileTap={{ scale: 0.95 }}
-              className={`flex flex-col items-center gap-2 rounded-3xl bg-gradient-to-br ${student.gradient} p-6 shadow-xl ring-4 ring-white/30`}
+              className={`flex flex-col items-center gap-2 rounded-3xl bg-gradient-to-br ${student.gradient} p-6 shadow-pop ring-4 ring-white/30`}
             >
               <motion.span
                 className="text-7xl drop-shadow-md"

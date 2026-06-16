@@ -78,7 +78,7 @@ export default function PetNameModal({ emoji, onSave, onClose }: PetNameModalPro
         <button
           onClick={save}
           disabled={!trimmed}
-          className="mt-4 min-h-14 w-full rounded-full bg-gradient-to-r from-violet-400 to-fuchsia-400 px-6 py-3 text-xl font-extrabold text-white shadow-xl ring-4 ring-white/30 transition active:scale-95 disabled:opacity-40"
+          className="mt-4 min-h-14 w-full rounded-full bg-gradient-to-r from-violet-400 to-fuchsia-400 px-6 py-3 text-xl font-extrabold text-white shadow-pop ring-4 ring-white/30 transition active:scale-95 disabled:opacity-40"
         >
           就叫这个名字！🎉
         </button>

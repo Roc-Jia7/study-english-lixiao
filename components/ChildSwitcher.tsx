@@ -79,7 +79,7 @@ export default function ChildSwitcher({ onClose }: ChildSwitcherProps) {
           <button
             onClick={onClose}
             aria-label="关闭"
-            className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white/60 active:scale-90"
+            className="flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white/60 active:scale-90"
           >
             <X className="h-5 w-5" />
           </button>
@@ -125,7 +125,7 @@ export default function ChildSwitcher({ onClose }: ChildSwitcherProps) {
 
         <button
           onClick={toLogin}
-          className="mt-3 flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-grape to-bubblegum py-3 font-extrabold text-white shadow-lg ring-2 ring-white/25 active:scale-95"
+          className="mt-3 flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-grape to-bubblegum py-3 font-extrabold text-white shadow-pop ring-2 ring-white/25 active:scale-95"
         >
           <Plus className="h-5 w-5" /> 添加其他孩子
         </button>

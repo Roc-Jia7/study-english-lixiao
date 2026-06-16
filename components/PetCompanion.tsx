@@ -258,7 +258,7 @@ export default function PetCompanion({
             onClick={() => (setDraft(""), setEditing(true))}
             animate={{ scale: [1, 1.06, 1] }}
             transition={{ duration: 1.4, repeat: Infinity }}
-            className="rounded-full bg-gradient-to-r from-violet-400 to-fuchsia-400 px-4 py-1.5 text-base font-extrabold text-white shadow-lg ring-2 ring-white/30"
+            className="rounded-full bg-gradient-to-r from-violet-400 to-fuchsia-400 px-4 py-1.5 text-base font-extrabold text-white shadow-pop ring-2 ring-white/30"
           >
             ✏️ 给我取个名字吧！
           </motion.button>

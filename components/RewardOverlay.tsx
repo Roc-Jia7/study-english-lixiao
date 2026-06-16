@@ -142,7 +142,7 @@ export default function RewardOverlay({
           initial={{ scale: 0, y: -10 }}
           animate={{ scale: 1, y: 0 }}
           transition={{ type: "spring", stiffness: 300, damping: 14 }}
-          className="rounded-full bg-gradient-to-r from-amber-300 to-orange-400 px-5 py-1.5 text-lg font-extrabold text-space-900 shadow-lg ring-2 ring-white/40"
+          className="rounded-full bg-gradient-to-r from-amber-300 to-orange-400 px-5 py-1.5 text-lg font-extrabold text-space-900 shadow-pop ring-2 ring-white/40"
         >
           ⬆️ 升级啦！LEVEL UP · Lv.{newIndex + 1}
         </motion.div>
@@ -215,7 +215,7 @@ export default function RewardOverlay({
         transition={{ delay: 1 }}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        className="relative mt-2 min-h-14 overflow-hidden rounded-full bg-gradient-to-r from-amber-300 to-orange-400 px-10 py-3 text-xl font-extrabold text-space-900 shadow-2xl ring-4 ring-amber-200/40 sm:text-2xl"
+        className="relative mt-2 min-h-14 overflow-hidden rounded-full bg-gradient-to-r from-amber-300 to-orange-400 px-10 py-3 text-xl font-extrabold text-space-900 shadow-pop ring-4 ring-amber-200/40 sm:text-2xl"
       >
         Keep Going! 继续冒险 🚀
         {/* Thin auto-return countdown so it advances on its own. */}

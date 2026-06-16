@@ -67,7 +67,7 @@ export default function QuizCard({ card, onAnswer }: QuizCardProps) {
               whileHover={{ scale: 1.08 }}
               whileTap={{ scale: 0.9 }}
               aria-label="Play the word again"
-              className="flex h-24 w-24 items-center justify-center rounded-full bg-gradient-to-br from-sky-400 to-blue-500 text-white shadow-xl ring-4 ring-sky-200"
+              className="flex h-24 w-24 items-center justify-center rounded-full bg-gradient-to-br from-sky-400 to-blue-500 text-white shadow-pop ring-4 ring-sky-200"
             >
               <Volume2 className="h-12 w-12" />
             </motion.button>

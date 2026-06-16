@@ -180,7 +180,7 @@ export default function PackDetail({ pack, onBack, onStart }: PackDetailProps) {
               <button
                 key={n}
                 onClick={() => setPackDailyNew(pack.id, n)}
-                className={`min-h-9 rounded-full px-3.5 text-sm font-extrabold transition ${
+                className={`min-h-11 rounded-full px-3.5 text-sm font-extrabold transition ${
                   dailyNew === n
                     ? "bg-white text-space-900 shadow"
                     : "bg-white/10 text-white/70"
@@ -196,7 +196,7 @@ export default function PackDetail({ pack, onBack, onStart }: PackDetailProps) {
           <motion.button
             onClick={() => onStart(plan.words)}
             whileTap={{ scale: 0.97 }}
-            className="mt-4 flex min-h-14 w-full items-center justify-center gap-2 rounded-2xl bg-white text-lg font-extrabold text-space-900 shadow-lg active:scale-95"
+            className="mt-4 flex min-h-14 w-full items-center justify-center gap-2 rounded-2xl bg-white text-lg font-extrabold text-space-900 shadow-pop active:scale-95"
           >
             <Play className="h-6 w-6" /> 开始今天的学习
           </motion.button>

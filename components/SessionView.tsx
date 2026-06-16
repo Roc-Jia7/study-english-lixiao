@@ -142,7 +142,7 @@ function GroupBreak({
       <motion.button
         onClick={onNext}
         whileTap={{ scale: 0.95 }}
-        className="mt-3 min-h-12 rounded-full bg-gradient-to-r from-grape to-bubblegum px-8 py-3 text-lg font-extrabold text-white shadow-xl ring-4 ring-white/25"
+        className="mt-3 min-h-12 rounded-full bg-gradient-to-r from-grape to-bubblegum px-8 py-3 text-lg font-extrabold text-white shadow-pop ring-4 ring-white/25"
       >
         继续 ▶
       </motion.button>
@@ -394,7 +394,7 @@ export default function SessionView({
               </button>
               <button
                 onClick={() => setPeekIndex(null)}
-                className="flex min-h-12 items-center gap-1 rounded-2xl bg-gradient-to-r from-grape to-bubblegum px-5 font-extrabold text-white shadow-lg ring-2 ring-white/25 active:scale-95"
+                className="flex min-h-12 items-center gap-1 rounded-2xl bg-gradient-to-r from-grape to-bubblegum px-5 font-extrabold text-white shadow-pop ring-2 ring-white/25 active:scale-95"
               >
                 <Undo2 className="h-5 w-5" /> 回到学习
               </button>
