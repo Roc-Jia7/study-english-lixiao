@@ -68,10 +68,10 @@ export default function PackDetail({ pack, onBack, onStart }: PackDetailProps) {
   const student = useActiveStudent();
   const packDailyNew = useAppStore((s) => s.packDailyNew);
   const setPackDailyNew = useAppStore((s) => s.setPackDailyNew);
-  if (!student) return null;
-
+  // Hooks must run unconditionally — keep them above the early return.
   const [filter, setFilter] = useState<WordFilter>("all");
   const [showAll, setShowAll] = useState(false);
+  if (!student) return null;
 
   const dailyNew = packDailyNew[pack.id] ?? DEFAULT_DAILY_NEW;
   const stats = packStats(student, pack);
