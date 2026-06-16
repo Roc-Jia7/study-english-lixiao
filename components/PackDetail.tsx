@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { ChevronLeft, Play, Star, Volume2 } from "lucide-react";
 import type { VocabularyWord } from "@/lib/types";
@@ -10,6 +11,7 @@ import {
   DEFAULT_DAILY_NEW,
   nextReviewLabel,
   packStats,
+  type PackStats,
   planToday,
   reviewSchedule,
 } from "@/lib/study-plan";
@@ -40,10 +42,27 @@ function MemoryStars({ stage }: { stage: number }) {
   );
 }
 
+/** Cap the rendered word rows so big packs (e.g. 600 words) stay snappy. */
+const LIST_CAP = 60;
+
+type WordFilter = "all" | "due" | "learning" | "mastered" | "fresh";
+
+const WORD_FILTERS: Array<{
+  key: WordFilter;
+  label: string;
+  count: (s: PackStats) => number;
+}> = [
+  { key: "all", label: "全部", count: (s) => s.total },
+  { key: "due", label: "待复习", count: (s) => s.dueCount },
+  { key: "learning", label: "学习中", count: (s) => s.learning },
+  { key: "mastered", label: "已掌握", count: (s) => s.mastered },
+  { key: "fresh", label: "未学", count: (s) => s.fresh },
+];
+
 /**
  * One word pack's overview + forgetting-curve study plan: total cards and
  * mastery progress, today's quota-driven task, an ETA, a preview of when the
- * curve brings words back, and a per-word status list.
+ * curve brings words back, and a filterable, capped per-word status list.
  */
 export default function PackDetail({ pack, onBack, onStart }: PackDetailProps) {
   const student = useActiveStudent();
@@ -51,10 +70,31 @@ export default function PackDetail({ pack, onBack, onStart }: PackDetailProps) {
   const setPackDailyNew = useAppStore((s) => s.setPackDailyNew);
   if (!student) return null;
 
+  const [filter, setFilter] = useState<WordFilter>("all");
+  const [showAll, setShowAll] = useState(false);
+
   const dailyNew = packDailyNew[pack.id] ?? DEFAULT_DAILY_NEW;
   const stats = packStats(student, pack);
   const plan = planToday(student, pack, dailyNew);
   const schedule = reviewSchedule(student, pack);
+
+  const nowMs = Date.now();
+  const filtered = pack.words.filter((wd) => {
+    const p = student.progress[wd.id];
+    switch (filter) {
+      case "due":
+        return !!p && new Date(p.nextReviewTime).getTime() <= nowMs;
+      case "learning":
+        return !!p && p.stage < MASTERED_STAGE;
+      case "mastered":
+        return !!p && p.stage >= MASTERED_STAGE;
+      case "fresh":
+        return !p;
+      default:
+        return true;
+    }
+  });
+  const shown = showAll ? filtered : filtered.slice(0, LIST_CAP);
 
   const seg = (n: number) => (stats.total ? (n / stats.total) * 100 : 0);
 
@@ -184,12 +224,30 @@ export default function PackDetail({ pack, onBack, onStart }: PackDetailProps) {
         </div>
       )}
 
-      {/* Per-word status list */}
+      {/* Per-word status list — filterable + capped so big packs stay snappy */}
       <h2 className="mb-2 mt-6 text-center text-sm font-bold text-white/50">
-        全部单词 · {stats.total}
+        单词列表 · {stats.total}
       </h2>
+      <div className="mb-3 flex flex-wrap justify-center gap-2">
+        {WORD_FILTERS.map((f) => (
+          <button
+            key={f.key}
+            onClick={() => {
+              setFilter(f.key);
+              setShowAll(false);
+            }}
+            className={`min-h-8 rounded-full px-3 py-1 text-xs font-bold transition ${
+              filter === f.key
+                ? "bg-white text-space-900"
+                : "bg-white/10 text-white/60"
+            }`}
+          >
+            {f.label} {f.count(stats)}
+          </button>
+        ))}
+      </div>
       <div className="space-y-2">
-        {pack.words.map((wd) => {
+        {shown.map((wd) => {
           const p = student.progress[wd.id];
           const stage = p?.stage ?? 0;
           const status = !p
@@ -225,7 +283,20 @@ export default function PackDetail({ pack, onBack, onStart }: PackDetailProps) {
             </div>
           );
         })}
+        {shown.length === 0 && (
+          <p className="py-6 text-center text-sm text-white/40">
+            这一类暂时没有单词
+          </p>
+        )}
       </div>
+      {filtered.length > shown.length && (
+        <button
+          onClick={() => setShowAll(true)}
+          className="mx-auto mt-3 block rounded-full bg-white/10 px-5 py-2 text-sm font-bold text-white/70 active:scale-95"
+        >
+          显示全部 {filtered.length} 个
+        </button>
+      )}
     </div>
   );
 }
