@@ -48,6 +48,19 @@ export default function ParentSummary({ student }: { student: StudentProfile }) 
   const lxllMatches = !!profile && student.id === `lxll:${profile.userId}`;
   const { due, done } = splitSchedule(schedule);
 
+  // Overall accuracy across every answered card (numbers are allowed in the
+  // parent view). "—" until there's at least one answer.
+  const tally = Object.values(student.progress).reduce(
+    (a, p) => {
+      a.correct += p.timesCorrect;
+      a.wrong += p.timesWrong;
+      return a;
+    },
+    { correct: 0, wrong: 0 },
+  );
+  const answered = tally.correct + tally.wrong;
+  const accuracy = answered > 0 ? `${Math.round((tally.correct / answered) * 100)}%` : "—";
+
   // 课本词单 — aggregate progress across every bundled pack (pack-scoped ids,
   // so lxll review words never count toward this track).
   const pack = WORD_PACK_META.reduce(
@@ -72,10 +85,11 @@ export default function ParentSummary({ student }: { student: StudentProfile }) 
       </p>
 
       {/* Shared habits — apply to both tracks */}
-      <div className="grid grid-cols-3 gap-3">
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
         <Tile icon="📅" value={`${daysThisWeek}/7`} label="本周学习" />
         <Tile icon="🏅" value={student.bestStreak} label="最长连续(天)" />
         <Tile icon="✍️" value={student.energyToday} label="今日练习" />
+        <Tile icon="🎯" value={accuracy} label="正确率" accent="text-sky-300" />
       </div>
 
       {/* 李校来了 · course (backend) — only for the signed-in child */}

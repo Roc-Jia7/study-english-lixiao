@@ -85,7 +85,7 @@ function RevealButton({ label, onClick }: { label: string; onClick: () => void }
     <motion.button
       onClick={onClick}
       whileTap={{ scale: 0.94 }}
-      className="mx-auto mt-2 flex items-center gap-2 rounded-full border-2 border-dashed border-violet-300 bg-violet-50 px-5 py-2 font-bold text-violet-500"
+      className="mx-auto mt-2 flex min-h-11 items-center gap-2 rounded-full border-2 border-dashed border-violet-300 bg-violet-50 px-5 py-2 font-bold text-violet-500"
     >
       <Eye className="h-5 w-5" />
       {label}
