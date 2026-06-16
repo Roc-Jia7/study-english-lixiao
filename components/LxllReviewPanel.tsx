@@ -173,7 +173,7 @@ export default function LxllReviewPanel({ onStartReview }: LxllReviewPanelProps)
                       whileTap={busy ? undefined : { scale: 0.97 }}
                       onClick={() => startSlot(record)}
                       disabled={busy}
-                      className="flex w-full items-center gap-4 rounded-3xl bg-gradient-to-r from-grape to-bubblegum p-5 text-left shadow-2xl ring-4 ring-white/25 disabled:opacity-80"
+                      className="flex w-full items-center gap-4 rounded-3xl bg-gradient-to-r from-grape to-bubblegum p-5 text-left shadow-card ring-4 ring-white/25 disabled:opacity-80"
                     >
                       <motion.span
                         className="text-5xl"

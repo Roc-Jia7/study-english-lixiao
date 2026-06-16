@@ -156,7 +156,7 @@ export default function Dashboard({
           onClick={() =>
             onStartSession("review", dueWords.slice(0, REVIEW_SESSION_CAP))
           }
-          className="mt-8 flex w-full items-center gap-4 rounded-3xl bg-gradient-to-r from-grape to-bubblegum p-5 text-left shadow-2xl ring-4 ring-white/25"
+          className="mt-8 flex w-full items-center gap-4 rounded-3xl bg-gradient-to-r from-grape to-bubblegum p-5 text-left shadow-card ring-4 ring-white/25"
         >
           <motion.span
             className="text-6xl"

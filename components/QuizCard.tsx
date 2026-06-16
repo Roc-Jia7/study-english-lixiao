@@ -53,7 +53,7 @@ export default function QuizCard({ card, onAnswer }: QuizCardProps) {
       transition={{ type: "spring", stiffness: 160, damping: 20 }}
       className="w-full max-w-md"
     >
-      <div className="rounded-[2rem] bg-cream p-6 shadow-2xl ring-8 ring-grape/30">
+      <div className="rounded-[2rem] bg-cream p-6 shadow-card ring-8 ring-grape/30">
         {/* Quiz badge */}
         <div className="mx-auto w-fit rounded-full bg-violet-100 px-4 py-1.5 text-sm font-extrabold text-violet-700 ring-2 ring-violet-200">
           🎯 Quiz Time! 小考验

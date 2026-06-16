@@ -15,7 +15,17 @@
   --color-grape: #b388ff;
   --color-sprout: #7ae582;
 
-  --font-display: var(--font-baloo), "Comic Sans MS", "PingFang SC", sans-serif;
+  /* Rounded brand face first, then a fuller rounded + CJK fallback chain so
+     the bilingual UI stays consistent on Windows / Android / older devices. */
+  --font-display: var(--font-baloo), "Comic Sans MS", "PingFang SC",
+    "Hiragino Sans GB", "Microsoft YaHei", system-ui, sans-serif;
+
+  /* Soft, warm, indigo-tinted shadows + the pet's violet glow — the brand
+     tokens from the design system. Indigo shadows read more cohesive on the
+     deep-space shell than Tailwind's neutral-black ones. */
+  --shadow-pop: 0 8px 20px rgb(21 15 51 / 0.3);
+  --shadow-card: 0 18px 40px rgb(21 15 51 / 0.45);
+  --shadow-glow: 0 0 50px rgb(179 136 255 / 0.35);
 
   --animate-float: float 3s ease-in-out infinite;
   --animate-wiggle: wiggle 0.6s ease-in-out;

@@ -49,7 +49,7 @@ export default function PetNameModal({ emoji, onSave, onClose }: PetNameModalPro
         initial={{ scale: 0.8, y: 24 }}
         animate={{ scale: 1, y: 0 }}
         transition={{ type: "spring", stiffness: 240, damping: 18 }}
-        className="w-full max-w-sm rounded-[2rem] bg-cream p-6 text-center shadow-2xl ring-8 ring-white/30"
+        className="w-full max-w-sm rounded-[2rem] bg-cream p-6 text-center shadow-card ring-8 ring-white/30"
       >
         <motion.span
           className="block text-7xl"

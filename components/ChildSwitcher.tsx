@@ -72,7 +72,7 @@ export default function ChildSwitcher({ onClose }: ChildSwitcherProps) {
         animate={{ scale: 1, y: 0 }}
         transition={{ type: "spring", stiffness: 240, damping: 18 }}
         onClick={(e) => e.stopPropagation()}
-        className="w-full max-w-sm rounded-[2rem] bg-space-900 p-6 shadow-2xl ring-2 ring-white/15"
+        className="w-full max-w-sm rounded-[2rem] bg-space-900 p-6 shadow-card ring-2 ring-white/15"
       >
         <div className="mb-4 flex items-center justify-between">
           <h2 className="text-xl font-extrabold text-white">切换孩子</h2>

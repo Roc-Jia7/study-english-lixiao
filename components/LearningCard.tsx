@@ -223,7 +223,7 @@ export default function LearningCard({
     >
       <Bubbles />
 
-      <div className="relative overflow-hidden rounded-[2.5rem] bg-cream p-6 shadow-2xl ring-8 ring-white/30">
+      <div className="relative overflow-hidden rounded-[2.5rem] bg-cream p-6 shadow-card ring-8 ring-white/30">
         {/* Warm "let's learn it together" banner when the child asks for help */}
         <AnimatePresence>
           {helping && (

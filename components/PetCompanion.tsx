@@ -139,7 +139,7 @@ export default function PetCompanion({
           className={`absolute inset-0 rounded-full bg-gradient-to-b ${stage.aura} ring-4 ring-white/20`}
           animate={{ scale: [1, 1.08, 1], opacity: [0.85, 1, 0.85] }}
           transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
-          style={{ boxShadow: "0 0 50px rgba(179,136,255,0.35)" }}
+          style={{ boxShadow: "var(--shadow-glow)" }}
         />
 
         {/* Speech bubble on poke */}
