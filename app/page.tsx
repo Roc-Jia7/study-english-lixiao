@@ -69,7 +69,7 @@ export default function Home() {
       if (ts - last < 5000) return;
       last = ts;
       // Resend any results a previous submit failed to upload, then refresh.
-      if (lxll.pendingUpload) void lxll.submitResults();
+      if (lxll.pendingUpload) void lxll.drainOutbox();
       void lxll.loadData();
     };
     document.addEventListener("visibilitychange", refresh);

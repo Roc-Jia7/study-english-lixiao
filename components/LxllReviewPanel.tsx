@@ -57,7 +57,7 @@ export default function LxllReviewPanel({ onStartReview }: LxllReviewPanelProps)
   const loadData = useLxllStore((s) => s.loadData);
   const loadSlotWords = useLxllStore((s) => s.loadSlotWords);
   const pendingUpload = useLxllStore((s) => s.pendingUpload);
-  const submitResults = useLxllStore((s) => s.submitResults);
+  const drainOutbox = useLxllStore((s) => s.drainOutbox);
   const [startingId, setStartingId] = useState<number | null>(null);
   const [retrying, setRetrying] = useState(false);
 
@@ -116,7 +116,8 @@ export default function LxllReviewPanel({ onStartReview }: LxllReviewPanelProps)
             onClick={async () => {
               if (retrying) return;
               setRetrying(true);
-              await submitResults();
+              await drainOutbox();
+              await loadData();
               setRetrying(false);
             }}
             disabled={retrying}

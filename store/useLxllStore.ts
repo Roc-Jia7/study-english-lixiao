@@ -18,6 +18,7 @@ import {
   LxllApiError,
 } from "@/lib/lxll/client";
 import { rememberLogin } from "@/lib/lxll/recentLogins";
+import { saveBatch, clearBatch, clearOutbox, getBatch } from "@/lib/lxll/outbox";
 import { pullAndMerge } from "@/lib/sync/cloudSync";
 import type {
   LxllAntiForgetDay,
@@ -74,6 +75,8 @@ interface LxllState {
   recordWordResult: (backendWordId: number, known: boolean) => void;
   /** Write collected results back to the forgetting curve, then refresh. */
   submitResults: () => Promise<void>;
+  /** Resend the active child's persisted unsent results (survives reloads). */
+  drainOutbox: () => Promise<void>;
   signOut: () => Promise<void>;
   clearError: () => void;
 }
@@ -162,9 +165,16 @@ export const useLxllStore = create<LxllState>((set, get) => ({
     set({ status: "loading" });
     try {
       const profile = await fetchUserProfile();
-      set({ status: "authed", profile });
+      // Show the retry banner immediately if this child has unsent results
+      // left over from a previous (crashed/closed) session.
+      set({
+        status: "authed",
+        profile,
+        pendingUpload: !!getBatch(profile.userId),
+      });
       adoptStudent(profile);
       await pullAndMerge(profile.userId);
+      void get().drainOutbox();
       void get().loadData();
     } catch {
       clearSession();
@@ -214,7 +224,7 @@ export const useLxllStore = create<LxllState>((set, get) => ({
     })),
 
   submitResults: async () => {
-    const { sessionReviews, pendingResults } = get();
+    const { sessionReviews, pendingResults, profile } = get();
     const submissions: AntiForgetSubmission[] = sessionReviews
       .map((rev) => ({
         antiForgetId: rev.antiForgetId,
@@ -225,21 +235,44 @@ export const useLxllStore = create<LxllState>((set, get) => ({
       .filter((s) => s.words.length > 0);
 
     if (submissions.length === 0) return;
+    // Persist to the outbox BEFORE sending, so a crash/reload mid-submit can
+    // still retry. Keyed by userId so it's only ever resent as this child.
+    if (profile) saveBatch(profile.userId, submissions);
     try {
       await submitAntiForgetProgress(submissions);
     } catch {
-      // Keep results + flag so the dashboard can offer a retry and the
-      // foreground-refresh can resend automatically (instead of losing them).
+      // Keep the persisted batch + flag; the banner / foreground-refresh /
+      // next app open will resend it instead of losing the child's results.
       set({ pendingUpload: true });
       return;
     }
+    if (profile) clearBatch(profile.userId);
     set({ pendingResults: {}, sessionReviews: [], pendingUpload: false });
     void get().loadData();
+  },
+
+  drainOutbox: async () => {
+    const profile = get().profile;
+    if (!profile) return;
+    const batch = getBatch(profile.userId);
+    if (!batch || batch.submissions.length === 0) {
+      set({ pendingUpload: false });
+      return;
+    }
+    try {
+      await submitAntiForgetProgress(batch.submissions);
+    } catch {
+      set({ pendingUpload: true }); // still pending — try again later
+      return;
+    }
+    clearBatch(profile.userId);
+    set({ pendingUpload: false, pendingResults: {}, sessionReviews: [] });
   },
 
   signOut: async () => {
     await lxllLogout();
     clearAllAccounts(); // a full lock forgets every stored child token
+    clearOutbox(); // and any unsent results queued on this device
     set({
       status: "idle",
       profile: null,
@@ -247,6 +280,9 @@ export const useLxllStore = create<LxllState>((set, get) => ({
       schedule: [],
       metric: null,
       dataError: null,
+      sessionReviews: [],
+      pendingResults: {},
+      pendingUpload: false,
     });
   },
 

@@ -6,6 +6,7 @@ import { Eye, EyeOff, Loader2, Rocket, X } from "lucide-react";
 import { useLxllStore } from "@/store/useLxllStore";
 import { useAppStore } from "@/store/useAppStore";
 import { clearSession, clearAllAccounts } from "@/lib/lxll/client";
+import { clearOutbox } from "@/lib/lxll/outbox";
 import {
   clearRecentLogins,
   forgetRecentLogin,
@@ -66,6 +67,7 @@ export default function PasswordLogin({ onShowDemo, onSuccess }: PasswordLoginPr
     forgetRealStudents();
     clearSession();
     clearAllAccounts();
+    clearOutbox();
     if (error) clearError();
     setRecents([]);
     setAccount("");
