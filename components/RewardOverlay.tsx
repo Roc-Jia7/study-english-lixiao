@@ -64,11 +64,17 @@ export default function RewardOverlay({
     // Gentle auto-return so a small child is never stranded on this screen.
     const auto = setTimeout(onContinue, autoMs);
 
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape" || e.key === "Enter") onContinue();
+    };
+    window.addEventListener("keydown", onKey);
+
     return () => {
       clearTimeout(cheer);
       clearTimeout(encore);
       if (morphFx) clearTimeout(morphFx);
       clearTimeout(auto);
+      window.removeEventListener("keydown", onKey);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -77,6 +83,9 @@ export default function RewardOverlay({
 
   return (
     <motion.div
+      role="dialog"
+      aria-modal="true"
+      aria-label="完成奖励"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}

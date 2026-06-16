@@ -7,6 +7,7 @@ import { useAppStore } from "@/store/useAppStore";
 import { useLxllStore } from "@/store/useLxllStore";
 import { loadPack, type WordPack } from "@/lib/wordpacks";
 import { startCloudSync } from "@/lib/sync/cloudSync";
+import { primeSpeech } from "@/lib/speech";
 import SpaceNavbar from "@/components/SpaceNavbar";
 import ProfileHub from "@/components/ProfileHub";
 import Dashboard from "@/components/Dashboard";
@@ -50,6 +51,8 @@ export default function Home() {
     startCloudSync();
     // Re-hydrate a stored lxll session (token in localStorage).
     void restoreLxll();
+    // Unlock speech on the first tap (iOS needs a gesture before autoplay).
+    window.addEventListener("pointerdown", () => primeSpeech(), { once: true });
   }, [restoreLxll]);
 
   // Coming back to the foreground (tab/app re-focus) re-pulls the lxll

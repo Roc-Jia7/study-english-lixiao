@@ -2,9 +2,10 @@
 
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Volume2, Languages, Eye, EyeOff, Loader2, Wifi } from "lucide-react";
+import { Volume2, VolumeX, Languages, Eye, EyeOff, Loader2, Wifi } from "lucide-react";
 import type { DisplayMode, VocabularyWord } from "@/lib/types";
 import { playWordAudio, playBilingual } from "@/lib/audio";
+import { speechSupported } from "@/lib/speech";
 import { speakSentence } from "@/lib/speech";
 import { popSound, happySound, softSound } from "@/lib/sfx";
 
@@ -295,11 +296,19 @@ export default function LearningCard({
             <p className="mt-1 break-words px-2 text-center text-lg text-space-700/60">
               {word.phonetic}
             </p>
-            {audioState === "speech" && (
-              <p className="mt-1 flex items-center justify-center gap-1 text-center text-xs font-bold text-amber-600/80">
-                <Wifi className="h-3.5 w-3.5" /> 弱网 · 暂用朗读发音
-              </p>
-            )}
+            {/* Honest audio hint: only flag a problem. A word with its own
+                recording that fell back = weak network; no recording = TTS by
+                design (no alarm); no speech support at all = say so. */}
+            {audioState === "speech" &&
+              (!speechSupported() ? (
+                <p className="mt-1 flex items-center justify-center gap-1 text-center text-xs font-bold text-rose-500/80">
+                  <VolumeX className="h-3.5 w-3.5" /> 此设备暂不支持朗读发音
+                </p>
+              ) : word.audioUrl ? (
+                <p className="mt-1 flex items-center justify-center gap-1 text-center text-xs font-bold text-amber-600/80">
+                  <Wifi className="h-3.5 w-3.5" /> 弱网 · 暂用朗读发音
+                </p>
+              ) : null)}
             {hideSide === "en" && (
               <HideToggle label="收起英文" onClick={() => setRevealed(false)} />
             )}

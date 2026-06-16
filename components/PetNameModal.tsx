@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { popSound, happySound } from "@/lib/sfx";
 
@@ -26,6 +26,15 @@ export default function PetNameModal({ emoji, onSave, onClose }: PetNameModalPro
     onSave(trimmed);
   };
 
+  // Escape dismisses (same as 稍后再说).
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [onClose]);
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -34,6 +43,9 @@ export default function PetNameModal({ emoji, onSave, onClose }: PetNameModalPro
       className="fixed inset-0 z-50 flex items-center justify-center bg-space-950/80 px-6 backdrop-blur-sm"
     >
       <motion.div
+        role="dialog"
+        aria-modal="true"
+        aria-label="给宠物起名字"
         initial={{ scale: 0.8, y: 24 }}
         animate={{ scale: 1, y: 0 }}
         transition={{ type: "spring", stiffness: 240, damping: 18 }}

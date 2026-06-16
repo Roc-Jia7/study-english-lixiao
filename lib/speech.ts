@@ -36,6 +36,30 @@ if (typeof window !== "undefined" && window.speechSynthesis) {
   };
 }
 
+/** Whether this browser can synthesize speech at all (false on very old ones). */
+export function speechSupported(): boolean {
+  return typeof window !== "undefined" && !!window.speechSynthesis;
+}
+
+let primed = false;
+
+/**
+ * iOS Safari only lets speech start from inside a user gesture; once one
+ * utterance has run during a gesture, later autoplay works. Call this from the
+ * first tap to unlock it (silent no-op elsewhere).
+ */
+export function primeSpeech(): void {
+  if (primed || !speechSupported()) return;
+  primed = true;
+  try {
+    const u = new SpeechSynthesisUtterance(" ");
+    u.volume = 0;
+    window.speechSynthesis.speak(u);
+  } catch {
+    /* ignore — best-effort unlock */
+  }
+}
+
 interface SpeakOptions {
   rate?: number;
   pitch?: number;

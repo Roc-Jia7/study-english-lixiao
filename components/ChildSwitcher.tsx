@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Loader2, Plus, X, Check, KeyRound } from "lucide-react";
 import { useAppStore, useActiveStudent } from "@/store/useAppStore";
@@ -25,6 +25,15 @@ export default function ChildSwitcher({ onClose }: ChildSwitcherProps) {
 
   const recents = loadRecentLogins();
   const accounts = loadAccounts();
+
+  // Escape closes the picker.
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [onClose]);
 
   const toLogin = () => {
     onClose();
@@ -56,6 +65,9 @@ export default function ChildSwitcher({ onClose }: ChildSwitcherProps) {
       onClick={onClose}
     >
       <motion.div
+        role="dialog"
+        aria-modal="true"
+        aria-label="切换孩子"
         initial={{ scale: 0.85, y: 24 }}
         animate={{ scale: 1, y: 0 }}
         transition={{ type: "spring", stiffness: 240, damping: 18 }}
