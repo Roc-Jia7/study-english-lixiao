@@ -13,7 +13,7 @@
   "subtitle": "PEP Grade 3B · 人教三起",
   "source": "DictionaryData (Apache-2.0) · 人教版三年级起点三年级下册",
   "category": "primary",
-  "count": 70
+  "count": 71
  },
  {
   "id": "pep-4a",
@@ -21,7 +21,7 @@
   "subtitle": "PEP Grade 4A · 人教三起",
   "source": "DictionaryData (Apache-2.0) · 人教版三年级起点四年级上册",
   "category": "primary",
-  "count": 71
+  "count": 79
  },
  {
   "id": "pep-4b",
@@ -29,7 +29,7 @@
   "subtitle": "PEP Grade 4B · 人教三起",
   "source": "DictionaryData (Apache-2.0) · 人教版三年级起点四年级下册",
   "category": "primary",
-  "count": 78
+  "count": 96
  },
  {
   "id": "pep-5a",
@@ -37,7 +37,7 @@
   "subtitle": "PEP Grade 5A · 人教三起",
   "source": "DictionaryData (Apache-2.0) · 人教版三年级起点五年级上册",
   "category": "primary",
-  "count": 105
+  "count": 117
  },
  {
   "id": "pep-5b",
@@ -45,7 +45,7 @@
   "subtitle": "PEP Grade 5B · 人教三起",
   "source": "DictionaryData (Apache-2.0) · 人教版三年级起点五年级下册",
   "category": "primary",
-  "count": 119
+  "count": 135
  },
  {
   "id": "pep-6a",
@@ -53,7 +53,7 @@
   "subtitle": "PEP Grade 6A · 人教三起",
   "source": "DictionaryData (Apache-2.0) · 人教版三年级起点六年级上册",
   "category": "primary",
-  "count": 122
+  "count": 141
  },
  {
   "id": "pep-6b",
@@ -61,7 +61,55 @@
   "subtitle": "PEP Grade 6B · 人教三起",
   "source": "DictionaryData (Apache-2.0) · 人教版三年级起点六年级下册",
   "category": "primary",
-  "count": 74
+  "count": 87
+ },
+ {
+  "id": "hj-7a",
+  "name": "沪教牛津 七年级上",
+  "subtitle": "Shanghai Oxford Grade 7A · 沪教版",
+  "source": "DictionaryData (Apache-2.0) · 沪教版牛津英语七年级上册",
+  "category": "middle",
+  "count": 207
+ },
+ {
+  "id": "hj-7b",
+  "name": "沪教牛津 七年级下",
+  "subtitle": "Shanghai Oxford Grade 7B · 沪教版",
+  "source": "DictionaryData (Apache-2.0) · 沪教版牛津英语七年级下册",
+  "category": "middle",
+  "count": 219
+ },
+ {
+  "id": "hj-8a",
+  "name": "沪教牛津 八年级上",
+  "subtitle": "Shanghai Oxford Grade 8A · 沪教版",
+  "source": "DictionaryData (Apache-2.0) · 沪教版牛津英语八年级上册",
+  "category": "middle",
+  "count": 222
+ },
+ {
+  "id": "hj-8b",
+  "name": "沪教牛津 八年级下",
+  "subtitle": "Shanghai Oxford Grade 8B · 沪教版",
+  "source": "DictionaryData (Apache-2.0) · 沪教版牛津英语八年级下册",
+  "category": "middle",
+  "count": 237
+ },
+ {
+  "id": "hj-9a",
+  "name": "沪教牛津 九年级上",
+  "subtitle": "Shanghai Oxford Grade 9A · 沪教版",
+  "source": "DictionaryData (Apache-2.0) · 沪教版牛津英语九年级上册",
+  "category": "middle",
+  "count": 232
+ },
+ {
+  "id": "hj-9b",
+  "name": "沪教牛津 九年级下",
+  "subtitle": "Shanghai Oxford Grade 9B · 沪教版",
+  "source": "DictionaryData (Apache-2.0) · 沪教版牛津英语九年级下册",
+  "category": "middle",
+  "count": 179
  },
  {
   "id": "zhongkao-core",

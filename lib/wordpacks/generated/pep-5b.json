@@ -11,6 +11,18 @@
    "unit": "Words in each unit Unit 1"
   },
   {
+   "word": "go for a walk",
+   "phonetic": "/ɡo fɔr e wɔk/",
+   "translation": "散步",
+   "unit": "Words in each unit Unit 1"
+  },
+  {
+   "word": "go shopping",
+   "phonetic": "/ɡo ˈʃɑpɪŋ/",
+   "translation": "去买东西",
+   "unit": "Words in each unit Unit 1"
+  },
+  {
    "word": "take",
    "phonetic": "/tek/",
    "translation": "拿",
@@ -56,6 +68,18 @@
    "word": "late",
    "phonetic": "/let/",
    "translation": "迟的",
+   "unit": "Words in each unit Unit 1"
+  },
+  {
+   "word": "a.m.",
+   "phonetic": "/ˌei ˈem/",
+   "translation": "上午",
+   "unit": "Words in each unit Unit 1"
+  },
+  {
+   "word": "p.m.",
+   "phonetic": "/ˈpiˈɛm/",
+   "translation": "下午",
    "unit": "Words in each unit Unit 1"
   },
   {
@@ -182,6 +206,12 @@
    "word": "picnic",
    "phonetic": "/ˈpɪknɪk/",
    "translation": "野餐",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
+   "word": "go on a picnic",
+   "phonetic": "/goʊ ɑn ei ˈpɪknɪk/",
+   "translation": "去野餐",
    "unit": "Words in each unit Unit 2"
   },
   {
@@ -341,6 +371,12 @@
    "unit": "Words in each unit Unit 3"
   },
   {
+   "word": "a few",
+   "phonetic": "/ə fju/",
+   "translation": "几个",
+   "unit": "Words in each unit Unit 3"
+  },
+  {
    "word": "thing",
    "phonetic": "/θɪŋ/",
    "translation": "东西",
@@ -350,6 +386,12 @@
    "word": "meet",
    "phonetic": "/mit/",
    "translation": "会",
+   "unit": "Words in each unit Unit 3"
+  },
+  {
+   "word": "sports meet",
+   "phonetic": "/spɔts mit/",
+   "translation": "体育运动会",
    "unit": "Words in each unit Unit 3"
   },
   {
@@ -389,6 +431,12 @@
    "unit": "Words in each unit Unit 3"
   },
   {
+   "word": "National Day",
+   "phonetic": "/ˈnæʃənəl de/",
+   "translation": "国庆日",
+   "unit": "Words in each unit Unit 3"
+  },
+  {
    "word": "American",
    "phonetic": "/ɚˈmɛrɪkɚn/",
    "translation": "美国人",
@@ -422,6 +470,12 @@
    "word": "roll",
    "phonetic": "/roʊl/",
    "translation": "滚动",
+   "unit": "Words in each unit Unit 3"
+  },
+  {
+   "word": "look for",
+   "phonetic": "/lʊk fɔr/",
+   "translation": "寻找",
    "unit": "Words in each unit Unit 3"
   },
   {
@@ -488,6 +542,18 @@
    "word": "twentieth",
    "phonetic": "/ˈtwɛntiɪθ/",
    "translation": "第二十的",
+   "unit": "Words in each unit Unit 4"
+  },
+  {
+   "word": "twenty-first",
+   "phonetic": "/ˈtwɛnti fɚst/",
+   "translation": "第二十一",
+   "unit": "Words in each unit Unit 4"
+  },
+  {
+   "word": "twenty-third",
+   "phonetic": "/ˌtwentɪˈθɜd/",
+   "translation": "第二十三",
    "unit": "Words in each unit Unit 4"
   },
   {
@@ -599,6 +665,12 @@
    "unit": "Words in each unit Unit 5"
   },
   {
+   "word": "playing",
+   "phonetic": "/ˈpleɪŋ/",
+   "translation": "游戏",
+   "unit": "Words in each unit Unit 5"
+  },
+  {
    "word": "jumping",
    "phonetic": "/ˈdʒʌmpɪŋ/",
    "translation": "跳跃的",
@@ -629,6 +701,12 @@
    "unit": "Words in each unit Unit 5"
   },
   {
+   "word": "each other",
+   "phonetic": "/itʃ ˈʌðɚ/",
+   "translation": "彼此",
+   "unit": "Words in each unit Unit 5"
+  },
+  {
    "word": "excited",
    "phonetic": "/ɪkˈsaɪtɪd/",
    "translation": "兴奋的",
@@ -650,6 +728,12 @@
    "word": "turn",
    "phonetic": "/tɚn/",
    "translation": "转动",
+   "unit": "Words in each unit Unit 6"
+  },
+  {
+   "word": "take turns",
+   "phonetic": "/tek ˈtɜnz/",
+   "translation": "轮流",
    "unit": "Words in each unit Unit 6"
   },
   {
@@ -692,6 +776,18 @@
    "word": "say",
    "phonetic": "/se/",
    "translation": "说",
+   "unit": "Words in each unit Unit 6"
+  },
+  {
+   "word": "have a look",
+   "phonetic": "/hæv e lʊk/",
+   "translation": "看一看",
+   "unit": "Words in each unit Unit 6"
+  },
+  {
+   "word": "sushi",
+   "phonetic": "/ˈsuʃi/",
+   "translation": "寿司",
    "unit": "Words in each unit Unit 6"
   },
   {

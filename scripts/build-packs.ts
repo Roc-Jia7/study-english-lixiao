@@ -167,47 +167,76 @@ const unitNum = (u: string): number => {
   return m ? Number(m[1]) : 9999;
 };
 
+let _ecdict: Map<string, { trans: string; phon: string }> | null = null;
+
+/** word(lowercased) → raw ECDICT translation+phonetic, for textbook fallback
+ *  enrichment (DictionaryData's dictionary misses many common words). */
+function loadEcdictMap(): Map<string, { trans: string; phon: string }> {
+  if (_ecdict) return _ecdict;
+  const m = new Map<string, { trans: string; phon: string }>();
+  let first = true;
+  for (const rec of csvRecords(readRaw("ecdict/ecdict.csv"))) {
+    if (first) {
+      first = false;
+      continue;
+    }
+    const w = (rec[0] || "").trim().toLowerCase();
+    if (w && !m.has(w)) m.set(w, { trans: rec[3] || "", phon: rec[1] || "" });
+  }
+  _ecdict = m;
+  return m;
+}
+
 // Selectors -> enriched, ordered word lists -------------------------------
 
-function buildTextbook(bookId: string, units?: string[]): OutWord[] {
+interface BuildResult {
+  words: OutWord[];
+  /** Words skipped for lack of a usable gloss (kept for the build report). */
+  dropped: string[];
+}
+
+function buildTextbook(bookId: string, units?: string[]): BuildResult {
   const rows = loadBookRows(bookId);
   const words = loadWords();
   const trans = loadTranslations();
+  const ecdict = loadEcdictMap();
   const filtered = units?.length
     ? rows.filter((r) => units.includes(r.unit))
     : rows;
   filtered.sort((a, b) => unitNum(a.unit) - unitNum(b.unit) || a.order - b.order);
 
   const out: OutWord[] = [];
+  const dropped: string[] = [];
   const seen = new Set<string>();
-  let dropped = 0;
   for (const r of filtered) {
     const w = words.get(r.vcId);
     const word = w?.word.trim();
     if (!word) {
-      dropped++;
+      dropped.push("(missing word entry)");
       continue;
     }
     const key = word.toLowerCase();
     if (seen.has(key)) continue;
-    const translation = glossFor(key, trans.get(key) || "");
+    const e = ecdict.get(key);
+    // Enrichment chain: override → DictionaryData → ECDICT.
+    let translation = OVERRIDES[key]?.translation;
+    if (!translation) translation = cleanTranslation(trans.get(key) || "");
+    if (!translation && e) translation = cleanTranslation(e.trans);
     if (!translation) {
-      dropped++;
+      dropped.push(word);
       continue;
     }
+    let phonetic = OVERRIDES[key]?.phonetic ?? fromBracket(w!.us);
+    if (!phonetic && e) phonetic = wrapSlash(e.phon);
     seen.add(key);
-    out.push({
-      word,
-      phonetic: phoneticFor(key, fromBracket(w!.us)),
-      translation,
-      unit: r.unit,
-    });
+    out.push({ word, phonetic, translation, unit: r.unit });
   }
-  if (dropped) console.log(`    (skipped ${dropped} words with no usable data)`);
-  return out;
+  if (dropped.length)
+    console.log(`    (skipped ${dropped.length} words with no usable data)`);
+  return { words: out, dropped };
 }
 
-function buildGraded(tag: string, cap?: number): OutWord[] {
+function buildGraded(tag: string, cap?: number): BuildResult {
   // word,phonetic,definition,translation,pos,collins,oxford,tag,bnc,frq,...
   type Cand = { word: string; phonetic: string; translation: string; rank: number };
   const cands: Cand[] = [];
@@ -245,10 +274,10 @@ function buildGraded(tag: string, cap?: number): OutWord[] {
     if (cap && out.length >= cap) break;
   }
   if (dropped) console.log(`    (skipped ${dropped} words with no usable gloss)`);
-  return out;
+  return { words: out, dropped: [] };
 }
 
-function buildPack(spec: PackSpec): OutWord[] {
+function buildPack(spec: PackSpec): BuildResult {
   if (spec.select.kind === "dictdata-book")
     return buildTextbook(spec.select.bookId, spec.select.units);
   return buildGraded(spec.select.tag, spec.select.cap);
@@ -273,9 +302,11 @@ const manifest: Array<{
   count: number;
 }> = [];
 
+const allDropped: string[] = [];
+
 for (const spec of PACKS) {
   console.log(`Building ${spec.id} (${spec.name})...`);
-  const words = buildPack(spec);
+  const { words, dropped } = buildPack(spec);
   const pack = {
     id: spec.id,
     name: spec.name,
@@ -293,7 +324,18 @@ for (const spec of PACKS) {
     count: words.length,
   });
   console.log(`  -> ${words.length} words -> lib/wordpacks/generated/${spec.id}.json`);
-  report.push(`- **${spec.name}** \`${spec.id}\` - ${words.length} 词 · ${spec.source}`);
+  const dropNote = dropped.length ? ` · 跳过 ${dropped.length}` : "";
+  report.push(`- **${spec.name}** \`${spec.id}\` - ${words.length} 词${dropNote} · ${spec.source}`);
+  if (dropped.length) {
+    report.push(`  - 跳过(无可用释义,可在 data/overrides.ts 补回): ${dropped.join(" / ")}`);
+    allDropped.push(...dropped);
+  }
+}
+
+if (allDropped.length) {
+  console.log(
+    `\n${allDropped.length} words skipped overall — listed in data/build-report.md (add to data/overrides.ts to recover).`,
+  );
 }
 
 // Manifest sits OUTSIDE generated/ so the lazy `import('./generated/<id>.json')`

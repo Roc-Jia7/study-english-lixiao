@@ -17,6 +17,12 @@
    "unit": "Words in each unit Unit 1"
   },
   {
+   "word": "post office",
+   "phonetic": "/post ˈɔfɪs/",
+   "translation": "邮局",
+   "unit": "Words in each unit Unit 1"
+  },
+  {
    "word": "bookstore",
    "phonetic": "/ˈbʊkˌstɔr/",
    "translation": "书店",
@@ -113,6 +119,12 @@
    "unit": "Words in each unit Unit 1"
   },
   {
+   "word": "GPS",
+   "phonetic": "/ˌdʒi pi ˈes/",
+   "translation": "全球定位系统",
+   "unit": "Words in each unit Unit 1"
+  },
+  {
    "word": "gave",
    "phonetic": "/ɡev/",
    "translation": "give的过去式",
@@ -141,6 +153,12 @@
    "phonetic": "/tɛl/",
    "translation": "告诉",
    "unit": "Words in each unit Unit 1"
+  },
+  {
+   "word": "on foot",
+   "phonetic": "/ɑn fʊt/",
+   "translation": "步行",
+   "unit": "Words in each unit Unit 2"
   },
   {
    "word": "by",
@@ -197,6 +215,12 @@
    "unit": "Words in each unit Unit 2"
   },
   {
+   "word": "slow down",
+   "phonetic": "/slo daʊn/",
+   "translation": "慢下来",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
    "word": "stop",
    "phonetic": "/stɑp/",
    "translation": "停止",
@@ -239,9 +263,21 @@
    "unit": "Words in each unit Unit 2"
   },
   {
+   "word": "pay attention to",
+   "phonetic": "/pe əˈtɛnʃən tu/",
+   "translation": "注意",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
    "word": "traffic",
    "phonetic": "/ˈtræfɪk/",
    "translation": "交通",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
+   "word": "traffic lights",
+   "phonetic": "/ˈtræfɪk laɪts/",
+   "translation": "红绿灯",
    "unit": "Words in each unit Unit 2"
   },
   {
@@ -305,6 +341,12 @@
    "unit": "Words in each unit Unit 3"
   },
   {
+   "word": "take a trip",
+   "phonetic": "/tek ei trɪp/",
+   "translation": "作旅行",
+   "unit": "Words in each unit Unit 3"
+  },
+  {
    "word": "supermarket",
    "phonetic": "/ˈsupɚmɑrkət/",
    "translation": "超级市场",
@@ -329,6 +371,12 @@
    "unit": "Words in each unit Unit 3"
   },
   {
+   "word": "next week",
+   "phonetic": "/nɛkst wik/",
+   "translation": "下星期",
+   "unit": "Words in each unit Unit 3"
+  },
+  {
    "word": "dictionary",
    "phonetic": "/ˈdɪkʃənɛri/",
    "translation": "字典",
@@ -338,6 +386,12 @@
    "word": "comic",
    "phonetic": "/ˈkɑmɪk/",
    "translation": "滑稽演员",
+   "unit": "Words in each unit Unit 3"
+  },
+  {
+   "word": "comic book",
+   "phonetic": "/ˈkɑmɪk bʊk/",
+   "translation": "连环漫画册",
    "unit": "Words in each unit Unit 3"
   },
   {
@@ -383,9 +437,27 @@
    "unit": "Words in each unit Unit 3"
   },
   {
+   "word": "Mid-Autumn Festival",
+   "phonetic": "/mɪd ˈɔtəm ˈfɛstəvəl/",
+   "translation": "中秋节",
+   "unit": "Words in each unit Unit 3"
+  },
+  {
    "word": "together",
    "phonetic": "/təˈɡɛðɚ/",
    "translation": "共同",
+   "unit": "Words in each unit Unit 3"
+  },
+  {
+   "word": "get together",
+   "phonetic": "/ɡɛt təˈɡɛðɚ/",
+   "translation": "聚集",
+   "unit": "Words in each unit Unit 3"
+  },
+  {
+   "word": "mooncake",
+   "phonetic": "/ˈmunkek/",
+   "translation": "月饼",
    "unit": "Words in each unit Unit 3"
   },
   {
@@ -401,6 +473,12 @@
    "unit": "Words in each unit Unit 3"
   },
   {
+   "word": "studies",
+   "phonetic": "/ˈstʌdɪz/",
+   "translation": "研究",
+   "unit": "Words in each unit Unit 4"
+  },
+  {
    "word": "puzzle",
    "phonetic": "/ˈpʌzəl/",
    "translation": "难题",
@@ -410,6 +488,12 @@
    "word": "hiking",
    "phonetic": "/ˈhaɪkɪŋ/",
    "translation": "徒步旅行",
+   "unit": "Words in each unit Unit 4"
+  },
+  {
+   "word": "pen pal",
+   "phonetic": "/pɛn pæl/",
+   "translation": "笔友",
    "unit": "Words in each unit Unit 4"
   },
   {
@@ -497,6 +581,12 @@
    "unit": "Words in each unit Unit 5"
   },
   {
+   "word": "police officer",
+   "phonetic": "/pəˈlis ˈɔfɪsɚ/",
+   "translation": "警察",
+   "unit": "Words in each unit Unit 5"
+  },
+  {
    "word": "fisherman",
    "phonetic": "/ˈfɪʃɚmən/",
    "translation": "渔民",
@@ -524,6 +614,12 @@
    "word": "country",
    "phonetic": "/ˈkʌntri/",
    "translation": "国家",
+   "unit": "Words in each unit Unit 5"
+  },
+  {
+   "word": "head teacher",
+   "phonetic": "/hɛd ˈtitʃɚ/",
+   "translation": "校长",
    "unit": "Words in each unit Unit 5"
   },
   {
@@ -614,6 +710,12 @@
    "word": "happy",
    "phonetic": "/ˈhæpi/",
    "translation": "快乐的",
+   "unit": "Words in each unit Unit 6"
+  },
+  {
+   "word": "see a doctor",
+   "phonetic": "/si e ˈdɑktɚ/",
+   "translation": "看医生",
    "unit": "Words in each unit Unit 6"
   },
   {
@@ -713,6 +815,12 @@
    "unit": "Words in each unit Unit 6"
   },
   {
+   "word": "ant",
+   "phonetic": "/ænt/",
+   "translation": "蚂蚁",
+   "unit": "Words in each unit Unit 6"
+  },
+  {
    "word": "worry",
    "phonetic": "/ˈwɜri/",
    "translation": "烦恼",
@@ -722,6 +830,12 @@
    "word": "stuck",
    "phonetic": "/stʌk/",
    "translation": "stick的过去式和过去分词",
+   "unit": "Words in each unit Unit 6"
+  },
+  {
+   "word": "mud",
+   "phonetic": "/mʌd/",
+   "translation": "泥",
    "unit": "Words in each unit Unit 6"
   },
   {

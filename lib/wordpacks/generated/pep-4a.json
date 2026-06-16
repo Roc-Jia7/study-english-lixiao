@@ -119,6 +119,12 @@
    "unit": "Unit 2"
   },
   {
+   "word": "toy",
+   "phonetic": "/tɔi/",
+   "translation": "玩具",
+   "unit": "Unit 2"
+  },
+  {
    "word": "key",
    "phonetic": "/ki/",
    "translation": "钥匙",
@@ -134,6 +140,12 @@
    "word": "lost",
    "phonetic": "/lɔst/",
    "translation": "失去的",
+   "unit": "Unit 2"
+  },
+  {
+   "word": "so much",
+   "phonetic": "/soʊ mʌtʃ/",
+   "translation": "那么多",
    "unit": "Unit 2"
   },
   {
@@ -215,6 +227,12 @@
    "unit": "Unit 4"
   },
   {
+   "word": "living room",
+   "phonetic": "/ˈlɪvɪŋ rum/",
+   "translation": "客厅",
+   "unit": "Unit 4"
+  },
+  {
    "word": "study",
    "phonetic": "/ˈstʌdi/",
    "translation": "学习",
@@ -287,6 +305,18 @@
    "unit": "Unit 5"
   },
   {
+   "word": "noodles",
+   "phonetic": "/ˈnudəlz/",
+   "translation": "面条",
+   "unit": "Unit 5"
+  },
+  {
+   "word": "soup",
+   "phonetic": "/sup/",
+   "translation": "汤",
+   "unit": "Unit 5"
+  },
+  {
    "word": "vegetable",
    "phonetic": "/ˈvɛdʒtəbəl/",
    "translation": "蔬菜",
@@ -335,6 +365,12 @@
    "unit": "Unit 5"
   },
   {
+   "word": "help yourself",
+   "phonetic": "/hɛlp jʊrˈsɛlf/",
+   "translation": "请自己动手用餐吧",
+   "unit": "Unit 5"
+  },
+  {
    "word": "pass",
    "phonetic": "/pæs/",
    "translation": "经过",
@@ -345,6 +381,12 @@
    "phonetic": "/trai/",
    "translation": "尝试",
    "unit": "Unit 5"
+  },
+  {
+   "word": "parents",
+   "phonetic": "/ˈpeərənts/",
+   "translation": "父母",
+   "unit": "Unit 6"
   },
   {
    "word": "cousin",
@@ -416,6 +458,12 @@
    "word": "puppy",
    "phonetic": "/ˈpʌpi/",
    "translation": "小狗",
+   "unit": "Unit 6"
+  },
+  {
+   "word": "football player",
+   "phonetic": "/ˈfʊtˌbɔl ˈpleɚ/",
+   "translation": "足球运动员",
    "unit": "Unit 6"
   },
   {

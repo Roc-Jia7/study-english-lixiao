@@ -5,6 +5,18 @@
  "source": "DictionaryData (Apache-2.0) · 人教版三年级起点四年级下册",
  "words": [
   {
+   "word": "first floor",
+   "phonetic": "/fɚst flɔr/",
+   "translation": "第一层",
+   "unit": "Words in each unit Unit 1"
+  },
+  {
+   "word": "second floor",
+   "phonetic": "/ˈsɛkənd flɔr/",
+   "translation": "三楼",
+   "unit": "Words in each unit Unit 1"
+  },
+  {
    "word": "library",
    "phonetic": "/ˈlaɪbrəri/",
    "translation": "图书馆",
@@ -14,6 +26,18 @@
    "word": "playground",
    "phonetic": "/ˈpleˌɡraʊnd/",
    "translation": "运动场",
+   "unit": "Words in each unit Unit 1"
+  },
+  {
+   "word": "computer room",
+   "phonetic": "/kəmˈpjutɚ rum/",
+   "translation": "计算机机房",
+   "unit": "Words in each unit Unit 1"
+  },
+  {
+   "word": "next to",
+   "phonetic": "/nɛkst tu/",
+   "translation": "几乎",
    "unit": "Words in each unit Unit 1"
   },
   {
@@ -59,6 +83,30 @@
    "unit": "Words in each unit Unit 2"
   },
   {
+   "word": "get up",
+   "phonetic": "/ɡɛt ʌp/",
+   "translation": "起床",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
+   "word": "go to school",
+   "phonetic": "/ɡo tu skul/",
+   "translation": "上学",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
+   "word": "go home",
+   "phonetic": "/ɡo hom/",
+   "translation": "回家",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
+   "word": "go to bed",
+   "phonetic": "/ɡo tu bɛd/",
+   "translation": "上床",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
    "word": "over",
    "phonetic": "/ˈovɚ/",
    "translation": "结束",
@@ -71,6 +119,12 @@
    "unit": "Words in each unit Unit 2"
   },
   {
+   "word": "o'clock",
+   "phonetic": "/əˈklɑk/",
+   "translation": "...点钟",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
    "word": "kid",
    "phonetic": "/kɪd/",
    "translation": "哄骗",
@@ -80,6 +134,24 @@
    "word": "thirty",
    "phonetic": "/ˈθɚti/",
    "translation": "三十",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
+   "word": "hurry up",
+   "phonetic": "/ˈhɚri ʌp/",
+   "translation": "赶快",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
+   "word": "come on",
+   "phonetic": "/kʌm ɑn/",
+   "translation": "偶遇",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
+   "word": "just a minute",
+   "phonetic": "/dʒʌst e ˈmɪnɪt/",
+   "translation": "请等一会儿",
    "unit": "Words in each unit Unit 2"
   },
   {
@@ -146,6 +218,18 @@
    "word": "weather",
    "phonetic": "/ˈwɛðɚ/",
    "translation": "天气",
+   "unit": "Words in each unit Unit 3"
+  },
+  {
+   "word": "New York",
+   "phonetic": "/nu jɔrk/",
+   "translation": "纽约",
+   "unit": "Words in each unit Unit 3"
+  },
+  {
+   "word": "how about",
+   "phonetic": "/haʊ əˈbaʊt/",
+   "translation": "…怎么样",
    "unit": "Words in each unit Unit 3"
   },
   {
@@ -401,6 +485,12 @@
    "unit": "Words in each unit Unit 6"
   },
   {
+   "word": "sunglasses",
+   "phonetic": "/ˈsʌnglæsɪz/",
+   "translation": "太阳镜",
+   "unit": "Words in each unit Unit 6"
+  },
+  {
    "word": "pretty",
    "phonetic": "/ˈprɪti/",
    "translation": "漂亮的",
@@ -425,9 +515,21 @@
    "unit": "Words in each unit Unit 6"
   },
   {
+   "word": "try on",
+   "phonetic": "/trai ɑn/",
+   "translation": "试穿",
+   "unit": "Words in each unit Unit 6"
+  },
+  {
    "word": "size",
    "phonetic": "/saɪz/",
    "translation": "大小",
+   "unit": "Words in each unit Unit 6"
+  },
+  {
+   "word": "of course",
+   "phonetic": "/ʌv kɔ:(r)s/",
+   "translation": "当然",
    "unit": "Words in each unit Unit 6"
   },
   {
@@ -440,6 +542,12 @@
    "word": "just",
    "phonetic": "/dʒʌst/",
    "translation": "正义的",
+   "unit": "Words in each unit Unit 6"
+  },
+  {
+   "word": "how much",
+   "phonetic": "/haʊ mʌtʃ/",
+   "translation": "多少",
    "unit": "Words in each unit Unit 6"
   },
   {

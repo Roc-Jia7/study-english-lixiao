@@ -17,6 +17,18 @@
    "unit": "Words in each unit Unit 1"
   },
   {
+   "word": "taller",
+   "phonetic": "/tɔlɚ/",
+   "translation": "高的",
+   "unit": "Words in each unit Unit 1"
+  },
+  {
+   "word": "shorter",
+   "phonetic": "/ˈʃɔtə/",
+   "translation": "较短的",
+   "unit": "Words in each unit Unit 1"
+  },
+  {
    "word": "longer",
    "phonetic": "/ˈlɔŋɚ/",
    "translation": "比较久的",
@@ -38,6 +50,12 @@
    "word": "bigger",
    "phonetic": "/bɪgə/",
    "translation": "大的",
+   "unit": "Words in each unit Unit 1"
+  },
+  {
+   "word": "smaller",
+   "phonetic": "/sˈmɔlɚ/",
+   "translation": "较小",
    "unit": "Words in each unit Unit 1"
   },
   {
@@ -107,15 +125,39 @@
    "unit": "Words in each unit Unit 1"
   },
   {
+   "word": "smarter",
+   "phonetic": "/sˈmɑtɚ/",
+   "translation": "聪明的",
+   "unit": "Words in each unit Unit 1"
+  },
+  {
    "word": "become",
    "phonetic": "/bɪˈkʌm/",
    "translation": "变成",
    "unit": "Words in each unit Unit 1"
   },
   {
+   "word": "cleaned",
+   "phonetic": "/klind/",
+   "translation": "清洁",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
+   "word": "stayed",
+   "phonetic": "/sted/",
+   "translation": "停留",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
    "word": "washed",
    "phonetic": "/wɒʃt/",
    "translation": "洗过的",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
+   "word": "watched",
+   "phonetic": "/wɑtʃt/",
+   "translation": "注视",
    "unit": "Words in each unit Unit 2"
   },
   {
@@ -299,6 +341,12 @@
    "unit": "Words in each unit Unit 3"
   },
   {
+   "word": "Labour Day",
+   "phonetic": "/ˈlebɚ de/",
+   "translation": "劳动节",
+   "unit": "Words in each unit Unit 3"
+  },
+  {
    "word": "mule",
    "phonetic": "/mjul/",
    "translation": "骡",
@@ -341,6 +389,24 @@
    "unit": "Words in each unit Unit 3"
   },
   {
+   "word": "licked",
+   "phonetic": "/lɪkt/",
+   "translation": "舔",
+   "unit": "Words in each unit Unit 3"
+  },
+  {
+   "word": "laughed",
+   "phonetic": "/ˈlɑft/",
+   "translation": "笑",
+   "unit": "Words in each unit Unit 3"
+  },
+  {
+   "word": "dining hall",
+   "phonetic": "/ˈdaɪnɪŋ hɔl/",
+   "translation": "大餐厅",
+   "unit": "Words in each unit Unit 4"
+  },
+  {
    "word": "grass",
    "phonetic": "/græs/",
    "translation": "草",
@@ -365,6 +431,12 @@
    "unit": "Words in each unit Unit 4"
   },
   {
+   "word": "ice-skate",
+   "phonetic": "/ˈaɪsˌsket/",
+   "translation": "滑冰",
+   "unit": "Words in each unit Unit 4"
+  },
+  {
    "word": "badminton",
    "phonetic": "/ˈbædˌmɪntən/",
    "translation": "羽毛球",
@@ -380,6 +452,12 @@
    "word": "easy",
    "phonetic": "/ˈizi/",
    "translation": "容易的",
+   "unit": "Words in each unit Unit 4"
+  },
+  {
+   "word": "look up",
+   "phonetic": "/lʊk ʌp/",
+   "translation": "向上看",
    "unit": "Words in each unit Unit 4"
   },
   {

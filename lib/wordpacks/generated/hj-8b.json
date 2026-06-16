@@ -1,0 +1,1430 @@
+{
+ "id": "hj-8b",
+ "name": "沪教牛津 八年级下",
+ "subtitle": "Shanghai Oxford Grade 8B · 沪教版",
+ "source": "DictionaryData (Apache-2.0) · 沪教版牛津英语八年级下册",
+ "words": [
+  {
+   "word": "raise",
+   "phonetic": "/rez/",
+   "translation": "上升",
+   "unit": "Unit 1"
+  },
+  {
+   "word": "permission",
+   "phonetic": "/pɚˈmɪʃn/",
+   "translation": "许可",
+   "unit": "Unit 1"
+  },
+  {
+   "word": "disabled",
+   "phonetic": "/dɪsˈebəld/",
+   "translation": "伤残的",
+   "unit": "Unit 1"
+  },
+  {
+   "word": "teenager",
+   "phonetic": "/tinedʒɚ/",
+   "translation": "十几岁的青少年",
+   "unit": "Unit 1"
+  },
+  {
+   "word": "offer",
+   "phonetic": "/ˈɔfɚ/",
+   "translation": "出价",
+   "unit": "Unit 1"
+  },
+  {
+   "word": "suffer",
+   "phonetic": "/ˈsʌfɚ/",
+   "translation": "遭受",
+   "unit": "Unit 1"
+  },
+  {
+   "word": "serious",
+   "phonetic": "/ˈsɪriəs/",
+   "translation": "严肃的",
+   "unit": "Unit 1"
+  },
+  {
+   "word": "illness",
+   "phonetic": "/ˈɪlnəs/",
+   "translation": "疾病",
+   "unit": "Unit 1"
+  },
+  {
+   "word": "organize",
+   "phonetic": "/ˈɔrgənaɪz/",
+   "translation": "组织",
+   "unit": "Unit 1"
+  },
+  {
+   "word": "express",
+   "phonetic": "/ɪkˈsprɛs/",
+   "translation": "急速的",
+   "unit": "Unit 1"
+  },
+  {
+   "word": "pain",
+   "phonetic": "/pen/",
+   "translation": "痛苦",
+   "unit": "Unit 1"
+  },
+  {
+   "word": "lonely",
+   "phonetic": "/ˈloʊnli/",
+   "translation": "孤独的",
+   "unit": "Unit 1"
+  },
+  {
+   "word": "friendship",
+   "phonetic": "/ˈfrɛndˌʃɪp/",
+   "translation": "友谊",
+   "unit": "Unit 1"
+  },
+  {
+   "word": "difficulty",
+   "phonetic": "/ˈdɪfɪˌkʌlti/",
+   "translation": "困难",
+   "unit": "Unit 1"
+  },
+  {
+   "word": "joy",
+   "phonetic": "/dʒɔi/",
+   "translation": "欢乐",
+   "unit": "Unit 1"
+  },
+  {
+   "word": "peace",
+   "phonetic": "/pis/",
+   "translation": "和平",
+   "unit": "Unit 1"
+  },
+  {
+   "word": "hurt",
+   "phonetic": "/hɚt/",
+   "translation": "刺痛",
+   "unit": "Unit 1"
+  },
+  {
+   "word": "courage",
+   "phonetic": "/ˈkɜrɪdʒ/",
+   "translation": "勇气",
+   "unit": "Unit 1"
+  },
+  {
+   "word": "spirits",
+   "phonetic": "/ˈspɪrɪts/",
+   "translation": "情绪",
+   "unit": "Unit 1"
+  },
+  {
+   "word": "pay",
+   "phonetic": "/pe/",
+   "translation": "薪水",
+   "unit": "Unit 1"
+  },
+  {
+   "word": "community",
+   "phonetic": "/kəˈmjunɪti/",
+   "translation": "公社",
+   "unit": "Unit 1"
+  },
+  {
+   "word": "in need",
+   "phonetic": "/ɪn nid/",
+   "translation": "在急需时",
+   "unit": "Unit 1"
+  },
+  {
+   "word": "suffer from",
+   "phonetic": "/ˈsʌfɚ frʌm/",
+   "translation": "忍受",
+   "unit": "Unit 1"
+  },
+  {
+   "word": "in order to",
+   "phonetic": "/ɪn ˈɔrdɚ tu/",
+   "translation": "为了…",
+   "unit": "Unit 1"
+  },
+  {
+   "word": "language",
+   "phonetic": "/ˈlæŋɡwɪdʒ/",
+   "translation": "语言",
+   "unit": "Unit 2"
+  },
+  {
+   "word": "communication",
+   "phonetic": "/kəˌmjunɪˈkeʃən/",
+   "translation": "传达",
+   "unit": "Unit 2"
+  },
+  {
+   "word": "ballet",
+   "phonetic": "/bæˈle/",
+   "translation": "芭蕾舞",
+   "unit": "Unit 2"
+  },
+  {
+   "word": "accept",
+   "phonetic": "/ækˈsɛpt/",
+   "translation": "接受",
+   "unit": "Unit 2"
+  },
+  {
+   "word": "reject",
+   "phonetic": "/rɪˈdʒɛkt/",
+   "translation": "被拒之人",
+   "unit": "Unit 2"
+  },
+  {
+   "word": "meaning",
+   "phonetic": "/ˈminɪŋ/",
+   "translation": "意义",
+   "unit": "Unit 2"
+  },
+  {
+   "word": "gesture",
+   "phonetic": "/ˈdʒɛstʃɚ/",
+   "translation": "姿态",
+   "unit": "Unit 2"
+  },
+  {
+   "word": "message",
+   "phonetic": "/ˈmɛsɪdʒ/",
+   "translation": "消息",
+   "unit": "Unit 2"
+  },
+  {
+   "word": "bored",
+   "phonetic": "/bɔrd/",
+   "translation": "无聊的",
+   "unit": "Unit 2"
+  },
+  {
+   "word": "part-time",
+   "phonetic": "/ˈpɑrtˌtaɪm/",
+   "translation": "兼任的",
+   "unit": "Unit 2"
+  },
+  {
+   "word": "well-dressed",
+   "phonetic": "/ˈwelˈdrest/",
+   "translation": "穿得很体面的",
+   "unit": "Unit 2"
+  },
+  {
+   "word": "lady",
+   "phonetic": "/ˈledi/",
+   "translation": "女士",
+   "unit": "Unit 2"
+  },
+  {
+   "word": "sigh",
+   "phonetic": "/sai/",
+   "translation": "叹息",
+   "unit": "Unit 2"
+  },
+  {
+   "word": "matter",
+   "phonetic": "/ˈmætɚ/",
+   "translation": "事件",
+   "unit": "Unit 2"
+  },
+  {
+   "word": "expression",
+   "phonetic": "/ɪkˈsprɛʃən/",
+   "translation": "表达",
+   "unit": "Unit 2"
+  },
+  {
+   "word": "appearance",
+   "phonetic": "/əˈpɪrəns/",
+   "translation": "出现",
+   "unit": "Unit 2"
+  },
+  {
+   "word": "impression",
+   "phonetic": "/ɪmˈprɛʃən/",
+   "translation": "印象",
+   "unit": "Unit 2"
+  },
+  {
+   "word": "towards",
+   "phonetic": "/tɔrdz/",
+   "translation": "向",
+   "unit": "Unit 2"
+  },
+  {
+   "word": "hold",
+   "phonetic": "/hoʊld/",
+   "translation": "把握",
+   "unit": "Unit 2"
+  },
+  {
+   "word": "later",
+   "phonetic": "/ˈletɚ/",
+   "translation": "更迟的",
+   "unit": "Unit 2"
+  },
+  {
+   "word": "remind",
+   "phonetic": "/rɪˈmaɪnd/",
+   "translation": "提醒",
+   "unit": "Unit 2"
+  },
+  {
+   "word": "neck",
+   "phonetic": "/nɛk/",
+   "translation": "脖子",
+   "unit": "Unit 2"
+  },
+  {
+   "word": "cross",
+   "phonetic": "/krɔs/",
+   "translation": "十字",
+   "unit": "Unit 2"
+  },
+  {
+   "word": "nod",
+   "phonetic": "/nɑd/",
+   "translation": "点头",
+   "unit": "Unit 2"
+  },
+  {
+   "word": "shake",
+   "phonetic": "/ʃek/",
+   "translation": "摇动",
+   "unit": "Unit 2"
+  },
+  {
+   "word": "sure",
+   "phonetic": "/ʃʊɚ/",
+   "translation": "对....有把握",
+   "unit": "Unit 2"
+  },
+  {
+   "word": "body language",
+   "phonetic": "/ˈbɑdi ˈlæŋɡwɪdʒ/",
+   "translation": "身体语言",
+   "unit": "Unit 2"
+  },
+  {
+   "word": "take place",
+   "phonetic": "/tek ples/",
+   "translation": "发生",
+   "unit": "Unit 2"
+  },
+  {
+   "word": "sit up",
+   "phonetic": "/sit ʌp/",
+   "translation": "坐起",
+   "unit": "Unit 2"
+  },
+  {
+   "word": "description",
+   "phonetic": "/dɪˈskrɪpʃən/",
+   "translation": "描写",
+   "unit": "Unit 3"
+  },
+  {
+   "word": "describe",
+   "phonetic": "/dɪˈskraɪb/",
+   "translation": "描述",
+   "unit": "Unit 3"
+  },
+  {
+   "word": "fisherman",
+   "phonetic": "/ˈfɪʃɚmən/",
+   "translation": "渔民",
+   "unit": "Unit 3"
+  },
+  {
+   "word": "net",
+   "phonetic": "/nɛt/",
+   "translation": "网",
+   "unit": "Unit 3"
+  },
+  {
+   "word": "although",
+   "phonetic": "/ɔlˈðoʊ/",
+   "translation": "虽然",
+   "unit": "Unit 3"
+  },
+  {
+   "word": "fit",
+   "phonetic": "/fɪt/",
+   "translation": "突然发作",
+   "unit": "Unit 3"
+  },
+  {
+   "word": "cormorant",
+   "phonetic": "/ˈkɔrmərənt/",
+   "translation": "鸬鹚",
+   "unit": "Unit 3"
+  },
+  {
+   "word": "dive",
+   "phonetic": "/daɪv/",
+   "translation": "潜水",
+   "unit": "Unit 3"
+  },
+  {
+   "word": "ready",
+   "phonetic": "/ˈrɛdi/",
+   "translation": "有准备的",
+   "unit": "Unit 3"
+  },
+  {
+   "word": "reach",
+   "phonetic": "/ritʃ/",
+   "translation": "延伸",
+   "unit": "Unit 3"
+  },
+  {
+   "word": "attract",
+   "phonetic": "/əˈtrækt/",
+   "translation": "吸引",
+   "unit": "Unit 3"
+  },
+  {
+   "word": "hang",
+   "phonetic": "/hæŋ/",
+   "translation": "悬挂的方式",
+   "unit": "Unit 3"
+  },
+  {
+   "word": "post",
+   "phonetic": "/poʊst/",
+   "translation": "柱",
+   "unit": "Unit 3"
+  },
+  {
+   "word": "require",
+   "phonetic": "/rɪˈkwaɪɚ/",
+   "translation": "需要",
+   "unit": "Unit 3"
+  },
+  {
+   "word": "practise",
+   "phonetic": "/ˈpræktɪs/",
+   "translation": "练习",
+   "unit": "Unit 3"
+  },
+  {
+   "word": "tool",
+   "phonetic": "/tul/",
+   "translation": "工具",
+   "unit": "Unit 3"
+  },
+  {
+   "word": "scissors",
+   "phonetic": "/ˈsɪzɚz/",
+   "translation": "剪刀",
+   "unit": "Unit 3"
+  },
+  {
+   "word": "pattern",
+   "phonetic": "/ˈpætɚn/",
+   "translation": "模范",
+   "unit": "Unit 3"
+  },
+  {
+   "word": "character",
+   "phonetic": "/ˈkærəktɚ/",
+   "translation": "特性",
+   "unit": "Unit 3"
+  },
+  {
+   "word": "health",
+   "phonetic": "/hɛlθ/",
+   "translation": "健康",
+   "unit": "Unit 3"
+  },
+  {
+   "word": "luck",
+   "phonetic": "/lʌk/",
+   "translation": "运气",
+   "unit": "Unit 3"
+  },
+  {
+   "word": "wedding",
+   "phonetic": "/ˈwɛdɪŋ/",
+   "translation": "婚礼",
+   "unit": "Unit 3"
+  },
+  {
+   "word": "dough",
+   "phonetic": "/doʊ/",
+   "translation": "生面团",
+   "unit": "Unit 3"
+  },
+  {
+   "word": "rough",
+   "phonetic": "/rʌf/",
+   "translation": "粗糙的",
+   "unit": "Unit 3"
+  },
+  {
+   "word": "size",
+   "phonetic": "/saɪz/",
+   "translation": "大小",
+   "unit": "Unit 3"
+  },
+  {
+   "word": "simple",
+   "phonetic": "/ˈsɪmpəl/",
+   "translation": "简单的",
+   "unit": "Unit 3"
+  },
+  {
+   "word": "lovely",
+   "phonetic": "/ˈlʌvli/",
+   "translation": "可爱的",
+   "unit": "Unit 3"
+  },
+  {
+   "word": "paper cutting",
+   "phonetic": "/ˈpepɚ ˈkʌtɪŋ/",
+   "translation": "剪纸",
+   "unit": "Unit 3"
+  },
+  {
+   "word": "up to",
+   "phonetic": "/ʌp tu/",
+   "translation": "从事于",
+   "unit": "Unit 3"
+  },
+  {
+   "word": "set off",
+   "phonetic": "/sɛt ɔf/",
+   "translation": "出发",
+   "unit": "Unit 3"
+  },
+  {
+   "word": "up and down",
+   "phonetic": "/ʌp ənd daʊn/",
+   "translation": "上下地",
+   "unit": "Unit 3"
+  },
+  {
+   "word": "after dark",
+   "phonetic": "/ˈæftɚ dɑrk/",
+   "translation": "黄昏以后",
+   "unit": "Unit 3"
+  },
+  {
+   "word": "no more",
+   "phonetic": "/noʊ mɔr/",
+   "translation": "不再",
+   "unit": "Unit 3"
+  },
+  {
+   "word": "all the time",
+   "phonetic": "/ɔl ði taɪm/",
+   "translation": "始终",
+   "unit": "Unit 3"
+  },
+  {
+   "word": "cartoon",
+   "phonetic": "/kɑrˈtun/",
+   "translation": "政治性漫画",
+   "unit": "Unit 4"
+  },
+  {
+   "word": "warning",
+   "phonetic": "/ˈwɔrnɪŋ/",
+   "translation": "警告",
+   "unit": "Unit 4"
+  },
+  {
+   "word": "role-play",
+   "phonetic": "/roʊl ple/",
+   "translation": "角色扮演",
+   "unit": "Unit 4"
+  },
+  {
+   "word": "symbol",
+   "phonetic": "/ˈsɪmbəl/",
+   "translation": "符号",
+   "unit": "Unit 4"
+  },
+  {
+   "word": "bubble",
+   "phonetic": "/ˈbʌbəl/",
+   "translation": "泡沫",
+   "unit": "Unit 4"
+  },
+  {
+   "word": "thought",
+   "phonetic": "/θɔt/",
+   "translation": "思考",
+   "unit": "Unit 4"
+  },
+  {
+   "word": "sketch",
+   "phonetic": "/skɛtʃ/",
+   "translation": "略图",
+   "unit": "Unit 4"
+  },
+  {
+   "word": "program",
+   "phonetic": "/ˈproʊgræm/",
+   "translation": "节目",
+   "unit": "Unit 4"
+  },
+  {
+   "word": "record",
+   "phonetic": "/ˈrɛkɚd/",
+   "translation": "履历",
+   "unit": "Unit 4"
+  },
+  {
+   "word": "effect",
+   "phonetic": "/ɪˈfɛkt/",
+   "translation": "结果",
+   "unit": "Unit 4"
+  },
+  {
+   "word": "basic",
+   "phonetic": "/ˈbesɪk/",
+   "translation": "基本原理",
+   "unit": "Unit 4"
+  },
+  {
+   "word": "stage",
+   "phonetic": "/stedʒ/",
+   "translation": "舞台",
+   "unit": "Unit 4"
+  },
+  {
+   "word": "pleasant",
+   "phonetic": "/ˈplɛzənt/",
+   "translation": "令人愉快的",
+   "unit": "Unit 4"
+  },
+  {
+   "word": "detailed",
+   "phonetic": "/dɪˈteld/",
+   "translation": "详细的",
+   "unit": "Unit 4"
+  },
+  {
+   "word": "appear",
+   "phonetic": "/əˈpɪɚ/",
+   "translation": "出现",
+   "unit": "Unit 4"
+  },
+  {
+   "word": "actor",
+   "phonetic": "/ˈæktɚ/",
+   "translation": "男演员",
+   "unit": "Unit 4"
+  },
+  {
+   "word": "match",
+   "phonetic": "/mætʃ/",
+   "translation": "火柴",
+   "unit": "Unit 4"
+  },
+  {
+   "word": "separately",
+   "phonetic": "/ˈsɛpərɪtli/",
+   "translation": "个别地 分离地",
+   "unit": "Unit 4"
+  },
+  {
+   "word": "play",
+   "phonetic": "/ple/",
+   "translation": "游戏",
+   "unit": "Unit 4"
+  },
+  {
+   "word": "score",
+   "phonetic": "/skɔr/",
+   "translation": "得分",
+   "unit": "Unit 4"
+  },
+  {
+   "word": "team",
+   "phonetic": "/tim/",
+   "translation": "队",
+   "unit": "Unit 4"
+  },
+  {
+   "word": "star",
+   "phonetic": "/stɑr/",
+   "translation": "星",
+   "unit": "Unit 4"
+  },
+  {
+   "word": "mystery",
+   "phonetic": "/ˈmɪst(ə)ri/",
+   "translation": "神秘",
+   "unit": "Unit 4"
+  },
+  {
+   "word": "island",
+   "phonetic": "/ˈaɪlənd/",
+   "translation": "岛",
+   "unit": "Unit 4"
+  },
+  {
+   "word": "storm",
+   "phonetic": "/stɔrm/",
+   "translation": "暴风雨",
+   "unit": "Unit 4"
+  },
+  {
+   "word": "jacket",
+   "phonetic": "/ˈdʒækɪt/",
+   "translation": "短上衣",
+   "unit": "Unit 4"
+  },
+  {
+   "word": "wave",
+   "phonetic": "/wev/",
+   "translation": "波",
+   "unit": "Unit 4"
+  },
+  {
+   "word": "comic strip",
+   "phonetic": "/ˈkɑmɪk strɪp/",
+   "translation": "连环漫画",
+   "unit": "Unit 4"
+  },
+  {
+   "word": "pop out",
+   "phonetic": "/pɑp aʊt/",
+   "translation": "熄灭",
+   "unit": "Unit 4"
+  },
+  {
+   "word": "decide on",
+   "phonetic": "/dɪˈsaɪd ɑn/",
+   "translation": "决定",
+   "unit": "Unit 4"
+  },
+  {
+   "word": "video camera",
+   "phonetic": "/ˈvɪdioʊ ˈkæmərə/",
+   "translation": "摄影机",
+   "unit": "Unit 4"
+  },
+  {
+   "word": "weather forecast",
+   "phonetic": "/ˈwɛðɚ ˈfɔrˌkæst/",
+   "translation": "天气预报",
+   "unit": "Unit 4"
+  },
+  {
+   "word": "life jacket",
+   "phonetic": "/laɪf ˈdʒækɪt/",
+   "translation": "救生衣",
+   "unit": "Unit 4"
+  },
+  {
+   "word": "thank goodness",
+   "phonetic": "/θæŋk ˈɡʊdnɪs/",
+   "translation": "谢天谢地",
+   "unit": "Unit 4"
+  },
+  {
+   "word": "make it",
+   "phonetic": "/mek ɪt/",
+   "translation": "及时抵达",
+   "unit": "Unit 4"
+  },
+  {
+   "word": "endangered",
+   "phonetic": "/ɪnˈdendʒɚd/",
+   "translation": "有危险的",
+   "unit": "Unit 5"
+  },
+  {
+   "word": "file",
+   "phonetic": "/faɪl/",
+   "translation": "文件",
+   "unit": "Unit 5"
+  },
+  {
+   "word": "giant panda",
+   "phonetic": "/ˈdʒaɪənt ˈpændə/",
+   "translation": "大猫熊",
+   "unit": "Unit 5"
+  },
+  {
+   "word": "obligation",
+   "phonetic": "/ˌɑblɪˈgeʃn/",
+   "translation": "义务",
+   "unit": "Unit 5"
+  },
+  {
+   "word": "wild",
+   "phonetic": "/waɪld/",
+   "translation": "野性的",
+   "unit": "Unit 5"
+  },
+  {
+   "word": "bamboo",
+   "phonetic": "/bæmˈbu/",
+   "translation": "竹子",
+   "unit": "Unit 5"
+  },
+  {
+   "word": "adult",
+   "phonetic": "/əˈdʌlt/",
+   "translation": "成人",
+   "unit": "Unit 5"
+  },
+  {
+   "word": "weight",
+   "phonetic": "/wet/",
+   "translation": "重力",
+   "unit": "Unit 5"
+  },
+  {
+   "word": "kilogram",
+   "phonetic": "/ˈkɪləɡræm/",
+   "translation": "千克",
+   "unit": "Unit 5"
+  },
+  {
+   "word": "population",
+   "phonetic": "/ˌpɑpjuˈleʃn/",
+   "translation": "人口",
+   "unit": "Unit 5"
+  },
+  {
+   "word": "behaviour",
+   "phonetic": "/bɪˈhevjɚ/",
+   "translation": "行为",
+   "unit": "Unit 5"
+  },
+  {
+   "word": "birth",
+   "phonetic": "/bɚθ/",
+   "translation": "出生",
+   "unit": "Unit 5"
+  },
+  {
+   "word": "patch",
+   "phonetic": "/pætʃ/",
+   "translation": "片",
+   "unit": "Unit 5"
+  },
+  {
+   "word": "shoulder",
+   "phonetic": "/ˈʃoʊldɚ/",
+   "translation": "肩",
+   "unit": "Unit 5"
+  },
+  {
+   "word": "central",
+   "phonetic": "/ˈsɛntrəl/",
+   "translation": "中心的",
+   "unit": "Unit 5"
+  },
+  {
+   "word": "menu",
+   "phonetic": "/ˈmɛnju/",
+   "translation": "菜单",
+   "unit": "Unit 5"
+  },
+  {
+   "word": "fur",
+   "phonetic": "/fɚ/",
+   "translation": "毛皮",
+   "unit": "Unit 5"
+  },
+  {
+   "word": "cruel",
+   "phonetic": "/ˈkruəl/",
+   "translation": "残酷的",
+   "unit": "Unit 5"
+  },
+  {
+   "word": "organization",
+   "phonetic": "/ˌɔrgənəˈzeʃn/",
+   "translation": "组织",
+   "unit": "Unit 5"
+  },
+  {
+   "word": "danger",
+   "phonetic": "/ˈdendʒɚ/",
+   "translation": "危险",
+   "unit": "Unit 5"
+  },
+  {
+   "word": "face",
+   "phonetic": "/fes/",
+   "translation": "脸",
+   "unit": "Unit 5"
+  },
+  {
+   "word": "Asian",
+   "phonetic": "/ˈeʒən/",
+   "translation": "亚洲的",
+   "unit": "Unit 5"
+  },
+  {
+   "word": "weigh",
+   "phonetic": "/we/",
+   "translation": "称...重量",
+   "unit": "Unit 5"
+  },
+  {
+   "word": "at birth",
+   "phonetic": "/æt bɚθ/",
+   "translation": "在出生时",
+   "unit": "Unit 5"
+  },
+  {
+   "word": "on one's own",
+   "phonetic": "/ɑn ˈwʌnz oʊn/",
+   "translation": "独自地",
+   "unit": "Unit 5"
+  },
+  {
+   "word": "close to",
+   "phonetic": "/kloz tu/",
+   "translation": "接近于",
+   "unit": "Unit 5"
+  },
+  {
+   "word": "respond",
+   "phonetic": "/rɪˈspɑnd/",
+   "translation": "回答",
+   "unit": "Unit 6"
+  },
+  {
+   "word": "complaint",
+   "phonetic": "/kəmˈplent/",
+   "translation": "诉苦",
+   "unit": "Unit 6"
+  },
+  {
+   "word": "cause",
+   "phonetic": "/kɔz/",
+   "translation": "原因",
+   "unit": "Unit 6"
+  },
+  {
+   "word": "chocolate",
+   "phonetic": "/ˈtʃɑklət/",
+   "translation": "巧克力",
+   "unit": "Unit 6"
+  },
+  {
+   "word": "dolphin",
+   "phonetic": "/ˈdɑlfɪn/",
+   "translation": "海豚",
+   "unit": "Unit 6"
+  },
+  {
+   "word": "click",
+   "phonetic": "/klɪk/",
+   "translation": "发出滴答声",
+   "unit": "Unit 6"
+  },
+  {
+   "word": "reason",
+   "phonetic": "/ˈrizən/",
+   "translation": "理由",
+   "unit": "Unit 6"
+  },
+  {
+   "word": "cute",
+   "phonetic": "/kjut/",
+   "translation": "可爱的",
+   "unit": "Unit 6"
+  },
+  {
+   "word": "responsibility",
+   "phonetic": "/rɪˌspɑnsəˈbɪləti/",
+   "translation": "责任",
+   "unit": "Unit 6"
+  },
+  {
+   "word": "feed",
+   "phonetic": "/fid/",
+   "translation": "饲养",
+   "unit": "Unit 6"
+  },
+  {
+   "word": "according to",
+   "phonetic": "/əˈkɔrdɪŋ tu/",
+   "translation": "根据",
+   "unit": "Unit 6"
+  },
+  {
+   "word": "faithfully",
+   "phonetic": "/ˈfeθfəli/",
+   "translation": "忠诚地",
+   "unit": "Unit 6"
+  },
+  {
+   "word": "sofa",
+   "phonetic": "/ˈsoʊfə/",
+   "translation": "沙发",
+   "unit": "Unit 6"
+  },
+  {
+   "word": "noisy",
+   "phonetic": "/ˈnɔɪzi/",
+   "translation": "吵杂的",
+   "unit": "Unit 6"
+  },
+  {
+   "word": "nearly",
+   "phonetic": "/ˈnɪrli/",
+   "translation": "几乎",
+   "unit": "Unit 6"
+  },
+  {
+   "word": "stranger",
+   "phonetic": "/ˈstrendʒɚ/",
+   "translation": "陌生人",
+   "unit": "Unit 6"
+  },
+  {
+   "word": "common",
+   "phonetic": "/ˈkɑmən/",
+   "translation": "共同的",
+   "unit": "Unit 6"
+  },
+  {
+   "word": "choice",
+   "phonetic": "/tʃɔɪs/",
+   "translation": "选择",
+   "unit": "Unit 6"
+  },
+  {
+   "word": "lie",
+   "phonetic": "/lai/",
+   "translation": "躺",
+   "unit": "Unit 6"
+  },
+  {
+   "word": "attention",
+   "phonetic": "/əˈtɛnʃən/",
+   "translation": "注意",
+   "unit": "Unit 6"
+  },
+  {
+   "word": "scare",
+   "phonetic": "/sker/",
+   "translation": "惊吓",
+   "unit": "Unit 6"
+  },
+  {
+   "word": "believe",
+   "phonetic": "/bɪˈliv/",
+   "translation": "有坚定的宗教信仰的",
+   "unit": "Unit 6"
+  },
+  {
+   "word": "heart",
+   "phonetic": "/hɑrt/",
+   "translation": "心",
+   "unit": "Unit 6"
+  },
+  {
+   "word": "heart attack",
+   "phonetic": "/hɑrt əˈtæk/",
+   "translation": "心脏病发作",
+   "unit": "Unit 6"
+  },
+  {
+   "word": "until",
+   "phonetic": "/ʌnˈtɪl/",
+   "translation": "到...为止",
+   "unit": "Unit 6"
+  },
+  {
+   "word": "care for",
+   "phonetic": "/kɛr fɔr/",
+   "translation": "喜欢",
+   "unit": "Unit 6"
+  },
+  {
+   "word": "run free",
+   "phonetic": "/rʌn fri/",
+   "translation": "空车运转",
+   "unit": "Unit 6"
+  },
+  {
+   "word": "lie around",
+   "phonetic": "/lai əˈraʊnd/",
+   "translation": "到处散放",
+   "unit": "Unit 6"
+  },
+  {
+   "word": "die of",
+   "phonetic": "/dai ʌv/",
+   "translation": "死于…",
+   "unit": "Unit 6"
+  },
+  {
+   "word": "keep on",
+   "phonetic": "/kip ɑn/",
+   "translation": "继续",
+   "unit": "Unit 6"
+  },
+  {
+   "word": "unknown",
+   "phonetic": "/ˌʌnˈnoʊn/",
+   "translation": "不知道的",
+   "unit": "Unit 7"
+  },
+  {
+   "word": "alien",
+   "phonetic": "/ˈeliən/",
+   "translation": "外侨",
+   "unit": "Unit 7"
+  },
+  {
+   "word": "astronaut",
+   "phonetic": "/ˈæstrəˌnɔt/",
+   "translation": "太空人",
+   "unit": "Unit 7"
+  },
+  {
+   "word": "receive",
+   "phonetic": "/rɪˈsiv/",
+   "translation": "收到",
+   "unit": "Unit 7"
+  },
+  {
+   "word": "hill",
+   "phonetic": "/hɪl/",
+   "translation": "小山",
+   "unit": "Unit 7"
+  },
+  {
+   "word": "loud",
+   "phonetic": "/laʊd/",
+   "translation": "高声的",
+   "unit": "Unit 7"
+  },
+  {
+   "word": "explore",
+   "phonetic": "/ɪkˈsplɔr/",
+   "translation": "探险",
+   "unit": "Unit 7"
+  },
+  {
+   "word": "bush",
+   "phonetic": "/bʊʃ/",
+   "translation": "矮树丛",
+   "unit": "Unit 7"
+  },
+  {
+   "word": "quiet",
+   "phonetic": "/ˈkwaɪɪt/",
+   "translation": "静止的",
+   "unit": "Unit 7"
+  },
+  {
+   "word": "round",
+   "phonetic": "/raʊnd/",
+   "translation": "圆",
+   "unit": "Unit 7"
+  },
+  {
+   "word": "damage",
+   "phonetic": "/ˈdæmɪdʒ/",
+   "translation": "损害",
+   "unit": "Unit 7"
+  },
+  {
+   "word": "crash",
+   "phonetic": "/kræʃ/",
+   "translation": "碰撞",
+   "unit": "Unit 7"
+  },
+  {
+   "word": "frightened",
+   "phonetic": "/ˈfraɪtnd/",
+   "translation": "受惊的",
+   "unit": "Unit 7"
+  },
+  {
+   "word": "discover",
+   "phonetic": "/dɪˈskʌvɚ/",
+   "translation": "发现",
+   "unit": "Unit 7"
+  },
+  {
+   "word": "terrible",
+   "phonetic": "/ˈtɛrəbəl/",
+   "translation": "很糟的",
+   "unit": "Unit 7"
+  },
+  {
+   "word": "fear",
+   "phonetic": "/fɪɚ/",
+   "translation": "恐怖",
+   "unit": "Unit 7"
+  },
+  {
+   "word": "creature",
+   "phonetic": "/ˈkritʃɚ/",
+   "translation": "人",
+   "unit": "Unit 7"
+  },
+  {
+   "word": "feather",
+   "phonetic": "/ˈfɛðɚ/",
+   "translation": "翎毛",
+   "unit": "Unit 7"
+  },
+  {
+   "word": "wonder",
+   "phonetic": "/ˈwʌndɚ/",
+   "translation": "奇迹",
+   "unit": "Unit 7"
+  },
+  {
+   "word": "line",
+   "phonetic": "/laɪn/",
+   "translation": "绳",
+   "unit": "Unit 7"
+  },
+  {
+   "word": "refuse",
+   "phonetic": "/rɪˈfjuz/",
+   "translation": "拒绝",
+   "unit": "Unit 7"
+  },
+  {
+   "word": "spread",
+   "phonetic": "/sprɛd/",
+   "translation": "伸展",
+   "unit": "Unit 7"
+  },
+  {
+   "word": "mark",
+   "phonetic": "/mɑrk/",
+   "translation": "标志",
+   "unit": "Unit 7"
+  },
+  {
+   "word": "desert",
+   "phonetic": "/ˈdɛzɚt/",
+   "translation": "沙漠",
+   "unit": "Unit 7"
+  },
+  {
+   "word": "tent",
+   "phonetic": "/tɛnt/",
+   "translation": "帐篷",
+   "unit": "Unit 7"
+  },
+  {
+   "word": "knife",
+   "phonetic": "/naɪf/",
+   "translation": "刀",
+   "unit": "Unit 7"
+  },
+  {
+   "word": "explain",
+   "phonetic": "/ɪkˈsplen/",
+   "translation": "解释",
+   "unit": "Unit 7"
+  },
+  {
+   "word": "pleased",
+   "phonetic": "/pli:zd/",
+   "translation": "高兴的",
+   "unit": "Unit 7"
+  },
+  {
+   "word": "keep quiet",
+   "phonetic": "/kip ˈkwaɪɪt/",
+   "translation": "保持安静",
+   "unit": "Unit 7"
+  },
+  {
+   "word": "because of",
+   "phonetic": "/bɪˈkɔz ʌv/",
+   "translation": "因为",
+   "unit": "Unit 7"
+  },
+  {
+   "word": "in fear",
+   "phonetic": "/ɪn fɪɚ/",
+   "translation": "唯恐",
+   "unit": "Unit 7"
+  },
+  {
+   "word": "as soon as possible",
+   "phonetic": "/æz sun æz ˈpɑsəbəl/",
+   "translation": "尽快",
+   "unit": "Unit 7"
+  },
+  {
+   "word": "agree with",
+   "phonetic": "/əˈɡri wɪð/",
+   "translation": "同意…",
+   "unit": "Unit 7"
+  },
+  {
+   "word": "disagree with",
+   "phonetic": "/ˌdɪsəˈɡri wɪð/",
+   "translation": "不同意",
+   "unit": "Unit 7"
+  },
+  {
+   "word": "Internet",
+   "phonetic": "/ˈɪntɚnet/",
+   "translation": "因特网",
+   "unit": "Unit 8"
+  },
+  {
+   "word": "apology",
+   "phonetic": "/əˈpɑlədʒi/",
+   "translation": "(为某种思想",
+   "unit": "Unit 8"
+  },
+  {
+   "word": "excuse",
+   "phonetic": "/ɪkˈskjuz/",
+   "translation": "原谅",
+   "unit": "Unit 8"
+  },
+  {
+   "word": "past",
+   "phonetic": "/pæst/",
+   "translation": "过去",
+   "unit": "Unit 8"
+  },
+  {
+   "word": "present",
+   "phonetic": "/ˈprɛznt/",
+   "translation": "赠品",
+   "unit": "Unit 8"
+  },
+  {
+   "word": "hydrogen",
+   "phonetic": "/ˈhaɪdrədʒən/",
+   "translation": "氢",
+   "unit": "Unit 8"
+  },
+  {
+   "word": "wide",
+   "phonetic": "/waɪd/",
+   "translation": "宽的",
+   "unit": "Unit 8"
+  },
+  {
+   "word": "shape",
+   "phonetic": "/ʃep/",
+   "translation": "外形",
+   "unit": "Unit 8"
+  },
+  {
+   "word": "cafe",
+   "phonetic": "/kæˈfe/",
+   "translation": "咖啡馆",
+   "unit": "Unit 8"
+  },
+  {
+   "word": "recently",
+   "phonetic": "/ˈrisnˌtli/",
+   "translation": "最近",
+   "unit": "Unit 8"
+  },
+  {
+   "word": "forever",
+   "phonetic": "/fɔrˈɛvɚ/",
+   "translation": "永远",
+   "unit": "Unit 8"
+  },
+  {
+   "word": "certainly",
+   "phonetic": "/ˈsɚtənli/",
+   "translation": "的确",
+   "unit": "Unit 8"
+  },
+  {
+   "word": "recommend",
+   "phonetic": "/ˌrɛkəˈmɛnd/",
+   "translation": "推荐",
+   "unit": "Unit 8"
+  },
+  {
+   "word": "satisfy",
+   "phonetic": "/ˈsætɪsˌfai/",
+   "translation": "满足",
+   "unit": "Unit 8"
+  },
+  {
+   "word": "mix",
+   "phonetic": "/mɪks/",
+   "translation": "使混和",
+   "unit": "Unit 8"
+  },
+  {
+   "word": "electronic",
+   "phonetic": "/ɪˌlɛkˈtrɑnɪk/",
+   "translation": "电子的",
+   "unit": "Unit 8"
+  },
+  {
+   "word": "relax",
+   "phonetic": "/rɪˈlæks/",
+   "translation": "放松",
+   "unit": "Unit 8"
+  },
+  {
+   "word": "while",
+   "phonetic": "/hwaɪl/",
+   "translation": "一会儿",
+   "unit": "Unit 8"
+  },
+  {
+   "word": "technology",
+   "phonetic": "/tɛkˈnɑlədʒi/",
+   "translation": "工艺",
+   "unit": "Unit 8"
+  },
+  {
+   "word": "software",
+   "phonetic": "/ˈsɔftwɛɚ/",
+   "translation": "软件",
+   "unit": "Unit 8"
+  },
+  {
+   "word": "virus",
+   "phonetic": "/ˈvaɪrəs/",
+   "translation": "病毒",
+   "unit": "Unit 8"
+  },
+  {
+   "word": "prepare",
+   "phonetic": "/prɪˈpɛɚ/",
+   "translation": "准备",
+   "unit": "Unit 8"
+  },
+  {
+   "word": "in the shape of",
+   "phonetic": "/ɪn ðə ʃep ʌv/",
+   "translation": "以...的形式",
+   "unit": "Unit 8"
+  },
+  {
+   "word": "prepare for",
+   "phonetic": "/prɪˈpɛr fɔr/",
+   "translation": "准备",
+   "unit": "Unit 8"
+  },
+  {
+   "word": "in a second",
+   "phonetic": "/ɪn e ˈsɛkənd/",
+   "translation": "一会儿",
+   "unit": "Unit 8"
+  }
+ ]
+}

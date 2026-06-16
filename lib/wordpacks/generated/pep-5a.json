@@ -41,6 +41,12 @@
    "unit": "Words in each unit Unit 1"
   },
   {
+   "word": "hard-working",
+   "phonetic": "/hɑrd ˈwɚkɪŋ/",
+   "translation": "努力工作",
+   "unit": "Words in each unit Unit 1"
+  },
+  {
    "word": "helpful",
    "phonetic": "/ˈhɛlpfəl/",
    "translation": "有帮助的",
@@ -173,9 +179,21 @@
    "unit": "Words in each unit Unit 2"
   },
   {
+   "word": "watch TV",
+   "phonetic": "/wɑtʃ ˈtiˈvi/",
+   "translation": "看电视",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
    "word": "do",
    "phonetic": "/du/",
    "translation": "做",
+   "unit": "Words in each unit Unit 2"
+  },
+  {
+   "word": "do homework",
+   "phonetic": "/du ˈhomˌwɚk/",
+   "translation": "做家庭作业",
    "unit": "Words in each unit Unit 2"
   },
   {
@@ -263,6 +281,12 @@
    "unit": "Words in each unit Unit 3"
   },
   {
+   "word": "ice cream",
+   "phonetic": "/aɪs krim/",
+   "translation": "冰淇淋",
+   "unit": "Words in each unit Unit 3"
+  },
+  {
    "word": "tea",
    "phonetic": "/ti/",
    "translation": "茶",
@@ -347,6 +371,12 @@
    "unit": "Words in each unit Unit 4"
   },
   {
+   "word": "kung fu",
+   "phonetic": "/ˌkʌŋ ˈfu:/",
+   "translation": "中国功夫",
+   "unit": "Words in each unit Unit 4"
+  },
+  {
    "word": "dance",
    "phonetic": "/dæns/",
    "translation": "跳舞",
@@ -374,6 +404,12 @@
    "word": "swim",
    "phonetic": "/swɪm/",
    "translation": "游泳",
+   "unit": "Words in each unit Unit 4"
+  },
+  {
+   "word": "ping-pong",
+   "phonetic": "/ˈpɪŋˌpɔŋ/",
+   "translation": "乒乓",
    "unit": "Words in each unit Unit 4"
   },
   {
@@ -410,6 +446,12 @@
    "word": "problem",
    "phonetic": "/ˈprɑbləm/",
    "translation": "问题",
+   "unit": "Words in each unit Unit 4"
+  },
+  {
+   "word": "no problem",
+   "phonetic": "/noʊ ˈprɑbləm/",
+   "translation": "不麻烦",
    "unit": "Words in each unit Unit 4"
   },
   {
@@ -455,6 +497,12 @@
    "unit": "Words in each unit Unit 5"
   },
   {
+   "word": "water bottle",
+   "phonetic": "/ˈwɔtɚ ˈbɑtl/",
+   "translation": "水瓶",
+   "unit": "Words in each unit Unit 5"
+  },
+  {
    "word": "bike",
    "phonetic": "/baɪk/",
    "translation": "脚踏车",
@@ -470,6 +518,12 @@
    "word": "front",
    "phonetic": "/frʌnt/",
    "translation": "前面",
+   "unit": "Words in each unit Unit 5"
+  },
+  {
+   "word": "in front of",
+   "phonetic": "/ɪn frʌnt ʌv/",
+   "translation": "在...前面",
    "unit": "Words in each unit Unit 5"
   },
   {
@@ -527,6 +581,12 @@
    "unit": "Words in each unit Unit 5"
   },
   {
+   "word": "lots of",
+   "phonetic": "/lɒts ʌv/",
+   "translation": "许多的...",
+   "unit": "Words in each unit Unit 5"
+  },
+  {
    "word": "flower",
    "phonetic": "/ˈflaʊɚ/",
    "translation": "花",
@@ -581,6 +641,12 @@
    "unit": "Words in each unit Unit 6"
   },
   {
+   "word": "lake",
+   "phonetic": "/lek/",
+   "translation": "湖",
+   "unit": "Words in each unit Unit 6"
+  },
+  {
    "word": "mountain",
    "phonetic": "/ˈmaʊntn/",
    "translation": "山",
@@ -620,6 +686,12 @@
    "word": "boating",
    "phonetic": "/ˈboʊtɪŋ/",
    "translation": "划船",
+   "unit": "Words in each unit Unit 6"
+  },
+  {
+   "word": "aren't",
+   "phonetic": "/ɑrnt/",
+   "translation": "不是",
    "unit": "Words in each unit Unit 6"
   },
   {

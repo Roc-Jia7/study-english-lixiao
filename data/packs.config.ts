@@ -47,6 +47,19 @@ function pep(
   };
 }
 
+/** Helper for the 沪教版牛津英语 middle-school series (DictionaryData). */
+function hj(id: string, grade: string, en: string, bookId: string): PackSpec {
+  return {
+    id,
+    name: `沪教牛津 ${grade}`,
+    subtitle: `Shanghai Oxford ${en} · 沪教版`,
+    source: `DictionaryData (Apache-2.0) · 沪教版牛津英语${grade}册`,
+    select: { kind: "dictdata-book", bookId },
+    order: "unit",
+    category: "middle",
+  };
+}
+
 export const PACKS: PackSpec[] = [
   // 小学 — 人教版三年级起点 full primary series (三上 → 六下).
   pep("pep-3a", "三年级上", "Grade 3A", "34173cb38f07f89ddbebc2ac"),
@@ -57,6 +70,14 @@ export const PACKS: PackSpec[] = [
   pep("pep-5b", "五年级下", "Grade 5B", "f7e6c85504ce6e82442c770f"),
   pep("pep-6a", "六年级上", "Grade 6A", "bf8229696f7a3bb4700cfdde"),
   pep("pep-6b", "六年级下", "Grade 6B", "82161242827b703e6acf9c72"),
+
+  // 初中 — 沪教版牛津英语 full middle series (七上 → 九下).
+  hj("hj-7a", "七年级上", "Grade 7A", "58b2991c85ec50446c2ec5ba"),
+  hj("hj-7b", "七年级下", "Grade 7B", "58b29c2d85ec50446c2ec6b0"),
+  hj("hj-8a", "八年级上", "Grade 8A", "58b29ef285ec50446c2ec996"),
+  hj("hj-8b", "八年级下", "Grade 8B", "58b2a07285ec50446c2eca90"),
+  hj("hj-9a", "九年级上", "Grade 9A", "58b2a18a85ec50446c2ecba2"),
+  hj("hj-9b", "九年级下", "Grade 9B", "58b2a32f85ec50446c2eccb7"),
 
   // 考试分级 — ECDICT tag=zk (中考), top by corpus frequency.
   {
