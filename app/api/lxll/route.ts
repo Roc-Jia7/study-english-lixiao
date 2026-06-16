@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { rateLimit } from "@/lib/rateLimit";
 
 /**
  * Server-side proxy to the lxll backend.
@@ -29,12 +30,26 @@ interface ProxyRequest {
   query?: Record<string, string>;
 }
 
-// Only forward to known endpoint families — not an open relay.
-function isAllowedPath(api: keyof typeof HOSTS, path: string): boolean {
-  if (path.includes("..")) return false;
-  if (api === "v2") return path.startsWith("customer/");
-  // rpc: PascalCase method names only
-  return /^[A-Za-z][A-Za-z0-9]*$/.test(path);
+// Exact allowlist — the ONLY endpoints this app calls. A prefix/pattern filter
+// (anything under `customer/`, or any RPC method) would leave the proxy an open
+// relay to the lxll backend: an anonymous caller could drive unauthenticated
+// endpoints like customer/sms/code, customer/register, customer/reset-password
+// (SMS spam, mass registration, password-reset abuse) or brute-force logins —
+// from Vercel IPs the upstream can't easily block. Allow exactly what's used.
+const ALLOWED: Record<keyof typeof HOSTS, ReadonlySet<string>> = {
+  v2: new Set([
+    "customer/login",
+    "customer/logout",
+    "customer/anti-forget/record/student",
+    "customer/anti-forget/detail",
+    "customer/anti-forget/progress/submit",
+  ]),
+  rpc: new Set(["QueryUserProfileByToken", "CustomerRetrieveStudentMetric"]),
+};
+
+/** Best-effort client IP for rate-limit keying (Vercel sets x-forwarded-for). */
+function clientIp(req: NextRequest): string {
+  return req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
 }
 
 export async function POST(req: NextRequest) {
@@ -46,8 +61,20 @@ export async function POST(req: NextRequest) {
   }
 
   const host = HOSTS[spec.api];
-  if (!host || !isAllowedPath(spec.api, spec.path)) {
+  if (!host || !ALLOWED[spec.api]?.has(spec.path)) {
     return NextResponse.json({ error: "endpoint not allowed" }, { status: 403 });
+  }
+
+  // Per-IP rate limiting (best-effort; fails open without Redis). A general cap
+  // on all proxy traffic, plus a tight cap on login to blunt brute-forcing.
+  const ip = clientIp(req);
+  if (!(await rateLimit(`wsa:rl:lxll:${ip}`, 120, 60)).ok) {
+    return NextResponse.json({ error: "rate limited" }, { status: 429 });
+  }
+  if (spec.api === "v2" && spec.path === "customer/login") {
+    if (!(await rateLimit(`wsa:rl:login:${ip}`, 8, 60)).ok) {
+      return NextResponse.json({ error: "too many attempts" }, { status: 429 });
+    }
   }
 
   const method = spec.method ?? "POST";
