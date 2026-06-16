@@ -61,6 +61,13 @@ async function saveRemote(state: SyncState): Promise<void> {
 /** On login/restore: pull remote, merge into the local student, push back. */
 export async function pullAndMerge(userId: string): Promise<void> {
   const id = `lxll:${userId}`;
+  // Cancel any debounced push still pending from the PREVIOUS child — its
+  // closure holds the old child's data but saveRemote() would send it under
+  // the now-active child's token, cross-contaminating cloud state.
+  if (pushTimer) {
+    clearTimeout(pushTimer);
+    pushTimer = null;
+  }
   const remote = await loadRemote();
   const store = useAppStore.getState();
   const local = store.students[id];

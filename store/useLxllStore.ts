@@ -60,6 +60,8 @@ interface LxllState {
   sessionReviews: Array<{ antiForgetId: number; wordIds: number[] }>;
   /** Per-word result collected during the current session (wordId → known). */
   pendingResults: Record<number, boolean>;
+  /** True when a result submit failed and is still waiting to be re-sent. */
+  pendingUpload: boolean;
 
   signIn: (identifier: string, password: string) => Promise<boolean>;
   /** Instant-switch to another child already signed in on this device. */
@@ -86,6 +88,7 @@ export const useLxllStore = create<LxllState>((set, get) => ({
   dataError: null,
   sessionReviews: [],
   pendingResults: {},
+  pendingUpload: false,
 
   signIn: async (identifier, password) => {
     // Clear the previous child's data up front. The same phone with a
@@ -100,6 +103,7 @@ export const useLxllStore = create<LxllState>((set, get) => ({
       dataError: null,
       sessionReviews: [],
       pendingResults: {},
+      pendingUpload: false,
     });
     try {
       await loginByPassword(identifier, password);
@@ -137,6 +141,7 @@ export const useLxllStore = create<LxllState>((set, get) => ({
       dataError: null,
       sessionReviews: [],
       pendingResults: {},
+      pendingUpload: false,
     });
     try {
       const profile = await fetchUserProfile(); // validates the token
@@ -223,10 +228,12 @@ export const useLxllStore = create<LxllState>((set, get) => ({
     try {
       await submitAntiForgetProgress(submissions);
     } catch {
-      // Keep results so a later retry can resend; surface nothing to the kid.
+      // Keep results + flag so the dashboard can offer a retry and the
+      // foreground-refresh can resend automatically (instead of losing them).
+      set({ pendingUpload: true });
       return;
     }
-    set({ pendingResults: {}, sessionReviews: [] });
+    set({ pendingResults: {}, sessionReviews: [], pendingUpload: false });
     void get().loadData();
   },
 

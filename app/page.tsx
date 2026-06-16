@@ -65,6 +65,8 @@ export default function Home() {
       const ts = Date.now();
       if (ts - last < 5000) return;
       last = ts;
+      // Resend any results a previous submit failed to upload, then refresh.
+      if (lxll.pendingUpload) void lxll.submitResults();
       void lxll.loadData();
     };
     document.addEventListener("visibilitychange", refresh);

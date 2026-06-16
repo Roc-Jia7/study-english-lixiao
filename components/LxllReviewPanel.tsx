@@ -56,7 +56,10 @@ export default function LxllReviewPanel({ onStartReview }: LxllReviewPanelProps)
   const dataError = useLxllStore((s) => s.dataError);
   const loadData = useLxllStore((s) => s.loadData);
   const loadSlotWords = useLxllStore((s) => s.loadSlotWords);
+  const pendingUpload = useLxllStore((s) => s.pendingUpload);
+  const submitResults = useLxllStore((s) => s.submitResults);
   const [startingId, setStartingId] = useState<number | null>(null);
+  const [retrying, setRetrying] = useState(false);
 
   const { due, upcoming, done } = useMemo(
     () => splitSchedule(schedule),
@@ -94,6 +97,38 @@ export default function LxllReviewPanel({ onStartReview }: LxllReviewPanelProps)
             </span>{" "}
             个单词啦！
           </p>
+        </motion.div>
+      )}
+
+      {/* A previous submit didn't reach the backend — offer to resend so the
+          child's review results aren't silently lost. */}
+      {pendingUpload && (
+        <motion.div
+          initial={{ opacity: 0, y: -8 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="mb-4 flex items-center gap-3 rounded-2xl bg-amber-400/15 px-4 py-3 ring-2 ring-amber-300/40"
+        >
+          <WifiOff className="h-5 w-5 shrink-0 text-amber-200" />
+          <p className="flex-1 text-sm font-bold text-amber-100">
+            上次复习结果还没上传成功
+          </p>
+          <button
+            onClick={async () => {
+              if (retrying) return;
+              setRetrying(true);
+              await submitResults();
+              setRetrying(false);
+            }}
+            disabled={retrying}
+            className="flex shrink-0 items-center gap-1.5 rounded-full bg-amber-300 px-3 py-1.5 text-sm font-extrabold text-space-900 active:scale-95 disabled:opacity-60"
+          >
+            {retrying ? (
+              <Loader2 className="h-4 w-4 animate-spin" />
+            ) : (
+              <RotateCw className="h-4 w-4" />
+            )}
+            重试上传
+          </button>
         </motion.div>
       )}
 
@@ -189,7 +224,7 @@ export default function LxllReviewPanel({ onStartReview }: LxllReviewPanelProps)
           {done.length > 0 && (
             <>
               <h3 className="mt-8 mb-3 text-center text-base font-bold text-white/70">
-                ✅ 今天已复习（可再练）
+                ✅ 已复习过（可再练）
               </h3>
               <div className="space-y-2">
                 {done.map((record, i) => {
